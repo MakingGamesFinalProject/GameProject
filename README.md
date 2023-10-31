@@ -1,6 +1,6 @@
 # GameProject
 
-The **Production** branch will be where all feature branches will be merged.
+The **Development** branch will be where all feature branches will be merged.
 
 Branches *Prototype*, *Alpha* and *Beta* are going to be snapshots of the game for those producion phases.
 
