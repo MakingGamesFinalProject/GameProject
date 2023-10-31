@@ -1,5 +1,9 @@
 # GameProject
 
+The **Production** branch will be where all feature branches will be merged.
+
+Branches *Prototype*, *Alpha* and *Beta* are going to be snapshots of the game for those producion phases.
+
 ## Coding Conventions 
 
 [Godot styleguide](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html)
