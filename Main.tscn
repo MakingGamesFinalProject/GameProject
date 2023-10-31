@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://bu8w7oa85bpep"]
+[gd_scene load_steps=2 format=3 uid="uid://6bqm6gqeokqt"]
 
-[node name="Node" type="Node"]
+[ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://player.tscn" id="1_nqjp5"]
+
+[node name="Main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_nqjp5")]
+
+[node name="Player2" parent="." instance=ExtResource("1_nqjp5")]
+is_player_with_keyboard = false
