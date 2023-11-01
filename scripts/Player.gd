@@ -1,12 +1,9 @@
-extends Area2D
+extends CharacterBody2D
 
 # How fast the player moves in meters per second.
 @export var speed = 400
 @export var is_player_with_keyboard = true; 
 var screen_size # Size of the game window.
-
-func _ready():
-	screen_size = get_viewport_rect().size
 
 func _physics_process(delta):
 	checkIfPlayerIsMoving(delta)
@@ -24,8 +21,7 @@ func checkIfPlayerIsMoving(delta):
 		velocity = velocity.normalized() * speed
 
 	position += velocity * delta	
-	position = position.clamp(Vector2.ZERO, screen_size)
-	
+
 func checkIfPlayerIsMovingWithKeyboard():
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right_p1"):
