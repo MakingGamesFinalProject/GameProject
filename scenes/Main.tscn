@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://6bqm6gqeokqt"]
+[gd_scene load_steps=6 format=3 uid="uid://6bqm6gqeokqt"]
 
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player.tscn" id="1_nqjp5"]
 [ext_resource type="PackedScene" uid="uid://carfvmdbple6g" path="res://scenes/underground_water_filter.tscn" id="2_8x4tj"]
+[ext_resource type="Texture2D" uid="uid://cbax1vqkbcggh" path="res://art/Walking layer test.png" id="2_k7tpw"]
 [ext_resource type="PackedScene" uid="uid://bx6p5ofvdqay5" path="res://scenes/house_building.tscn" id="3_b411m"]
 [ext_resource type="Texture2D" uid="uid://c07ptom76bg0h" path="res://art/back_layer_test.png" id="4_r3euc"]
 
@@ -11,7 +12,6 @@
 custom_minimum_size = Vector2(2048, 1200)
 offset_right = 1152.0
 offset_bottom = 648.0
-scale = Vector2(1, 1)
 color = Color(0, 0, 0, 1)
 
 [node name="BackLayerTest" type="Sprite2D" parent="Background"]
@@ -19,6 +19,11 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.290538, 0.22128)
 texture = ExtResource("4_r3euc")
 centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.290538, 0.22128)
+texture = ExtResource("2_k7tpw")
 
 [node name="Player" parent="." instance=ExtResource("1_nqjp5")]
 position = Vector2(450, 456)
