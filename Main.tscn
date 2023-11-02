@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://egnr07i5sa0h"]
+
+[ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player.tscn" id="1_nqjp5"]
+[ext_resource type="PackedScene" path="res://UI.tscn" id="1_yy1sq"]
+
+[node name="Main" type="Node"]
+
+[node name="UI" parent="." instance=ExtResource("1_yy1sq")]
+
+[node name="Player" parent="." instance=ExtResource("1_nqjp5")]
+position = Vector2(398, 311)
+
+[node name="Player2" parent="." instance=ExtResource("1_nqjp5")]
+position = Vector2(726, 307)
+is_player_with_keyboard = false
