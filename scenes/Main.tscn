@@ -6,15 +6,25 @@
 
 [node name="Main" type="Node"]
 
-[node name="Player" parent="." instance=ExtResource("1_nqjp5")]
+[node name="Background" type="Node" parent="."]
 
-[node name="Player2" parent="." instance=ExtResource("1_nqjp5")]
+[node name="Player" parent="Background" instance=ExtResource("1_nqjp5")]
+position = Vector2(2, 1298)
+
+[node name="Player2" parent="Background" instance=ExtResource("1_nqjp5")]
 position = Vector2(948, 436)
 is_player_with_keyboard = false
 
-[node name="UndergroundWaterFilter" parent="." instance=ExtResource("2_8x4tj")]
+[node name="UndergroundWaterFilter" parent="Background" instance=ExtResource("2_8x4tj")]
 position = Vector2(114, 115)
 
-[node name="HouseBuilding" parent="." instance=ExtResource("3_b411m")]
+[node name="HouseBuilding" parent="Background" instance=ExtResource("3_b411m")]
 position = Vector2(998, 171)
 scale = Vector2(5.1725, 5.20022)
+
+[node name="CameraPosition" type="Marker2D" parent="Background"]
+position = Vector2(573, 323)
+
+[node name="Camera2D" type="Camera2D" parent="Background/CameraPosition"]
+position = Vector2(582, 328)
+zoom = Vector2(0.5, 0.5)
