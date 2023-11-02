@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://6bqm6gqeokqt"]
+[gd_scene load_steps=4 format=3 uid="uid://6bqm6gqeokqt"]
 
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player.tscn" id="1_nqjp5"]
 [ext_resource type="PackedScene" uid="uid://carfvmdbple6g" path="res://scenes/underground_water_filter.tscn" id="2_8x4tj"]
+[ext_resource type="PackedScene" uid="uid://bx6p5ofvdqay5" path="res://scenes/house_building.tscn" id="3_b411m"]
 
 [node name="Main" type="Node"]
 
@@ -12,3 +13,8 @@ position = Vector2(948, 436)
 is_player_with_keyboard = false
 
 [node name="UndergroundWaterFilter" parent="." instance=ExtResource("2_8x4tj")]
+position = Vector2(114, 115)
+
+[node name="HouseBuilding" parent="." instance=ExtResource("3_b411m")]
+position = Vector2(998, 171)
+scale = Vector2(5.1725, 5.20022)
