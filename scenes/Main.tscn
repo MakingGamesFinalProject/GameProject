@@ -2,7 +2,27 @@
 
 [ext_resource type="Script" path="res://scripts/game_split_screen_controller.gd" id="1_3udns"]
 [ext_resource type="PackedScene" uid="uid://dnwp0f3rcpy14" path="res://scenes/home_level.tscn" id="2_hlp5x"]
-[ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="3_3k1to"]
+
+[sub_resource type="GDScript" id="GDScript_basqf"]
+script/source = "extends Camera2D
+
+var min_x = 0
+var max_x = 1540
+#1 for player1, 2 for player2
+@export var camera_number = 1; 
+
+func _process(delta):
+	var camera_position = global_position
+	var player_position = get_player().position
+	var new_camera_pos_x = clamp(player_position.x, min_x, max_x)
+	camera_position.x = new_camera_pos_x
+	global_position = camera_position
+	print(new_camera_pos_x)
+	
+	
+func get_player():
+	return get_tree().get_nodes_in_group(\"players\")[camera_number - 1] 
+"
 
 [node name="Game" type="Node"]
 script = ExtResource("1_3udns")
@@ -27,7 +47,7 @@ limit_top = 0
 limit_right = 2048
 limit_bottom = 1200
 editor_draw_limits = true
-script = ExtResource("3_3k1to")
+script = SubResource("GDScript_basqf")
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -42,7 +62,7 @@ limit_left = 0
 limit_top = 0
 limit_right = 2048
 limit_bottom = 1200
-script = ExtResource("3_3k1to")
+script = SubResource("GDScript_basqf")
 camera_number = 2
 
 [editable path="HBoxContainer/SubViewportContainer/SubViewport/Node"]

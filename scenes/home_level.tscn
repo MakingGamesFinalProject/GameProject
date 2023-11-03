@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnwp0f3rcpy14"]
+[gd_scene load_steps=6 format=3 uid="uid://dnwp0f3rcpy14"]
 
 [ext_resource type="PackedScene" uid="uid://drgf7c01kty41" path="res://scenes/background.tscn" id="1_57jlp"]
 [ext_resource type="PackedScene" uid="uid://carfvmdbple6g" path="res://scenes/underground_water_filter.tscn" id="1_88g1l"]
 [ext_resource type="PackedScene" uid="uid://dq5mqnm8w47pr" path="res://scenes/river_trash_cleaning.tscn" id="2_rhlqq"]
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player.tscn" id="4_aeqqs"]
+[ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task_manager.tscn" id="5_s3bru"]
 
 [node name="Node" type="Node"]
 
@@ -21,3 +22,5 @@ is_player_with_keyboard = false
 
 [node name="Player2" parent="." instance=ExtResource("4_aeqqs")]
 position = Vector2(768, 531)
+
+[node name="TaskManager" parent="." instance=ExtResource("5_s3bru")]

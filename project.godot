@@ -15,16 +15,17 @@ run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
-
-window/size/viewport_width=2048
-window/size/viewport_height=1200
-window/size/resizable=false
 [autoload]
 
 world_inventory="*res://world_inventory.gd"
 SceneManager="*res://SceneManager.tscn"
 ResourceManager="*res://ResourceManager.tscn"
+
+[display]
+
+window/size/viewport_width=2048
+window/size/viewport_height=1200
+window/size/resizable=false
 
 [filesystem]
 

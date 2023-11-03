@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cah7e3d0hvrt3"]
 
 [ext_resource type="PackedScene" uid="uid://q0qsamraal0k" path="res://UI.tscn" id="2_ladkg"]
-[ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://player.tscn" id="3_plejc"]
+[ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player.tscn" id="3_plejc"]
 
 [node name="House" type="Node"]
 

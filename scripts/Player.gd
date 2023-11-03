@@ -53,4 +53,4 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 
 func _on_body_entered(body):
-	print("on body entered")
+	pass
