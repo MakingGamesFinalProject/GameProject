@@ -52,5 +52,5 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	print("on body entered")

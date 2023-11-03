@@ -5,7 +5,7 @@ var max_x = 1540
 #1 for player1, 2 for player2
 @export var camera_number = 1; 
 
-func _process(delta):
+func _process(_delta):
 	var camera_position = global_position
 	var player_position = get_player().position
 	var new_camera_pos_x = clamp(player_position.x, min_x, max_x)
