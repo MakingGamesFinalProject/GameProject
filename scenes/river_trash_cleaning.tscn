@@ -9,7 +9,7 @@ size = Vector2(32, 20.0352)
 [sub_resource type="CircleShape2D" id="CircleShape2D_jl1gp"]
 radius = 61.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="RivertTrashCleaning" type="CharacterBody2D"]
 script = ExtResource("1_70pcr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
