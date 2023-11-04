@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player.tscn" id="4_aeqqs"]
 [ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task_manager.tscn" id="5_s3bru"]
 [ext_resource type="PackedScene" uid="uid://bs1p30328q3ri" path="res://scenes/quests/gift_box.tscn" id="6_f7pi8"]
-[ext_resource type="PackedScene" uid="uid://q0qsamraal0k" path="res://UI.tscn" id="7_tasnd"]
+[ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="7_gbamd"]
 
 [node name="Node" type="Node"]
 
@@ -27,13 +27,12 @@ position = Vector2(768, 531)
 
 [node name="TaskManager" parent="." instance=ExtResource("5_s3bru")]
 
-[node name="UI" parent="." instance=ExtResource("7_tasnd")]
-visible = false
-
 [node name="TaskItems" type="Node" parent="."]
 
 [node name="GiftBox" parent="TaskItems" instance=ExtResource("6_f7pi8")]
 position = Vector2(1114, 922)
 scale = Vector2(2.7079, 2.42508)
+
+[node name="UI2" parent="." instance=ExtResource("7_gbamd")]
 
 [connection signal="gift_box_picked_up" from="TaskItems/GiftBox" to="TaskManager" method="_on_gift_box_gift_box_picked_up"]

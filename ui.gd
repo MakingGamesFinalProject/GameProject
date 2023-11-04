@@ -1,9 +1,9 @@
 extends Control
 
 # Creating references to the three resource labels
-@onready var first_resource : Label = $FirstResource
-@onready var second_resource : Label = $SecondResource
-@onready var third_resource : Label = $ThirdResource
+@onready var first_resource : Label = $HBoxContainer/FirstResource
+@onready var second_resource : Label = $HBoxContainer/SecondResource
+@onready var third_resource : Label = $HBoxContainer/ThirdResource
 
 # Creating a reference to the scene tracker label
 @onready var scene : Label = $Scene

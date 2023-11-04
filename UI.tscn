@@ -2,42 +2,10 @@
 
 [ext_resource type="Script" path="res://ui.gd" id="1_5mnxc"]
 
-[node name="UI" type="Control"]
-custom_minimum_size = Vector2(16, 2.08165e-12)
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 30.0
-offset_top = 25.0
-offset_right = 59.0
-offset_bottom = 25.0
-scale = Vector2(3, 3)
 script = ExtResource("1_5mnxc")
-
-[node name="FirstResource" type="Label" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 0)
-layout_mode = 0
-offset_right = 52.0
-offset_bottom = 26.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "First: 0"
-
-[node name="SecondResource" type="Label" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 0)
-layout_mode = 0
-offset_left = 72.0
-offset_right = 146.0
-offset_bottom = 26.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Second: 0"
-
-[node name="ThirdResource" type="Label" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 0)
-layout_mode = 0
-offset_left = 166.0
-offset_right = 225.0
-offset_bottom = 26.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Third: 0"
 
 [node name="Scene" type="Label" parent="."]
 visible = false
@@ -50,3 +18,28 @@ offset_bottom = 25.6667
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Scene: Main"
 horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 10.0
+offset_right = 323.0
+offset_bottom = 45.0
+
+[node name="FirstResource" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "First: 0"
+
+[node name="SecondResource" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Second: 0"
+
+[node name="ThirdResource" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Third: 0"
