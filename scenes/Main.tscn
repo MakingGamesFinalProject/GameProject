@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/game_split_screen_controller.gd" id="1_3udns"]
 [ext_resource type="PackedScene" uid="uid://dnwp0f3rcpy14" path="res://scenes/home_level.tscn" id="2_hlp5x"]
-[ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="3_4hmq5"]
+[ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui_tasks.tscn" id="3_4hmq5"]
 
 [sub_resource type="GDScript" id="GDScript_basqf"]
 script/source = "extends Camera2D
@@ -66,7 +66,7 @@ limit_bottom = 1200
 script = SubResource("GDScript_basqf")
 camera_number = 2
 
-[node name="UI" parent="HBoxContainer/SubViewportContainer2/SubViewport" instance=ExtResource("3_4hmq5")]
+[node name="UITasksP2" parent="HBoxContainer/SubViewportContainer2/SubViewport" instance=ExtResource("3_4hmq5")]
 player_number = 2
 
 [editable path="HBoxContainer/SubViewportContainer/SubViewport/Node"]

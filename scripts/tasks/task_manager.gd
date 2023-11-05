@@ -1,5 +1,5 @@
 extends Node
-signal objective_completed
+signal objective_completed(task_uid, objective_index, player_number, description)
 signal task_completed
 # We should move this to a separate gd script / json file
 var map_of_tasks = [
@@ -8,8 +8,8 @@ var map_of_tasks = [
 		"name": "The most wonderful time of the year",
 		"description": "Pick up the gift and go home",
 		"objectives": [
-			{"type": "item_picked", "item": "gift"},
-			{"type": "position_reached", "position": "home"}
+			{"type": "item_picked", "item": "gift", "description": "Take the gift"},
+			{"type": "position_reached", "position": "home", "description": "Bring the gift home"}
 		]
 	}
 ]
@@ -33,7 +33,7 @@ func set_objective_as_done_for_task(task_uid, objective_index, player_number):
 				update_task_in_task_list_of_player(player_number, task, objective_index)
 			else:
 				add_task_in_task_list_of_player(task_uid, objective_index, player_number)
-				objective_completed.emit(task_uid, objective_index, player_number)
+				objective_completed.emit(task_uid, objective_index, player_number, task.objectives[objective_index].description)
 				
 func task_is_in_player_task_list(player_number, task_uid):
 	return objectives_completed_by_task_uid[player_number].has(task_uid)
@@ -53,8 +53,9 @@ func get_completed_tasks():
 func get_objectives_completed_by_uid_for_player(uid, player_number):
 	return objectives_completed_by_task_uid[player_number][uid]
 	
+#Every param is hardcoded here but I'll change that after the prototype
 func _on_gift_box_gift_box_picked_up(player_number):
-	set_objective_as_done_for_task("0x00", [0], player_number)
+	set_objective_as_done_for_task("0x00", 0, player_number)
 	
 func get_tasks():
 	return map_of_tasks
