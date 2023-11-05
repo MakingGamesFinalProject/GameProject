@@ -42,6 +42,9 @@ render_target_update_mode = 4
 
 [node name="Node" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_hlp5x")]
 
+[node name="RivertTrashCleaning" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" index="2"]
+visible = false
+
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
 limit_left = 0
 limit_top = 0

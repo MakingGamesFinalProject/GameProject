@@ -53,7 +53,6 @@ func get_completed_tasks():
 func get_objectives_completed_by_uid_for_player(uid, player_number):
 	return objectives_completed_by_task_uid[player_number][uid]
 	
-#Every param is hardcoded here but I'll change that after the prototype
 func _on_gift_box_gift_box_picked_up(player_number):
 	set_objective_as_done_for_task("0x00", 0, player_number)
 	
