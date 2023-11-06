@@ -16,7 +16,7 @@ script = ExtResource("1_5mnxc")
 layout_mode = 0
 offset_left = -30.0
 offset_top = -25.0
-offset_right = 2018.0
+offset_right = 2030.0
 offset_bottom = 25.0
 color = Color(0.4, 0.337255, 0.305882, 1)
 
