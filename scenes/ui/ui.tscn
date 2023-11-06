@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddqai1urvjxcv"]
+[gd_scene load_steps=3 format=3 uid="uid://cvspidlyngenw"]
 
-[ext_resource type="Script" path="res://scripts/ui/ui_resources.gd" id="1_5mnxc"]
+[ext_resource type="Script" path="res://scripts/ui/ui_resources.gd" id="1_vquh1"]
 [ext_resource type="Texture2D" uid="uid://coqwlk2l66xx6" path="res://icon.svg" id="2_ye47m"]
 
 [node name="UI" type="Control"]
@@ -10,7 +10,7 @@ offset_left = 30.0
 offset_top = 25.0
 offset_right = 30.0
 offset_bottom = 25.0
-script = ExtResource("1_5mnxc")
+script = ExtResource("1_vquh1")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
