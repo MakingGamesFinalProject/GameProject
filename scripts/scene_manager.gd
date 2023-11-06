@@ -3,9 +3,9 @@ extends Node
 var scene_transition_scene = preload("res://scenes/scene_transition.tscn")
 
 var player : CharacterBody2D
-var location : PhysicsBody2D
+var location : Area2D
 
-func change_scene(player_to_reposition : CharacterBody2D, location_to_reposition_to : PhysicsBody2D):
+func change_scene(player_to_reposition : CharacterBody2D, location_to_reposition_to : Area2D):
 	player = player_to_reposition
 	location = location_to_reposition_to
 
@@ -16,4 +16,4 @@ func change_scene(player_to_reposition : CharacterBody2D, location_to_reposition
 	scene_transition.connect("screen_darkened", reposition)
 
 func reposition():
-	player.global_position = location.global_position + Vector2(1000, 500)
+	player.global_position = location.global_position - Vector2(100, 100)
