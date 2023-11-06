@@ -25,6 +25,8 @@ func get_player():
 	return get_tree().get_nodes_in_group(\"players\")[camera_number - 1] 
 "
 
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_3k1to"]
+
 [node name="Game" type="Node"]
 script = ExtResource("1_3udns")
 
