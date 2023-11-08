@@ -1,6 +1,6 @@
 extends Node
 
-var scene_transition_scene = preload("res://scenes/scene_transition.tscn")
+var scene_transition_scene = preload("res://scenes/scene/scene_transition.tscn")
 
 var player : CharacterBody2D
 var location : Area2D
