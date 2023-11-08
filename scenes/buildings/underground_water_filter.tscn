@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://carfvmdbple6g"]
 
-[ext_resource type="Script" path="res://scripts/underground_water_filter.gd" id="1_ckc7n"]
+[ext_resource type="Script" path="res://scripts/Buildings/underground_water_filter.gd" id="1_f4wpl"]
 [ext_resource type="Texture2D" uid="uid://dnahnanxbf0xe" path="res://art/place_holde.png" id="2_dgv1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko82b"]
@@ -10,7 +10,7 @@ size = Vector2(104, 46)
 radius = 104.69
 
 [node name="UndergroundWaterFilter" type="CharacterBody2D"]
-script = ExtResource("1_ckc7n")
+script = ExtResource("1_f4wpl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3.27682, -1.46037)

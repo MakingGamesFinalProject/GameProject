@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dq5mqnm8w47pr"]
 
-[ext_resource type="Script" path="res://scripts/river_trash_cleaning.gd" id="1_70pcr"]
+[ext_resource type="Script" path="res://scripts/Buildings/river_trash_cleaning.gd" id="1_eydlg"]
 [ext_resource type="Texture2D" uid="uid://dnahnanxbf0xe" path="res://art/place_holde.png" id="1_pfhcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qtcm"]
@@ -10,7 +10,7 @@ size = Vector2(32, 20.0352)
 radius = 61.0
 
 [node name="RivertTrashCleaning" type="CharacterBody2D"]
-script = ExtResource("1_70pcr")
+script = ExtResource("1_eydlg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

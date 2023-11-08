@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://scenes/scene_manager.tscn"
-ResourceManager="*res://scenes/resource_manager.tscn"
+SceneManager="*res://scenes/scene/scene_manager.tscn"
+ResourceManager="*res://scenes/resource/resource_manager.tscn"
 
 [display]
 
