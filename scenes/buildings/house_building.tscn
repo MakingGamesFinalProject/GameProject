@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bx6p5ofvdqay5"]
 
 [ext_resource type="Texture2D" uid="uid://dnahnanxbf0xe" path="res://art/place_holde.png" id="1_qa4yy"]
-[ext_resource type="Script" path="res://scripts/house_building.gd" id="1_ufnyc"]
+[ext_resource type="Script" path="res://scripts/Buildings/house_building.gd" id="1_ro7jv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q36ge"]
 size = Vector2(32, 32)
@@ -10,7 +10,7 @@ size = Vector2(32, 32)
 radius = 24.0208
 
 [node name="HouseBuilding" type="CharacterBody2D"]
-script = ExtResource("1_ufnyc")
+script = ExtResource("1_ro7jv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
