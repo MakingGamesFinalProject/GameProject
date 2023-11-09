@@ -4,6 +4,7 @@ extends CanvasLayer
 @export var player_number = 1
 var tasks_manager = null
 var seconds_to_wait_to_hide_message = 5
+var is_task_list_visible = false
 
 func _ready():
 	set_task_manager()
@@ -20,3 +21,11 @@ func _on_task_manager_objective_completed(task_uid, objective_index, player_numb
 func hide_message_after(seconds):
 	await get_tree().create_timer(seconds).timeout
 	$Notification.text = ""
+
+
+func _on_toggle_quest_menu_button_pressed():
+	if $TasksListContainer.visible:
+		$TasksListContainer.set_visible(false)
+	else:
+		$TasksListContainer.set_visible(true)
+
