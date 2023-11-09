@@ -1,6 +1,6 @@
 extends Node
 
-signal task_completed
+signal task_completed(task)
 
 # Complete array of all the tasks in our game, it doesn't get modified
 # The uid reflects the index of the task, this makes more easy to identify tasks
@@ -30,8 +30,10 @@ func set_task_as_done(task_uid):
 
 # It's O(N) but given that we won't have a lot of quests it does the job	
 func get_task_by_uid(uid):
-	if uid >= tasks.size():
-		assert(false, "Task not found")
+	if uid >= tasks.size() || uid < 0:
+		# I could not find anything on how to throw an error
+		# It was suggested to use assertions instead
+		assert(false, "Index out of bound")
 	for t in tasks:
 		if uid == t.uid:
 			return t
