@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnwp0f3rcpy14"]
+
+[ext_resource type="PackedScene" uid="uid://drgf7c01kty41" path="res://scenes/map/background.tscn" id="1_57jlp"]
+[ext_resource type="PackedScene" uid="uid://carfvmdbple6g" path="res://scenes/buildings/underground_water_filter.tscn" id="1_88g1l"]
+[ext_resource type="PackedScene" uid="uid://dq5mqnm8w47pr" path="res://scenes/buildings/river_trash_cleaning.tscn" id="2_rhlqq"]
+[ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player/player.tscn" id="4_aeqqs"]
+[ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task/task_manager.tscn" id="5_s3bru"]
+[ext_resource type="PackedScene" uid="uid://bs1p30328q3ri" path="res://scenes/task/gift_box.tscn" id="6_f7pi8"]
+[ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="7_gbamd"]
+
+[node name="Node" type="Node"]
+
+[node name="Background" parent="." instance=ExtResource("1_57jlp")]
+
+[node name="UndergroundWaterFilter" parent="." instance=ExtResource("1_88g1l")]
+position = Vector2(482, 416)
+
+[node name="RivertTrashCleaning" parent="." instance=ExtResource("2_rhlqq")]
+position = Vector2(1268, 610)
+
+[node name="Player" parent="." instance=ExtResource("4_aeqqs")]
+position = Vector2(970, 306)
+is_player_with_keyboard = false
+
+[node name="Player2" parent="." instance=ExtResource("4_aeqqs")]
+position = Vector2(768, 531)
+
+[node name="TaskManager" parent="." instance=ExtResource("5_s3bru")]
+
+[node name="TaskItems" type="Node" parent="."]
+
+[node name="GiftBox" parent="TaskItems" instance=ExtResource("6_f7pi8")]
+position = Vector2(1114, 922)
+scale = Vector2(2.7079, 2.42508)
+
+[node name="UITasksP1" parent="." instance=ExtResource("7_gbamd")]
+
+[connection signal="objective_completed" from="TaskManager" to="UITasksP1" method="_on_task_manager_objective_completed"]
+[connection signal="gift_box_picked_up" from="TaskItems/GiftBox" to="TaskManager" method="_on_gift_box_gift_box_picked_up"]
