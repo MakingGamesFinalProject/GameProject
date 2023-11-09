@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://carfvmdbple6g"]
+
+[ext_resource type="Script" path="res://scripts/Buildings/underground_water_filter.gd" id="1_f4wpl"]
+[ext_resource type="Texture2D" uid="uid://dnahnanxbf0xe" path="res://art/place_holde.png" id="2_dgv1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko82b"]
+size = Vector2(104, 46)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffgq0"]
+radius = 104.69
+
+[node name="UndergroundWaterFilter" type="CharacterBody2D"]
+script = ExtResource("1_f4wpl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.27682, -1.46037)
+texture = ExtResource("2_dgv1g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ko82b")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CircleShape2D_ffgq0")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
