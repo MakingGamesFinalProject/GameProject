@@ -10,7 +10,7 @@
 [node name="UiTasks" type="CanvasLayer" groups=["uis"]]
 script = ExtResource("1_juyvw")
 
-[node name="Notification" type="Label" parent="." groups=["task_manager"]]
+[node name="Notification" type="Label" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

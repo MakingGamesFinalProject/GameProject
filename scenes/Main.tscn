@@ -49,6 +49,8 @@ render_target_update_mode = 4
 [node name="RivertTrashCleaning" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" index="2"]
 visible = false
 
+[node name="TaskManager" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" index="5" groups=["task_manager"]]
+
 [node name="TemporaryTransitionTrigger" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" instance=ExtResource("5_xr20o")]
 position = Vector2(907, 939)
 
@@ -78,5 +80,7 @@ camera_number = 2
 
 [node name="UITasksP2" parent="HBoxContainer/SubViewportContainer2/SubViewport" instance=ExtResource("3_4hmq5")]
 player_number = 2
+
+[connection signal="task_completed" from="HBoxContainer/SubViewportContainer/SubViewport/Node/TaskManager" to="HBoxContainer/SubViewportContainer/SubViewport/Node/UITasksP1" method="_on_task_manager_task_completed"]
 
 [editable path="HBoxContainer/SubViewportContainer/SubViewport/Node"]
