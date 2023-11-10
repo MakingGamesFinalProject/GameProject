@@ -11,5 +11,6 @@ func _on_player_detector_body_exited(body):
 		players_count_on_building = false
 
 func _process(delta):
+	# Temporary trigger for increasing an arbitrary resource
 	if players_count_on_building:
-		ResourceManager.add_first_resource()
+		ResourceManager.increase_water()

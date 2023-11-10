@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://6bqm6gqeokqt"]
 
 [ext_resource type="Script" path="res://scripts/camera/game_split_screen_controller.gd" id="1_mykgh"]
+[ext_resource type="PackedScene" uid="uid://527ad036ui2s" path="res://scenes/ui/ui_collective.tscn" id="2_7267x"]
 [ext_resource type="PackedScene" uid="uid://dnwp0f3rcpy14" path="res://scenes/levels/home_level.tscn" id="2_hlp5x"]
-[ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui_tasks.tscn" id="3_4hmq5"]
-[ext_resource type="PackedScene" uid="uid://cvspidlyngenw" path="res://scenes/ui/ui.tscn" id="5_57676"]
+[ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="3_4hmq5"]
 [ext_resource type="PackedScene" uid="uid://d2glb33o1cf16" path="res://scenes/scene/temporary_transition_trigger.tscn" id="5_xr20o"]
 
 [sub_resource type="GDScript" id="GDScript_basqf"]
@@ -30,9 +30,11 @@ func get_player():
 [node name="Game" type="Node"]
 script = ExtResource("1_mykgh")
 
+[node name="UICollective" parent="." instance=ExtResource("2_7267x")]
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 2052.0
+offset_bottom = 1200.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -76,7 +78,5 @@ camera_number = 2
 
 [node name="UITasksP2" parent="HBoxContainer/SubViewportContainer2/SubViewport" instance=ExtResource("3_4hmq5")]
 player_number = 2
-
-[node name="UI" parent="." instance=ExtResource("5_57676")]
 
 [editable path="HBoxContainer/SubViewportContainer/SubViewport/Node"]

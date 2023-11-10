@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2glb33o1cf16"]
 
-[ext_resource type="Script" path="res://scripts/temporary_transition_trigger.gd" id="1_nqnp1"]
+[ext_resource type="Script" path="res://scripts/scene/temporary_transition_trigger.gd" id="1_nqnp1"]
 [ext_resource type="Texture2D" uid="uid://dnahnanxbf0xe" path="res://art/place_holde.png" id="2_gnuhe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sktqf"]
