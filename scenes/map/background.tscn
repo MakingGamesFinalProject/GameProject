@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://drgf7c01kty41"]
+[gd_scene load_steps=3 format=3 uid="uid://drgf7c01kty41"]
 
 [ext_resource type="Texture2D" uid="uid://c07ptom76bg0h" path="res://art/back_layer_test.png" id="1_7mdqy"]
+[ext_resource type="Texture2D" uid="uid://342kcb7xy2mo" path="res://art/World/Player Map/Simple Start Map.png" id="2_y7ebc"]
 
 [node name="Background" type="ColorRect"]
 custom_minimum_size = Vector2(2048, 1200)
@@ -9,7 +10,13 @@ offset_bottom = 1206.0
 color = Color(0, 0, 0, 1)
 
 [node name="BackLayerTest" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.29068, 0.222017)
 texture = ExtResource("1_7mdqy")
 centered = false
+
+[node name="SimpleStartMap" type="Sprite2D" parent="."]
+position = Vector2(1019, 515)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_y7ebc")
