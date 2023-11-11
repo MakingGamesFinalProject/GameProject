@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqhwts3w4hsxv"]
+
+[ext_resource type="Texture2D" uid="uid://cbthochngyads" path="res://art/World/Player Map/Scrap Heap.png" id="1_4m1sb"]
+[ext_resource type="Script" path="res://scripts/Buildings/scrap_heap.gd" id="1_t7ubt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypjug"]
+radius = 75.5
+height = 261.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6katx"]
+radius = 107.5
+height = 323.0
+
+[node name="ScrapHeap" type="StaticBody2D"]
+script = ExtResource("1_t7ubt")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_4m1sb")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ypjug")
+
+[node name="PlayerDetector" type="Area2D" parent="Collider"]
+
+[node name="Collider" type="CollisionShape2D" parent="Collider/PlayerDetector"]
+shape = SubResource("CapsuleShape2D_6katx")
+
+[connection signal="body_entered" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_exited"]
