@@ -18,11 +18,11 @@ func _process(_delta):
 	# Again, temporary
 	# J, K, L to decrease water, energy and scraps respectively
 	if Input.is_action_just_pressed("decrease_water"):
-		water = clamp(water - 1, 0, 999)
+		decrease_water()
 	if Input.is_action_just_pressed("decrease_energy"):
-		energy = clamp(energy - 1, 0, 999)
+		decrease_energy()
 	if Input.is_action_just_pressed("decrease_scraps"):
-		scraps = clamp(scraps - 1, 0, 999)
+		decrease_scraps()
 
 func increase_water():
 	water = clamp(water + 1, 0, 999)
