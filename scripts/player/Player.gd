@@ -1,12 +1,17 @@
 extends CharacterBody2D
-
+signal toggle_task_list
 # How fast the player moves in meters per second.
 @export var speed = 400
 @export var is_player_with_keyboard = true; 
+
 var screen_size # Size of the game window.
 
 func _physics_process(delta):
 	checkIfPlayerIsMoving(delta)
+	check_if_player_toggles_task_list()
+	
+func check_if_player_toggles_task_list():
+	toggle_task_list.emit(is_player_with_keyboard)
 
 func checkIfPlayerIsMoving(delta):
 	# We create a local variable to store the input direction.

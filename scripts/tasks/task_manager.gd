@@ -86,8 +86,26 @@ func load_tasks_page(page):
 	
 	return tasks_in_page
 	
-func get_completed_tasks():
-	return tasks_completed
-
+func get_completed_tasks(page):
+	if page == -1:
+		return tasks_completed
+	else:
+		return load_tasks_from_completed_tasks(page)	
+	
+func load_tasks_from_completed_tasks(page):
+	var tasks_in_page = []
+	var index_of_first_element_in_page = page * TASKS_PER_PAGE
+	
+	if index_of_first_element_in_page > len(tasks_completed):
+		assert(false, "Index out of bound")	
+		
+	var upper_limit = min(index_of_first_element_in_page + TASKS_PER_PAGE, len(tasks_completed))
+	
+	for i in range(index_of_first_element_in_page, upper_limit):
+		if tasks_completed[i] != null:
+			tasks_in_page.push_back(tasks_completed[i])	
+	
+	return tasks_in_page
+	
 func get_page_limit():
 	return TASKS_PER_PAGE

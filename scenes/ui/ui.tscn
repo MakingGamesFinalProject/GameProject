@@ -7,11 +7,17 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_yom7a")
 
-[node name="TasksContainer" type="VBoxContainer" parent="."]
-offset_left = 434.0
-offset_top = 615.0
-offset_right = 934.0
-offset_bottom = 1215.0
+[node name="Notification" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 239.0
+offset_bottom = 68.0
+
+[node name="TasksContainer" type="VBoxContainer" parent="." groups=["ui_task_player"]]
+offset_left = 492.0
+offset_top = 656.0
+offset_right = 992.0
+offset_bottom = 1256.0
 scale = Vector2(1, 0.85)
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -20,19 +26,19 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="LoadTasksButton" type="Button" parent="TasksContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_4aadk")
+theme_override_font_sizes/font_size = 24
+text = "Tasks"
+
 [node name="LoadCompletedTasksButton" type="Button" parent="TasksContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_4aadk")
 theme_override_font_sizes/font_size = 24
 text = "Completed tasks"
-
-[node name="LoadUncompletedTasksButton" type="Button" parent="TasksContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_4aadk")
-theme_override_font_sizes/font_size = 24
-text = "Tasks"
 
 [node name="Task1" parent="TasksContainer" instance=ExtResource("2_3sk82")]
 layout_mode = 2
@@ -60,5 +66,7 @@ layout_mode = 2
 text = "Next
 "
 
+[connection signal="pressed" from="TasksContainer/HBoxContainer/LoadTasksButton" to="." method="_on_load_tasks_button_pressed"]
+[connection signal="pressed" from="TasksContainer/HBoxContainer/LoadCompletedTasksButton" to="." method="_on_load_completed_tasks_button_pressed"]
 [connection signal="pressed" from="TasksContainer/PaginationContainer/Previous" to="." method="_on_previous_pressed"]
 [connection signal="pressed" from="TasksContainer/PaginationContainer/Next" to="." method="_on_next_pressed"]
