@@ -1,23 +1,16 @@
 [gd_scene load_steps=2 format=3 uid="uid://duqeeo7dq883h"]
 
-[ext_resource type="Texture2D" uid="uid://betrslc4qxg00" path="res://art/UI/UI pixelart Assets 4 -1.3/UI/UI-A-3.png" id="1_3t6r7"]
+[ext_resource type="Theme" uid="uid://crj2v52b21qon" path="res://themes/button_task_in_list.tres" id="1_f6lhc"]
 
-[node name="NinePatchRect" type="NinePatchRect"]
-offset_right = 916.0
-offset_bottom = 172.0
-texture = ExtResource("1_3t6r7")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = -87.0
-offset_right = 916.0
-offset_bottom = 86.0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "Name"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Button" type="Button"]
+anchors_preset = -1
+anchor_right = 0.016
+anchor_bottom = 0.006
+offset_right = 359.232
+offset_bottom = 128.8
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_f6lhc")
+text = "Title of task
+Decription fo task
+"

@@ -10,6 +10,8 @@
 
 [node name="Node" type="Node"]
 
+[node name="UITasksP1" parent="." instance=ExtResource("7_gbamd")]
+
 [node name="Background" parent="." instance=ExtResource("1_57jlp")]
 
 [node name="UndergroundWaterFilter" parent="." instance=ExtResource("1_88g1l")]
@@ -33,7 +35,4 @@ position = Vector2(768, 531)
 position = Vector2(1114, 922)
 scale = Vector2(2.7079, 2.42508)
 
-[node name="UITasksP1" parent="." instance=ExtResource("7_gbamd")]
-
-[connection signal="objective_completed" from="TaskManager" to="UITasksP1" method="_on_task_manager_objective_completed"]
 [connection signal="gift_box_picked_up" from="TaskItems/GiftBox" to="TaskManager" method="_on_gift_box_gift_box_picked_up"]
