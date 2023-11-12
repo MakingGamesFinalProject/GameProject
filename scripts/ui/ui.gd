@@ -22,10 +22,13 @@ func _ready():
 	load_task_into_container(current_displayed_page)
 	task_container_player_1 = get_tree().get_nodes_in_group("ui_task_player")[0]
 	task_container_player_2 = get_tree().get_nodes_in_group("ui_task_player")[1]
+	set_up_task_list_buttons()
+	
+func set_up_task_list_buttons():
 	node_ref_next_button = $TasksContainer/PaginationContainer/Next
 	node_ref_prev_button = $TasksContainer/PaginationContainer/Previous
+	node_ref_prev_button.disabled = true
 	
-
 func set_task_manager():
 	tasks_manager = get_tree().get_first_node_in_group("task_manager")
 
@@ -41,7 +44,6 @@ func _on_toggle_quest_menu_button_pressed():
 		else:
 			task_list_container.set_visible(true)
 
-	
 func load_task_text_in_task_list(node, task):
 	var format_string = "%s\n%s"
 	var actual_string = format_string % [task.name, task.description]
@@ -60,7 +62,6 @@ func _on_next_pressed():
 	var limit = len(tasks_manager.get_tasks(-1))
 	var base = (current_displayed_page * tasks_manager.get_page_limit()) + tasks_manager.get_page_limit()
 	if  base >= limit:
-		node_ref_next_button.text = ""
 		node_ref_next_button.disabled = true
 		
 	if node_ref_prev_button.disabled == true:
@@ -71,7 +72,6 @@ func _on_previous_pressed():
 	current_displayed_page -= 1
 	if current_displayed_page <= 0:
 		node_ref_prev_button.disabled = true
-		node_ref_prev_button.text = ""
 		
 	if node_ref_next_button.disabled == true:
 		node_ref_next_button.disabled = false
@@ -104,6 +104,13 @@ func load_task_into_container(page):
 	else:
 		tasks = tasks_manager.get_tasks(page)
 		
+	if tasks.is_empty():
+		node_ref_prev_button.disabled = true
+		node_ref_next_button.disabled = true
+	else:
+		if node_ref_next_button != null:
+			node_ref_next_button.disabled = false
+		
 	if len(tasks) >= 1:
 		load_task_text_in_task_list($TasksContainer/Task1, tasks[0])	
 	else:
@@ -128,9 +135,25 @@ func _on_load_completed_tasks_button_pressed():
 	current_displayed_page = 0
 	hbox_displaying_completed_tasks = true
 	load_task_into_container(current_displayed_page)
-
+	node_ref_prev_button.disabled = true
 
 func _on_load_tasks_button_pressed():
 	current_displayed_page = 0
 	hbox_displaying_completed_tasks = false
 	load_task_into_container(current_displayed_page)
+	node_ref_prev_button.disabled = true
+
+# the first tab is the one with all the tasks, the second one just shows the 
+# completed ones
+func _on_player_player_2_changes_tab_in_task_list_ui(tab):
+	if tab == 1:
+		current_displayed_page = 0
+		hbox_displaying_completed_tasks = false
+		load_task_into_container(current_displayed_page)	
+		node_ref_prev_button.disabled = true
+	elif tab == 2:
+		current_displayed_page = 0
+		hbox_displaying_completed_tasks = true
+		load_task_into_container(current_displayed_page)
+		node_ref_prev_button.disabled = true
+		
