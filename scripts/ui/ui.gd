@@ -78,16 +78,17 @@ func _on_previous_pressed():
 		node_ref_next_button.text = "Next"
 	load_task_into_container(current_displayed_page)
 
+
+func _on_player_2_toggle_task_list(is_player_with_keyboard):
+	handle_task_list_toggle("toggle_task_list_p2", task_container_player_2)
+
 func _on_player_toggle_task_list(is_player_with_keyboard):
+	handle_task_list_toggle("toggle_task_list_p1", task_container_player_1)
+	
+func handle_task_list_toggle(action, node_ref):
 	if task_container_player_1 == null || task_container_player_2 == null:
 		assert(false, "One of the task containers is null")
 		return;
-	if is_player_with_keyboard == false:	
-		handle_task_list_toggle("toggle_task_list_p1", task_container_player_1)
-	else:
-		handle_task_list_toggle("toggle_task_list_p2", task_container_player_2)
-	
-func handle_task_list_toggle(action, node_ref):
 	var button_pressed = Input.is_action_just_pressed(action)
 	if button_pressed && node_ref.visible:
 		node_ref.set_visible(false)	
@@ -167,3 +168,4 @@ func load_task_into_container(page):
 		load_task_text_in_task_list($TasksContainer/Task4, tasks[3])
 	else: 	
 		$TasksContainer/Task4.text = ""
+
