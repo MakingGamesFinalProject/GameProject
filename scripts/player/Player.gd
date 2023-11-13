@@ -1,6 +1,7 @@
 extends CharacterBody2D
 signal toggle_task_list
 signal player_2_changes_tab_in_task_list_ui
+signal player_2_changes_page_in_task_list_ui
 # How fast the player moves in meters per second.
 @export var speed = 400
 @export var is_player_with_keyboard = true; 
@@ -11,6 +12,7 @@ func _physics_process(delta):
 	checkIfPlayerIsMoving(delta)
 	check_if_player_toggles_task_list()
 	handle_tab_change_task_list()
+	handle_page_change_in_task_list()
 	
 func check_if_player_toggles_task_list():
 	toggle_task_list.emit(is_player_with_keyboard)
@@ -23,6 +25,15 @@ func handle_tab_change_task_list():
 		player_2_changes_tab_in_task_list_ui.emit(1)
 	elif second_tab_opened:
 		player_2_changes_tab_in_task_list_ui.emit(2)
+	
+func handle_page_change_in_task_list():
+	var next_page = Input.is_action_just_pressed("go_next_page_task_list_p2")
+	var prev_page = Input.is_action_just_pressed("go_prev_page_task_list_p2")
+	
+	if next_page:
+		player_2_changes_page_in_task_list_ui.emit("next")
+	elif prev_page:
+		player_2_changes_page_in_task_list_ui.emit("prev")
 
 func checkIfPlayerIsMoving(delta):
 	# We create a local variable to store the input direction.

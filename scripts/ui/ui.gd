@@ -96,7 +96,44 @@ func handle_task_list_toggle(action, node_ref):
 		node_ref.set_visible(true)
 		return
 
-			
+func _on_load_completed_tasks_button_pressed():
+	current_displayed_page = 0
+	hbox_displaying_completed_tasks = true
+	load_task_into_container(current_displayed_page)
+	node_ref_prev_button.disabled = true
+
+func _on_load_tasks_button_pressed():
+	current_displayed_page = 0
+	hbox_displaying_completed_tasks = false
+	load_task_into_container(current_displayed_page)
+	node_ref_prev_button.disabled = true
+
+# the first tab is the one with all the tasks, the second one just shows the 
+# completed ones
+func _on_player_player_2_changes_tab_in_task_list_ui(tab):
+	if tab == 1:
+		current_displayed_page = 0
+		hbox_displaying_completed_tasks = false
+		load_task_into_container(current_displayed_page)	
+		node_ref_prev_button.disabled = true
+	elif tab == 2:
+		current_displayed_page = 0
+		hbox_displaying_completed_tasks = true
+		load_task_into_container(current_displayed_page)
+		node_ref_prev_button.disabled = true
+		
+
+func _on_player_player_2_changes_page_in_task_list_ui(action):
+	if !$TasksContainer.visible: return;
+	
+	if action == "next":
+		current_displayed_page += 1
+		load_task_into_container(current_displayed_page)
+	elif action == "prev" && current_displayed_page > 0:
+		current_displayed_page -= 1
+		load_task_into_container(current_displayed_page)
+		
+		
 func load_task_into_container(page):
 	var tasks = []
 	if hbox_displaying_completed_tasks:
@@ -130,30 +167,3 @@ func load_task_into_container(page):
 		load_task_text_in_task_list($TasksContainer/Task4, tasks[3])
 	else: 	
 		$TasksContainer/Task4.text = ""
-
-func _on_load_completed_tasks_button_pressed():
-	current_displayed_page = 0
-	hbox_displaying_completed_tasks = true
-	load_task_into_container(current_displayed_page)
-	node_ref_prev_button.disabled = true
-
-func _on_load_tasks_button_pressed():
-	current_displayed_page = 0
-	hbox_displaying_completed_tasks = false
-	load_task_into_container(current_displayed_page)
-	node_ref_prev_button.disabled = true
-
-# the first tab is the one with all the tasks, the second one just shows the 
-# completed ones
-func _on_player_player_2_changes_tab_in_task_list_ui(tab):
-	if tab == 1:
-		current_displayed_page = 0
-		hbox_displaying_completed_tasks = false
-		load_task_into_container(current_displayed_page)	
-		node_ref_prev_button.disabled = true
-	elif tab == 2:
-		current_displayed_page = 0
-		hbox_displaying_completed_tasks = true
-		load_task_into_container(current_displayed_page)
-		node_ref_prev_button.disabled = true
-		

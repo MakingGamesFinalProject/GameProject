@@ -76,7 +76,7 @@ func load_tasks_page(page):
 	var index_of_first_element_in_page = page * TASKS_PER_PAGE
 	
 	if index_of_first_element_in_page > len(tasks):
-		assert(false, "Index out of bound")	
+		return []
 		
 	var upper_limit = min(index_of_first_element_in_page + TASKS_PER_PAGE, len(tasks))
 	
@@ -97,7 +97,7 @@ func load_tasks_from_completed_tasks(page):
 	var index_of_first_element_in_page = page * TASKS_PER_PAGE
 	
 	if index_of_first_element_in_page > len(tasks_completed):
-		assert(false, "Index out of bound")	
+		return []
 		
 	var upper_limit = min(index_of_first_element_in_page + TASKS_PER_PAGE, len(tasks_completed))
 	

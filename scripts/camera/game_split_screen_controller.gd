@@ -18,4 +18,3 @@ func _ready():
 		var remote_transorm := RemoteTransform2D.new()
 		remote_transorm.remote_path = node.camera.get_path()
 		node.player.add_child(remote_transorm)
-

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn2i24cv0uvan"]
+[gd_scene load_steps=5 format=3 uid="uid://bn2i24cv0uvan"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_yom7a"]
 [ext_resource type="PackedScene" uid="uid://duqeeo7dq883h" path="res://scenes/ui/task_in_list.tscn" id="2_3sk82"]
 [ext_resource type="Theme" uid="uid://crj2v52b21qon" path="res://themes/button_task_in_list.tres" id="2_4aadk"]
+[ext_resource type="Script" path="res://scripts/ui/pagination_container_task_list.gd" id="4_ipbo8"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_yom7a")
@@ -14,13 +15,14 @@ offset_right = 239.0
 offset_bottom = 68.0
 
 [node name="TasksContainer" type="VBoxContainer" parent="." groups=["ui_task_player"]]
-offset_left = 492.0
+offset_left = 437.0
 offset_top = 656.0
 offset_right = 992.0
 offset_bottom = 1256.0
 scale = Vector2(1, 0.85)
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("4_ipbo8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TasksContainer"]
 layout_mode = 2
