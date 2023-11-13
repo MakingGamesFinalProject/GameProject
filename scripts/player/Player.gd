@@ -1,4 +1,7 @@
 extends CharacterBody2D
+signal toggle_task_list
+signal player_2_changes_tab_in_task_list_ui
+signal player_2_changes_page_in_task_list_ui
 
 # Keep track if this is player 1 or 2
 @export var is_player_with_keyboard := true;
@@ -7,6 +10,8 @@ extends CharacterBody2D
 @export var speed := 250
 # Direction is set by input
 var direction := Vector2.ZERO
+
+var screen_size # Size of the game window.
 
 func _physics_process(delta):
 	# Call the overarching movement function
@@ -17,6 +22,31 @@ func _physics_process(delta):
 	# Note, there's also a move_and_slide method, which feels less sticky in collisions
 	velocity = direction * speed
 	move_and_collide(velocity * delta)
+
+	check_if_player_toggles_task_list()
+	handle_tab_change_task_list()
+	handle_page_change_in_task_list()
+	
+func check_if_player_toggles_task_list():
+	toggle_task_list.emit(is_player_with_keyboard)
+
+func handle_tab_change_task_list():
+	var first_tab_opened = Input.is_action_just_pressed("open_first_tab_task_list_p2")
+	var second_tab_opened = Input.is_action_just_pressed("open_second_tab_task_list_p2")
+	
+	if first_tab_opened:
+		player_2_changes_tab_in_task_list_ui.emit(1)
+	elif second_tab_opened:
+		player_2_changes_tab_in_task_list_ui.emit(2)
+	
+func handle_page_change_in_task_list():
+	var next_page = Input.is_action_just_pressed("go_next_page_task_list_p2")
+	var prev_page = Input.is_action_just_pressed("go_prev_page_task_list_p2")
+	
+	if next_page:
+		player_2_changes_page_in_task_list_ui.emit("next")
+	elif prev_page:
+		player_2_changes_page_in_task_list_ui.emit("prev")
 
 func checkIfPlayerIsMoving() -> void:
 	if is_player_with_keyboard:

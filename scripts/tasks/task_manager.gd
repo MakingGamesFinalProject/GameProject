@@ -1,60 +1,111 @@
 extends Node
-signal objective_completed(task_uid, objective_index, player_number, description)
-signal task_completed
-# We should move this to a separate gd script / json file
-var map_of_tasks = [
+
+signal task_completed(task)
+
+# Complete array of all the tasks in our game, it doesn't get modified
+# The uid reflects the index of the task, this makes more easy to identify tasks
+# uid stands for "Unique id"
+const tasks = [
 	{
-		"uid": "0x00",
-		"name": "The most wonderful time of the year",
-		"description": "Pick up the gift and go home",
-		"objectives": [
-			{"type": "item_picked", "item": "gift", "description": "Take the gift"},
-			{"type": "position_reached", "position": "home", "description": "Bring the gift home"}
-		]
-	}
+		"uid": 0,
+		"name": "Christmas holiday",
+		"description": "Pick up the gift"
+	},
+	{
+		"uid": 1,
+		"name": "Christmas holiday 2",
+		"description": "Pick up the gift"
+	},
+	{
+		"uid": 2,
+		"name": "Christmas holiday 3",
+		"description": "Pick up the gift"
+	},
+	{
+		"uid": 3,
+		"name": "Christmas holiday 4",
+		"description": "Pick up the gift"
+	},
+	{
+		"uid": 4,
+		"name": "Christmas holiday 5",
+		"description": "Pick up the gift"
+	},
+	{
+		"uid": 5,
+		"name": "Christmas holiday 6",
+		"description": "Pick up the gift"
+	},
 ]
 
-var objectives_completed_by_task_uid = {1: {}, 2: {}}
+# Once a task is completed it gets pushed in "task_completed"
 var tasks_completed = []
-var tasks = []
+var TASKS_PER_PAGE = 4
 
-func _ready():
-	load_tasks()
+func is_task_completed(task_uid):
+	for t in tasks_completed:
+		if t.uid == task_uid:
+			return true
+	return false
 
-#	this function should read the tasks from a json or a txt but for now
-#	I'll keep it simple
-func load_tasks():
-	tasks = map_of_tasks
-	
-func set_objective_as_done_for_task(task_uid, objective_index, player_number):
-	for task in map_of_tasks:
-		if task.uid == task_uid:
-			if task_is_in_player_task_list(player_number, task_uid):
-				update_task_in_task_list_of_player(player_number, task, objective_index)
-			else:
-				add_task_in_task_list_of_player(task_uid, objective_index, player_number)
-				objective_completed.emit(task_uid, objective_index, player_number, task.objectives[objective_index].description)
-				
-func task_is_in_player_task_list(player_number, task_uid):
-	return objectives_completed_by_task_uid[player_number].has(task_uid)
-				
-func update_task_in_task_list_of_player(player_number, task, objective_index):
-	objectives_completed_by_task_uid[player_number][task.uid] = task.objectives[objective_index]
-	if len(objectives_completed_by_task_uid[player_number][task.uid]) == len(task.objectives):
-		tasks_completed.push_back(task.uid)		
-		task_completed.emit(task.uid, objective_index, player_number)
-		
-func add_task_in_task_list_of_player(task_uid, objective_index, player_number):
-		objectives_completed_by_task_uid[player_number][task_uid] = [objective_index]
-
-func get_completed_tasks():
-	return tasks_completed
-
-func get_objectives_completed_by_uid_for_player(uid, player_number):
-	return objectives_completed_by_task_uid[player_number][uid]
-	
 func _on_gift_box_gift_box_picked_up(player_number):
-	set_objective_as_done_for_task("0x00", 0, player_number)
+	set_task_as_done(0)
+
+func set_task_as_done(task_uid):
+	tasks_completed.push_back(tasks[task_uid])
+	task_completed.emit(tasks[task_uid])
+
+# It's O(N) but given that we won't have a lot of quests it does the job	
+func get_task_by_uid(uid):
+	if uid >= tasks.size() || uid < 0:
+		# I could not find anything on how to throw an error
+		# It was suggested to use assertions instead
+		assert(false, "Index out of bound")
+	for t in tasks:
+		if uid == t.uid:
+			return t
+
+func get_tasks(page):
+	if page == -1:
+		return tasks
+	else:
+		return load_tasks_page(page)
+		
+func load_tasks_page(page):
+	var tasks_in_page = []
+	var index_of_first_element_in_page = page * TASKS_PER_PAGE
 	
-func get_tasks():
-	return map_of_tasks
+	if index_of_first_element_in_page > len(tasks):
+		return []
+		
+	var upper_limit = min(index_of_first_element_in_page + TASKS_PER_PAGE, len(tasks))
+	
+	for i in range(index_of_first_element_in_page, upper_limit):
+		if tasks[i] != null:
+			tasks_in_page.push_back(tasks[i])	
+	
+	return tasks_in_page
+	
+func get_completed_tasks(page):
+	if page == -1:
+		return tasks_completed
+	else:
+		return load_tasks_from_completed_tasks(page)	
+	
+func load_tasks_from_completed_tasks(page):
+	var tasks_in_page = []
+	var index_of_first_element_in_page = page * TASKS_PER_PAGE
+	
+	if index_of_first_element_in_page > len(tasks_completed):
+		return []
+		
+	var upper_limit = min(index_of_first_element_in_page + TASKS_PER_PAGE, len(tasks_completed))
+	
+	for i in range(index_of_first_element_in_page, upper_limit):
+		if tasks_completed[i] != null:
+			tasks_in_page.push_back(tasks_completed[i])	
+	
+	return tasks_in_page
+	
+func get_page_limit():
+	return TASKS_PER_PAGE

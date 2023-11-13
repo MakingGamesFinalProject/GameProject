@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://1buifvw22ugr"]
+
+[ext_resource type="Theme" uid="uid://crj2v52b21qon" path="res://themes/button_task_in_list.tres" id="1_3im1f"]
+[ext_resource type="Texture2D" uid="uid://dpqogb7god24s" path="res://art/UI/UI pixelart Assets 4 -1.3/16x16/Set1/Set1-3.png" id="2_bjbcj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qb6tf"]
+texture = ExtResource("2_bjbcj")
+
+[node name="GoPrevPageButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(-0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_3im1f")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qb6tf")
