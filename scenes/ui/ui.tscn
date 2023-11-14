@@ -15,10 +15,10 @@ offset_right = 239.0
 offset_bottom = 68.0
 
 [node name="TasksContainer" type="VBoxContainer" parent="." groups=["ui_task_player"]]
-offset_left = 437.0
-offset_top = 656.0
+offset_left = 520.0
+offset_top = 703.0
 offset_right = 992.0
-offset_bottom = 1256.0
+offset_bottom = 1248.0
 scale = Vector2(1, 0.85)
 size_flags_horizontal = 3
 size_flags_vertical = 3

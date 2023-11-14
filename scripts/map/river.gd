@@ -13,6 +13,10 @@ func _process(_delta):
 		ResourceManager.increase_water(25)
 
 func _on_player_detection_body_entered(body):
+	if body.is_in_group("players"):
+		print(body)
+		print("Found player")
+		body.show_helper_button("F")
 	if body.name == "Player":
 			water_collectable_p1 = true
 			
@@ -20,6 +24,8 @@ func _on_player_detection_body_entered(body):
 		water_collectable_p2 = true
 
 func _on_player_detection_body_exited(body):
+	if body.is_in_group("players"):
+		body.hide_helper_button()
 	if body.name == "Player":
 		water_collectable_p1 = false
 			
