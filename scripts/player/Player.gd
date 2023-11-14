@@ -75,3 +75,13 @@ func checkIfPlayerIsMovingWithController() -> void:
 		direction.x += 1
 	if Input.is_action_pressed("move_left_p2"):
 		direction.x -= 1
+
+func show_helper_button(message):
+	print("Showing helper button")
+	$InteractibleButtonHelper/Label.text = message
+	$InteractibleButtonHelper.show()
+	
+func hide_helper_button():
+	$InteractibleButtonHelper/Label.text = ""
+	$InteractibleButtonHelper.hide()
+	

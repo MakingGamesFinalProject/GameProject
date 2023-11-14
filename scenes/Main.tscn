@@ -47,10 +47,7 @@ render_target_update_mode = 4
 
 [node name="Node" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_hlp5x")]
 
-[node name="RivertTrashCleaning" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" index="8"]
-visible = false
-
-[node name="TaskManager" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" index="11" groups=["task_manager"]]
+[node name="TaskManager" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" index="9" groups=["task_manager"]]
 
 [node name="TemporaryTransitionTrigger" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" instance=ExtResource("5_xr20o")]
 position = Vector2(907, 939)

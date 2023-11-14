@@ -36,6 +36,7 @@ func sufficient_resources():
 
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("players"):
+		$InteractibleButtonHelper.show()
 		if body.name == "Player":
 			player1_is_close = true
 			
@@ -44,6 +45,7 @@ func _on_player_detector_body_entered(body):
 
 func _on_player_detector_body_exited(body):
 	if body.is_in_group("players"):
+		$InteractibleButtonHelper.hide()
 		if body.name == "Player":
 			player1_is_close = false
 			

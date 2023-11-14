@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqhwts3w4hsxv"]
+[gd_scene load_steps=6 format=3 uid="uid://cqhwts3w4hsxv"]
 
 [ext_resource type="Texture2D" uid="uid://cbthochngyads" path="res://art/World/Player Map/Scrap Heap.png" id="1_4m1sb"]
 [ext_resource type="Script" path="res://scripts/Buildings/scrap_heap.gd" id="1_t7ubt"]
+[ext_resource type="Texture2D" uid="uid://bkc1tjst7l04l" path="res://art/UI/UI pixelart Assets 4 -1.3/16x16/Set1/Set1-1.png" id="3_se434"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypjug"]
 radius = 75.5
@@ -27,6 +28,20 @@ shape = SubResource("CapsuleShape2D_ypjug")
 
 [node name="Collider" type="CollisionShape2D" parent="Collider/PlayerDetector"]
 shape = SubResource("CapsuleShape2D_6katx")
+
+[node name="InteractibleButtonHelper" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -119)
+scale = Vector2(2.3125, 2.25)
+texture = ExtResource("3_se434")
+
+[node name="Label" type="Label" parent="InteractibleButtonHelper"]
+offset_left = -3.24324
+offset_top = -7.11111
+offset_right = 12.7568
+offset_bottom = 18.8889
+theme_override_font_sizes/font_size = 10
+text = "F"
 
 [connection signal="body_entered" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_exited"]

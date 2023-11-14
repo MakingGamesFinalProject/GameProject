@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/map/river.gd" id="1_ciwft"]
 
-[node name="River" type="StaticBody2D"]
+[node name="River" type="StaticBody2D" groups=["river"]]
 script = ExtResource("1_ciwft")
 
 [node name="Collider" type="CollisionPolygon2D" parent="."]
