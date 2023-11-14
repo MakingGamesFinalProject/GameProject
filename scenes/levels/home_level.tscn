@@ -1,9 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnwp0f3rcpy14"]
+[gd_scene load_steps=9 format=3 uid="uid://dnwp0f3rcpy14"]
 
 [ext_resource type="PackedScene" uid="uid://drgf7c01kty41" path="res://scenes/map/background.tscn" id="1_57jlp"]
-[ext_resource type="PackedScene" uid="uid://carfvmdbple6g" path="res://scenes/buildings/underground_water_filter.tscn" id="1_88g1l"]
 [ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="2_e1xhk"]
-[ext_resource type="PackedScene" uid="uid://dq5mqnm8w47pr" path="res://scenes/buildings/river_trash_cleaning.tscn" id="2_rhlqq"]
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player/player.tscn" id="4_aeqqs"]
 [ext_resource type="PackedScene" uid="uid://djrwpddlst5gh" path="res://scenes/buildings/building_plot.tscn" id="4_tj55g"]
 [ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task/task_manager.tscn" id="5_s3bru"]
@@ -30,12 +28,6 @@ position = Vector2(1434, 866)
 
 [node name="BuildingPlot" parent="." instance=ExtResource("4_tj55g")]
 position = Vector2(1204, 198)
-
-[node name="UndergroundWaterFilter" parent="." instance=ExtResource("1_88g1l")]
-position = Vector2(482, 416)
-
-[node name="RivertTrashCleaning" parent="." instance=ExtResource("2_rhlqq")]
-position = Vector2(1268, 610)
 
 [node name="Player" parent="." instance=ExtResource("4_aeqqs")]
 position = Vector2(970, 306)
