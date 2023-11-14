@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var is_player_with_keyboard := true;
 
 # Speed can be adjusted at will
-@export var speed := 250
+@export var speed := 8000
 # Direction is set by input
 var direction := Vector2.ZERO
 
@@ -15,8 +15,8 @@ func _physics_process(delta):
 	# The following utilizes correct CharacterBody2D movement and enables collisions
 	# Update built in velocity property and call built in move_and_collide method
 	# Note, there's also a move_and_slide method, which feels less sticky in collisions
-	velocity = direction * speed
-	move_and_collide(velocity * delta)
+	velocity = direction * speed * delta
+	move_and_slide()
 
 func checkIfPlayerIsMoving() -> void:
 	if is_player_with_keyboard:

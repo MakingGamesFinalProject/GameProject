@@ -22,3 +22,8 @@ func decrease_energy(amount):
 
 func decrease_scraps(amount):
 	scraps = clamp(scraps - amount, 0, 999)
+
+func reset_resources():
+	water = 0
+	energy = 0
+	scraps = 0
