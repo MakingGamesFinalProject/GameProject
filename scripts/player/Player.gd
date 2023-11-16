@@ -11,6 +11,10 @@ signal player_2_changes_page_in_task_list_ui
 # Direction is set by input
 var direction := Vector2.ZERO
 
+# Boolean that freezes the player
+var frozen := false
+@export var freeze_time := 2.0
+
 var screen_size # Size of the game window.
 
 func _physics_process(delta):
@@ -49,10 +53,11 @@ func handle_page_change_in_task_list():
 		player_2_changes_page_in_task_list_ui.emit("prev")
 
 func checkIfPlayerIsMoving() -> void:
-	if is_player_with_keyboard:
-		checkIfPlayerIsMovingWithKeyboard()
-	else:
-		checkIfPlayerIsMovingWithController()
+	if !frozen:
+		if is_player_with_keyboard:
+			checkIfPlayerIsMovingWithKeyboard()
+		else:
+			checkIfPlayerIsMovingWithController()
 
 func checkIfPlayerIsMovingWithKeyboard() -> void:
 	direction = Vector2.ZERO
@@ -84,4 +89,12 @@ func show_helper_button(message):
 func hide_helper_button():
 	$InteractibleButtonHelper/Label.text = ""
 	$InteractibleButtonHelper.hide()
+	
+# Function called by other objects to freeze the player when the player interacts with something
+func player_interaction():
+	frozen = true
+	print(frozen)
+	await get_tree().create_timer(2.0).timeout
+	frozen = false
+	print(frozen)
 	

@@ -11,6 +11,15 @@ func _process(_delta):
 	# Currently, the interaction button is F
 	if Input.is_action_just_pressed("interaction_p1") and scrap_collectable_p1:
 		ResourceManager.increase_scraps(25)
+		var player_array = get_tree().get_nodes_in_group("players")
+		if player_array[0].name == "Player":
+			#freeze player 1
+			print(player_array[0].name)
+			player_array[0].player_interaction()
+		else:
+			#freeze player 2
+			print(player_array[1].name)
+			player_array[1].player_interaction()
 		queue_free()
 		
 	if Input.is_action_just_pressed("interaction_p2") and scrap_collectable_p2:
