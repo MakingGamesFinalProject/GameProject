@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnwp0f3rcpy14"]
+[gd_scene load_steps=11 format=3 uid="uid://dnwp0f3rcpy14"]
 
 [ext_resource type="PackedScene" uid="uid://drgf7c01kty41" path="res://scenes/map/background.tscn" id="1_57jlp"]
 [ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="2_e1xhk"]
+[ext_resource type="PackedScene" uid="uid://dd47qj7pirow2" path="res://scenes/buildings/trash_dump.tscn" id="3_xbcem"]
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player/player.tscn" id="4_aeqqs"]
 [ext_resource type="PackedScene" uid="uid://djrwpddlst5gh" path="res://scenes/buildings/building_plot.tscn" id="4_tj55g"]
 [ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task/task_manager.tscn" id="5_s3bru"]
@@ -15,6 +16,9 @@
 [node name="UITasksP1" parent="." instance=ExtResource("7_gbamd")]
 
 [node name="Background" parent="." instance=ExtResource("1_57jlp")]
+
+[node name="trash_dump" parent="Background" instance=ExtResource("3_xbcem")]
+position = Vector2(733, 312)
 
 [node name="River" parent="." instance=ExtResource("2_e1xhk")]
 
