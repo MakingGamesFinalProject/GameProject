@@ -45,13 +45,25 @@ func _on_toggle_quest_menu_button_pressed():
 			task_list_container.set_visible(true)
 
 func load_task_text_in_task_list(node, task):
-	var format_string = "%s\n%s"
-	var actual_string = format_string % [task.name, task.description]
+	var actual_string = ""
+	if task.reward != null:
+		actual_string = format_task_with_reward(task)
+	else:
+		actual_string = format_task_without_reward(task)
+	assert(actual_string != "", "Could not build task message to display in task list")
 	node.text = actual_string
-
+	
+func format_task_with_reward(task):
+	var format_string = "%s\nGives: %s %d"
+	return format_string % [task.name, task.reward.resource, task.reward.amount]
+	
+func format_task_without_reward(task):
+	var format_string = "%s\n"
+	return format_string % [task.name]
+	
 func _on_task_manager_task_completed(task_completed):
 	var format_message_to_show = "Player %s completed the task: %s"
-	var actual_message_to_show = format_message_to_show % [str(player_number), task_completed.description]
+	var actual_message_to_show = format_message_to_show % [str(player_number), task_completed.name]
 	$Notification.text = actual_message_to_show
 	hide_message_after(seconds_to_wait_to_hide_message)
 
