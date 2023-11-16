@@ -27,8 +27,10 @@ func _ready():
 	
 	if is_player_with_keyboard:
 		$walk_s_player1.visible = true
+		state_machine.travel("p1_idle")
 	else:
 		$walk_s_player2.visible = true
+		state_machine.travel("p2_idle")
 
 func _physics_process(delta):
 	# Call the overarching movement function
