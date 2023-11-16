@@ -126,6 +126,7 @@ tracks/7/keys = {
 [sub_resource type="Animation" id="Animation_k7n1a"]
 resource_name = "p1_idle_e"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -142,6 +143,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_6cfvi"]
 resource_name = "p1_idle_n"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -158,6 +160,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_fqedw"]
 resource_name = "p1_idle_ne"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -174,6 +177,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_213bq"]
 resource_name = "p1_idle_nw"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -207,6 +211,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_rpct3"]
 resource_name = "p1_idle_se"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -240,6 +245,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_16pcx"]
 resource_name = "p1_idle_w"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -323,7 +329,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0y5oy"]
 resource_name = "p1_walk_s"
-length = 0.8
+length = 1.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -332,10 +338,10 @@ tracks/0/path = NodePath("walk_s_player1:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 7, 4, 5, 6, 7]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_o38qw"]
@@ -358,6 +364,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_as8sq"]
 resource_name = "p1_walk_sw"
 length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -469,7 +476,7 @@ animation = &"p1_walk_ne"
 animation = &"p1_walk_e"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jdx06"]
-animation = &"p1_idle_se"
+animation = &"p1_walk_se"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kg1sp"]
 animation = &"p1_walk_s"
@@ -482,19 +489,19 @@ animation = &"p1_walk_w"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_skwhs"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_7khem")
-blend_point_0/pos = Vector2(-1, 1.1)
+blend_point_0/pos = Vector2(-1, -1.1)
 blend_point_1/node = SubResource("AnimationNodeAnimation_xmeo1")
-blend_point_1/pos = Vector2(0, 1.1)
+blend_point_1/pos = Vector2(0, -1.1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_kxuoj")
-blend_point_2/pos = Vector2(1, 1.1)
+blend_point_2/pos = Vector2(1, -1.1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_ix3nt")
 blend_point_3/pos = Vector2(1, 0)
 blend_point_4/node = SubResource("AnimationNodeAnimation_jdx06")
-blend_point_4/pos = Vector2(1, -1.1)
+blend_point_4/pos = Vector2(1, 1.1)
 blend_point_5/node = SubResource("AnimationNodeAnimation_kg1sp")
-blend_point_5/pos = Vector2(0, -1.1)
+blend_point_5/pos = Vector2(0, 1.1)
 blend_point_6/node = SubResource("AnimationNodeAnimation_bumjh")
-blend_point_6/pos = Vector2(-1, -1.1)
+blend_point_6/pos = Vector2(-1, 1.1)
 blend_point_7/node = SubResource("AnimationNodeAnimation_sqw1u")
 blend_point_7/pos = Vector2(-1, 0)
 min_space = Vector2(-1, -1.1)
@@ -508,10 +515,8 @@ blend_mode = 1
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_dievt"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ap4p7"]
-advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1a04w"]
-advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3gvhg"]
 advance_mode = 2
@@ -520,7 +525,7 @@ advance_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s83k6"]
-advance_mode = 2
+advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kjo7f"]
 advance_mode = 0
@@ -561,6 +566,7 @@ script = ExtResource("1_2b53x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 15)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_h87ua")
 
 [node name="InteractibleButtonHelper" type="Sprite2D" parent="."]
@@ -595,82 +601,98 @@ parameters/p2_walk/blend_position = Vector2(0, 0)
 
 [node name="walk_s_player1" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_axys2")
 hframes = 8
 frame = 1
 
 [node name="walk_se_player1" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_3t6je")
 hframes = 8
 
 [node name="walk_e_player1" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_638xx")
 hframes = 8
 
 [node name="walk_ne_player1" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_qq7xw")
 hframes = 8
 
 [node name="walk_n_player1" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_5pfdl")
 hframes = 8
 
 [node name="walk_nw_player1" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_67v62")
 hframes = 8
 
 [node name="walk_w_player1" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_c1f1x")
 hframes = 8
 frame = 1
 
 [node name="walk_sw_player1" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_5jxaw")
 hframes = 8
 
 [node name="walk_s_player2" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("11_04rf4")
 hframes = 8
 
 [node name="walk_se_player2" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_qi2hd")
 hframes = 8
 
 [node name="walk_e_player2" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("13_2nm5t")
 hframes = 8
 
 [node name="walk_ne_player2" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("14_gvhtc")
 hframes = 8
 
 [node name="walk_n_player2" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("15_nqf58")
 hframes = 8
 
 [node name="walk_nw_player2" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("16_hmtpv")
 hframes = 8
 
 [node name="walk_w_player2" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("17_kvn1n")
 hframes = 8
 
 [node name="walk_sw_player2" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("18_7ny20")
 hframes = 8
