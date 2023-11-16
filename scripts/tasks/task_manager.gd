@@ -39,6 +39,14 @@ const tasks = [
 			"amount": 50,
 			"resource": "Energy"
 		}
+	},
+	{
+		"uid": 5,
+		"name": "Recycle Trash",
+		"reward": {
+			"amount": 50,
+			"resource": "Scrap"
+		}
 	}
 ]
 
