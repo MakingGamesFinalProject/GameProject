@@ -20,6 +20,18 @@ func _process(delta):
 func check_task_completion():
 	check_for_fixing_task()
 
+func check_for_batteries_task():
+	if current_status != available_states.WORKING:
+		return
+	
+	var a_user_is_interacting = Input.is_action_pressed("interaction_p1") || Input.is_action_pressed("interaction_p2")
+	if a_user_is_interacting && counter_players_detected > 0:
+		var time_manager = WaitUtil.new()
+		time_manager.wait(time_to_repair_in_seconds, self, "_on_energy_task_callback")
+
+func _on_energy_task_callback():
+	task_manager_ref.set_task_as_done(3)
+
 func check_for_fixing_task():
 	var a_user_is_interacting = Input.is_action_pressed("interaction_p1") || Input.is_action_pressed("interaction_p2")
 	if counter_players_detected > 0:
