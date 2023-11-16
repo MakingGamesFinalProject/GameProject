@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcdqsgomwmhvc"
+path="res://.godot/imported/Good Ambiance for Overworld.mp3-4d39760b6603c5e73edf6f3a093bb92e.mp3str"
+
+[deps]
+
+source_file="res://sounds/Player Map/Good Ambiance for Overworld.mp3"
+dest_files=["res://.godot/imported/Good Ambiance for Overworld.mp3-4d39760b6603c5e73edf6f3a093bb92e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

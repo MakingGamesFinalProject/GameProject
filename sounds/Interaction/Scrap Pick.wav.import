@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dh87usau013kf"
+path="res://.godot/imported/Scrap Pick.wav-0fcf5f61f28dd4cd5d19209052ede2c9.sample"
+
+[deps]
+
+source_file="res://sounds/Interaction/Scrap Pick.wav"
+dest_files=["res://.godot/imported/Scrap Pick.wav-0fcf5f61f28dd4cd5d19209052ede2c9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
