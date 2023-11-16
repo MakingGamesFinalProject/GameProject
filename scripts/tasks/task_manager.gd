@@ -8,34 +8,38 @@ signal task_completed(task)
 const tasks = [
 	{
 		"uid": 0,
-		"name": "Christmas holiday",
-		"description": "Pick up the gift"
+		"name": "Clean Water Filter",
+		"reward": null
 	},
 	{
 		"uid": 1,
-		"name": "Christmas holiday 2",
-		"description": "Pick up the gift"
+		"name": "Unclog the Trash Bin",
+		"reward": {
+			"amount": 40,
+			"resource": "Scrap"
+		}
 	},
 	{
 		"uid": 2,
-		"name": "Christmas holiday 3",
-		"description": "Pick up the gift"
+		"name": "Fix the Wind Turbines",
+		"reward": null
 	},
 	{
 		"uid": 3,
-		"name": "Christmas holiday 4",
-		"description": "Pick up the gift"
+		"name": "Check batteries (Wind Turbines)",
+		"reward": {
+			"amount": 50,
+			"resource": "Energy"
+		}
 	},
 	{
 		"uid": 4,
-		"name": "Christmas holiday 5",
-		"description": "Pick up the gift"
-	},
-	{
-		"uid": 5,
-		"name": "Christmas holiday 6",
-		"description": "Pick up the gift"
-	},
+		"name": "Check batteries (Water Filter)",
+		"reward": {
+			"amount": 50,
+			"resource": "Energy"
+		}
+	}
 ]
 
 # Once a task is completed it gets pushed in "task_completed"
