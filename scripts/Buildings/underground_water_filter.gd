@@ -1,12 +1,12 @@
 extends CharacterBody2D
-# If the state is set to WORKING, the building can be interacted with to collect
-# resources
+
 enum available_states {WORKING, TO_REPAIR, REPAIRING}
 
 var current_state = available_states.TO_REPAIR
 var task_manager = null
-@export var time_to_repair_in_seconds = 5
 var player_counter_on_building = 0
+
+@export var time_to_repair_in_seconds = 5
 
 func _ready():
 	set_task_manager()
