@@ -66,8 +66,9 @@ func _on_gift_box_gift_box_picked_up(player_number):
 func set_task_as_done(task_uid):
 	var task = tasks[task_uid]
 	
+	#if the task was already completed then do nothing
 	for i in range(0, len(tasks_completed)):
-		if tasks_completed[i].name == tasks_completed[i].name:
+		if task.name == tasks_completed[i].name:
 			return
 		
 	tasks_completed.push_back(task)
