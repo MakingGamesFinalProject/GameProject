@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnwp0f3rcpy14"]
+[gd_scene load_steps=10 format=3 uid="uid://dnwp0f3rcpy14"]
 
 [ext_resource type="PackedScene" uid="uid://drgf7c01kty41" path="res://scenes/map/background.tscn" id="1_57jlp"]
 [ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="2_e1xhk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cqhwts3w4hsxv" path="res://scenes/buildings/scrap_heap.tscn" id="6_5nino"]
 [ext_resource type="PackedScene" uid="uid://bs1p30328q3ri" path="res://scenes/task/gift_box.tscn" id="6_f7pi8"]
 [ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="7_gbamd"]
+[ext_resource type="PackedScene" uid="uid://carfvmdbple6g" path="res://scenes/buildings/underground_water_filter.tscn" id="9_stqp8"]
 
 [node name="Node" type="Node"]
 
@@ -43,5 +44,8 @@ is_player_with_keyboard = false
 [node name="GiftBox" parent="TaskItems" instance=ExtResource("6_f7pi8")]
 position = Vector2(1114, 922)
 scale = Vector2(2.7079, 2.42508)
+
+[node name="UndergroundWaterFilter" parent="." instance=ExtResource("9_stqp8")]
+position = Vector2(449, 282)
 
 [connection signal="gift_box_picked_up" from="TaskItems/GiftBox" to="TaskManager" method="_on_gift_box_gift_box_picked_up"]

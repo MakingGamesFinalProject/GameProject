@@ -1,11 +1,49 @@
 extends CharacterBody2D
+# If the state is set to WORKING, the building can be interacted with to collect
+# resources
+enum available_states {WORKING, TO_REPAIR, REPAIRING}
 
-var players_count_on_building := false
+var current_state = available_states.TO_REPAIR
+var task_manager = null
+@export var time_to_repair_in_seconds = 5
+var player_counter_on_building = 0
+
+func _ready():
+	set_task_manager()
+
+func set_task_manager():
+	task_manager = get_tree().get_nodes_in_group("task_manager")[0]
+	assert(task_manager != null, "Task manager not found")
+	
+func _process(delta):
+	if player_counter_on_building > 0:
+		handle_interaction()	
+	
+func handle_interaction():
+	if Input.is_action_pressed("interaction_p1") || Input.is_action_pressed("interaction_p2"):
+		if current_state == available_states.TO_REPAIR:
+			repair_self()		
+
+func repair_self():
+	current_state = available_states.REPAIRING
+	var time_manager = WaitUtil.new()
+	time_manager.wait(time_to_repair_in_seconds, self, "_on_repair_complete_callback")
+	
+func _on_repair_complete_callback():
+	current_state = available_states.WORKING
+	if task_manager != null:
+		task_manager.set_task_as_done(0)
+
 
 func _on_player_detector_body_entered(body):
-	if body.is_in_group("players"):
-		players_count_on_building = true
+	if is_player(body):
+		player_counter_on_building += 1
+		
 
 func _on_player_detector_body_exited(body):
-	if body.is_in_group("players") && players_count_on_building:
-		players_count_on_building = false
+	if is_player(body):
+		player_counter_on_building -= 1
+
+func is_player(body):
+	return body.is_in_group("players")
+
