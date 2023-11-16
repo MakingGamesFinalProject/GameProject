@@ -21,6 +21,8 @@ func _process(delta):
 	check_for_batteries_task()
 
 func check_for_batteries_task():
+	if current_state != available_states.WORKING:
+		return
 	# to complete this task the other player must be on the house
 	var a_user_is_interacting = Input.is_action_pressed("interaction_p1") || Input.is_action_pressed("interaction_p2")
 	if a_user_is_interacting && player_counter_on_building > 0:
