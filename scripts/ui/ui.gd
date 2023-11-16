@@ -61,10 +61,9 @@ func format_task_without_reward(task):
 	var format_string = "%s\n"
 	return format_string % [task.name]
 	
-
 func _on_task_manager_task_completed(task_completed):
 	var format_message_to_show = "Player %s completed the task: %s"
-	var actual_message_to_show = format_message_to_show % [str(player_number), task_completed.description]
+	var actual_message_to_show = format_message_to_show % [str(player_number), task_completed.name]
 	$Notification.text = actual_message_to_show
 	hide_message_after(seconds_to_wait_to_hide_message)
 
