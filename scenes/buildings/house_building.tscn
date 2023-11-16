@@ -9,7 +9,7 @@ size = Vector2(32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_fpd53"]
 radius = 24.0208
 
-[node name="HouseBuilding" type="CharacterBody2D"]
+[node name="HouseBuilding" type="CharacterBody2D" groups=["house"]]
 script = ExtResource("1_ro7jv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

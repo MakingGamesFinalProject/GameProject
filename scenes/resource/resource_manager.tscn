@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/resource/resource_manager.gd" id="1_j0e88"]
 
-[node name="ResourceManager" type="Node"]
+[node name="ResourceManager" type="Node" groups=["resource_manager"]]
 script = ExtResource("1_j0e88")

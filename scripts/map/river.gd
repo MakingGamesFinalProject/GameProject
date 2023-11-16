@@ -3,6 +3,7 @@ extends StaticBody2D
 # Is a player situated close to the river?
 var water_collectable_p1 := false
 var water_collectable_p2 := false
+var counter_player_detected = 0
 
 func _process(_delta):
 	# Currently, the interaction button is F for p1 and action_down joystick for player2
@@ -14,9 +15,8 @@ func _process(_delta):
 
 func _on_player_detection_body_entered(body):
 	if body.is_in_group("players"):
-		print(body)
-		print("Found player")
 		body.show_helper_button("F")
+		counter_player_detected += 1
 	if body.name == "Player":
 			water_collectable_p1 = true
 			
@@ -26,6 +26,7 @@ func _on_player_detection_body_entered(body):
 func _on_player_detection_body_exited(body):
 	if body.is_in_group("players"):
 		body.hide_helper_button()
+		counter_player_detected -= 1
 	if body.name == "Player":
 		water_collectable_p1 = false
 			
