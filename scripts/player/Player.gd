@@ -17,6 +17,13 @@ var frozen := false
 
 var screen_size # Size of the game window.
 
+@onready var animation_tree = $AnimationTree
+@export var starting_direction : Vector2 = Vector2(0,0.2)
+
+func _ready():
+	animation_tree.set("parameters/p1_idle/blend_position", starting_direction)
+	animation_tree.set("parameters/p1_walk/blend_position", starting_direction)
+
 func _physics_process(delta):
 	# Call the overarching movement function
 	checkIfPlayerIsMoving()
@@ -25,6 +32,9 @@ func _physics_process(delta):
 	# Update built in velocity property and call built in move_and_collide method
 	# Note, there's also a move_and_slide method, which feels less sticky in collisions
 	velocity = direction * speed * delta
+	update_animation_directions(velocity)
+	if velocity != Vector2.ZERO:
+		sprite_visibility_update()
 	move_and_slide()
 
 	check_if_player_toggles_task_list()
@@ -93,8 +103,97 @@ func hide_helper_button():
 # Function called by other objects to freeze the player when the player interacts with something
 func player_interaction():
 	frozen = true
-	print(frozen)
 	await get_tree().create_timer(2.0).timeout
 	frozen = false
-	print(frozen)
 	
+	
+func sprite_visibility_update():
+	
+	hide_all_player_sprites()
+	if velocity.x == 0: # no horizontal input
+		if velocity.y < 0: # input up
+			if is_player_with_keyboard:
+				$walk_n_player1.visible = true
+			else:
+				$walk_n_player2.visible = true
+		if 0 < velocity.y: # input down
+			if is_player_with_keyboard:
+				$walk_s_player1.visible = true
+			else:
+				$walk_s_player2.visible = true
+	if velocity.x < 0: # input left
+		if velocity.y == 0: # no vertical input
+			if is_player_with_keyboard:
+				$walk_w_player1.visible = true
+			else:
+				$walk_w_player2.visible = true
+		if velocity.y < 0: # input up
+			if is_player_with_keyboard:
+				$walk_nw_player1.visible = true
+			else:
+				$walk_nw_player2.visible = true
+		if 0 < velocity.y: # input down
+			if is_player_with_keyboard:
+				$walk_sw_player1.visible = true
+			else:
+				$walk_sw_player2.visible = true
+	elif 0 < velocity.x: # input right
+		if velocity.y == 0: # no vertical input
+			if is_player_with_keyboard:
+				$walk_e_player1.visible = true
+			else:
+				$walk_e_player2.visible = true
+		if velocity.y < 0: # input up
+			if is_player_with_keyboard:
+				$walk_ne_player1.visible = true
+			else:
+				$walk_ne_player2.visible = true
+		if 0 < velocity.y: # input down
+			if is_player_with_keyboard:
+				$walk_se_player1.visible = true
+			else:
+				$walk_se_player2.visible = true
+	else:
+		print("Error: Unable to read inputs")
+
+func hide_all_player_sprites():
+	# use is_player_with_keyboard to hide all sprites of that character
+	if is_player_with_keyboard:
+		$walk_s_player1.visible = false
+		$walk_se_player1.visible = false
+		$walk_e_player1.visible = false
+		$walk_ne_player1.visible = false
+		$walk_n_player1.visible = false
+		$walk_nw_player1.visible = false
+		$walk_w_player1.visible = false
+		$walk_sw_player1.visible = false
+	else:
+		$walk_s_player2.visible = false
+		$walk_se_player2.visible = false
+		$walk_e_player2.visible = false
+		$walk_ne_player2.visible = false
+		$walk_n_player2.visible = false
+		$walk_nw_player2.visible = false
+		$walk_w_player2.visible = false
+		$walk_sw_player2.visible = false
+	
+func update_animation_directions(movement : Vector2):
+	if movement != Vector2.ZERO:
+		if is_player_with_keyboard:
+			animation_tree.set("parameters/p1_idle/blend_position", movement)
+			animation_tree.set("parameters/p1_walk/blend_position", movement)
+		else:
+			animation_tree.set("parameters/p2_idle/blend_position", movement)
+			animation_tree.set("parameters/p2_walk/blend_position", movement)
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
