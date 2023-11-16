@@ -18,6 +18,17 @@ func set_task_manager():
 func _process(delta):
 	if player_counter_on_building > 0:
 		handle_interaction()	
+	check_for_batteries_task()
+
+func check_for_batteries_task():
+	# to complete this task the other player must be on the house
+	var a_user_is_interacting = Input.is_action_pressed("interaction_p1") || Input.is_action_pressed("interaction_p2")
+	if a_user_is_interacting && player_counter_on_building > 0:
+		var time_manager = WaitUtil.new()
+		time_manager.wait(time_to_repair_in_seconds, self, "_on_check_for_batteries_callback")
+	
+func _on_check_for_batteries_callback():
+	task_manager.set_task_as_done(4)
 	
 func handle_interaction():
 	if Input.is_action_pressed("interaction_p1") || Input.is_action_pressed("interaction_p2"):

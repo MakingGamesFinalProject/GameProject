@@ -4,17 +4,23 @@ enum available_states {WORKING, TO_REPAIR, REPAIRING}
 
 var counter_players_detected = 0
 var task_manager_ref = null
+var house_ref = null
 var current_status = available_states.TO_REPAIR
 
 @export var time_to_repair_in_seconds = 5
+@export var time_to_complete_check_batteries_task_in_seconds = 3
 
 func _ready():
 	set_task_manager_ref()
+	set_house_ref()
 
 func _process(delta):
 	check_task_completion()
 	
 func check_task_completion():
+	check_for_fixing_task()
+
+func check_for_fixing_task():
 	var a_user_is_interacting = Input.is_action_pressed("interaction_p1") || Input.is_action_pressed("interaction_p2")
 	if counter_players_detected > 0:
 		if a_user_is_interacting && current_status == available_states.TO_REPAIR:
@@ -32,6 +38,10 @@ func _on_repair_complete_callback():
 func set_task_manager_ref():
 	task_manager_ref = get_tree().get_first_node_in_group("task_manager")
 	assert(task_manager_ref != null, "Task manager not found")
+
+func set_house_ref():
+	house_ref = get_tree().get_first_node_in_group("house")
+	assert(house_ref != null, "House reference not found")
 
 func _on_detection_area_body_entered(body):
 	if is_player(body):
