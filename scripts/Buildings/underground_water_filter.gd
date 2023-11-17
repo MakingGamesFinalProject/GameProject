@@ -15,7 +15,7 @@ func set_task_manager():
 	task_manager = get_tree().get_nodes_in_group("task_manager")[0]
 	assert(task_manager != null, "Task manager not found")
 	
-func _process(delta):
+func _process(_delta):
 	if player_counter_on_building > 0:
 		handle_interaction()	
 	check_for_batteries_task()
