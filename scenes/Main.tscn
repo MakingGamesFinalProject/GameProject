@@ -31,7 +31,6 @@ func get_player():
 script = ExtResource("1_mykgh")
 
 [node name="UICollective" parent="." instance=ExtResource("2_7267x")]
-visible = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_right = 2052.0

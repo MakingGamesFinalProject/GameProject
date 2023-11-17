@@ -112,6 +112,7 @@ func hide_helper_button():
 # Function called by other objects to freeze the player when the player interacts with something
 func player_interaction():
 	frozen = true
+	play_interaction_animation()
 	await get_tree().create_timer(2.0).timeout
 	frozen = false
 	
@@ -198,6 +199,9 @@ func update_animation_directions(move_input):
 			animation_tree.set("parameters/p2_walk/blend_position", move_input)
 		
 func walk_and_idle_input():
+	if frozen:
+		return
+
 	if direction != Vector2.ZERO:
 		if is_player_with_keyboard:
 			state_machine.travel("p1_walk")
@@ -209,7 +213,8 @@ func walk_and_idle_input():
 		else:
 			state_machine.travel("p2_idle")
 			
-
+func play_interaction_animation():
+	state_machine.travel("interaction_p1")
 		
 		
 		
