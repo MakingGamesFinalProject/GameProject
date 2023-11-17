@@ -215,8 +215,10 @@ func walk_and_idle_input():
 			state_machine.travel("p2_idle")
 			
 func play_interaction_animation():
-	state_machine.travel("interaction_p1")
-		
+	if is_player_with_keyboard:
+		state_machine.travel("interaction_p1")
+	else:
+		state_machine.travel("interaction_p2")
 		
 		
 		

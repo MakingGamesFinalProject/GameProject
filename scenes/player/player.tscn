@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://tyfin60df35t"]
+[gd_scene load_steps=107 format=3 uid="uid://tyfin60df35t"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_2b53x"]
 [ext_resource type="Texture2D" uid="uid://dlwnl127n8fje" path="res://art/Players/Player 1/Running Sprites/Player 1 run1.png" id="3_axys2"]
@@ -217,6 +217,108 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_41kt5"]
+resource_name = "interaction_p1"
+length = 0.4
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("walk_s_player1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("walk_se_player1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("walk_e_player1:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("walk_ne_player1:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("walk_n_player1:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("walk_nw_player1:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("walk_w_player1:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("walk_sw_player1:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_k7n1a"]
@@ -763,15 +865,15 @@ tracks/0/keys = {
 "values": [7, 6, 5, 4, 3, 2, 1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_41kt5"]
-resource_name = "interaction_p1"
+[sub_resource type="Animation" id="Animation_701nr"]
+resource_name = "interaction_p2"
 length = 0.4
-loop_mode = 2
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("walk_s_player1:frame")
+tracks/0/path = NodePath("walk_s_player2:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -783,7 +885,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("walk_se_player1:frame")
+tracks/1/path = NodePath("walk_se_player2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -795,7 +897,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("walk_e_player1:frame")
+tracks/2/path = NodePath("walk_e_player2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -807,7 +909,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("walk_ne_player1:frame")
+tracks/3/path = NodePath("walk_ne_player2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -819,7 +921,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("walk_n_player1:frame")
+tracks/4/path = NodePath("walk_n_player2:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -831,7 +933,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("walk_nw_player1:frame")
+tracks/5/path = NodePath("walk_nw_player2:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -843,7 +945,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("walk_w_player1:frame")
+tracks/6/path = NodePath("walk_w_player2:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -855,7 +957,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("walk_sw_player1:frame")
+tracks/7/path = NodePath("walk_sw_player2:frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -869,6 +971,7 @@ tracks/7/keys = {
 _data = {
 "RESET": SubResource("Animation_lbs64"),
 "interaction_p1": SubResource("Animation_41kt5"),
+"interaction_p2": SubResource("Animation_701nr"),
 "p1_idle_e": SubResource("Animation_k7n1a"),
 "p1_idle_n": SubResource("Animation_6cfvi"),
 "p1_idle_ne": SubResource("Animation_fqedw"),
@@ -905,6 +1008,9 @@ _data = {
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f0011"]
 animation = &"interaction_p1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yea6i"]
+animation = &"interaction_p2"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m2gb0"]
 animation = &"p1_idle_w"
@@ -1040,8 +1146,6 @@ blend_point_7/pos = Vector2(-1, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_838hd"]
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pg3lo"]
 animation = &"p2_walk_sw"
 
@@ -1094,15 +1198,6 @@ max_space = Vector2(1, 1.1)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dkm5t"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5yea8"]
-advance_mode = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4m574"]
-advance_mode = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b832m"]
-advance_mode = 0
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_td5rd"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pk37l"]
@@ -1113,20 +1208,26 @@ advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_03h5v"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dmauq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f387q"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qki0c"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i8erq"]
 states/interaction_p1/node = SubResource("AnimationNodeAnimation_f0011")
 states/interaction_p1/position = Vector2(569, -58.6297)
+states/interaction_p2/node = SubResource("AnimationNodeAnimation_yea6i")
+states/interaction_p2/position = Vector2(569, 260.584)
 states/p1_idle/node = SubResource("AnimationNodeBlendSpace2D_br36y")
 states/p1_idle/position = Vector2(452, 45)
 states/p1_walk/node = SubResource("AnimationNodeBlendSpace2D_skwhs")
 states/p1_walk/position = Vector2(687, 45)
 states/p2_idle/node = SubResource("AnimationNodeBlendSpace2D_01swe")
 states/p2_idle/position = Vector2(452, 146)
-states/p2_interacion/node = SubResource("AnimationNodeBlendSpace2D_838hd")
-states/p2_interacion/position = Vector2(569, 263.52)
 states/p2_walk/node = SubResource("AnimationNodeBlendSpace2D_dievt")
 states/p2_walk/position = Vector2(687, 146)
-transitions = ["p1_walk", "p1_idle", SubResource("AnimationNodeStateMachineTransition_ap4p7"), "p1_idle", "p1_walk", SubResource("AnimationNodeStateMachineTransition_1a04w"), "p2_walk", "p2_idle", SubResource("AnimationNodeStateMachineTransition_3gvhg"), "p2_idle", "p2_walk", SubResource("AnimationNodeStateMachineTransition_dkm5t"), "p2_walk", "p2_interacion", SubResource("AnimationNodeStateMachineTransition_5yea8"), "p2_interacion", "p2_idle", SubResource("AnimationNodeStateMachineTransition_4m574"), "p2_idle", "p2_interacion", SubResource("AnimationNodeStateMachineTransition_b832m"), "Start", "p1_idle", SubResource("AnimationNodeStateMachineTransition_td5rd"), "Start", "p2_idle", SubResource("AnimationNodeStateMachineTransition_pk37l"), "p1_idle", "interaction_p1", SubResource("AnimationNodeStateMachineTransition_yog7f"), "interaction_p1", "p1_idle", SubResource("AnimationNodeStateMachineTransition_stl0m"), "p1_walk", "interaction_p1", SubResource("AnimationNodeStateMachineTransition_03h5v")]
+transitions = ["p1_walk", "p1_idle", SubResource("AnimationNodeStateMachineTransition_ap4p7"), "p1_idle", "p1_walk", SubResource("AnimationNodeStateMachineTransition_1a04w"), "p2_walk", "p2_idle", SubResource("AnimationNodeStateMachineTransition_3gvhg"), "p2_idle", "p2_walk", SubResource("AnimationNodeStateMachineTransition_dkm5t"), "Start", "p1_idle", SubResource("AnimationNodeStateMachineTransition_td5rd"), "Start", "p2_idle", SubResource("AnimationNodeStateMachineTransition_pk37l"), "p1_idle", "interaction_p1", SubResource("AnimationNodeStateMachineTransition_yog7f"), "interaction_p1", "p1_idle", SubResource("AnimationNodeStateMachineTransition_stl0m"), "p1_walk", "interaction_p1", SubResource("AnimationNodeStateMachineTransition_03h5v"), "p2_idle", "interaction_p2", SubResource("AnimationNodeStateMachineTransition_dmauq"), "interaction_p2", "p2_idle", SubResource("AnimationNodeStateMachineTransition_f387q"), "p2_walk", "interaction_p2", SubResource("AnimationNodeStateMachineTransition_qki0c")]
 graph_offset = Vector2(0, -120.416)
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
@@ -1163,7 +1264,6 @@ active = true
 parameters/p1_idle/blend_position = Vector2(0.162791, 0.273799)
 parameters/p1_walk/blend_position = Vector2(0, 0)
 parameters/p2_idle/blend_position = Vector2(0, 0)
-parameters/p2_interacion/blend_position = Vector2(0, 0)
 parameters/p2_walk/blend_position = Vector2(0, 0)
 
 [node name="walk_s_player1" type="Sprite2D" parent="."]
