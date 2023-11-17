@@ -112,6 +112,7 @@ func hide_helper_button():
 # Function called by other objects to freeze the player when the player interacts with something
 func player_interaction():
 	frozen = true
+	direction = Vector2.ZERO
 	play_interaction_animation()
 	await get_tree().create_timer(2.0).timeout
 	frozen = false
