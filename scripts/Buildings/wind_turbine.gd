@@ -14,7 +14,7 @@ func _ready():
 	set_task_manager_ref()
 	set_house_ref()
 
-func _process(delta):
+func _process(_delta):
 	check_task_completion()
 	
 func check_task_completion():
