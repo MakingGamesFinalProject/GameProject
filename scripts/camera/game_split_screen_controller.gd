@@ -1,4 +1,7 @@
 extends Node
+
+var next_play_section := false
+
 @onready var players := {
 	"1": {
 		viewport = $HBoxContainer/SubViewportContainer/SubViewport,
@@ -18,3 +21,8 @@ func _ready():
 		var remote_transorm := RemoteTransform2D.new()
 		remote_transorm.remote_path = node.camera.get_path()
 		node.player.add_child(remote_transorm)
+
+func _process(_delta):
+	if Input.is_action_pressed("time_skip"):	
+		print("Time skipped!")
+		next_play_section = true
