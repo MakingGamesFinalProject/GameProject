@@ -82,6 +82,7 @@ offset_bottom = 100.0
 texture = ExtResource("3_7rj4l")
 
 [node name="ScrapsLabel" type="Label" parent="MarginContainer/Control"]
+layout_mode = 0
 offset_left = 1079.0
 offset_top = 92.0
 offset_right = 1130.0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://6bqm6gqeokqt"]
+[gd_scene load_steps=8 format=3 uid="uid://6bqm6gqeokqt"]
 
 [ext_resource type="Script" path="res://scripts/camera/game_split_screen_controller.gd" id="1_mykgh"]
 [ext_resource type="PackedScene" uid="uid://527ad036ui2s" path="res://scenes/ui/ui_collective.tscn" id="2_7267x"]
 [ext_resource type="PackedScene" uid="uid://dnwp0f3rcpy14" path="res://scenes/levels/home_level.tscn" id="2_hlp5x"]
 [ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="3_4hmq5"]
+[ext_resource type="PackedScene" uid="uid://dhh43kotjb6go" path="res://scenes/ui/notification.tscn" id="3_ixsmo"]
 [ext_resource type="PackedScene" uid="uid://d2glb33o1cf16" path="res://scenes/scene/temporary_transition_trigger.tscn" id="5_xr20o"]
 
 [sub_resource type="GDScript" id="GDScript_basqf"]
@@ -77,6 +78,8 @@ camera_number = 2
 
 [node name="UITasksP2" parent="HBoxContainer/SubViewportContainer2/SubViewport" instance=ExtResource("3_4hmq5")]
 player_number = 2
+
+[node name="notification" parent="." instance=ExtResource("3_ixsmo")]
 
 [connection signal="player_2_changes_page_in_task_list_ui" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_player_2_changes_page_in_task_list_ui"]
 [connection signal="player_2_changes_tab_in_task_list_ui" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_player_2_changes_tab_in_task_list_ui"]
