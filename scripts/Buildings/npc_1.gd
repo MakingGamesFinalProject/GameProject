@@ -19,6 +19,7 @@ func _process(delta):
 		if dialog_node.name == "notification":
 			if player_array[0].name == "Player":
 				if dialog_open:
+					dialog_open = false
 					dialog_node.hide_dialog()
 					player_array[0].player_unfreeze()
 				else:
@@ -30,6 +31,7 @@ func _process(delta):
 		if dialog_node.name == "notification":
 			if player_array[1].name == "Player2":
 				if dialog_open:
+					dialog_open = false
 					dialog_node.hide_dialog()
 					player_array[1].player_unfreeze()
 				else:
