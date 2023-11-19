@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://8r7qng8dyi84"]
+[gd_scene load_steps=5 format=3 uid="uid://8r7qng8dyi84"]
 
 [ext_resource type="Script" path="res://scripts/resource/resource_manager.gd" id="1_j0e88"]
 [ext_resource type="AudioStream" uid="uid://ciku0lvemvvbg" path="res://sounds/Interaction/Water Pick.wav" id="2_rtlln"]
 [ext_resource type="AudioStream" uid="uid://bbusp14ygegod" path="res://sounds/Interaction/Scrap Pick.wav" id="3_a1ngu"]
+[ext_resource type="AudioStream" uid="uid://dnruoc5jsac2j" path="res://sounds/Interaction/Energy Pick.wav" id="3_khfd4"]
 
 [node name="ResourceManager" type="Node" groups=["resource_manager"]]
 script = ExtResource("1_j0e88")
 
 [node name="WaterPickUpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rtlln")
+
+[node name="EnergyPickUpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_khfd4")
 
 [node name="ScrapsPickUpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_a1ngu")
