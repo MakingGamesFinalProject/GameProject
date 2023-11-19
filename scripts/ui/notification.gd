@@ -22,6 +22,9 @@ var headshot_path = "res://art/UI/headshots/"
 @onready var notification_text : Label = $dialog_popup/HBoxContainer/Control2/VBoxContainer/Control3/dialog
 
 func _ready():	
+	# Don't show the pop-up right away
+	notification.visible = visible
+	
 	# Get JSON data and save in a variable
 	var file = FileAccess.open(notification_path, FileAccess.READ)
 	var json_string = file.get_as_text()

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cndy0vysv6c8x" path="res://art/playerGrey_up1.png" id="3_n7r2l"]
 [ext_resource type="FontFile" uid="uid://df621qoiptmgk" path="res://art/UI/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="4_c2ovr"]
 
-[node name="notification" type="Node2D"]
+[node name="notification" type="Node2D" groups=["Notification"]]
 script = ExtResource("1_bkuw1")
 
 [node name="dialog_popup" type="TextureRect" parent="."]
