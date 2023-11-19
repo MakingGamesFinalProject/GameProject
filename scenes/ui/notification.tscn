@@ -78,9 +78,10 @@ size_flags_stretch_ratio = 4.0
 
 [node name="dialog" type="Label" parent="dialog_popup/HBoxContainer/Control2/VBoxContainer/Control3"]
 layout_mode = 2
-offset_right = 49.0
-offset_bottom = 26.0
+offset_right = 700.0
+offset_bottom = 115.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_c2ovr")
 theme_override_font_sizes/font_size = 24
 text = "Dialog"
+autowrap_mode = 2

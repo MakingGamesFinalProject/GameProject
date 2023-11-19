@@ -80,6 +80,7 @@ camera_number = 2
 player_number = 2
 
 [node name="notification" parent="." instance=ExtResource("3_ixsmo")]
+visible = false
 
 [connection signal="player_2_changes_page_in_task_list_ui" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_player_2_changes_page_in_task_list_ui"]
 [connection signal="player_2_changes_tab_in_task_list_ui" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_player_2_changes_tab_in_task_list_ui"]

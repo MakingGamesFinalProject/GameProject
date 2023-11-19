@@ -4,36 +4,29 @@
 		"id": "1",
 		"name": "John Doe",
 		"title": "Engineer",
-		"picture_file": "john_doe.jpg",
+		"picture_file": "enemyFlyingAlt_1.png",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed at lorem nec tellus tristique fringilla vel eget justo."
 	},
 	{
 		"id": "2",
 		"name": "Alice Smith",
 		"title": "Designer",
-		"picture_file": "alice_smith.png",
+		"picture_file": "enemyFlyingAlt_2.png",
 		"text": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque bibendum, purus eu sagittis tristique, justo odio venenatis velit."
 	},
 	{
 		"id": "3",
 		"name": "Bob Johnson",
 		"title": "Manager",
-		"picture_file": "bob_johnson.jpg",
+		"picture_file": "enemySwimming_1.png",
 		"text": "In hac habitasse platea dictumst. Vivamus sit amet lacus eu odio consequat fringilla. Integer auctor, turpis vel bibendum pellentesque, velit arcu dapibus elit."
 	},
 	{
 		"id": "4",
 		"name": "Eva Davis",
 		"title": "Marketing Specialist",
-		"picture_file": "eva_davis.png",
+		"picture_file": "adawdaenemySwimming_1.png",
 		"text": "Curabitur tristique scelerisque mauris, ac aliquet augue fermentum eu. Fusce congue tellus vitae est bibendum, in facilisis dui feugiat. Vestibulum auctor sapien vitae lacus malesuada, in dignissim dolor pharetra."
-	},
-	{
-		"id": "5",
-		"name": "Michael Brown",
-		"title": "Researcher",
-		"picture_file": "michael_brown.jpg",
-		"text": "Suspendisse potenti. Maecenas id felis nec mi vestibulum condimentum. Fusce congue, elit vel feugiat aliquet, quam enim cursus lectus, vel tincidunt ligula justo nec nisi."
 	}
   ]
 }
