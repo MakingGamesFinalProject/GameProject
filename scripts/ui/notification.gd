@@ -44,12 +44,6 @@ func _ready():
 
 # Call once to show call again to hide
 func show_dialog(dialog_id: int):
-	# if the state of the notification is visible then make it invisible and reset the current_id variable
-	if visible == true:
-		visible = false
-		current_id = -1
-		return # exit the function
-	
 	# Put in correct info in the notification
 	# make the notification visible
 	for dialog in notifications:
@@ -68,5 +62,11 @@ func show_dialog(dialog_id: int):
 			notification.visible = visible
 			current_id = int( dialog_id )
 	
-	
+func hide_dialog():
+	# if the state of the notification is visible then make it invisible and reset the current_id variable
+	if visible == true:
+		visible = false
+		notification.visible = visible
+		current_id = -1
+		return # exit the function
 	

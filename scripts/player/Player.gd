@@ -109,6 +109,13 @@ func hide_helper_button():
 	$InteractibleButtonHelper/Label.text = ""
 	$InteractibleButtonHelper.hide()
 	
+func player_freeze():
+	frozen = true
+	direction = Vector2.ZERO
+
+func player_unfreeze():
+	frozen = false
+	
 # Function called by other objects to freeze the player when the player interacts with something
 func player_interaction():
 	frozen = true
