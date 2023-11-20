@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfxcfqcait25m"
-path="res://.godot/imported/enemyFlyingAlt_1.png-559f599b16c69b112c1b53f6332e9489.ctex"
+uid="uid://cdx3ggxp5kqap"
+path="res://.godot/imported/1 idle  6.png-57d541e30ecca4debf71d014c68900d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemyFlyingAlt_1.png"
-dest_files=["res://.godot/imported/enemyFlyingAlt_1.png-559f599b16c69b112c1b53f6332e9489.ctex"]
+source_file="res://art/Players/Player 1/Idle 1/1 idle  6.png"
+dest_files=["res://.godot/imported/1 idle  6.png-57d541e30ecca4debf71d014c68900d8.ctex"]
 
 [params]
 

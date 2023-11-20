@@ -7,7 +7,7 @@ var can_be_build := false
 func _ready():
 	$Collider.disabled = true
 
-func _process(delta):
+func _process(_delta):
 	can_be_build = sufficient_resources()
 
 	if can_be_build:

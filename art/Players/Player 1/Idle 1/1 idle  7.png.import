@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5b6e1qxi5oow"
-path="res://.godot/imported/Recycling Workshop.png-0d87265b8f55bbd2e03712a44ae6c1a6.ctex"
+uid="uid://byu6nyudb6lx8"
+path="res://.godot/imported/1 idle  7.png-734817ce26128e6908c720c8f7c2ccd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/World/Player Map/Buildings/Recycling Workshop.png"
-dest_files=["res://.godot/imported/Recycling Workshop.png-0d87265b8f55bbd2e03712a44ae6c1a6.ctex"]
+source_file="res://art/Players/Player 1/Idle 1/1 idle  7.png"
+dest_files=["res://.godot/imported/1 idle  7.png-734817ce26128e6908c720c8f7c2ccd6.ctex"]
 
 [params]
 

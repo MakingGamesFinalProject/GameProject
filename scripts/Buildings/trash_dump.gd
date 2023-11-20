@@ -8,7 +8,7 @@ func _ready():
 	set_river_ref()
 	set_task_manager_ref()
 
-func _process(delta):
+func _process(_delta):
 	if player_detection_counter > 0:
 		check_for_task_completion()
 		

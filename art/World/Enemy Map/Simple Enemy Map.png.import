@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5b6e1qxi5oow"
-path="res://.godot/imported/Recycling Workshop.png-0d87265b8f55bbd2e03712a44ae6c1a6.ctex"
+uid="uid://c8qmmtw8b6rbo"
+path="res://.godot/imported/Simple Enemy Map.png-fbd966cb0e758689535fd2d74ae48a35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/World/Player Map/Buildings/Recycling Workshop.png"
-dest_files=["res://.godot/imported/Recycling Workshop.png-0d87265b8f55bbd2e03712a44ae6c1a6.ctex"]
+source_file="res://art/World/Enemy Map/Simple Enemy Map.png"
+dest_files=["res://.godot/imported/Simple Enemy Map.png-fbd966cb0e758689535fd2d74ae48a35.ctex"]
 
 [params]
 

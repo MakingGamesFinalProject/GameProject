@@ -21,7 +21,6 @@ func _process(_delta):
 func handle_interactions_with_players():
 	if Input.is_action_just_pressed("interaction_p1") and scrap_collectable_p1:
 		ResourceManager.increase_scraps(25)
-		var player_array = get_tree().get_nodes_in_group("players")
 		if player_array[0].name == "Player":
 			#freeze player 1
 			print(player_array[0].name)

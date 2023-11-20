@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du3vx6onpk6qq"
-path="res://.godot/imported/enemySwimming_1.png-dd0e11759dc3d624c8a704f6e98a3d80.ctex"
+uid="uid://blrlctuowew0y"
+path="res://.godot/imported/idle 6.png-ca3f880f068e9f39fde217a505893993.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemySwimming_1.png"
-dest_files=["res://.godot/imported/enemySwimming_1.png-dd0e11759dc3d624c8a704f6e98a3d80.ctex"]
+source_file="res://art/Players/Player 2/Idle 2/idle 6.png"
+dest_files=["res://.godot/imported/idle 6.png-ca3f880f068e9f39fde217a505893993.ctex"]
 
 [params]
 
