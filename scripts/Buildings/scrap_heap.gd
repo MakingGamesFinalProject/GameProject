@@ -10,6 +10,7 @@ var fading_out: bool = false
 
 func _ready():
 	$InteractibleButtonHelper.hide()
+	
 
 func _process(_delta):
 	if fading_out:

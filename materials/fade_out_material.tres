@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bpxm73nqp1wui"]
+
+[ext_resource type="Shader" path="res://shaders/test.gdshader" id="1_adt3w"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_he5ro"]
+seed = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2psvv"]
+noise = SubResource("FastNoiseLite_he5ro")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_adt3w")
+shader_parameter/value = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2psvv")
