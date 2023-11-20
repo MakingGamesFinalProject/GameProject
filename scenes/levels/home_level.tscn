@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnwp0f3rcpy14"]
+[gd_scene load_steps=15 format=3 uid="uid://dnwp0f3rcpy14"]
 
 [ext_resource type="PackedScene" uid="uid://drgf7c01kty41" path="res://scenes/map/background.tscn" id="1_57jlp"]
 [ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="2_e1xhk"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bpd5wv5dgxixr" path="res://scenes/buildings/wind_turbine.tscn" id="11_vqah3"]
 [ext_resource type="PackedScene" uid="uid://bx6p5ofvdqay5" path="res://scenes/buildings/house_building.tscn" id="12_fvuqx"]
 [ext_resource type="PackedScene" uid="uid://efjia0hmypy4" path="res://scenes/buildings/recycling_workshop.tscn" id="13_gg7y2"]
+[ext_resource type="PackedScene" uid="uid://cvwuirlquyihm" path="res://scenes/music/audio_manager.tscn" id="14_hiyrq"]
 
 [node name="Node" type="Node"]
 
@@ -63,5 +64,7 @@ position = Vector2(82, -2)
 
 [node name="RecyclingWorkshop" parent="." instance=ExtResource("13_gg7y2")]
 position = Vector2(162, 196)
+
+[node name="AudioManager" parent="." instance=ExtResource("14_hiyrq")]
 
 [connection signal="gift_box_picked_up" from="TaskItems/GiftBox" to="TaskManager" method="_on_gift_box_gift_box_picked_up"]
