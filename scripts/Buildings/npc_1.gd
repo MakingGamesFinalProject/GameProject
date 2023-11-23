@@ -3,7 +3,8 @@ extends StaticBody2D
 var player1_is_close := false
 var player2_is_close := false
 
-var npc_dialog_id := 1
+@export var npc_dialog_id := 1
+@export var task_id := 1
 
 var dialog_open := false
 
