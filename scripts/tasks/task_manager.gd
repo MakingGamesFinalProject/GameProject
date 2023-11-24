@@ -73,6 +73,10 @@ func _on_gift_box_gift_box_picked_up(player_number):
 	set_task_as_done(0)
 
 func assign_task(uid): 
+	for j in range(0, len(tasks_assigned)):
+		if tasks_assigned[j].uid == uid:
+			return
+			
 	for i in range(0, len(tasks)):
 		if tasks[i].uid == uid:
 			tasks_assigned.push_back(tasks[i])
@@ -120,8 +124,11 @@ func get_tasks(page):
 	else:
 		return load_tasks_page(page)
 	
-func get_tasks_assigned():
-	return tasks_assigned	
+func get_tasks_assigned(page):
+	if page == -1:
+		return tasks_assigned
+	else:
+		return load_tasks_from_assigned_tasks(page)	
 		
 func load_tasks_page(page):
 	return load_tasks_from_array(page, tasks)
