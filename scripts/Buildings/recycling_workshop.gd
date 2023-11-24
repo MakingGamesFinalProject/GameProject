@@ -8,7 +8,7 @@ var task_manager_ref = null
 func _ready():
 	task_manager_ref = get_tree().get_first_node_in_group("task_manager")
 
-func _process(delta):
+func _process(_delta):
 	check_for_recycle_task_completion()
 
 func check_for_recycle_task_completion():

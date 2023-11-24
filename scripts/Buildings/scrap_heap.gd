@@ -4,11 +4,22 @@ extends StaticBody2D
 var scrap_collectable_p1 := false
 var scrap_collectable_p2 := false
 
+@export var fade_timer: float = 1.0  # Time in seconds to fade out
+var fade_elapsed: float = 0.0
+var fading_out: bool = false
+
 func _ready():
 	$InteractibleButtonHelper.hide()
+	
 
 func _process(_delta):
+	if fading_out:
+		fade_out(_delta)
 	# Currently, the interaction button is F
+	else:
+		handle_interactions_with_players()
+		
+func handle_interactions_with_players():
 	if Input.is_action_just_pressed("interaction_p1") and scrap_collectable_p1:
 		ResourceManager.increase_scraps(25)
 		var player_array = get_tree().get_nodes_in_group("players")
@@ -20,10 +31,26 @@ func _process(_delta):
 			#freeze player 2
 			print(player_array[1].name)
 			player_array[1].player_interaction()
-		queue_free()
+		start_fading()
 		
 	if Input.is_action_just_pressed("interaction_p2") and scrap_collectable_p2:
 		ResourceManager.increase_scraps(25)
+		start_fading()	
+	
+
+func start_fading():
+	fading_out = true
+	fade_elapsed = 0.0
+
+func fade_out(delta):
+	fade_elapsed += delta
+	var new_fade_factor = lerp(1.0, 0.0, fade_elapsed / fade_timer)
+	var material : ShaderMaterial = $Sprite.get_material()
+	material.set_shader_parameter("value", new_fade_factor)
+
+	if fade_elapsed >= fade_timer:
+		fading_out = false	
+		hide()  
 		queue_free()
 
 func _on_player_detector_body_entered(body):

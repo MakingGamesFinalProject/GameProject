@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhh43kotjb6go"]
+
+[ext_resource type="Script" path="res://scripts/ui/notification.gd" id="1_bkuw1"]
+[ext_resource type="Texture2D" uid="uid://nt0nsbsft1jf" path="res://art/Background_placeholder.png" id="2_tymn8"]
+[ext_resource type="Texture2D" uid="uid://cndy0vysv6c8x" path="res://art/playerGrey_up1.png" id="3_n7r2l"]
+[ext_resource type="FontFile" uid="uid://df621qoiptmgk" path="res://art/UI/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="4_c2ovr"]
+
+[node name="notification" type="Node2D" groups=["Notification"]]
+script = ExtResource("1_bkuw1")
+
+[node name="dialog_popup" type="TextureRect" parent="."]
+offset_left = 524.0
+offset_top = 930.0
+offset_right = 1524.0
+offset_bottom = 1250.0
+texture = ExtResource("2_tymn8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="dialog_popup"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 950.0
+offset_bottom = 270.0
+
+[node name="Control" type="Control" parent="dialog_popup/HBoxContainer"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="headshot" type="TextureRect" parent="dialog_popup/HBoxContainer/Control"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 160.0
+texture = ExtResource("3_n7r2l")
+
+[node name="Control2" type="Control" parent="dialog_popup/HBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dialog_popup/HBoxContainer/Control2"]
+layout_mode = 2
+offset_right = 700.0
+offset_bottom = 180.0
+
+[node name="Control" type="Control" parent="dialog_popup/HBoxContainer/Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="name" type="Label" parent="dialog_popup/HBoxContainer/Control2/VBoxContainer/Control"]
+layout_mode = 2
+offset_right = 41.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c2ovr")
+theme_override_font_sizes/font_size = 24
+text = "Name"
+
+[node name="Control2" type="Control" parent="dialog_popup/HBoxContainer/Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="title" type="Label" parent="dialog_popup/HBoxContainer/Control2/VBoxContainer/Control2"]
+layout_mode = 2
+offset_right = 34.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c2ovr")
+theme_override_font_sizes/font_size = 20
+text = "Title"
+
+[node name="Control3" type="Control" parent="dialog_popup/HBoxContainer/Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="dialog" type="Label" parent="dialog_popup/HBoxContainer/Control2/VBoxContainer/Control3"]
+layout_mode = 2
+offset_right = 700.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c2ovr")
+theme_override_font_sizes/font_size = 24
+text = "Dialog"
+autowrap_mode = 2
