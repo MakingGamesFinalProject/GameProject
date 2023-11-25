@@ -2,31 +2,73 @@
   "notifications": [
 	{
 		"id": "1",
-		"name": "John Doe",
-		"title": "Engineer",
-		"picture_file": "enemyFlyingAlt_1.png",
-		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed at lorem nec tellus tristique fringilla vel eget justo."
+		"name": "Huggy Sugar-Gold",
+		"title": "Property Owner",
+		"picture_file": "Huggy Sugar-Gold Thumbnail.png",
+		"text": "Hello, you two! I see that you're both prepared to to work... Well, great! You have a lot to do around here."
 	},
 	{
 		"id": "2",
-		"name": "Alice Smith",
-		"title": "Designer",
-		"picture_file": "enemyFlyingAlt_2.png",
-		"text": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque bibendum, purus eu sagittis tristique, justo odio venenatis velit."
+		"name": "Huggy Sugar-Gold",
+		"title": "Property Owner",
+		"picture_file": "Huggy Sugar-Gold Thumbnail.png",
+		"text": "What do I mean? Look at this place! There is not even a Shed to lock our tools in! How are my people supposed to work in an environment like this... Shed, you understand?"
 	},
 	{
 		"id": "3",
-		"name": "Bob Johnson",
-		"title": "Manager",
-		"picture_file": "enemySwimming_1.png",
-		"text": "In hac habitasse platea dictumst. Vivamus sit amet lacus eu odio consequat fringilla. Integer auctor, turpis vel bibendum pellentesque, velit arcu dapibus elit."
+		"name": "Huggy Sugar-Gold",
+		"title": "Property Owner",
+		"picture_file": "Huggy Sugar-Gold Thumbnail.png",
+		"text": "You need my help? Why do I-.....Just. Grab the trash."
 	},
 	{
 		"id": "4",
-		"name": "Eva Davis",
-		"title": "Marketing Specialist",
-		"picture_file": "adawdaenemySwimming_1.png",
-		"text": "Curabitur tristique scelerisque mauris, ac aliquet augue fermentum eu. Fusce congue tellus vitae est bibendum, in facilisis dui feugiat. Vestibulum auctor sapien vitae lacus malesuada, in dignissim dolor pharetra."
+		"name": "Huggy Sugar-Gold",
+		"title": "Property Owner",
+		"picture_file": "Huggy Sugar-Gold Thumbnail.png",
+		"text": "Great job! See, now this place looks half decent! I can already see it, the stores, the items, the hungry, starving collectors with rivers of money... Anyways, Here's the rest I owe you."
+	},
+	{
+		"id": "5",
+		"name": "Huggy Sugar-Gold",
+		"title": "Property Owner",
+		"picture_file": "Huggy Sugar-Gold Thumbnail.png",
+		"text": "What are you still doing here? I can't be the only customer you have! There is plenty of people who have been affected by those monkeys..."
+	},
+	{
+		"id": "6",
+		"name": "Greasy Jim Winterkorn",
+		"title": "Craftsman",
+		"picture_file": "enemyFlyingAlt_1.png",
+		"text": "Hey mates! Soo, ye see, I've been doin a lot here... Still I need som' help. So just... do yer thing, yeah? I'm... I got otha stuff to do."
+	},
+	{
+		"id": "7",
+		"name": "Greasy Jim Winterkorn",
+		"title": "Craftsman",
+		"picture_file": "enemyFlyingAlt_1.png",
+		"text": "Ye see, I need a place to work. Somethin' like a Recycling Workshop, so I can do somethin' about all this trash they keep throwing ou' way..."
+	},
+	{
+		"id": "8",
+		"name": "Greasy Jim Winterkorn",
+		"title": "Craftsman",
+		"picture_file": "enemyFlyingAlt_1.png",
+		"text": "Yeah... Huh? Whatcha mean, ye aint done nothin' yet! Aishh, I aint got all day, mate! Just fixin' alla that, easy!"
+	},
+	{
+		"id": "9",
+		"name": "Greasy Jim Winterkorn",
+		"title": "Craftsman",
+		"picture_file": "enemyFlyingAlt_1.png",
+		"text": "Sheat, look at this, haha, I knew ye could do it. Here' the payment. Maybe one day ye can make a place like this for yerselves."
+	},
+	{
+		"id": "10",
+		"name": "Greasy Jim Winterkorn",
+		"title": "Craftsman",
+		"picture_file": "enemyFlyingAlt_1.png",
+		"text": "Yeah Yeah, my boss it sureley gon like this, hehe. Easy work, anotha easy day fo' me."
 	}
   ]
 }

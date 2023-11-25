@@ -12,7 +12,7 @@ var visible = false
 var current_id = -1
 
 # headshot folder path
-var headshot_path = "res://art/UI/headshots/"
+var headshot_path = "res://art/World/Player Map/NPCs/headshots/"
 
 # notification fields
 @onready var notification : TextureRect = $dialog_popup
@@ -36,13 +36,13 @@ func _ready():
 		var notifications_data = json.data["notifications"]
 		if typeof(notifications_data) == TYPE_ARRAY:
 			notifications = notifications_data
-			print(notifications) # Prints array
+			# print(notifications) # Prints array
 		else:
 			print("Unexpected data in notifications")
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 
-# Call once to show call again to hide
+# Call once to show, call again to hide
 func show_dialog(dialog_id: int):
 	# Put in correct info in the notification
 	# make the notification visible
