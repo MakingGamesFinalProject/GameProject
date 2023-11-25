@@ -12,7 +12,7 @@ var visible = false
 var current_id = -1
 
 # headshot folder path
-var headshot_path = "res://art/UI/headshots/"
+var headshot_path = "res://art/World/Player Map/NPCs/headshots/"
 
 # notification fields
 @onready var notification : TextureRect = $dialog_popup

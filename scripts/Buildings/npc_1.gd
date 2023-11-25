@@ -50,6 +50,7 @@ func _process(delta):
 
 func process_dialog_logic(dialog_node, task_manager, player, task_id, before_dialog_list, after_dialog_list, current_before_dialog, current_after_dialog):
 	if dialog_open && (current_before_dialog == before_dialog_list.size()):
+		task_manager.assign_task(task_id)
 		reset_dialog_state(dialog_node, player)
 	elif dialog_open && (current_after_dialog == after_dialog_list.size()):
 		reset_dialog_state(dialog_node, player)

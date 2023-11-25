@@ -33,6 +33,7 @@ layout_mode = 0
 offset_right = 160.0
 offset_bottom = 160.0
 texture = ExtResource("3_n7r2l")
+expand_mode = 2
 
 [node name="Control2" type="Control" parent="dialog_popup/HBoxContainer"]
 custom_minimum_size = Vector2(0, 180)
