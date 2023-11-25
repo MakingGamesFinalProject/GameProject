@@ -88,8 +88,9 @@ visible = false
 
 [connection signal="player_2_changes_page_in_task_list_ui" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_player_2_changes_page_in_task_list_ui"]
 [connection signal="player_2_changes_tab_in_task_list_ui" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_player_2_changes_tab_in_task_list_ui"]
-[connection signal="toggle_task_list" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="HBoxContainer/SubViewportContainer/SubViewport/Node/UITasksP1" method="_on_player_toggle_task_list"]
+[connection signal="toggle_task_list" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="UICollective/TasksContainer" method="_on_player_toggle_task_list"]
 [connection signal="toggle_task_list" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player2" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_2_toggle_task_list"]
 [connection signal="task_completed" from="HBoxContainer/SubViewportContainer/SubViewport/Node/TaskManager" to="HBoxContainer/SubViewportContainer/SubViewport/Node/UITasksP1" method="_on_task_manager_task_completed"]
 
+[editable path="UICollective"]
 [editable path="HBoxContainer/SubViewportContainer/SubViewport/Node"]

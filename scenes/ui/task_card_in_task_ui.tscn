@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5lchgdj65ebe"]
+
+[ext_resource type="Texture2D" uid="uid://wq2noo38d0kv" path="res://art/UI/UI assets pack 2/paper.png" id="1_jp8p7"]
+
+[node name="TaskCard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 166.0
+offset_bottom = 207.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(84.125, 104.5)
+scale = Vector2(3.42347, 3.23438)
+texture = ExtResource("1_jp8p7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -7.0
+
+[node name="GoalLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+
+[node name="GoalLabel2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Goal:"
+horizontal_alignment = 1
+
+[node name="Goal" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.254902, 0.254902, 0.254902, 1)
+theme_override_font_sizes/font_size = 13
+text = "Clean water filter"
+horizontal_alignment = 1
+
+[node name="RewardLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Reward:"
+horizontal_alignment = 1
+
+[node name="Reward" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.254902, 0.254902, 0.254902, 1)
+theme_override_font_sizes/font_size = 13
+text = "Working water filter"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Time:"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.254902, 0.254902, 0.254902, 1)
+theme_override_font_sizes/font_size = 13
+text = "5 seconds"
+horizontal_alignment = 1
