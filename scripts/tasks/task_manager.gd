@@ -52,6 +52,7 @@ const tasks = [
 
 # Once a task is completed it gets pushed in "task_completed"
 var tasks_completed = []
+var tasks_assigned = []
 var TASKS_PER_PAGE = 4
 var resource_manager = null
 
@@ -71,6 +72,15 @@ func is_task_completed(task_uid):
 func _on_gift_box_gift_box_picked_up(player_number):
 	set_task_as_done(0)
 
+func assign_task(uid): 
+	for j in range(0, len(tasks_assigned)):
+		if tasks_assigned[j].uid == uid:
+			return
+			
+	for i in range(0, len(tasks)):
+		if tasks[i].uid == uid:
+			tasks_assigned.push_back(tasks[i])
+
 func set_task_as_done(task_uid):
 	var task = tasks[task_uid]
 	
@@ -80,7 +90,13 @@ func set_task_as_done(task_uid):
 			return
 		
 	tasks_completed.push_back(task)
+	
+	for i  in range(0, len(tasks_assigned)):
+		if tasks_assigned[i].uid == task_uid:
+			tasks_assigned.remove_at(i)
+			
 	task_completed.emit(task)
+	
 	if task.reward != null:
 		give_reward_to_user(task.reward.resource, task.reward.amount)
 		
@@ -107,21 +123,15 @@ func get_tasks(page):
 		return tasks
 	else:
 		return load_tasks_page(page)
+	
+func get_tasks_assigned(page):
+	if page == -1:
+		return tasks_assigned
+	else:
+		return load_tasks_from_assigned_tasks(page)	
 		
 func load_tasks_page(page):
-	var tasks_in_page = []
-	var index_of_first_element_in_page = page * TASKS_PER_PAGE
-	
-	if index_of_first_element_in_page > len(tasks):
-		return []
-		
-	var upper_limit = min(index_of_first_element_in_page + TASKS_PER_PAGE, len(tasks))
-	
-	for i in range(index_of_first_element_in_page, upper_limit):
-		if tasks[i] != null:
-			tasks_in_page.push_back(tasks[i])	
-	
-	return tasks_in_page
+	return load_tasks_from_array(page, tasks)
 	
 func get_completed_tasks(page):
 	if page == -1:
@@ -130,17 +140,23 @@ func get_completed_tasks(page):
 		return load_tasks_from_completed_tasks(page)	
 	
 func load_tasks_from_completed_tasks(page):
+	return load_tasks_from_array(page, tasks_completed)
+	
+func load_tasks_from_assigned_tasks(page):
+	return load_tasks_from_array(page, tasks_assigned)
+	
+func load_tasks_from_array(page, array):
 	var tasks_in_page = []
 	var index_of_first_element_in_page = page * TASKS_PER_PAGE
 	
-	if index_of_first_element_in_page > len(tasks_completed):
+	if index_of_first_element_in_page > len(array):
 		return []
 		
-	var upper_limit = min(index_of_first_element_in_page + TASKS_PER_PAGE, len(tasks_completed))
+	var upper_limit = min(index_of_first_element_in_page + TASKS_PER_PAGE, len(array))
 	
 	for i in range(index_of_first_element_in_page, upper_limit):
-		if tasks_completed[i] != null:
-			tasks_in_page.push_back(tasks_completed[i])	
+		if array[i] != null:
+			tasks_in_page.push_back(array[i])	
 	
 	return tasks_in_page
 	

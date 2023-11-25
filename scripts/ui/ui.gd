@@ -152,14 +152,7 @@ func load_task_into_container(page):
 	if hbox_displaying_completed_tasks:
 		tasks = tasks_manager.get_completed_tasks(page)
 	else:
-		tasks = tasks_manager.get_tasks(page)
-		
-	if tasks.is_empty():
-		node_ref_prev_button.disabled = true
-		node_ref_next_button.disabled = true
-	else:
-		if node_ref_next_button != null:
-			node_ref_next_button.disabled = false
+		tasks = tasks_manager.get_tasks_assigned(page)
 		
 	if len(tasks) >= 1:
 		load_task_text_in_task_list($TasksContainer/Task1, tasks[0])	
