@@ -10,6 +10,9 @@ var current_status = available_states.TO_REPAIR
 @export var time_to_repair_in_seconds = 5
 @export var time_to_complete_check_batteries_task_in_seconds = 3
 
+@onready var animation_tree = $AnimationTree
+@onready var state_machine = animation_tree.get("parameters/playback")
+
 func _ready():
 	set_task_manager_ref()
 	set_house_ref()
@@ -46,6 +49,7 @@ func repair_self():
 func _on_repair_complete_callback():
 	current_status = available_states.WORKING
 	task_manager_ref.set_task_as_done(2)
+	state_machine.travel("Idle")
 
 func set_task_manager_ref():
 	task_manager_ref = get_tree().get_first_node_in_group("task_manager")
@@ -65,3 +69,6 @@ func _on_detection_area_body_exited(body):
 
 func is_player(body):
 	return body.is_in_group("players")
+	
+func break_turbine():
+	state_machine.travel("Broken")
