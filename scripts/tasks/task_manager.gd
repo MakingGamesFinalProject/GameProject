@@ -47,14 +47,6 @@ const tasks = [
 			"amount": 50,
 			"resource": "Scrap"
 		}
-	},
-	{
-		"uid": 6,
-		"name": "Recycle Trash bitch",
-		"reward": {
-			"amount": 50,
-			"resource": "Scrap"
-		}
 	}
 ]
 
@@ -63,6 +55,8 @@ var tasks_completed = []
 var tasks_assigned = []
 var TASKS_PER_PAGE = 4
 var resource_manager = null
+var current_task_uid_p1 = null
+var current_task_uid_p2 = null
 
 func _ready():
 	set_resource_manager()
@@ -89,8 +83,24 @@ func assign_task(uid):
 		if tasks[i].uid == uid:
 			tasks_assigned.push_back(tasks[i])
 			new_task_assigned.emit(tasks[i])	
-	
 
+func get_current_task(player):
+	if player == 1:
+		return current_task_uid_p1
+	else:
+		return current_task_uid_p2	
+
+func set_current_task(uid, player):
+	
+	for task in tasks_completed:
+		if task.uid == uid:
+			return
+			
+	if player == 1:
+		current_task_uid_p1 = uid
+	else:
+		current_task_uid_p2 = uid	
+	
 func set_task_as_done(task_uid):
 	var task = tasks[task_uid]
 	
