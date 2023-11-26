@@ -50,8 +50,12 @@ render_target_update_mode = 4
 
 [node name="TaskManager" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" index="9" groups=["task_manager"]]
 
+[node name="WindTurbine" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" index="12"]
+position = Vector2(800, 450)
+
 [node name="npc_1" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" instance=ExtResource("4_w8fsh")]
 position = Vector2(700, 100)
+scale = Vector2(0.52, 0.52)
 before_task_npc_dialog_id_list = [1, 2, 3]
 after_task_npc_dialog_id_list = [4, 5]
 task_id = 0
