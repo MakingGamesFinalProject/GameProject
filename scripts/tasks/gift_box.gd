@@ -13,7 +13,7 @@ func _ready():
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("players"):
 		pick_up_item(body)
-		task_manager_ref.assign_task(6)
+		task_manager_ref.assign_task(0)
 		
 
 func pick_up_item(body): 

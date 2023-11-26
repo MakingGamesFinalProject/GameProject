@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5lchgdj65ebe"]
+[gd_scene load_steps=5 format=3 uid="uid://b5lchgdj65ebe"]
 
+[ext_resource type="Script" path="res://scripts/ui/task_card_in_task_ui.gd" id="1_2gu2m"]
 [ext_resource type="Texture2D" uid="uid://dtsdpwp5x4nio" path="res://art/UI/Icons/task_background_in_board.png" id="1_42hk2"]
+[ext_resource type="Theme" uid="uid://bgqrp6oeemb5r" path="res://themes/button_in_card.tres" id="2_01ioa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1g0v6"]
 texture = ExtResource("1_42hk2")
@@ -13,6 +15,7 @@ anchor_right = 0.171
 anchor_bottom = 0.327
 offset_right = -49.208
 offset_bottom = -77.4
+script = ExtResource("1_2gu2m")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -77,3 +80,27 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.254902, 0.254902, 0.254902, 1)
 theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 28.0
+offset_top = 219.0
+offset_right = 274.0
+offset_bottom = 262.0
+theme = ExtResource("2_01ioa")
+text = "Set current P1"
+
+[node name="Button2" type="Button" parent="Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 28.0
+offset_top = 263.0
+offset_right = 274.0
+offset_bottom = 306.0
+theme = ExtResource("2_01ioa")
+text = "Set current P2"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Panel/Button" to="." method="_on_button_toggled"]
+[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_2_pressed"]

@@ -34,12 +34,6 @@ script = ExtResource("1_mykgh")
 
 [node name="UICollective" parent="." instance=ExtResource("2_7267x")]
 
-[node name="DarkBackgroundForPause" parent="UICollective" index="1"]
-visible = false
-
-[node name="Sprite2D" parent="UICollective" index="2"]
-visible = false
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_right = 2052.0
 offset_bottom = 1200.0

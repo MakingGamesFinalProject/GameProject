@@ -25,10 +25,13 @@ func check_for_ui_toggle():
 		var parent = self.get_parent()
 		var audio_player = parent.get_node("ToggleSound")
 		self.set_visible(!self.visible)
+		var current_task_ui = parent.get_node("CurrentTaskUI")
 		if self.visible:
+			current_task_ui.set_visible(false)
 			audio_player.stream = sound_when_toggled_off
 			audio_player.play()
 		else:
+			current_task_ui.set_visible(true)
 			audio_player.stream = sound_when_toggled_on
 			audio_player.play()
 		var canvas_layer = self.get_parent()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://527ad036ui2s"]
+[gd_scene load_steps=12 format=3 uid="uid://527ad036ui2s"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_collective.gd" id="1_cg5x8"]
 [ext_resource type="Texture2D" uid="uid://blp024obmiwvf" path="res://art/UI/Icons/Water.png" id="1_hjqww"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cyliaw4em6xeo" path="res://art/UI/Icons/task_board_background.png" id="7_fhnw8"]
 [ext_resource type="Script" path="res://scripts/ui/tasks_container_ui.gd" id="9_2onv1"]
 [ext_resource type="PackedScene" uid="uid://b5lchgdj65ebe" path="res://scenes/ui/task_card_in_task_ui.tscn" id="9_qihdu"]
+[ext_resource type="Texture2D" uid="uid://cduvflniyj4vo" path="res://art/current_task_p1.png" id="10_b82fu"]
+[ext_resource type="Texture2D" uid="uid://g308pauuckrg" path="res://art/current_tasl_p2.png" id="11_t2k6a"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_cg5x8")
@@ -97,6 +99,7 @@ text = "999"
 horizontal_alignment = 1
 
 [node name="DarkBackgroundForPause" type="Panel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -106,6 +109,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(1027.62, 664.5)
 scale = Vector2(1.12929, 1.04949)
@@ -168,3 +172,40 @@ size_flags_horizontal = 2
 
 [node name="ToggleSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
+
+[node name="CurrentTaskUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -327.0
+offset_right = 64.0
+offset_bottom = -287.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="CurrentTaskP1" type="Sprite2D" parent="CurrentTaskUI"]
+position = Vector2(-140, -2)
+texture = ExtResource("10_b82fu")
+
+[node name="Label" type="Label" parent="CurrentTaskUI/CurrentTaskP1" groups=["current_task_ui"]]
+offset_left = -52.0
+offset_top = -30.0
+offset_right = 110.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="CurrentTaskP2" type="Sprite2D" parent="CurrentTaskUI"]
+position = Vector2(112, 0)
+texture = ExtResource("11_t2k6a")
+
+[node name="Label" type="Label" parent="CurrentTaskUI/CurrentTaskP2" groups=["current_task_ui"]]
+offset_left = -66.0
+offset_top = -32.0
+offset_right = 108.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)

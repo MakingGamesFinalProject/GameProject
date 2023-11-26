@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_yom7a"]
 
 [node name="CanvasLayer2" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_yom7a")
 
 [node name="Notification" type="Label" parent="."]
