@@ -2,8 +2,8 @@ extends Sprite2D
 
 var tasks_manager = null
 var task_container_player = null 
-var sound_when_toggled_on = preload("res://sounds/UI Soundpack/OGG/Wood Block1.ogg")
-var sound_when_toggled_off = preload("res://sounds/UI Soundpack/OGG/Wood Block2.ogg")
+var sound_when_toggled_on = preload("res://sounds/UI Soundpack/MP3/Wood Block1.mp3")
+var sound_when_toggled_off = preload("res://sounds/UI Soundpack/MP3/Wood Block2.mp3")
 
 func _ready():
 	var tree = get_tree()
@@ -13,7 +13,6 @@ func _ready():
 	assert(task_container_player != null, "Task container reference not found")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	load_assigned_tasks()
-	
 	
 func _process(delta):
 	check_for_ui_toggle()	
