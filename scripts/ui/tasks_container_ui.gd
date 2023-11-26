@@ -11,22 +11,25 @@ func _ready():
 	task_container_player = tree.get_first_node_in_group("ui_task_player")
 	assert(tasks_manager != null, "Task manager not found")
 	assert(task_container_player != null, "Task container reference not found")
+	load_assigned_tasks()
 	
 func _on_player_toggle_task_list(is_player_with_keyboard):
+	load_assigned_tasks()
+	
+func load_assigned_tasks():
 	tasks_manager.assign_task(0)
 	tasks_manager.assign_task(1)
 	tasks_manager.assign_task(2)
 	tasks_manager.assign_task(3)
 	tasks_manager.assign_task(4)
 	var tasks_assigned = tasks_manager.get_tasks_assigned(-1)
-	print(tasks_assigned)
 	self.set_visible(!self.visible)
 	
 	for i in range(0, len(tasks_assigned)):
 		if tasks_assigned[i] != null:
 			var task_card = get_task_card(i)
 			if task_card != null:
-				update_task_card_ui(task_card, tasks_assigned[i])
+				update_task_card_ui(task_card, tasks_assigned[i])	
 	
 func get_task_card(index):
 	var task_card_path = $Control/GridContainer
@@ -38,7 +41,6 @@ func get_task_card(index):
 
 func update_task_card_ui(task_card, task):
 	var vbox_container = task_card.get_node("Panel/VBoxContainer")
-	
 	vbox_container.get_node("GoalLabel").text = "Goal"
 	vbox_container.get_node("Goal").text = task.name
 	
