@@ -1,8 +1,6 @@
 extends Sprite2D
 
 var tasks_manager = null
-
-# nodes references
 var task_container_player = null 
 
 func _ready():
@@ -14,16 +12,11 @@ func _ready():
 	load_assigned_tasks()
 	
 func _on_player_toggle_task_list(is_player_with_keyboard):
+	self.set_visible(!self.visible)
 	load_assigned_tasks()
 	
 func load_assigned_tasks():
-	tasks_manager.assign_task(0)
-	tasks_manager.assign_task(1)
-	tasks_manager.assign_task(2)
-	tasks_manager.assign_task(3)
-	tasks_manager.assign_task(4)
 	var tasks_assigned = tasks_manager.get_tasks_assigned(-1)
-	self.set_visible(!self.visible)
 	
 	for i in range(0, len(tasks_assigned)):
 		if tasks_assigned[i] != null:
@@ -49,3 +42,7 @@ func update_task_card_ui(task_card, task):
 		var format_string = "%d %s"
 		var actual_string = format_string % [task.reward.amount, task.reward.resource]
 		vbox_container.get_node("Reward").text = actual_string
+
+
+func _on_task_manager_new_task_assigned(task):
+	load_assigned_tasks()

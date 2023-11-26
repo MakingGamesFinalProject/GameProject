@@ -1,7 +1,7 @@
 extends Node
 
 signal task_completed(task)
-
+signal new_task_assigned(task)
 # Complete array of all the tasks in our game, it doesn't get modified
 # The uid reflects the index of the task, this makes more easy to identify tasks
 # uid stands for "Unique id"
@@ -47,6 +47,14 @@ const tasks = [
 			"amount": 50,
 			"resource": "Scrap"
 		}
+	},
+	{
+		"uid": 6,
+		"name": "Recycle Trash bitch",
+		"reward": {
+			"amount": 50,
+			"resource": "Scrap"
+		}
 	}
 ]
 
@@ -80,6 +88,8 @@ func assign_task(uid):
 	for i in range(0, len(tasks)):
 		if tasks[i].uid == uid:
 			tasks_assigned.push_back(tasks[i])
+			new_task_assigned.emit(tasks[i])	
+	
 
 func set_task_as_done(task_uid):
 	var task = tasks[task_uid]
