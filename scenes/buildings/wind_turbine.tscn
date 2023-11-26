@@ -1,26 +1,108 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpd5wv5dgxixr"]
+[gd_scene load_steps=15 format=3 uid="uid://bpd5wv5dgxixr"]
 
 [ext_resource type="Script" path="res://scripts/Buildings/wind_turbine.gd" id="1_85lcb"]
+[ext_resource type="Texture2D" uid="uid://cev8437rwhwsf" path="res://art/World/Player Map/Buildings/Wind Turbine Base.png" id="2_3byw1"]
+[ext_resource type="Texture2D" uid="uid://dlgeslbxkcxi5" path="res://art/World/Player Map/Buildings/Wind Turbine Helix.png" id="3_q54hx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k2kpd"]
-radius = 13.0
+radius = 66.9082
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o64sd"]
-radius = 15.0
+radius = 20.7231
+
+[sub_resource type="Animation" id="Animation_ufmfa"]
+resource_name = "Idle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Helix:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_i0jik"]
+resource_name = "Broken"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Helix:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(0.112657, 0.285262, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.0872665]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i7auq"]
+_data = {
+"Broken": SubResource("Animation_i0jik"),
+"Idle": SubResource("Animation_ufmfa")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0vemm"]
+animation = &"Broken"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1s4jw"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_blpt4"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_06lbo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8vb34"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_klxyy"]
+states/Broken/node = SubResource("AnimationNodeAnimation_0vemm")
+states/Broken/position = Vector2(633, 89)
+states/Idle/node = SubResource("AnimationNodeAnimation_1s4jw")
+states/Idle/position = Vector2(426, 89)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_blpt4"), "Idle", "Broken", SubResource("AnimationNodeStateMachineTransition_06lbo"), "Broken", "Idle", SubResource("AnimationNodeStateMachineTransition_8vb34")]
 
 [node name="WindTurbine" type="CharacterBody2D"]
+position = Vector2(-1, -598)
 script = ExtResource("1_85lcb")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 scale = Vector2(1.48, 1.35271)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0.675676, 442.076)
 shape = SubResource("CircleShape2D_k2kpd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_3byw1")
+
+[node name="Helix" type="Sprite2D" parent="."]
+position = Vector2(2, -630)
+rotation = 1.15955
+texture = ExtResource("3_q54hx")
+offset = Vector2(0, -165)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 598)
+scale = Vector2(2.8, 2.56)
 shape = SubResource("CircleShape2D_o64sd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i7auq")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_klxyy")
+anim_player = NodePath("../AnimationPlayer")
+active = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
