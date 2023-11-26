@@ -9,14 +9,23 @@ func _ready():
 	task_container_player = tree.get_first_node_in_group("ui_task_player")
 	assert(tasks_manager != null, "Task manager not found")
 	assert(task_container_player != null, "Task container reference not found")
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	load_assigned_tasks()
 	
-func _on_player_toggle_task_list(is_player_with_keyboard):
-	self.set_visible(!self.visible)
-	var canvas_layer = self.get_parent()
-	var dark_background = canvas_layer.get_node("DarkBackgroundForPause")
-	dark_background.set_visible(!dark_background.visible)
-	load_assigned_tasks()
+	
+func _process(delta):
+	check_for_ui_toggle()	
+	
+func check_for_ui_toggle():
+	var toggle_button_pressed_p1 = Input.is_action_just_pressed("toggle_task_list_p1")
+	var toggle_button_pressed_p2 = Input.is_action_just_pressed("toggle_task_list_p2")
+	if toggle_button_pressed_p1 || toggle_button_pressed_p2:
+		get_tree().paused = !get_tree().paused
+		self.set_visible(!self.visible)
+		var canvas_layer = self.get_parent()
+		var dark_background = canvas_layer.get_node("DarkBackgroundForPause")
+		dark_background.set_visible(!dark_background.visible)
+		load_assigned_tasks()
 	
 func load_assigned_tasks():
 	var tasks_assigned = tasks_manager.get_tasks_assigned(-1)
