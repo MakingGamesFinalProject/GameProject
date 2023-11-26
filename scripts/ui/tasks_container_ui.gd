@@ -13,6 +13,9 @@ func _ready():
 	
 func _on_player_toggle_task_list(is_player_with_keyboard):
 	self.set_visible(!self.visible)
+	var canvas_layer = self.get_parent()
+	var dark_background = canvas_layer.get_node("DarkBackgroundForPause")
+	dark_background.set_visible(!dark_background.visible)
 	load_assigned_tasks()
 	
 func load_assigned_tasks():

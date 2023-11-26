@@ -96,6 +96,15 @@ theme_override_fonts/font = ExtResource("3_t2x3q")
 text = "999"
 horizontal_alignment = 1
 
+[node name="DarkBackgroundForPause" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1027.62, 664.5)
