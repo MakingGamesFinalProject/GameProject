@@ -112,11 +112,16 @@ offset_right = -942.413
 offset_bottom = -657.327
 
 [node name="GridContainer" type="GridContainer" parent="Sprite2D/Control" groups=["ui_task_player"]]
-layout_mode = 0
-offset_left = 291.47
-offset_top = 369.338
-offset_right = 1724.47
-offset_bottom = 1107.34
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.102
+anchor_top = 6.233
+anchor_right = 44.739
+anchor_bottom = 28.467
+offset_left = 126.92
+offset_top = 102.68
+offset_right = -65.5601
+offset_bottom = -57.68
 theme_override_constants/v_separation = 370
 columns = 4
 

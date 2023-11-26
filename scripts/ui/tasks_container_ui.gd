@@ -18,12 +18,9 @@ func _on_player_toggle_task_list(is_player_with_keyboard):
 	tasks_manager.assign_task(2)
 	tasks_manager.assign_task(3)
 	tasks_manager.assign_task(4)
-	tasks_manager.assign_task(5)
-	tasks_manager.assign_task(6)
-	tasks_manager.assign_task(7)
 	var tasks_assigned = tasks_manager.get_tasks_assigned(-1)
 	print(tasks_assigned)
-	task_container_player.set_visible(!task_container_player.visible)
+	self.set_visible(!self.visible)
 	
 	for i in range(0, len(tasks_assigned)):
 		if tasks_assigned[i] != null:
