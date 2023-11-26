@@ -2,6 +2,8 @@ extends Sprite2D
 
 var tasks_manager = null
 var task_container_player = null 
+var sound_when_toggled_on = preload("res://sounds/UI Soundpack/OGG/Wood Block1.ogg")
+var sound_when_toggled_off = preload("res://sounds/UI Soundpack/OGG/Wood Block2.ogg")
 
 func _ready():
 	var tree = get_tree()
@@ -21,7 +23,15 @@ func check_for_ui_toggle():
 	var toggle_button_pressed_p2 = Input.is_action_just_pressed("toggle_task_list_p2")
 	if toggle_button_pressed_p1 || toggle_button_pressed_p2:
 		get_tree().paused = !get_tree().paused
+		var parent = self.get_parent()
+		var audio_player = parent.get_node("ToggleSound")
 		self.set_visible(!self.visible)
+		if self.visible:
+			audio_player.stream = sound_when_toggled_off
+			audio_player.play()
+		else:
+			audio_player.stream = sound_when_toggled_on
+			audio_player.play()
 		var canvas_layer = self.get_parent()
 		var dark_background = canvas_layer.get_node("DarkBackgroundForPause")
 		dark_background.set_visible(!dark_background.visible)

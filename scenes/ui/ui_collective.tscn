@@ -165,3 +165,6 @@ size_flags_horizontal = 2
 [node name="TaskCard7" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
 layout_mode = 2
 size_flags_horizontal = 2
+
+[node name="ToggleSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
