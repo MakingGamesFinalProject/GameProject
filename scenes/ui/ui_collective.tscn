@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://527ad036ui2s"]
+[gd_scene load_steps=10 format=3 uid="uid://527ad036ui2s"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_collective.gd" id="1_cg5x8"]
 [ext_resource type="Texture2D" uid="uid://blp024obmiwvf" path="res://art/UI/Icons/Water.png" id="1_hjqww"]
@@ -6,8 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nt0nsbsft1jf" path="res://art/Background_placeholder.png" id="2_5htf3"]
 [ext_resource type="Texture2D" uid="uid://cnhmfdvt1vkex" path="res://art/UI/Icons/Recycled Scraps.png" id="3_7rj4l"]
 [ext_resource type="FontFile" uid="uid://bddofndbk3yi" path="res://art/UI/fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="3_t2x3q"]
-[ext_resource type="Texture2D" uid="uid://b1hgi2joamsrt" path="res://art/UI/Icons/background_rectangle_grey.png" id="7_dduma"]
-[ext_resource type="Texture2D" uid="uid://7g06i5lwie2u" path="res://art/UI/Icons/black_line_separation.png" id="8_n1ipv"]
+[ext_resource type="Texture2D" uid="uid://cyliaw4em6xeo" path="res://art/UI/Icons/task_board_background.png" id="7_fhnw8"]
 [ext_resource type="Script" path="res://scripts/ui/tasks_container_ui.gd" id="9_2onv1"]
 [ext_resource type="PackedScene" uid="uid://b5lchgdj65ebe" path="res://scenes/ui/task_card_in_task_ui.tscn" id="9_qihdu"]
 
@@ -97,121 +96,58 @@ theme_override_fonts/font = ExtResource("3_t2x3q")
 text = "999"
 horizontal_alignment = 1
 
-[node name="SelectedTask" type="Sprite2D" parent="."]
-position = Vector2(1075, 259.75)
-scale = Vector2(1.17998, 0.974)
-texture = ExtResource("7_dduma")
-
-[node name="BlackLine" type="Sprite2D" parent="SelectedTask"]
-position = Vector2(-435.435, -4.8768)
-scale = Vector2(1.50104, 1)
-texture = ExtResource("8_n1ipv")
-
-[node name="BlackLine2" type="Sprite2D" parent="SelectedTask"]
-position = Vector2(446.446, -5.90347)
-scale = Vector2(1.50104, 1)
-texture = ExtResource("8_n1ipv")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SelectedTask"]
-anchors_preset = -1
-anchor_left = 0.138
-anchor_right = 0.806
-anchor_bottom = 0.921
-offset_left = -569.182
-offset_top = -35.0
-offset_right = -567.034
-offset_bottom = -70.021
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 100
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SelectedTask/HBoxContainer"]
-layout_mode = 2
-
-[node name="GoalLabel" type="Label" parent="SelectedTask/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 5
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Goal:
-"
-horizontal_alignment = 1
-
-[node name="GoalDescriptionLabel" type="Label" parent="SelectedTask/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 5
-theme_override_colors/font_color = Color(0.207843, 0.207843, 0.207843, 1)
-text = "Clean water filter"
-horizontal_alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="SelectedTask/HBoxContainer"]
-layout_mode = 2
-
-[node name="RewardLabel" type="Label" parent="SelectedTask/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 5
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Reward:"
-horizontal_alignment = 1
-
-[node name="RewardDescriptionLabel" type="Label" parent="SelectedTask/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 5
-theme_override_colors/font_color = Color(0.207843, 0.207843, 0.207843, 1)
-text = "Working water filter"
-horizontal_alignment = 1
-
-[node name="TasksContainer" type="VBoxContainer" parent="." groups=["ui_task_player"]]
-anchors_preset = -1
-anchor_top = 0.307
-anchor_right = 1.0
-anchor_bottom = 0.974
-offset_left = 406.0
-offset_top = -0.400013
-offset_right = -314.0
-offset_bottom = 0.199956
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1027.62, 664.5)
+scale = Vector2(1.12929, 1.04949)
+texture = ExtResource("7_fhnw8")
 script = ExtResource("9_2onv1")
 
-[node name="TasksFirstLine" type="HBoxContainer" parent="TasksContainer"]
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_constants/separation = -500
+[node name="Control" type="Control" parent="Sprite2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -982.413
+offset_top = -697.327
+offset_right = -942.413
+offset_bottom = -657.327
 
-[node name="TaskCard" parent="TasksContainer/TasksFirstLine" instance=ExtResource("9_qihdu")]
-layout_mode = 2
-size_flags_horizontal = 2
+[node name="GridContainer" type="GridContainer" parent="Sprite2D/Control" groups=["ui_task_player"]]
+layout_mode = 0
+offset_left = 291.47
+offset_top = 369.338
+offset_right = 1724.47
+offset_bottom = 1107.34
+theme_override_constants/v_separation = 370
+columns = 4
 
-[node name="TaskCard2" parent="TasksContainer/TasksFirstLine" instance=ExtResource("9_qihdu")]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="TaskCard3" parent="TasksContainer/TasksFirstLine" instance=ExtResource("9_qihdu")]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="TasksSecondLine" type="HBoxContainer" parent="TasksContainer"]
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_constants/separation = -757
-
-[node name="TaskCard" parent="TasksContainer/TasksSecondLine" instance=ExtResource("9_qihdu")]
+[node name="TaskCard" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="TaskCard2" parent="TasksContainer/TasksSecondLine" instance=ExtResource("9_qihdu")]
+[node name="TaskCard1" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="TasksThirdLine" type="HBoxContainer" parent="TasksContainer"]
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_constants/separation = -757
-
-[node name="TaskCard" parent="TasksContainer/TasksThirdLine" instance=ExtResource("9_qihdu")]
+[node name="TaskCard2" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="TaskCard2" parent="TasksContainer/TasksThirdLine" instance=ExtResource("9_qihdu")]
+[node name="TaskCard3" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard4" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard5" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard6" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard7" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
 layout_mode = 2
 size_flags_horizontal = 2

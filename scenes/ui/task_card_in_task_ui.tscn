@@ -1,73 +1,80 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5lchgdj65ebe"]
+[gd_scene load_steps=3 format=3 uid="uid://b5lchgdj65ebe"]
 
-[ext_resource type="Texture2D" uid="uid://wq2noo38d0kv" path="res://art/UI/UI assets pack 2/paper.png" id="1_jp8p7"]
+[ext_resource type="Texture2D" uid="uid://dtsdpwp5x4nio" path="res://art/UI/Icons/task_background_in_board.png" id="1_42hk2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1g0v6"]
+texture = ExtResource("1_42hk2")
+expand_margin_left = 13.0
+region_rect = Rect2(99, 151, 358, 399)
 
 [node name="TaskCard" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 166.0
-offset_bottom = 207.0
+anchor_right = 0.171
+anchor_bottom = 0.327
+offset_right = -49.208
+offset_bottom = -77.4
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(84.125, 104.5)
-scale = Vector2(3.42347, 3.23438)
-texture = ExtResource("1_jp8p7")
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 310.0
+offset_bottom = 315.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1g0v6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = 9.0
-offset_right = -9.0
-offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="GoalLabel" type="Label" parent="VBoxContainer"]
+[node name="WhiteSpace5" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
 
-[node name="GoalLabel2" type="Label" parent="VBoxContainer"]
+[node name="GoalLabel" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
-text = "Goal:"
+theme_override_font_sizes/font_size = 17
+text = "Goal"
 horizontal_alignment = 1
 
-[node name="Goal" type="Label" parent="VBoxContainer"]
+[node name="Goal" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.254902, 0.254902, 0.254902, 1)
-theme_override_font_sizes/font_size = 13
-text = "Clean water filter"
+theme_override_font_sizes/font_size = 17
+text = "clean water filter"
 horizontal_alignment = 1
 
-[node name="RewardLabel" type="Label" parent="VBoxContainer"]
+[node name="WhiteSpace2" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
-text = "Reward:"
+theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
 
-[node name="Reward" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.254902, 0.254902, 0.254902, 1)
-theme_override_font_sizes/font_size = 13
-text = "Working water filter"
-horizontal_alignment = 1
-
-[node name="TimeLabel" type="Label" parent="VBoxContainer"]
+[node name="RewardLabel" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
-text = "Time:"
+theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
 
-[node name="Time" type="Label" parent="VBoxContainer"]
+[node name="Reward" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.254902, 0.254902, 0.254902, 1)
-theme_override_font_sizes/font_size = 13
-text = "5 seconds"
+theme_override_font_sizes/font_size = 17
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.254902, 0.254902, 0.254902, 1)
+theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
