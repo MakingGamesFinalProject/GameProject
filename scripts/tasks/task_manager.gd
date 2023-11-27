@@ -55,8 +55,8 @@ var tasks_completed = []
 var tasks_assigned = []
 var TASKS_PER_PAGE = 4
 var resource_manager = null
-var current_task_uid_p1 = null
-var current_task_uid_p2 = null
+var current_task_uid_p1 = -1
+var current_task_uid_p2 = -1
 
 func _ready():
 	set_resource_manager()
@@ -98,9 +98,12 @@ func get_task_by_name(name):
 	assert(false, "task not found with this name")
 
 func set_current_task(uid, player):
-	if player == 1:
+	if is_task_completed(uid):
+		print("task is completed")
+		return;
+	if player == 1 && current_task_uid_p1 != uid:
 		current_task_uid_p1 = uid
-	else:
+	elif player == 2 && current_task_uid_p2 != uid:
 		current_task_uid_p2 = uid	
 	
 func set_task_as_done(task_uid):

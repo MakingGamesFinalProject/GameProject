@@ -19,9 +19,9 @@ func _on_area_2d_body_entered(body):
 func pick_up_item(body): 
 	var is_player_with_keyboard = body.get("is_player_with_keyboard")
 	# Player 2 is playing with the keyboard
-	if is_player_with_keyboard:
-		gift_box_picked_up.emit	(2)
-	else:
-		gift_box_picked_up.emit(1)	
+	#if is_player_with_keyboard:
+	#	gift_box_picked_up.emit	(2)
+	#else:
+	#	gift_box_picked_up.emit(1)	
 	was_picked_up = true
 	self.hide()
