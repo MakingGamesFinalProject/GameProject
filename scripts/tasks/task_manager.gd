@@ -95,17 +95,24 @@ func get_task_by_name(name):
 		var task = tasks[i]
 		if task.name == name:
 			return task
-	assert(false, "task not found with this name")
+	return null
 
 func set_current_task(uid, player):
 	if is_task_completed(uid):
 		print("task is completed")
 		return;
-	if player == 1 && current_task_uid_p1 != uid:
-		current_task_uid_p1 = uid
-	elif player == 2 && current_task_uid_p2 != uid:
-		current_task_uid_p2 = uid	
 	
+	if player == 1:
+		if current_task_uid_p1 != uid:
+			current_task_uid_p1 = uid
+		else:
+			current_task_uid_p1 = -1
+	elif player == 2:
+		if current_task_uid_p2 != uid:
+			current_task_uid_p2 = uid	
+		else:
+			current_task_uid_p2 = -1	
+
 func set_task_as_done(task_uid):
 	var task = tasks[task_uid]
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://527ad036ui2s"]
+[gd_scene load_steps=14 format=3 uid="uid://527ad036ui2s"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_collective.gd" id="1_cg5x8"]
 [ext_resource type="Texture2D" uid="uid://blp024obmiwvf" path="res://art/UI/Icons/Water.png" id="1_hjqww"]
@@ -10,7 +10,9 @@
 [ext_resource type="Script" path="res://scripts/ui/tasks_container_ui.gd" id="9_2onv1"]
 [ext_resource type="PackedScene" uid="uid://b5lchgdj65ebe" path="res://scenes/ui/task_card_in_task_ui.tscn" id="9_qihdu"]
 [ext_resource type="Texture2D" uid="uid://cduvflniyj4vo" path="res://art/current_task_p1.png" id="10_b82fu"]
+[ext_resource type="Texture2D" uid="uid://dtsdpwp5x4nio" path="res://art/UI/Icons/task_background_in_board.png" id="10_kgi4o"]
 [ext_resource type="Texture2D" uid="uid://g308pauuckrg" path="res://art/current_tasl_p2.png" id="11_t2k6a"]
+[ext_resource type="Texture2D" uid="uid://dav3paq80swpy" path="res://art/UI/Icons/y-filled-yellow.png" id="13_8psqw"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_cg5x8")
@@ -170,6 +172,28 @@ size_flags_horizontal = 2
 layout_mode = 2
 size_flags_horizontal = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-782.617, -369.082)
+rotation = -0.560085
+scale = Vector2(0.424553, 0.487599)
+texture = ExtResource("10_kgi4o")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D"]
+offset_left = -171.0
+offset_top = -144.0
+offset_right = 178.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
+text = "T/     to exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
+position = Vector2(-36.4667, 57.1584)
+scale = Vector2(1.57471, 1.61115)
+texture = ExtResource("13_8psqw")
+
 [node name="ToggleSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 
@@ -189,7 +213,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 
 [node name="CurrentTaskP1" type="Sprite2D" parent="CurrentTaskUI"]
-position = Vector2(-140, -2)
+position = Vector2(-134.5, -2)
 texture = ExtResource("10_b82fu")
 
 [node name="Label" type="Label" parent="CurrentTaskUI/CurrentTaskP1" groups=["current_task_ui"]]
@@ -200,7 +224,7 @@ offset_bottom = 18.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="CurrentTaskP2" type="Sprite2D" parent="CurrentTaskUI"]
-position = Vector2(112, 0)
+position = Vector2(119.5, 0)
 texture = ExtResource("11_t2k6a")
 
 [node name="Label" type="Label" parent="CurrentTaskUI/CurrentTaskP2" groups=["current_task_ui"]]
@@ -209,3 +233,8 @@ offset_top = -32.0
 offset_right = 108.0
 offset_bottom = 19.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="CurrentTaskUI/CurrentTaskP2"]
+position = Vector2(-30.5, 32.5)
+scale = Vector2(0.329197, 0.293623)
+texture = ExtResource("13_8psqw")
