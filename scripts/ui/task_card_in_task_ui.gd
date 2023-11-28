@@ -4,6 +4,8 @@ var task_manager = null
 var assign_task_p1_button_ref = null
 var assign_task_p2_button_ref = null
 var goal_text_ref = null
+var task_name = ""
+@export var task_completed = false
 
 func _ready():
 	task_manager = get_tree().get_first_node_in_group("task_manager")
@@ -19,6 +21,16 @@ func _process(delta):
 	if !goal_text_ref.text.is_empty():
 		assign_task_p1_button_ref.set_visible(true)
 		assign_task_p2_button_ref.set_visible(true)
+	if !task_completed:
+		disable_buttons_if_task_is_completed()
+		
+func disable_buttons_if_task_is_completed():
+	var task = task_manager.get_task_by_name(task_name)
+	if task != null && task_manager.is_task_completed(task.uid):
+		task_completed = true
+		assign_task_p1_button_ref.set_disabled(true)
+		assign_task_p2_button_ref.set_disabled(true)
+		$Panel/CompletedSprite.set_visible(true)
 
 #Set this task active for player 1
 func _on_button_pressed():

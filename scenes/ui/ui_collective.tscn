@@ -173,9 +173,9 @@ layout_mode = 2
 size_flags_horizontal = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-732.127, -358.896)
+position = Vector2(-782.617, -369.082)
 rotation = -0.560085
-scale = Vector2(0.559928, 0.60677)
+scale = Vector2(0.424553, 0.487599)
 texture = ExtResource("10_kgi4o")
 
 [node name="Label" type="Label" parent="Sprite2D/Sprite2D"]
