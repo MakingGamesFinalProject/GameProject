@@ -95,7 +95,7 @@ func get_task_by_name(name):
 		var task = tasks[i]
 		if task.name == name:
 			return task
-	assert(false, "task not found with this name")
+	return null
 
 func set_current_task(uid, player):
 	if is_task_completed(uid):
