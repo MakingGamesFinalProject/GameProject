@@ -13,7 +13,7 @@ size = Vector2(269, 285)
 [sub_resource type="CircleShape2D" id="CircleShape2D_fq0na"]
 radius = 201.887
 
-[node name="BuildingPlot" type="StaticBody2D"]
+[node name="BuildingPlot" type="StaticBody2D" groups=["buildings"]]
 script = ExtResource("1_2f0q8")
 
 [node name="SimpleHouse" type="Sprite2D" parent="."]
