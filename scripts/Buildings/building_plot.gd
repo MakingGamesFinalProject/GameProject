@@ -12,6 +12,8 @@ var player1_is_close := false
 var player2_is_close := false
 var can_be_build := false
 
+var has_been_built := false
+
 func _ready():
 	$Collider.disabled = true
 
@@ -64,6 +66,7 @@ func building_play_sounds():
 	$Building.play()
 	await($Building.finished)
 	$Built.play()
+	has_been_built = true
 
 func sufficient_resources():
 	if ResourceManager.water >= 50 and ResourceManager.scraps >= 50:
