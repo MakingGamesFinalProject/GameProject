@@ -57,6 +57,7 @@ func get_task_card(index):
 	return task_card_path
 
 func update_task_card_ui(task_card, task):
+	task_card.task_name = task.name
 	var vbox_container = task_card.get_node("Panel/VBoxContainer")
 	vbox_container.get_node("GoalLabel").text = "Goal"
 	vbox_container.get_node("Goal").text = task.name
