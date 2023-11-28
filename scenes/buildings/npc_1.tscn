@@ -61,8 +61,8 @@ transitions = ["Start", "Idle_Huggy", SubResource("AnimationNodeStateMachineTran
 script = ExtResource("1_e57kj")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.8147e-06)
-scale = Vector2(1.84, 1.8)
+position = Vector2(0, -100)
+scale = Vector2(5.62379, 5.91423)
 shape = SubResource("CapsuleShape2D_68akm")
 
 [node name="PlayerDetector" type="Area2D" parent="Collider"]
@@ -73,12 +73,17 @@ position = Vector2(-45.5556, -1.5748)
 scale = Vector2(2.25787, 2.09781)
 shape = SubResource("CapsuleShape2D_kryr2")
 
-[node name="InteractibleButtonHelper" type="Sprite2D" parent="."]
-position = Vector2(0, -54)
-scale = Vector2(0.599999, 0.640001)
+[node name="Huggy" type="Sprite2D" parent="."]
+texture = ExtResource("3_obavs")
+offset = Vector2(0, -150)
+hframes = 8
+
+[node name="InteractibleButtonHelper" type="Sprite2D" parent="Huggy"]
+position = Vector2(0, -300)
+scale = Vector2(3.01079, 2.94478)
 texture = ExtResource("3_j7vtb")
 
-[node name="Label" type="Label" parent="InteractibleButtonHelper"]
+[node name="Label" type="Label" parent="Huggy/InteractibleButtonHelper"]
 offset_left = -3.24324
 offset_top = -7.11111
 offset_right = 12.7568
@@ -86,12 +91,6 @@ offset_bottom = 18.8889
 theme_override_font_sizes/font_size = 10
 text = "F"
 metadata/_edit_use_anchors_ = true
-
-[node name="Huggy" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_obavs")
-offset = Vector2(0, -50)
-hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
