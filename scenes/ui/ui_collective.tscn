@@ -189,7 +189,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 
 [node name="CurrentTaskP1" type="Sprite2D" parent="CurrentTaskUI"]
-position = Vector2(-140, -2)
+position = Vector2(-134.5, -2)
 texture = ExtResource("10_b82fu")
 
 [node name="Label" type="Label" parent="CurrentTaskUI/CurrentTaskP1" groups=["current_task_ui"]]
@@ -200,7 +200,7 @@ offset_bottom = 18.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="CurrentTaskP2" type="Sprite2D" parent="CurrentTaskUI"]
-position = Vector2(112, 0)
+position = Vector2(119.5, 0)
 texture = ExtResource("11_t2k6a")
 
 [node name="Label" type="Label" parent="CurrentTaskUI/CurrentTaskP2" groups=["current_task_ui"]]
