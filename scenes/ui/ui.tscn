@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn2i24cv0uvan"]
+[gd_scene load_steps=2 format=3 uid="uid://bn2i24cv0uvan"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_yom7a"]
-[ext_resource type="PackedScene" uid="uid://duqeeo7dq883h" path="res://scenes/ui/task_in_list.tscn" id="2_3sk82"]
-[ext_resource type="Theme" uid="uid://crj2v52b21qon" path="res://themes/button_task_in_list.tres" id="2_4aadk"]
-[ext_resource type="Script" path="res://scripts/ui/pagination_container_task_list.gd" id="4_ipbo8"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer2" type="CanvasLayer"]
 script = ExtResource("1_yom7a")
 
 [node name="Notification" type="Label" parent="."]
@@ -13,62 +10,3 @@ offset_left = 12.0
 offset_top = 9.0
 offset_right = 239.0
 offset_bottom = 68.0
-
-[node name="TasksContainer" type="VBoxContainer" parent="." groups=["ui_task_player"]]
-offset_left = 520.0
-offset_top = 703.0
-offset_right = 992.0
-offset_bottom = 1248.0
-scale = Vector2(1, 0.85)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("4_ipbo8")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TasksContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="LoadTasksButton" type="Button" parent="TasksContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_4aadk")
-theme_override_font_sizes/font_size = 24
-text = "Tasks"
-
-[node name="LoadCompletedTasksButton" type="Button" parent="TasksContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_4aadk")
-theme_override_font_sizes/font_size = 24
-text = "Completed tasks"
-
-[node name="Task1" parent="TasksContainer" instance=ExtResource("2_3sk82")]
-layout_mode = 2
-
-[node name="Task2" parent="TasksContainer" instance=ExtResource("2_3sk82")]
-layout_mode = 2
-
-[node name="Task3" parent="TasksContainer" instance=ExtResource("2_3sk82")]
-layout_mode = 2
-
-[node name="Task4" parent="TasksContainer" instance=ExtResource("2_3sk82")]
-layout_mode = 2
-
-[node name="PaginationContainer" type="HBoxContainer" parent="TasksContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Previous" parent="TasksContainer/PaginationContainer" instance=ExtResource("2_3sk82")]
-layout_mode = 2
-text = "Previous
-"
-
-[node name="Next" parent="TasksContainer/PaginationContainer" instance=ExtResource("2_3sk82")]
-layout_mode = 2
-text = "Next
-"
-
-[connection signal="pressed" from="TasksContainer/HBoxContainer/LoadTasksButton" to="." method="_on_load_tasks_button_pressed"]
-[connection signal="pressed" from="TasksContainer/HBoxContainer/LoadCompletedTasksButton" to="." method="_on_load_completed_tasks_button_pressed"]
-[connection signal="pressed" from="TasksContainer/PaginationContainer/Previous" to="." method="_on_previous_pressed"]
-[connection signal="pressed" from="TasksContainer/PaginationContainer/Next" to="." method="_on_next_pressed"]

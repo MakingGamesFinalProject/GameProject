@@ -1,7 +1,7 @@
 extends Node
 
 signal task_completed(task)
-
+signal new_task_assigned(task)
 # Complete array of all the tasks in our game, it doesn't get modified
 # The uid reflects the index of the task, this makes more easy to identify tasks
 # uid stands for "Unique id"
@@ -55,6 +55,8 @@ var tasks_completed = []
 var tasks_assigned = []
 var TASKS_PER_PAGE = 4
 var resource_manager = null
+var current_task_uid_p1 = -1
+var current_task_uid_p2 = -1
 
 func _ready():
 	set_resource_manager()
@@ -80,7 +82,30 @@ func assign_task(uid):
 	for i in range(0, len(tasks)):
 		if tasks[i].uid == uid:
 			tasks_assigned.push_back(tasks[i])
+			new_task_assigned.emit(tasks[i])	
 
+func get_current_task(player):
+	if player == 1:
+		return current_task_uid_p1
+	else:
+		return current_task_uid_p2	
+
+func get_task_by_name(name):
+	for i in range(0, len(tasks)):
+		var task = tasks[i]
+		if task.name == name:
+			return task
+	assert(false, "task not found with this name")
+
+func set_current_task(uid, player):
+	if is_task_completed(uid):
+		print("task is completed")
+		return;
+	if player == 1 && current_task_uid_p1 != uid:
+		current_task_uid_p1 = uid
+	elif player == 2 && current_task_uid_p2 != uid:
+		current_task_uid_p2 = uid	
+	
 func set_task_as_done(task_uid):
 	var task = tasks[task_uid]
 	

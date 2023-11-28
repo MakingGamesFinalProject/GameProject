@@ -51,7 +51,10 @@ func _physics_process(delta):
 	handle_page_change_in_task_list()
 	
 func check_if_player_toggles_task_list():
-	toggle_task_list.emit(is_player_with_keyboard)
+	var toggle_button_pressed_p1 = Input.is_action_just_pressed("toggle_task_list_p1")
+	var toggle_button_pressed_p2 = Input.is_action_just_pressed("toggle_task_list_p2")
+	if toggle_button_pressed_p1 || toggle_button_pressed_p2:
+		toggle_task_list.emit(is_player_with_keyboard == true)
 
 func handle_tab_change_task_list():
 	var first_tab_opened = Input.is_action_just_pressed("open_first_tab_task_list_p2")

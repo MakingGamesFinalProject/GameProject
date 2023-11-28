@@ -18,11 +18,12 @@ var node_ref_next_button = null
 var node_ref_prev_button = null
 
 func _ready():
-	set_task_manager()
-	load_task_into_container(current_displayed_page)
-	task_container_player_1 = get_tree().get_nodes_in_group("ui_task_player")[0]
-	task_container_player_2 = get_tree().get_nodes_in_group("ui_task_player")[1]
-	set_up_task_list_buttons()
+	#set_task_manager()
+	#load_task_into_container(current_displayed_page)
+	#task_container_player_1 = get_tree().get_nodes_in_group("ui_task_player")[0]
+	#task_container_player_2 = get_tree().get_nodes_in_group("ui_task_player")[1]
+	#set_up_task_list_buttons()
+	pass
 	
 func set_up_task_list_buttons():
 	node_ref_next_button = $TasksContainer/PaginationContainer/Next
@@ -37,6 +38,7 @@ func hide_message_after(seconds):
 	$Notification.text = ""
 
 func _on_toggle_quest_menu_button_pressed():
+	return;
 	var task_list_container = $TasksListContainer
 	if task_list_container != null:
 		if task_list_container.visible:
@@ -45,6 +47,7 @@ func _on_toggle_quest_menu_button_pressed():
 			task_list_container.set_visible(true)
 
 func load_task_text_in_task_list(node, task):
+	return
 	var actual_string = ""
 	if task.reward != null:
 		actual_string = format_task_with_reward(task)
@@ -54,20 +57,24 @@ func load_task_text_in_task_list(node, task):
 	node.text = actual_string
 	
 func format_task_with_reward(task):
+	return
 	var format_string = "%s\nGives: %s %d"
 	return format_string % [task.name, task.reward.resource, task.reward.amount]
 	
 func format_task_without_reward(task):
+	return
 	var format_string = "%s\n"
 	return format_string % [task.name]
 	
 func _on_task_manager_task_completed(task_completed):
+	return;
 	var format_message_to_show = "Player %s completed the task: %s"
 	var actual_message_to_show = format_message_to_show % [str(player_number), task_completed.name]
 	$Notification.text = actual_message_to_show
 	hide_message_after(seconds_to_wait_to_hide_message)
 
 func _on_next_pressed():
+	return;
 	current_displayed_page += 1
 	load_task_into_container(current_displayed_page)
 	
@@ -81,6 +88,7 @@ func _on_next_pressed():
 		node_ref_prev_button.text = "Previous"
 
 func _on_previous_pressed():
+	return;
 	current_displayed_page -= 1
 	if current_displayed_page <= 0:
 		node_ref_prev_button.disabled = true
@@ -92,12 +100,15 @@ func _on_previous_pressed():
 
 
 func _on_player_2_toggle_task_list(is_player_with_keyboard):
+	return
 	handle_task_list_toggle("toggle_task_list_p2", task_container_player_2)
 
 func _on_player_toggle_task_list(is_player_with_keyboard):
+	return;
 	handle_task_list_toggle("toggle_task_list_p1", task_container_player_1)
 	
 func handle_task_list_toggle(action, node_ref):
+	return
 	if task_container_player_1 == null || task_container_player_2 == null:
 		assert(false, "One of the task containers is null")
 		return;
@@ -110,12 +121,14 @@ func handle_task_list_toggle(action, node_ref):
 		return
 
 func _on_load_completed_tasks_button_pressed():
+	return
 	current_displayed_page = 0
 	hbox_displaying_completed_tasks = true
 	load_task_into_container(current_displayed_page)
 	node_ref_prev_button.disabled = true
 
 func _on_load_tasks_button_pressed():
+	return
 	current_displayed_page = 0
 	hbox_displaying_completed_tasks = false
 	load_task_into_container(current_displayed_page)
@@ -124,6 +137,7 @@ func _on_load_tasks_button_pressed():
 # the first tab is the one with all the tasks, the second one just shows the 
 # completed ones
 func _on_player_player_2_changes_tab_in_task_list_ui(tab):
+	return;
 	if tab == 1:
 		current_displayed_page = 0
 		hbox_displaying_completed_tasks = false
@@ -137,6 +151,7 @@ func _on_player_player_2_changes_tab_in_task_list_ui(tab):
 		
 
 func _on_player_player_2_changes_page_in_task_list_ui(action):
+	return
 	if !$TasksContainer.visible: return;
 	
 	if action == "next":
@@ -148,6 +163,7 @@ func _on_player_player_2_changes_page_in_task_list_ui(action):
 		
 		
 func load_task_into_container(page):
+	return;
 	var tasks = []
 	if hbox_displaying_completed_tasks:
 		tasks = tasks_manager.get_completed_tasks(page)
