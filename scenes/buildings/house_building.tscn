@@ -26,7 +26,6 @@ scale = Vector2(4.34247e+06, 611227)
 polygon = PackedVector2Array(4.54991e-05, 0.000231967, -2.79291e-07, -0.000101271, -7.75713e-05, -0.000148157, -4.42073e-05, 0.000213504)
 
 [node name="PlayerDetector" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(-50, -100)

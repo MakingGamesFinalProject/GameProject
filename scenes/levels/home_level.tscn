@@ -34,6 +34,13 @@ is_player_with_keyboard = false
 
 [node name="npc_1" parent="." instance=ExtResource("5_dwwca")]
 position = Vector2(-864, 102)
+startup_dialog = true
+resource_dialog_trigger = Vector3(50, 0, 50)
+Building_built_path_trigger = 2
+at_startup_npc_dialog_id_list = [1]
+before_resource_npc_dialog_id_list = [2]
+before_building_npc_dialog_id_list = [3]
+after_task_npc_dialog_id_list = [4, 5]
 
 [node name="npc_2" parent="." instance=ExtResource("5_dwwca")]
 position = Vector2(-216, -349)

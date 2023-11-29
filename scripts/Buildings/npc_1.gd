@@ -34,8 +34,11 @@ enum state {
 
 enum building_options {
 	NULL,
-	BUILDINGPLOT,
+	BuildingPlot,
+	HouseBuilding,
 }
+
+var building_option_list := [null, "BuildingPlot", "HouseBuilding"]
 
 var curr_state = state.STARTUP
 
@@ -155,10 +158,10 @@ func check_resources():
 		print("ERROR: reasource manager not found in npc")
 	
 func check_building():
-	var buildings = get_tree().get_nodes_in_group("buildings")
+	var buildings = get_tree().get_nodes_in_group("Building")
 	
 	for building in buildings:
-		if building.name == "BuildingPlot":
+		if building.name == building_option_list[Building_built_path_trigger]:
 			if building.has_been_built:
 				curr_state = state.TASK
 				set_task()
@@ -168,15 +171,18 @@ func set_task():
 	if task_manager != null:
 		task_manager.assign_task(task_id_trigger)
 	else:
-		print("ERROR: reasource manager not found in npc")
+		print("ERROR: task manager not found in npc")
 
 func check_task():
+	if task_id_trigger == -1:
+		curr_state = state.END
+		return
 	var task_manager = get_tree().get_first_node_in_group("task_manager")
 	if task_manager != null:
 		if task_manager.is_task_completed(task_id_trigger):
 			curr_state = state.END
 	else:
-		print("ERROR: reasource manager not found in npc")
+		print("ERROR: task manager not found in npc")
 	
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("players"):
