@@ -3,6 +3,8 @@ extends StaticBody2D
 var player1_is_close := false
 var player2_is_close := false
 
+@export var what_npc_am_i := NPC.HUGGY
+
 @export var startup_dialog := false
 @export var resource_dialog_trigger := Vector3.ZERO #water, electricity, scrap
 @export var Building_built_path_trigger := building_options.NULL
@@ -13,6 +15,14 @@ var player2_is_close := false
 @export var before_building_npc_dialog_id_list := [0]
 @export var before_task_npc_dialog_id_list := [0]
 @export var after_task_npc_dialog_id_list := [0]
+
+@onready var animation_tree = $AnimationTree
+@onready var state_machine = animation_tree.get("parameters/playback")
+
+enum NPC {
+	HUGGY,
+	GREASY,
+}
 
 enum state {
 	STARTUP,
@@ -42,6 +52,16 @@ func _ready():
 				curr_state = state.TASK
 				if task_id_trigger == -1:
 					print("ERROR: no triggers set in npc")
+	
+	if what_npc_am_i == NPC.HUGGY:
+		$Huggy.visible = true
+		$Greasy.visible = false
+		state_machine.travel("idle_Huggy")
+	elif what_npc_am_i == NPC.GREASY:
+		$Greasy.visible = true
+		$Huggy.visible = false
+		state_machine.travel("idle_Greasy")
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
