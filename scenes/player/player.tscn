@@ -1590,79 +1590,95 @@ hframes = 8
 [node name="idle_s_player1" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("19_c65l1")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_se_player1" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("20_8ussn")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_e_player1" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("21_7e7h6")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_ne_player1" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("22_4bwl4")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_n_player1" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("23_2ivm6")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_nw_player1" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("24_evayy")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_w_player1" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("25_fwwkb")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_sw_player1" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("26_ne31l")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_s_player2" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("27_0vfyw")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_se_player2" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("28_tng0v")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_e_player2" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("29_kx1bg")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_ne_player2" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("30_4868o")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_n_player2" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("31_qwub7")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_nw_player2" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("32_d1c8e")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_w_player2" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("33_13m7y")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="idle_sw_player2" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("34_gwmr2")
+offset = Vector2(0, -150)
 hframes = 8
