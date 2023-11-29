@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://carfvmdbple6g"]
 
 [ext_resource type="Script" path="res://scripts/Buildings/underground_water_filter.gd" id="1_f4wpl"]
-[ext_resource type="Texture2D" uid="uid://dnahnanxbf0xe" path="res://art/place_holde.png" id="2_dgv1g"]
+[ext_resource type="Texture2D" uid="uid://c285um4q0vlyx" path="res://art/World/Player Map/Buildings/Water Filter.png" id="2_jp2ih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko82b"]
 size = Vector2(104, 46)
@@ -13,8 +13,7 @@ radius = 104.69
 script = ExtResource("1_f4wpl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3.27682, -1.46037)
-texture = ExtResource("2_dgv1g")
+texture = ExtResource("2_jp2ih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ko82b")
