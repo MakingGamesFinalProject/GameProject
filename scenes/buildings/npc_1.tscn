@@ -61,7 +61,7 @@ transitions = ["Start", "Idle_Huggy", SubResource("AnimationNodeStateMachineTran
 script = ExtResource("1_e57kj")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -100)
+position = Vector2(0, -80)
 scale = Vector2(5.62379, 5.91423)
 shape = SubResource("CapsuleShape2D_68akm")
 

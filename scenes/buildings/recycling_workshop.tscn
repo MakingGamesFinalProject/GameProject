@@ -1,12 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://efjia0hmypy4"]
+[gd_scene load_steps=5 format=3 uid="uid://efjia0hmypy4"]
 
 [ext_resource type="Script" path="res://scripts/Buildings/recycling_workshop.gd" id="1_3kmrn"]
+[ext_resource type="Texture2D" uid="uid://b5b6e1qxi5oow" path="res://art/World/Player Map/Buildings/Recycling Workshop.png" id="2_peje1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wgex2"]
-radius = 57.0351
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_133pb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vg0me"]
-radius = 46.0109
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dhr6v"]
 
 [node name="RecyclingWorkshop" type="CharacterBody2D"]
 script = ExtResource("1_3kmrn")
@@ -14,13 +13,17 @@ script = ExtResource("1_3kmrn")
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_wgex2")
+rotation = 0.523599
+scale = Vector2(66.9345, 30.746)
+shape = SubResource("CapsuleShape2D_133pb")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
-shape = SubResource("CircleShape2D_vg0me")
+rotation = 0.523599
+scale = Vector2(48.6736, 18.8285)
+shape = SubResource("CapsuleShape2D_dhr6v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_peje1")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
