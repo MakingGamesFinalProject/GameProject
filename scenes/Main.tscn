@@ -63,7 +63,7 @@ script = SubResource("GDScript_basqf")
 position = Vector2(500, 500)
 
 [node name="Player2" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_33r3e")]
-position = Vector2(500, 800)
+position = Vector2(500, 600)
 is_player_with_keyboard = false
 
 [node name="AudioManager" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("7_67p63")]
