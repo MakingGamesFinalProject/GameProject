@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdngw7dm6phho"]
+[gd_scene load_steps=6 format=3 uid="uid://covf0wkyhxy11"]
 
 [ext_resource type="Script" path="res://Scripts/Buildings/house.gd" id="1_3anqw"]
 [ext_resource type="Texture2D" uid="uid://m3aguidc5fkt" path="res://art/World/Player Map/Buildings/Shed.png" id="2_3gr0o"]

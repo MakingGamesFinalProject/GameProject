@@ -85,6 +85,7 @@ animation = &"idle_Greasy"
 animation = &"Idle_Huggy"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vwjer"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j4nwm"]
 
