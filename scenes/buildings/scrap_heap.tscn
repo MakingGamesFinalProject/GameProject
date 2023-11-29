@@ -23,12 +23,12 @@ script = ExtResource("1_t7ubt")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("2_hyl4m")
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_4m1sb")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 2.5)
 rotation = 1.5708
+scale = Vector2(2.79375, 2.7128)
 shape = SubResource("CapsuleShape2D_ypjug")
 
 [node name="PlayerDetector" type="Area2D" parent="Collider"]
