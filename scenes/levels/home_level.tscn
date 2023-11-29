@@ -1,70 +1,49 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnwp0f3rcpy14"]
+[gd_scene load_steps=6 format=3 uid="uid://dnwp0f3rcpy14"]
 
-[ext_resource type="PackedScene" uid="uid://drgf7c01kty41" path="res://scenes/map/background.tscn" id="1_57jlp"]
-[ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="2_e1xhk"]
-[ext_resource type="PackedScene" uid="uid://dd47qj7pirow2" path="res://scenes/buildings/trash_dump.tscn" id="3_xbcem"]
+[ext_resource type="Script" path="res://scripts/levels/world.gd" id="1_l3pu7"]
+[ext_resource type="Texture2D" uid="uid://342kcb7xy2mo" path="res://art/World/Player Map/Simple Start Map.png" id="1_oaex0"]
+[ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="3_158kr"]
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player/player.tscn" id="4_aeqqs"]
-[ext_resource type="PackedScene" uid="uid://djrwpddlst5gh" path="res://scenes/buildings/building_plot.tscn" id="4_tj55g"]
-[ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task/task_manager.tscn" id="5_s3bru"]
-[ext_resource type="PackedScene" uid="uid://cqhwts3w4hsxv" path="res://scenes/buildings/scrap_heap.tscn" id="6_5nino"]
-[ext_resource type="PackedScene" uid="uid://bs1p30328q3ri" path="res://scenes/task/gift_box.tscn" id="6_f7pi8"]
-[ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="7_gbamd"]
-[ext_resource type="PackedScene" uid="uid://carfvmdbple6g" path="res://scenes/buildings/underground_water_filter.tscn" id="9_stqp8"]
-[ext_resource type="PackedScene" uid="uid://bpd5wv5dgxixr" path="res://scenes/buildings/wind_turbine.tscn" id="11_vqah3"]
-[ext_resource type="PackedScene" uid="uid://bx6p5ofvdqay5" path="res://scenes/buildings/house_building.tscn" id="12_fvuqx"]
-[ext_resource type="PackedScene" uid="uid://efjia0hmypy4" path="res://scenes/buildings/recycling_workshop.tscn" id="13_gg7y2"]
-[ext_resource type="PackedScene" uid="uid://cvwuirlquyihm" path="res://scenes/music/audio_manager.tscn" id="14_hiyrq"]
+[ext_resource type="PackedScene" uid="uid://dc0yqtbx1saef" path="res://scenes/buildings/npc_1.tscn" id="5_dwwca"]
 
-[node name="Node" type="Node"]
+[node name="World" type="Node2D" groups=["World"]]
+y_sort_enabled = true
+script = ExtResource("1_l3pu7")
 
-[node name="UITasksP1" parent="." instance=ExtResource("7_gbamd")]
+[node name="Map" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_oaex0")
 
-[node name="Background" parent="." instance=ExtResource("1_57jlp")]
+[node name="Area" type="Area2D" parent="."]
+visible = false
 
-[node name="trash_dump" parent="Background" instance=ExtResource("3_xbcem")]
-position = Vector2(733, 312)
+[node name="Collider" type="CollisionPolygon2D" parent="Area"]
+polygon = PackedVector2Array(957, -287, 1270, -493, 1646, -888, 1852, -1120, 2303, -1272, 2757, -1462, 3277, -1662, 3565, -1662, 3581, -1422, 3261, -1366, 2797, -1206, 2197, -966, 1989, -862, 1845, -382, 1509, -222, 1157, 42, 165, 530, 285, 698, -115, 930, -251, 698, -1075, 1098, -1715, 1538, -2283, 2106, -2771, 2834, -3603, 2786, -3603, 2274, -2707, 1386, -2219, 1034, -1363, 690, -619, 410, -715, 234, -315, 74, -131, 202, 413, -30)
 
-[node name="River" parent="." instance=ExtResource("2_e1xhk")]
-
-[node name="ScrapHeap" parent="." instance=ExtResource("6_5nino")]
-position = Vector2(1619, 604)
-
-[node name="ScrapHeap2" parent="." instance=ExtResource("6_5nino")]
-position = Vector2(378, 639)
-
-[node name="ScrapHeap3" parent="." instance=ExtResource("6_5nino")]
-position = Vector2(1434, 866)
-
-[node name="BuildingPlot" parent="." instance=ExtResource("4_tj55g")]
-position = Vector2(1204, 198)
+[node name="River" parent="." instance=ExtResource("3_158kr")]
+position = Vector2(-3824, -1992)
+scale = Vector2(3.80359, 3.80359)
 
 [node name="Player" parent="." instance=ExtResource("4_aeqqs")]
-position = Vector2(970, 306)
+position = Vector2(-76, 578)
+speed = 30000
 
 [node name="Player2" parent="." instance=ExtResource("4_aeqqs")]
-position = Vector2(768, 531)
+position = Vector2(-281, 381)
 is_player_with_keyboard = false
 
-[node name="TaskManager" parent="." instance=ExtResource("5_s3bru")]
+[node name="npc_1" parent="." instance=ExtResource("5_dwwca")]
+position = Vector2(-864, 102)
+startup_dialog = true
+resource_dialog_trigger = Vector3(50, 0, 50)
+Building_built_path_trigger = 2
+at_startup_npc_dialog_id_list = [1]
+before_resource_npc_dialog_id_list = [2]
+before_building_npc_dialog_id_list = [3]
+after_task_npc_dialog_id_list = [4, 5]
 
-[node name="TaskItems" type="Node" parent="."]
+[node name="npc_2" parent="." instance=ExtResource("5_dwwca")]
+position = Vector2(-216, -349)
+what_npc_am_i = 1
 
-[node name="GiftBox" parent="TaskItems" instance=ExtResource("6_f7pi8")]
-position = Vector2(1114, 922)
-scale = Vector2(2.7079, 2.42508)
-
-[node name="UndergroundWaterFilter" parent="." instance=ExtResource("9_stqp8")]
-position = Vector2(449, 282)
-
-[node name="WindTurbine" parent="." instance=ExtResource("11_vqah3")]
-position = Vector2(800, 161)
-
-[node name="HouseBuilding" parent="WindTurbine" instance=ExtResource("12_fvuqx")]
-position = Vector2(82, -2)
-
-[node name="RecyclingWorkshop" parent="." instance=ExtResource("13_gg7y2")]
-position = Vector2(162, 196)
-
-[node name="AudioManager" parent="." instance=ExtResource("14_hiyrq")]
-
-[connection signal="gift_box_picked_up" from="TaskItems/GiftBox" to="TaskManager" method="_on_gift_box_gift_box_picked_up"]
+[connection signal="area_entered" from="Area" to="." method="detect_foliage"]

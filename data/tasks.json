@@ -1,0 +1,46 @@
+{
+  "tasks": [
+	{
+		"uid": 0,
+		"name": "Clean Water Filter",
+		"reward": null
+	},
+	{
+		"uid": 1,
+		"name": "Unclog the Trash Bin",
+		"reward": {
+			"amount": 40,
+			"resource": "Scrap"
+		}
+	},
+	{
+		"uid": 2,
+		"name": "Fix the Wind Turbines",
+		"reward": null
+	},
+	{
+		"uid": 3,
+		"name": "Check batteries (Wind Turbines)",
+		"reward": {
+			"amount": 50,
+			"resource": "Energy"
+		}
+	},
+	{
+		"uid": 4,
+		"name": "Check batteries (Water Filter)",
+		"reward": {
+			"amount": 50,
+			"resource": "Energy"
+		}
+	},
+	{
+		"uid": 5,
+		"name": "Recycle Trash",
+		"reward": {
+			"amount": 50,
+			"resource": "Scrap"
+		}
+	}
+]
+}

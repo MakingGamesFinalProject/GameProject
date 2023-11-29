@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://covf0wkyhxy11"]
+
+[ext_resource type="Script" path="res://Scripts/Buildings/house.gd" id="1_3anqw"]
+[ext_resource type="Texture2D" uid="uid://m3aguidc5fkt" path="res://art/World/Player Map/Buildings/Shed.png" id="2_3gr0o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4bmv"]
+radius = 205.0
+height = 664.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_chj55"]
+radius = 340.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dm0cq"]
+size = Vector2(581, 1073)
+
+[node name="House" type="StaticBody2D" groups=["Building"]]
+script = ExtResource("1_3anqw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_3gr0o")
+offset = Vector2(0, -280)
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(-35, -154)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_q4bmv")
+
+[node name="Area" type="Area2D" parent="."]
+position = Vector2(0, 52)
+
+[node name="Collider" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, -235)
+shape = SubResource("CircleShape2D_chj55")
+
+[node name="Collider2" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, 437.5)
+shape = SubResource("RectangleShape2D_dm0cq")
+
+[connection signal="area_entered" from="Area" to="." method="detect_foliage"]

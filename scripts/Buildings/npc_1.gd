@@ -3,6 +3,8 @@ extends StaticBody2D
 var player1_is_close := false
 var player2_is_close := false
 
+@export var what_npc_am_i := NPC.HUGGY
+
 @export var startup_dialog := false
 @export var resource_dialog_trigger := Vector3.ZERO #water, electricity, scrap
 @export var Building_built_path_trigger := building_options.NULL
@@ -14,6 +16,14 @@ var player2_is_close := false
 @export var before_task_npc_dialog_id_list := [0]
 @export var after_task_npc_dialog_id_list := [0]
 
+@onready var animation_tree = $AnimationTree
+@onready var state_machine = animation_tree.get("parameters/playback")
+
+enum NPC {
+	HUGGY,
+	GREASY,
+}
+
 enum state {
 	STARTUP,
 	RESOURCE,
@@ -24,8 +34,11 @@ enum state {
 
 enum building_options {
 	NULL,
-	BUILDINGPLOT,
+	BuildingPlot,
+	HouseBuilding,
 }
+
+var building_option_list := [null, "BuildingPlot", "HouseBuilding"]
 
 var curr_state = state.STARTUP
 
@@ -42,6 +55,16 @@ func _ready():
 				curr_state = state.TASK
 				if task_id_trigger == -1:
 					print("ERROR: no triggers set in npc")
+	
+	if what_npc_am_i == NPC.HUGGY:
+		$Huggy.visible = true
+		$Greasy.visible = false
+		state_machine.travel("idle_Huggy")
+	elif what_npc_am_i == NPC.GREASY:
+		$Greasy.visible = true
+		$Huggy.visible = false
+		state_machine.travel("idle_Greasy")
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -135,10 +158,10 @@ func check_resources():
 		print("ERROR: reasource manager not found in npc")
 	
 func check_building():
-	var buildings = get_tree().get_nodes_in_group("buildings")
+	var buildings = get_tree().get_nodes_in_group("Building")
 	
 	for building in buildings:
-		if building.name == "BuildingPlot":
+		if building.name == building_option_list[Building_built_path_trigger]:
 			if building.has_been_built:
 				curr_state = state.TASK
 				set_task()
@@ -148,15 +171,18 @@ func set_task():
 	if task_manager != null:
 		task_manager.assign_task(task_id_trigger)
 	else:
-		print("ERROR: reasource manager not found in npc")
+		print("ERROR: task manager not found in npc")
 
 func check_task():
+	if task_id_trigger == -1:
+		curr_state = state.END
+		return
 	var task_manager = get_tree().get_first_node_in_group("task_manager")
 	if task_manager != null:
 		if task_manager.is_task_completed(task_id_trigger):
 			curr_state = state.END
 	else:
-		print("ERROR: reasource manager not found in npc")
+		print("ERROR: task manager not found in npc")
 	
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("players"):

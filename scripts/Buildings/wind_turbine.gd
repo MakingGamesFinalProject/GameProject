@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends StaticBody2D
 
 enum available_states {WORKING, TO_REPAIR, REPAIRING}
 
@@ -9,6 +9,13 @@ var current_status = available_states.TO_REPAIR
 
 @export var time_to_repair_in_seconds = 5
 @export var time_to_complete_check_batteries_task_in_seconds = 3
+
+var detected_foliage : Array[Node2D] = []
+
+func detect_foliage(area):
+	if area.get_parent().is_in_group("Grass") or area.get_parent().is_in_group("Bush") or \
+		area.get_parent().is_in_group("Tree"):
+		detected_foliage.append(area.get_parent())
 
 func _ready():
 	set_task_manager_ref()
