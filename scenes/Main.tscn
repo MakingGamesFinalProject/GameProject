@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://6bqm6gqeokqt"]
+[gd_scene load_steps=9 format=3 uid="uid://6bqm6gqeokqt"]
 
 [ext_resource type="Script" path="res://scripts/camera/game_split_screen_controller.gd" id="1_mykgh"]
 [ext_resource type="PackedScene" uid="uid://527ad036ui2s" path="res://scenes/ui/ui_collective.tscn" id="2_7267x"]
 [ext_resource type="PackedScene" uid="uid://dnwp0f3rcpy14" path="res://scenes/levels/home_level.tscn" id="2_hlp5x"]
 [ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="3_4hmq5"]
 [ext_resource type="PackedScene" uid="uid://dhh43kotjb6go" path="res://scenes/ui/notification.tscn" id="3_ixsmo"]
-[ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player/player.tscn" id="6_33r3e"]
 [ext_resource type="PackedScene" uid="uid://cvwuirlquyihm" path="res://scenes/music/audio_manager.tscn" id="7_67p63"]
 [ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task/task_manager.tscn" id="8_jwxlj"]
 
@@ -59,13 +58,6 @@ editor_draw_limits = true
 script = SubResource("GDScript_basqf")
 
 [node name="UITasksP1" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("3_4hmq5")]
-
-[node name="Player" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_33r3e")]
-position = Vector2(500, 500)
-
-[node name="Player2" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_33r3e")]
-position = Vector2(500, 600)
-is_player_with_keyboard = false
 
 [node name="AudioManager" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("7_67p63")]
 

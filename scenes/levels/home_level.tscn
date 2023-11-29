@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnwp0f3rcpy14"]
+[gd_scene load_steps=5 format=3 uid="uid://dnwp0f3rcpy14"]
 
 [ext_resource type="Script" path="res://scripts/levels/world.gd" id="1_l3pu7"]
 [ext_resource type="Texture2D" uid="uid://342kcb7xy2mo" path="res://art/World/Player Map/Simple Start Map.png" id="1_oaex0"]
 [ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="3_158kr"]
+[ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player/player.tscn" id="4_aeqqs"]
 
 [node name="World" type="Node2D" groups=["World"]]
 y_sort_enabled = true
@@ -21,5 +22,11 @@ polygon = PackedVector2Array(957, -287, 1270, -493, 1646, -888, 1852, -1120, 230
 [node name="River" parent="." instance=ExtResource("3_158kr")]
 position = Vector2(-3824, -1992)
 scale = Vector2(3.80359, 3.80359)
+
+[node name="Player" parent="." instance=ExtResource("4_aeqqs")]
+
+[node name="Player2" parent="." instance=ExtResource("4_aeqqs")]
+position = Vector2(100, 0)
+is_player_with_keyboard = false
 
 [connection signal="area_entered" from="Area" to="." method="detect_foliage"]
