@@ -1234,8 +1234,8 @@ graph_offset = Vector2(0, -120.416)
 script = ExtResource("1_2b53x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 15)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, 15)
+scale = Vector2(1.45161, 0.94)
 shape = SubResource("CapsuleShape2D_h87ua")
 
 [node name="InteractibleButtonHelper" type="Sprite2D" parent="."]
@@ -1270,6 +1270,7 @@ parameters/p2_walk/blend_position = Vector2(0, 0)
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_axys2")
+offset = Vector2(0, -50)
 hframes = 8
 frame = 1
 
@@ -1277,36 +1278,42 @@ frame = 1
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_3t6je")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_e_player1" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_638xx")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_ne_player1" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_qq7xw")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_n_player1" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_5pfdl")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_nw_player1" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_67v62")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_w_player1" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_c1f1x")
+offset = Vector2(0, -50)
 hframes = 8
 frame = 1
 
@@ -1314,52 +1321,61 @@ frame = 1
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_5jxaw")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_s_player2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("11_04rf4")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_se_player2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_qi2hd")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_e_player2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("13_2nm5t")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_ne_player2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("14_gvhtc")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_n_player2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("15_nqf58")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_nw_player2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("16_hmtpv")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_w_player2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("17_kvn1n")
+offset = Vector2(0, -50)
 hframes = 8
 
 [node name="walk_sw_player2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("18_7ny20")
+offset = Vector2(0, -50)
 hframes = 8
