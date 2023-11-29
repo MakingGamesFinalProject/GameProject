@@ -18,7 +18,7 @@ height = 323.0
 shader = ExtResource("3_4r6kl")
 shader_parameter/value = 0.0
 
-[node name="ScrapHeap" type="StaticBody2D"]
+[node name="ScrapHeap" type="StaticBody2D" groups=["Scraps"]]
 script = ExtResource("1_t7ubt")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -51,5 +51,6 @@ offset_bottom = 18.8889
 theme_override_font_sizes/font_size = 10
 text = "F"
 
+[connection signal="area_entered" from="Collider/PlayerDetector" to="." method="detect_scraps"]
 [connection signal="body_entered" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_exited"]

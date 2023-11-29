@@ -12,8 +12,8 @@
 [sub_resource type="GDScript" id="GDScript_basqf"]
 script/source = "extends Camera2D
 
-var min_x = 0
-var max_x = 1540
+var min_x = -8000
+var max_x = 8000
 #1 for player1, 2 for player2
 @export var camera_number = 1; 
 
@@ -50,10 +50,11 @@ render_target_update_mode = 4
 [node name="Home_level" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_hlp5x")]
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
-limit_left = 0
-limit_top = 0
-limit_right = 2048
-limit_bottom = 1200
+zoom = Vector2(0.3, 0.3)
+limit_left = -8000
+limit_top = -4000
+limit_right = 8000
+limit_bottom = 4000
 editor_draw_limits = true
 script = SubResource("GDScript_basqf")
 
@@ -79,10 +80,11 @@ size = Vector2i(1024, 1200)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer2/SubViewport"]
-limit_left = 0
-limit_top = 0
-limit_right = 2048
-limit_bottom = 1200
+zoom = Vector2(0.3, 0.3)
+limit_left = -8000
+limit_top = -4000
+limit_right = 8000
+limit_bottom = 4000
 script = SubResource("GDScript_basqf")
 camera_number = 2
 

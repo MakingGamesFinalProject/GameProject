@@ -1,13 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnwp0f3rcpy14"]
+[gd_scene load_steps=4 format=3 uid="uid://dnwp0f3rcpy14"]
 
-[ext_resource type="PackedScene" uid="uid://drgf7c01kty41" path="res://scenes/map/background.tscn" id="1_57jlp"]
-[ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="2_e1xhk"]
+[ext_resource type="Script" path="res://scripts/levels/world.gd" id="1_l3pu7"]
+[ext_resource type="Texture2D" uid="uid://342kcb7xy2mo" path="res://art/World/Player Map/Simple Start Map.png" id="1_oaex0"]
+[ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="3_158kr"]
 
-[node name="Node" type="Node2D"]
+[node name="World" type="Node2D" groups=["World"]]
 y_sort_enabled = true
+script = ExtResource("1_l3pu7")
 
-[node name="Background" parent="." instance=ExtResource("1_57jlp")]
-offset_right = 2048.0
-offset_bottom = 1200.0
+[node name="Map" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_oaex0")
 
-[node name="River" parent="." instance=ExtResource("2_e1xhk")]
+[node name="Area" type="Area2D" parent="."]
+visible = false
+
+[node name="Collider" type="CollisionPolygon2D" parent="Area"]
+polygon = PackedVector2Array(957, -287, 1270, -493, 1646, -888, 1852, -1120, 2303, -1272, 2757, -1462, 3277, -1662, 3565, -1662, 3581, -1422, 3261, -1366, 2797, -1206, 2197, -966, 1989, -862, 1845, -382, 1509, -222, 1157, 42, 165, 530, 285, 698, -115, 930, -251, 698, -1075, 1098, -1715, 1538, -2283, 2106, -2771, 2834, -3603, 2786, -3603, 2274, -2707, 1386, -2219, 1034, -1363, 690, -619, 410, -715, 234, -315, 74, -131, 202, 413, -30)
+
+[node name="River" parent="." instance=ExtResource("3_158kr")]
+position = Vector2(-3824, -1992)
+scale = Vector2(3.80359, 3.80359)
+
+[connection signal="area_entered" from="Area" to="." method="detect_foliage"]

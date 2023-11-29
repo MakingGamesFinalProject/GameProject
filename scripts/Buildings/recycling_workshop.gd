@@ -1,9 +1,11 @@
-extends CharacterBody2D
+extends StaticBody2D
 
 var counter_players_detected = 0
 var task_manager_ref = null
 
 @export var time_to_recycle_trash_in_seconds = 3
+
+var detected_foliage : Array[Node2D] = []
 
 func _ready():
 	task_manager_ref = get_tree().get_first_node_in_group("task_manager")
@@ -30,3 +32,8 @@ func _on_detection_area_body_exited(body):
 
 func is_player(body):
 	return body.is_in_group("players")
+
+func detect_foliage(area):
+	if area.get_parent().is_in_group("Grass") or area.get_parent().is_in_group("Bush") or \
+		area.get_parent().is_in_group("Tree"):
+		detected_foliage.append(area.get_parent())

@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5akdr"]
 
-[node name="HouseBuilding" type="CharacterBody2D" groups=["house"]]
+[node name="HouseBuilding" type="StaticBody2D" groups=["Building", "house"]]
 script = ExtResource("1_ro7jv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,5 +24,6 @@ position = Vector2(-50, -100)
 scale = Vector2(45.7995, 32.2333)
 shape = SubResource("CapsuleShape2D_5akdr")
 
+[connection signal="area_entered" from="PlayerDetector" to="." method="detect_foliage"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
