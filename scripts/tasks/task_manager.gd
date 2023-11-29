@@ -5,7 +5,7 @@ signal new_task_assigned(task)
 # Complete array of all the tasks in our game, it doesn't get modified
 # The uid reflects the index of the task, this makes more easy to identify tasks
 # uid stands for "Unique id"
-const tasks = [
+"""const tasks = [
 	{
 		"uid": 0,
 		"name": "Clean Water Filter",
@@ -48,7 +48,13 @@ const tasks = [
 			"resource": "Scrap"
 		}
 	}
-]
+]"""
+
+# Path to JSON tasks file
+var tasks_path = "res://data/tasks.json"
+
+# The loaded JSON file
+var tasks := []
 
 # Once a task is completed it gets pushed in "task_completed"
 var tasks_completed = []
@@ -60,6 +66,22 @@ var current_task_uid_p2 = -1
 
 func _ready():
 	set_resource_manager()
+	
+	# Get JSON data and save in a variable
+	var file = FileAccess.open(tasks_path, FileAccess.READ)
+	var json_string = file.get_as_text()
+	file.close()
+	
+	var json = JSON.new()
+	var error = json.parse(json_string)
+	if error == OK:
+		var tasks_data = json.data["tasks"]
+		if typeof(tasks_data) == TYPE_ARRAY:
+			tasks = tasks_data
+		else:
+			print("Unexpected data in tasks")
+	else:
+		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 	
 func set_resource_manager():
 	resource_manager = get_tree().get_nodes_in_group("resource_manager")[0]

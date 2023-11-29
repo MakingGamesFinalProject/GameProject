@@ -5,14 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://dnwp0f3rcpy14" path="res://scenes/levels/home_level.tscn" id="2_hlp5x"]
 [ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="3_4hmq5"]
 [ext_resource type="PackedScene" uid="uid://dhh43kotjb6go" path="res://scenes/ui/notification.tscn" id="3_ixsmo"]
-[ext_resource type="PackedScene" uid="uid://dc0yqtbx1saef" path="res://scenes/buildings/npc_1.tscn" id="4_w8fsh"]
-[ext_resource type="PackedScene" uid="uid://d2glb33o1cf16" path="res://scenes/scene/temporary_transition_trigger.tscn" id="5_xr20o"]
+[ext_resource type="PackedScene" uid="uid://cvwuirlquyihm" path="res://scenes/music/audio_manager.tscn" id="7_67p63"]
+[ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task/task_manager.tscn" id="8_jwxlj"]
 
 [sub_resource type="GDScript" id="GDScript_basqf"]
 script/source = "extends Camera2D
 
-var min_x = 0
-var max_x = 1540
+var min_x = -8000
+var max_x = 8000
 #1 for player1, 2 for player2
 @export var camera_number = 1; 
 
@@ -46,34 +46,22 @@ handle_input_locally = false
 size = Vector2i(1024, 1200)
 render_target_update_mode = 4
 
-[node name="Node" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_hlp5x")]
-
-[node name="TaskManager" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" index="9" groups=["task_manager"]]
-
-[node name="npc_1" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" instance=ExtResource("4_w8fsh")]
-position = Vector2(700, 100)
-
-startup_dialog = true
-resource_dialog_trigger = Vector3(50, 0, 0)
-Building_built_path_trigger = 1
-task_id_trigger = 0
-at_startup_npc_dialog_id_list = [1]
-before_resource_npc_dialog_id_list = [2]
-before_building_npc_dialog_id_list = [3]
-before_task_npc_dialog_id_list = [4]
-after_task_npc_dialog_id_list = [5, 6]
-
-
-[node name="TemporaryTransitionTrigger" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" instance=ExtResource("5_xr20o")]
-position = Vector2(907, 939)
+[node name="Home_level" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_hlp5x")]
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
-limit_left = 0
-limit_top = 0
-limit_right = 2048
-limit_bottom = 1200
+zoom = Vector2(0.3, 0.3)
+limit_left = -8000
+limit_top = -4000
+limit_right = 8000
+limit_bottom = 4000
 editor_draw_limits = true
 script = SubResource("GDScript_basqf")
+
+[node name="UITasksP1" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("3_4hmq5")]
+
+[node name="AudioManager" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("7_67p63")]
+
+[node name="TaskManager" parent="HBoxContainer/SubViewportContainer/SubViewport" groups=["task_manager"] instance=ExtResource("8_jwxlj")]
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -84,10 +72,11 @@ size = Vector2i(1024, 1200)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer2/SubViewport"]
-limit_left = 0
-limit_top = 0
-limit_right = 2048
-limit_bottom = 1200
+zoom = Vector2(0.3, 0.3)
+limit_left = -8000
+limit_top = -4000
+limit_right = 8000
+limit_bottom = 4000
 script = SubResource("GDScript_basqf")
 camera_number = 2
 
@@ -97,13 +86,5 @@ player_number = 2
 [node name="notification" parent="." instance=ExtResource("3_ixsmo")]
 visible = false
 
-[connection signal="player_2_changes_page_in_task_list_ui" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_player_2_changes_page_in_task_list_ui"]
-[connection signal="player_2_changes_tab_in_task_list_ui" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_player_2_changes_tab_in_task_list_ui"]
-[connection signal="toggle_task_list" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player" to="UICollective/Sprite2D" method="_on_player_toggle_task_list"]
-[connection signal="toggle_task_list" from="HBoxContainer/SubViewportContainer/SubViewport/Node/Player2" to="HBoxContainer/SubViewportContainer2/SubViewport/UITasksP2" method="_on_player_2_toggle_task_list"]
-[connection signal="new_task_assigned" from="HBoxContainer/SubViewportContainer/SubViewport/Node/TaskManager" to="UICollective/Sprite2D" method="_on_task_manager_new_task_assigned"]
-[connection signal="task_completed" from="HBoxContainer/SubViewportContainer/SubViewport/Node/TaskManager" to="UICollective" method="_on_task_manager_task_completed"]
-[connection signal="task_completed" from="HBoxContainer/SubViewportContainer/SubViewport/Node/TaskManager" to="HBoxContainer/SubViewportContainer/SubViewport/Node/UITasksP1" method="_on_task_manager_task_completed"]
-
 [editable path="UICollective"]
-[editable path="HBoxContainer/SubViewportContainer/SubViewport/Node"]
+[editable path="HBoxContainer/SubViewportContainer/SubViewport/Home_level"]

@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://nuvfqvjbab50" path="res://art/Players/Player 2/Running Sprites/Player 2 run8.png" id="18_7ny20"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h87ua"]
-radius = 8.0
+radius = 9.21015
 height = 36.0
 
 [sub_resource type="Animation" id="Animation_lbs64"]
@@ -444,6 +444,7 @@ tracks/0/keys = {
 resource_name = "p1_idle_n"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -461,6 +462,7 @@ tracks/0/keys = {
 resource_name = "p1_idle_ne"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -478,6 +480,7 @@ tracks/0/keys = {
 resource_name = "p1_idle_nw"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -495,6 +498,7 @@ tracks/0/keys = {
 resource_name = "p1_idle_s"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -512,6 +516,7 @@ tracks/0/keys = {
 resource_name = "p1_idle_se"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -529,6 +534,7 @@ tracks/0/keys = {
 resource_name = "p1_idle_sw"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -546,6 +552,7 @@ tracks/0/keys = {
 resource_name = "p1_idle_w"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -699,6 +706,7 @@ tracks/0/keys = {
 resource_name = "p2_idle_e"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -716,6 +724,7 @@ tracks/0/keys = {
 resource_name = "p2_idle_n"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -733,6 +742,7 @@ tracks/0/keys = {
 resource_name = "p2_idle_ne"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -750,6 +760,7 @@ tracks/0/keys = {
 resource_name = "p2_idle_nw"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -767,6 +778,7 @@ tracks/0/keys = {
 resource_name = "p2_idle_s"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -784,6 +796,7 @@ tracks/0/keys = {
 resource_name = "p2_idle_se"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -801,6 +814,7 @@ tracks/0/keys = {
 resource_name = "p2_idle_sw"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -818,6 +832,7 @@ tracks/0/keys = {
 resource_name = "p2_idle_w"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1234,8 +1249,8 @@ graph_offset = Vector2(0, -120.416)
 script = ExtResource("1_2b53x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 15)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -50)
+scale = Vector2(5.81161, 3.22)
 shape = SubResource("CapsuleShape2D_h87ua")
 
 [node name="InteractibleButtonHelper" type="Sprite2D" parent="."]
@@ -1268,98 +1283,98 @@ parameters/p2_walk/blend_position = Vector2(0, 0)
 
 [node name="walk_s_player1" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_axys2")
+offset = Vector2(0, -150)
 hframes = 8
 frame = 1
 
 [node name="walk_se_player1" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_3t6je")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_e_player1" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_638xx")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_ne_player1" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_qq7xw")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_n_player1" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_5pfdl")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_nw_player1" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_67v62")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_w_player1" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_c1f1x")
+offset = Vector2(0, -150)
 hframes = 8
 frame = 1
 
 [node name="walk_sw_player1" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_5jxaw")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_s_player2" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("11_04rf4")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_se_player2" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_qi2hd")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_e_player2" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("13_2nm5t")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_ne_player2" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("14_gvhtc")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_n_player2" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("15_nqf58")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_nw_player2" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("16_hmtpv")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_w_player2" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("17_kvn1n")
+offset = Vector2(0, -150)
 hframes = 8
 
 [node name="walk_sw_player2" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("18_7ny20")
+offset = Vector2(0, -150)
 hframes = 8

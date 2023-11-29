@@ -18,17 +18,17 @@ height = 323.0
 shader = ExtResource("3_4r6kl")
 shader_parameter/value = 0.0
 
-[node name="ScrapHeap" type="StaticBody2D"]
+[node name="ScrapHeap" type="StaticBody2D" groups=["Scraps"]]
 script = ExtResource("1_t7ubt")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("2_hyl4m")
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_4m1sb")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 2.5)
 rotation = 1.5708
+scale = Vector2(2.79375, 2.7128)
 shape = SubResource("CapsuleShape2D_ypjug")
 
 [node name="PlayerDetector" type="Area2D" parent="Collider"]
@@ -51,5 +51,6 @@ offset_bottom = 18.8889
 theme_override_font_sizes/font_size = 10
 text = "F"
 
+[connection signal="area_entered" from="Collider/PlayerDetector" to="." method="detect_scraps"]
 [connection signal="body_entered" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_exited"]
