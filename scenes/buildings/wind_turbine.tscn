@@ -1,14 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpd5wv5dgxixr"]
+[gd_scene load_steps=20 format=3 uid="uid://bpd5wv5dgxixr"]
 
 [ext_resource type="Script" path="res://scripts/Buildings/wind_turbine.gd" id="1_85lcb"]
 [ext_resource type="Texture2D" uid="uid://cev8437rwhwsf" path="res://art/World/Player Map/Buildings/Wind Turbine Base.png" id="2_3byw1"]
 [ext_resource type="Texture2D" uid="uid://dlgeslbxkcxi5" path="res://art/World/Player Map/Buildings/Wind Turbine Helix.png" id="3_q54hx"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_o64sd"]
-radius = 75.0
+[ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="4_7u765"]
+[ext_resource type="Texture2D" uid="uid://c1rxfa4r4phrm" path="res://art/World/Player Map/Buildings/Wind Turbine Outline.png" id="4_wrx8u"]
+[ext_resource type="PackedScene" uid="uid://bhbgan7cobyol" path="res://scenes/ui/building_exclamation_mark.tscn" id="5_ykjp2"]
+[ext_resource type="AudioStream" uid="uid://qsarnvvp1cta" path="res://sounds/Player Map/Building Process.wav" id="7_l4d3a"]
+[ext_resource type="AudioStream" uid="uid://fy53ih1qmbyk" path="res://sounds/Player Map/Building Set.wav" id="8_36bsf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k2kpd"]
-radius = 400.0
+radius = 66.9082
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o64sd"]
+radius = 20.7231
 
 [sub_resource type="Animation" id="Animation_i0jik"]
 resource_name = "Broken"
@@ -16,7 +21,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Base/Helix:rotation")
+tracks/0/path = NodePath("Helix:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +38,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Base/Helix:rotation")
+tracks/0/path = NodePath("Helix:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -70,26 +75,33 @@ states/Idle/position = Vector2(426, 89)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_blpt4"), "Idle", "Broken", SubResource("AnimationNodeStateMachineTransition_06lbo"), "Broken", "Idle", SubResource("AnimationNodeStateMachineTransition_8vb34")]
 
 [node name="WindTurbine" type="StaticBody2D"]
+position = Vector2(-1, -598)
 script = ExtResource("1_85lcb")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+scale = Vector2(1.48, 1.35271)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0.675676, 442.076)
+shape = SubResource("CircleShape2D_k2kpd")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("2_3byw1")
-offset = Vector2(0, -600)
 
-[node name="Helix" type="Sprite2D" parent="Base"]
-position = Vector2(0, -1230)
-rotation = 2.49092
-scale = Vector2(1, 1)
+[node name="Helix" type="Sprite2D" parent="."]
+position = Vector2(2, -630)
+rotation = 3.22617
 texture = ExtResource("3_q54hx")
 offset = Vector2(0, -165)
 
+[node name="Outline" type="Sprite2D" parent="."]
+texture = ExtResource("4_wrx8u")
+offset = Vector2(0, -310)
+
 [node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(1, 598)
+scale = Vector2(2.8, 2.56)
 shape = SubResource("CircleShape2D_o64sd")
-
-[node name="Area" type="Area2D" parent="."]
-
-[node name="Collider" type="CollisionShape2D" parent="Area"]
-shape = SubResource("CircleShape2D_k2kpd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -101,6 +113,18 @@ tree_root = SubResource("AnimationNodeStateMachine_klxyy")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 
-[connection signal="area_entered" from="Area" to="." method="detect_foliage"]
-[connection signal="body_entered" from="Area" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Area" to="." method="_on_detection_area_body_exited"]
+[node name="HelperButton" parent="." instance=ExtResource("4_7u765")]
+position = Vector2(113, 442)
+
+[node name="ExclamationMark" parent="." instance=ExtResource("5_ykjp2")]
+position = Vector2(-94, 374)
+
+[node name="Building" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_l4d3a")
+
+[node name="Built" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_36bsf")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="detect_foliage"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

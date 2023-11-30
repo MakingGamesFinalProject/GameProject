@@ -14,14 +14,23 @@ var silhouette_is_pulsing := false
 
 var player1_is_close := false
 var player2_is_close := false
-var can_be_build := false
 
+var can_be_build := false
 var has_been_built := false
+
+var is_collectable := false
+var COLLECTABILITY_TIMER: float = 20.0
+
+var collection_resource_water := 0
+var collection_resource_energy := 5
+var collection_resource_scrap := 5
 
 func _ready():
 	$Collider.disabled = true
 	$shed.hide()
 	$shed_outline.hide()
+	$ExclamationMark.hide()
+	$HelperButton.hide()
 
 func _process(_delta):
 	can_be_build = sufficient_resources()
@@ -35,26 +44,49 @@ func _process(_delta):
 			silhouette_is_pulsing = true
 			silhouette_pulse()
 
-	if Input.is_action_just_pressed("interaction_p1") and can_be_build and player1_is_close \
-		and not has_been_built:
-		ResourceManager.decrease_water(50)
-		ResourceManager.decrease_scraps(50)
+	if Input.is_action_just_pressed("interaction_p1") and  player1_is_close:
+		if can_be_build and not has_been_built:
+			ResourceManager.decrease_water(50)
+			ResourceManager.decrease_scraps(50)
+			has_been_built = true
 
-		$shed_outline.queue_free()
-		$shed.show()
-		building_fade_in()
-		building_play_sounds()
+			$shed_outline.queue_free()
+			$shed.show()
+			building_fade_in()
+			building_play_sounds()
 		
-	if Input.is_action_just_pressed("interaction_p2") and can_be_build and player2_is_close \
-		and not has_been_built:
-		ResourceManager.decrease_water(50)
-		ResourceManager.decrease_scraps(50)
+		elif has_been_built and is_collectable:
+			start_collection_timer()
+			give_resources()
+		
+	if Input.is_action_just_pressed("interaction_p2") and player2_is_close:
+		
+		if can_be_build and not has_been_built:
+			ResourceManager.decrease_water(50)
+			ResourceManager.decrease_scraps(50)
+			has_been_built = true
 
-		$shed_outline.queue_free()
-		$shed.show()
-		building_fade_in()
-		building_play_sounds()
+			$shed_outline.queue_free()
+			$shed.show()
+			building_fade_in()
+			building_play_sounds()
+			
+		elif has_been_built and is_collectable:
+			start_collection_timer()
+			give_resources()
 
+func start_collection_timer():
+	$ExclamationMark.hide()
+	is_collectable = false
+	await get_tree().create_timer(COLLECTABILITY_TIMER).timeout
+	is_collectable = true
+	$ExclamationMark.show()
+	
+func give_resources():
+	ResourceManager.increase_water(collection_resource_water)
+	ResourceManager.increase_energy(collection_resource_energy)
+	ResourceManager.increase_scraps(collection_resource_scrap)
+	
 # The function simply modifies the alpha value of the sprite
 func silhouette_pulse():
 	var fade = create_tween()
@@ -75,9 +107,10 @@ func building_play_sounds():
 	await($Building.finished)
 	$Built.play()
 	has_been_built = true
+	start_collection_timer()
 
 func sufficient_resources():
-	if ResourceManager.water >= 50 and ResourceManager.scraps >= 50:
+	if ResourceManager.scraps >= 5:
 		return true
 	else:
 		return false
