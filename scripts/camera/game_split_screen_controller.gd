@@ -6,12 +6,12 @@ var next_play_section := false
 	"1": {
 		viewport = $HBoxContainer/SubViewportContainer/SubViewport,
 		camera = $HBoxContainer/SubViewportContainer/SubViewport/Camera2D,
-		player = $HBoxContainer/SubViewportContainer/SubViewport/Node/Player
+		player = $HBoxContainer/SubViewportContainer/SubViewport/Home_level/Player
 	},
 	"2": {
 		viewport = $HBoxContainer/SubViewportContainer2/SubViewport,
 		camera = $HBoxContainer/SubViewportContainer2/SubViewport/Camera2D,
-		player = $HBoxContainer/SubViewportContainer/SubViewport/Node/Player2
+		player = $HBoxContainer/SubViewportContainer/SubViewport/Home_level/Player2
 	}
 }
 

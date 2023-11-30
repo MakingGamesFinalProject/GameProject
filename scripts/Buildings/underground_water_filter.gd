@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends StaticBody2D
 
 enum available_states {WORKING, TO_REPAIR, REPAIRING}
 
@@ -7,6 +7,8 @@ var task_manager = null
 var player_counter_on_building = 0
 
 @export var time_to_repair_in_seconds = 5
+
+var detected_foliage : Array[Node2D] = []
 
 func _ready():
 	set_task_manager()
@@ -60,3 +62,7 @@ func _on_player_detector_body_exited(body):
 func is_player(body):
 	return body.is_in_group("players")
 
+func detect_foliage(area):
+	if area.get_parent().is_in_group("Grass") or area.get_parent().is_in_group("Bush") or \
+		area.get_parent().is_in_group("Tree"):
+		detected_foliage.append(area.get_parent())

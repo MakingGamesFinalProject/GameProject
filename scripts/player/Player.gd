@@ -21,6 +21,8 @@ var screen_size # Size of the game window.
 @onready var state_machine = animation_tree.get("parameters/playback")
 @export var starting_direction : Vector2 = Vector2(0,0.2)
 
+var last_dir := "s"
+
 func _ready():
 	update_animation_directions(Vector2(0, 0.2))
 	sprite_visibility_update()
@@ -41,8 +43,7 @@ func _physics_process(delta):
 	# Note, there's also a move_and_slide method, which feels less sticky in collisions
 	velocity = direction * speed * delta
 	update_animation_directions(direction)
-	if velocity != Vector2.ZERO:
-		sprite_visibility_update()
+	sprite_visibility_update()
 	move_and_slide()
 	walk_and_idle_input()
 
@@ -134,49 +135,98 @@ func player_interaction():
 func sprite_visibility_update():
 	
 	hide_all_player_sprites()
-	if direction.x == 0: # no horizontal input
+	if (direction.x == 0) && (direction != Vector2.ZERO): # no horizontal input but there is vertical input
 		if direction.y < 0: # input up
+			last_dir = "n"
 			if is_player_with_keyboard:
 				$walk_n_player1.visible = true
 			else:
 				$walk_n_player2.visible = true
 		if 0 < velocity.y: # input down
+			last_dir = "s"
 			if is_player_with_keyboard:
 				$walk_s_player1.visible = true
 			else:
 				$walk_s_player2.visible = true
-	if direction.x < 0: # input left
+	elif direction.x < 0: # input left
 		if direction.y == 0: # no vertical input
+			last_dir = "w"
 			if is_player_with_keyboard:
 				$walk_w_player1.visible = true
 			else:
 				$walk_w_player2.visible = true
 		if direction.y < 0: # input up
+			last_dir = "nw"
 			if is_player_with_keyboard:
 				$walk_nw_player1.visible = true
 			else:
 				$walk_nw_player2.visible = true
 		if 0 < direction.y: # input down
+			last_dir = "sw"
 			if is_player_with_keyboard:
 				$walk_sw_player1.visible = true
 			else:
 				$walk_sw_player2.visible = true
 	elif 0 < direction.x: # input right
 		if direction.y == 0: # no vertical input
+			last_dir = "e"
 			if is_player_with_keyboard:
 				$walk_e_player1.visible = true
 			else:
 				$walk_e_player2.visible = true
 		if direction.y < 0: # input up
+			last_dir = "ne"
 			if is_player_with_keyboard:
 				$walk_ne_player1.visible = true
 			else:
 				$walk_ne_player2.visible = true
 		if 0 < direction.y: # input down
+			last_dir = "se"
 			if is_player_with_keyboard:
 				$walk_se_player1.visible = true
 			else:
 				$walk_se_player2.visible = true
+	else:	#idle
+		if is_player_with_keyboard:
+			match last_dir:
+				"s":
+					$idle_s_player1.visible = true
+				"se":
+					$idle_se_player1.visible = true
+				"e":
+					$idle_e_player1.visible = true
+				"ne":
+					$idle_ne_player1.visible = true
+				"n":
+					$idle_n_player1.visible = true
+				"nw":
+					$idle_nw_player1.visible = true
+				"w":
+					$idle_w_player1.visible = true
+				"sw":
+					$idle_sw_player1.visible = true
+				_:
+					print("ERROR: no idle player sprite found in player")
+		else:
+			match last_dir:
+				"s":
+					$idle_s_player2.visible = true
+				"se":
+					$idle_se_player2.visible = true
+				"e":
+					$idle_e_player2.visible = true
+				"ne":
+					$idle_ne_player2.visible = true
+				"n":
+					$idle_n_player2.visible = true
+				"nw":
+					$idle_nw_player2.visible = true
+				"w":
+					$idle_w_player2.visible = true
+				"sw":
+					$idle_sw_player2.visible = true
+				_:
+					print("ERROR: no idle player sprite found in player")
 		
 
 func hide_all_player_sprites():
@@ -190,6 +240,14 @@ func hide_all_player_sprites():
 		$walk_nw_player1.visible = false
 		$walk_w_player1.visible = false
 		$walk_sw_player1.visible = false
+		$idle_s_player1.visible = false
+		$idle_se_player1.visible = false
+		$idle_e_player1.visible = false
+		$idle_ne_player1.visible = false
+		$idle_n_player1.visible = false
+		$idle_nw_player1.visible = false
+		$idle_w_player1.visible = false
+		$idle_sw_player1.visible = false
 	else:
 		$walk_s_player2.visible = false
 		$walk_se_player2.visible = false
@@ -199,6 +257,14 @@ func hide_all_player_sprites():
 		$walk_nw_player2.visible = false
 		$walk_w_player2.visible = false
 		$walk_sw_player2.visible = false
+		$idle_s_player2.visible = false
+		$idle_se_player2.visible = false
+		$idle_e_player2.visible = false
+		$idle_ne_player2.visible = false
+		$idle_n_player2.visible = false
+		$idle_nw_player2.visible = false
+		$idle_w_player2.visible = false
+		$idle_sw_player2.visible = false
 	
 func update_animation_directions(move_input):
 	if move_input != Vector2.ZERO:

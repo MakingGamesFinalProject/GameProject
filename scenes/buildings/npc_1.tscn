@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dc0yqtbx1saef"]
+[gd_scene load_steps=16 format=3 uid="uid://dc0yqtbx1saef"]
 
 [ext_resource type="Script" path="res://scripts/Buildings/npc_1.gd" id="1_e57kj"]
+[ext_resource type="Texture2D" uid="uid://capgke4dv1vbg" path="res://art/World/Player Map/NPCs/Greasy Jim/Greasy Jim.png" id="3_g5qlf"]
 [ext_resource type="Texture2D" uid="uid://bkc1tjst7l04l" path="res://art/UI/UI pixelart Assets 4 -1.3/16x16/Set1/Set1-1.png" id="3_j7vtb"]
 [ext_resource type="Texture2D" uid="uid://cqxunjcsn1k2l" path="res://art/World/Player Map/NPCs/Huggy Sugar-Gold/Huggy Sugar-Gold.png" id="3_obavs"]
 
@@ -39,12 +40,46 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Greasy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6v0id"]
+resource_name = "idle_Greasy"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Greasy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nlqy0"]
 _data = {
 "Idle_Huggy": SubResource("Animation_hulu3"),
-"RESET": SubResource("Animation_kn1tx")
+"RESET": SubResource("Animation_kn1tx"),
+"idle_Greasy": SubResource("Animation_6v0id")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ki4u"]
+animation = &"idle_Greasy"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ikucv"]
 animation = &"Idle_Huggy"
@@ -52,16 +87,20 @@ animation = &"Idle_Huggy"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vwjer"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j4nwm"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_736sw"]
-states/Idle_Huggy/node = SubResource("AnimationNodeAnimation_ikucv")
-states/Idle_Huggy/position = Vector2(383, 100)
-transitions = ["Start", "Idle_Huggy", SubResource("AnimationNodeStateMachineTransition_vwjer")]
+states/idle_Greasy/node = SubResource("AnimationNodeAnimation_8ki4u")
+states/idle_Greasy/position = Vector2(383, 188)
+states/idle_Huggy/node = SubResource("AnimationNodeAnimation_ikucv")
+states/idle_Huggy/position = Vector2(383, 100)
+transitions = ["Start", "idle_Huggy", SubResource("AnimationNodeStateMachineTransition_vwjer"), "Start", "idle_Greasy", SubResource("AnimationNodeStateMachineTransition_j4nwm")]
 
 [node name="npc_1" type="StaticBody2D"]
 script = ExtResource("1_e57kj")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -100)
+position = Vector2(0, -80)
 scale = Vector2(5.62379, 5.91423)
 shape = SubResource("CapsuleShape2D_68akm")
 
@@ -75,6 +114,12 @@ shape = SubResource("CapsuleShape2D_kryr2")
 
 [node name="Huggy" type="Sprite2D" parent="."]
 texture = ExtResource("3_obavs")
+offset = Vector2(0, -150)
+hframes = 8
+
+[node name="Greasy" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_g5qlf")
 offset = Vector2(0, -150)
 hframes = 8
 
