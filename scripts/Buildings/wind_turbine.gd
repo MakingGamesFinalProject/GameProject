@@ -33,6 +33,10 @@ var collection_resource_water := 5
 var collection_resource_energy := 0
 var collection_resource_scrap := 5
 
+var can_be_built_water := 0
+var can_be_built_energy := 10
+var can_be_built_scrap := 5
+
 func detect_foliage(area):
 	if area.get_parent().is_in_group("Grass") or area.get_parent().is_in_group("Bush") or \
 		area.get_parent().is_in_group("Tree"):
@@ -55,7 +59,7 @@ func _process(_delta):
 
 	if can_be_build and not has_been_built:
 		$Collider.disabled = false
-		$Outline.show()
+		$Outlsine.show()
 
 		# Make the silhouette pulse if it's not
 		if not silhouette_is_pulsing:
@@ -64,8 +68,9 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("interaction_p1") and  player1_is_close:
 		if can_be_build and not has_been_built:
-			ResourceManager.decrease_water(50)
-			ResourceManager.decrease_scraps(50)
+			ResourceManager.decrease_water(can_be_built_water)
+			ResourceManager.decrease_energy(can_be_built_energy)
+			ResourceManager.decrease_scraps(can_be_built_scrap)
 			has_been_built = true
 
 			$Outline.queue_free()
@@ -81,8 +86,10 @@ func _process(_delta):
 	if Input.is_action_just_pressed("interaction_p2") and player2_is_close:
 		
 		if can_be_build and not has_been_built:
-			ResourceManager.decrease_water(50)
-			ResourceManager.decrease_scraps(50)
+			ResourceManager.decrease_water(can_be_built_water)
+			ResourceManager.decrease_energy(can_be_built_energy)
+			ResourceManager.decrease_scraps(can_be_built_scrap)
+			has_been_built = true
 
 			$Outline.queue_free()
 			$Base.show()
@@ -95,7 +102,7 @@ func _process(_delta):
 			give_resources()
 	
 func sufficient_resources():
-	if ResourceManager.scraps >= 5 and ResourceManager.energy >= 10:
+	if ResourceManager.water >= can_be_built_water and ResourceManager.energy >= can_be_built_energy and ResourceManager.scraps >= can_be_built_scrap:
 		return true
 	else:
 		return false
