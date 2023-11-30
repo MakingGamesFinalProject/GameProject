@@ -22,16 +22,16 @@ polygon = PackedVector2Array(957, -287, 1270, -493, 1646, -888, 1852, -1120, 230
 [node name="River" parent="." instance=ExtResource("3_158kr")]
 
 [node name="Player" parent="." instance=ExtResource("4_aeqqs")]
-position = Vector2(-76, 578)
+position = Vector2(-1208, 2479)
 speed = 30000
 
 [node name="Player2" parent="." instance=ExtResource("4_aeqqs")]
-position = Vector2(-281, 381)
+position = Vector2(-1541, 2015)
 is_player_with_keyboard = false
 speed = 30000
 
 [node name="npc_1" parent="." instance=ExtResource("5_dwwca")]
-position = Vector2(-864, 102)
+position = Vector2(-1804, 2505)
 startup_dialog = true
 resource_dialog_trigger = Vector3(50, 0, 50)
 Building_built_path_trigger = 2
@@ -41,7 +41,14 @@ before_building_npc_dialog_id_list = [3]
 after_task_npc_dialog_id_list = [4, 5]
 
 [node name="npc_2" parent="." instance=ExtResource("5_dwwca")]
-position = Vector2(-216, -349)
+position = Vector2(-3057, 452)
 what_npc_am_i = 1
+resource_dialog_trigger = Vector3(0, 10, 5)
+Building_built_path_trigger = 3
+task_id_trigger = 3
+before_resource_npc_dialog_id_list = [6]
+before_building_npc_dialog_id_list = [7]
+before_task_npc_dialog_id_list = [8]
+after_task_npc_dialog_id_list = [9, 10]
 
 [connection signal="area_entered" from="Area" to="." method="detect_foliage"]

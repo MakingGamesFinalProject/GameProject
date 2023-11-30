@@ -36,9 +36,10 @@ enum building_options {
 	NULL,
 	BuildingPlot,
 	HouseBuilding,
+	WindTurbine,
 }
 
-var building_option_list := [null, "BuildingPlot", "HouseBuilding"]
+var building_option_list := [null, "BuildingPlot", "HouseBuilding", "WindTurbine"]
 
 var curr_state = state.STARTUP
 
