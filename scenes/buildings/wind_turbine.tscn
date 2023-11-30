@@ -74,7 +74,7 @@ states/Idle/node = SubResource("AnimationNodeAnimation_1s4jw")
 states/Idle/position = Vector2(426, 89)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_blpt4"), "Idle", "Broken", SubResource("AnimationNodeStateMachineTransition_06lbo"), "Broken", "Idle", SubResource("AnimationNodeStateMachineTransition_8vb34")]
 
-[node name="WindTurbine" type="StaticBody2D"]
+[node name="WindTurbine" type="StaticBody2D" groups=["Building"]]
 position = Vector2(-1, -598)
 script = ExtResource("1_85lcb")
 
@@ -90,7 +90,7 @@ texture = ExtResource("2_3byw1")
 
 [node name="Helix" type="Sprite2D" parent="."]
 position = Vector2(2, -630)
-rotation = 3.22617
+rotation = 2.00118
 texture = ExtResource("3_q54hx")
 offset = Vector2(0, -165)
 

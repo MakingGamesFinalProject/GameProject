@@ -5,7 +5,7 @@ enum available_states {WORKING, TO_REPAIR, REPAIRING}
 var counter_players_detected = 0
 var task_manager_ref = null
 var house_ref = null
-var current_status = available_states.TO_REPAIR
+var current_status = available_states.WORKING
 
 @export var time_to_repair_in_seconds = 5
 @export var time_to_complete_check_batteries_task_in_seconds = 3
@@ -139,17 +139,21 @@ func building_play_sounds():
 
 func check_task_completion():
 	check_for_fixing_task()
+	check_for_batteries_task()
 
 func check_for_batteries_task():
 	if current_status != available_states.WORKING:
 		return
 	
-	var a_user_is_interacting = Input.is_action_pressed("interaction_p1") || Input.is_action_pressed("interaction_p2")
-	if a_user_is_interacting && counter_players_detected > 0:
-		var time_manager = WaitUtil.new()
-		time_manager.wait(time_to_repair_in_seconds, self, "_on_energy_task_callback")
+	# Check if both players have the check batteries task assigned
+	if task_manager_ref.get_current_task(1) == 3 and task_manager_ref.get_current_task(2) == 3:
+		var a_user_is_interacting = Input.is_action_pressed("interaction_p1") || Input.is_action_pressed("interaction_p2")
+		var amount_players_interacting_with_house = house_ref.players_counter_on_area
+		if a_user_is_interacting and counter_players_detected > 0 and amount_players_interacting_with_house > 0:
+			var time_manager = WaitUtil.new()
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_battery_task_callback")
 
-func _on_energy_task_callback():
+func _on_battery_task_callback():
 	task_manager_ref.set_task_as_done(3)
 
 func check_for_fixing_task():
