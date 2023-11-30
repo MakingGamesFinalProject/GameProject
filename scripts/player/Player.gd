@@ -35,6 +35,16 @@ func _ready():
 		state_machine.travel("p2_idle")
 
 func _physics_process(delta):
+	# Limit player positioning
+	if global_position.x <= -3424:
+		global_position.x = -3424
+	elif global_position.x >= 3424:
+		global_position.x = 3424
+	if global_position.y <= -2411:
+		global_position.y = -2411
+	elif global_position.y >= 2561:
+		global_position.y = 2561
+
 	# Call the overarching movement function
 	checkIfPlayerIsMoving()
 
@@ -92,6 +102,7 @@ func checkIfPlayerIsMovingWithKeyboard() -> void:
 		direction.x += 1
 	if Input.is_action_pressed("move_left_p1"):
 		direction.x -= 1
+	direction = direction.normalized()
 
 func checkIfPlayerIsMovingWithController() -> void:
 	direction = Vector2.ZERO
@@ -103,6 +114,7 @@ func checkIfPlayerIsMovingWithController() -> void:
 		direction.x += 1
 	if Input.is_action_pressed("move_left_p2"):
 		direction.x -= 1
+	direction = direction.normalized()
 
 func show_helper_button(message):
 	print("Showing helper button")

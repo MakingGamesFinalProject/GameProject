@@ -26,7 +26,7 @@ func _ready():
 func _process(_delta):
 	can_be_build = sufficient_resources()
 
-	if can_be_build:
+	if can_be_build and not has_been_built:
 		$Collider.disabled = false
 		$shed_outline.show()
 
@@ -35,7 +35,8 @@ func _process(_delta):
 			silhouette_is_pulsing = true
 			silhouette_pulse()
 
-	if Input.is_action_just_pressed("interaction_p1") and can_be_build and player1_is_close:
+	if Input.is_action_just_pressed("interaction_p1") and can_be_build and player1_is_close \
+		and not has_been_built:
 		ResourceManager.decrease_water(50)
 		ResourceManager.decrease_scraps(50)
 
@@ -44,7 +45,8 @@ func _process(_delta):
 		building_fade_in()
 		building_play_sounds()
 		
-	if Input.is_action_just_pressed("interaction_p2") and can_be_build and player2_is_close:
+	if Input.is_action_just_pressed("interaction_p2") and can_be_build and player2_is_close \
+		and not has_been_built:
 		ResourceManager.decrease_water(50)
 		ResourceManager.decrease_scraps(50)
 

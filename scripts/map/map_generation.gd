@@ -25,13 +25,13 @@ const GRASS_DISTRIBUTION := [5, 20, 75] # [long, medium, short]
 
 # Fixed positions of our buildings
 const WATER_FILTER_POSITIONS := [ \
-	Vector2(-1414, 511), Vector2(-1902, 700), Vector2(-2333, 907), \
-	Vector2(-2771, 1241), Vector2(-901, 311), \
+	Vector2(-1414, 400), Vector2(-1902, 600), Vector2(-2333, 907), \
+	Vector2(-2771, 1241), Vector2(-901, 250), \
 	Vector2(143, -151), Vector2(602, -335), Vector2(1032, -586), \
 	Vector2(1454, -939), Vector2(1804, -1341), Vector2(2239, -1494), \
 	Vector2(2666, -1670), Vector2(3171, -1841)]
 
-const WATER_FILTER_POSITION_OFFSET := Vector2(0, 200)
+const WATER_FILTER_POSITION_OFFSET := Vector2(0, 167)
 
 const WORKBENCH_POSITIONS := [ \
 	Vector2(-631, 1696), Vector2(2802, 918), Vector2(-2868, 366), \
