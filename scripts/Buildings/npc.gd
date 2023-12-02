@@ -53,6 +53,10 @@ func _process(delta):
 		)
 	elif (Input.is_action_just_pressed("interaction_p1") or Input.is_action_just_pressed("interaction_p2")) and dialog_open:
 		reset_dialog_state(dialog_node, player_array)
+		if startup_dialog_is_open:
+			open_notification_exclamation()
+			
+	check_tasks()
 
 func process_dialog_logic(dialog_node, player_array):
 	var task_complete = check_tasks()
@@ -106,7 +110,6 @@ func show_correct_npc():
 		state_machine.travel("idle_Greasy")
 		
 func reset_npc():
-	## TODO: MAKE NOTIFICATION SYMBOLE AND MAKE IT APPEAR
 	get_json_data()
 	set_tasks()
 	show_correct_npc()
@@ -153,6 +156,8 @@ func check_tasks():
 		for task_id in npc_task_ids:
 			if not task_manager.is_task_completed(task_id):
 				return false
+		if not after_task_dialog_read:
+			open_notification_exclamation()
 		return true
 	else:
 		print("ERROR: task manager not found in npc")
