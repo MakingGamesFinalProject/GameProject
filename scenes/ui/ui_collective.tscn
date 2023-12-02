@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://527ad036ui2s"]
+[gd_scene load_steps=20 format=3 uid="uid://527ad036ui2s"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_collective.gd" id="1_cg5x8"]
 [ext_resource type="Texture2D" uid="uid://blp024obmiwvf" path="res://art/UI/Icons/Water.png" id="1_hjqww"]
@@ -12,6 +12,71 @@
 [ext_resource type="Texture2D" uid="uid://dtsdpwp5x4nio" path="res://art/UI/Icons/task_background_in_board.png" id="10_kgi4o"]
 [ext_resource type="Texture2D" uid="uid://g308pauuckrg" path="res://art/current_tasl_p2.png" id="11_t2k6a"]
 [ext_resource type="Texture2D" uid="uid://dav3paq80swpy" path="res://art/UI/Icons/y-filled-yellow.png" id="13_8psqw"]
+
+[sub_resource type="Animation" id="Animation_gcdc3"]
+resource_name = "resource_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(885, 152), Vector2(884, 62)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7qxp"]
+_data = {
+"resource_up": SubResource("Animation_gcdc3")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3rmdt"]
+
+[sub_resource type="Animation" id="Animation_lmqvx"]
+resource_name = "resource_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(573, 170), Vector2(573, 68)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o31re"]
+_data = {
+"resource_up": SubResource("Animation_lmqvx")
+}
+
+[sub_resource type="Animation" id="Animation_0iftw"]
+resource_name = "resource_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1225, 158), Vector2(1225, 60)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tk2v1"]
+_data = {
+"resource_up": SubResource("Animation_0iftw")
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_cg5x8")
@@ -33,7 +98,12 @@ theme_override_constants/margin_bottom = 20
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="WaterTexture" type="TextureRect" parent="MarginContainer/Control"]
+[node name="WaterResourceCounter" type="Control" parent="MarginContainer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WaterTexture" type="TextureRect" parent="MarginContainer/Control/WaterResourceCounter"]
 layout_mode = 2
 offset_left = 835.0
 offset_top = 12.0
@@ -41,7 +111,17 @@ offset_right = 935.0
 offset_bottom = 112.0
 texture = ExtResource("1_hjqww")
 
-[node name="WaterLabel" type="Label" parent="MarginContainer/Control"]
+[node name="WaterTexture2" type="Sprite2D" parent="MarginContainer/Control/WaterResourceCounter"]
+position = Vector2(885, 62)
+texture = ExtResource("1_hjqww")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Control/WaterResourceCounter/WaterTexture2"]
+libraries = {
+"": SubResource("AnimationLibrary_j7qxp"),
+"resources": SubResource("AnimationLibrary_3rmdt")
+}
+
+[node name="WaterLabel" type="Label" parent="MarginContainer/Control/WaterResourceCounter"]
 layout_mode = 2
 offset_left = 975.0
 offset_top = 44.0
@@ -54,28 +134,12 @@ theme_override_font_sizes/font_size = 38
 text = "999"
 horizontal_alignment = 1
 
-[node name="EnergyTexture" type="TextureRect" parent="MarginContainer/Control"]
-layout_mode = 2
-offset_left = 1174.0
-offset_top = 11.0
-offset_right = 1274.0
-offset_bottom = 111.0
-texture = ExtResource("2_1jpm5")
+[node name="ScrapsResourceCounter" type="Control" parent="MarginContainer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="EnergyLabel" type="Label" parent="MarginContainer/Control"]
-layout_mode = 2
-offset_left = 1304.0
-offset_top = 41.0
-offset_right = 1373.0
-offset_bottom = 90.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_t2x3q")
-theme_override_font_sizes/font_size = 38
-text = "999"
-horizontal_alignment = 1
-
-[node name="ScrapsTexture" type="TextureRect" parent="MarginContainer/Control"]
+[node name="ScrapsTexture" type="TextureRect" parent="MarginContainer/Control/ScrapsResourceCounter"]
 layout_mode = 2
 offset_left = 523.0
 offset_top = 17.0
@@ -83,12 +147,56 @@ offset_right = 623.0
 offset_bottom = 117.0
 texture = ExtResource("3_7rj4l")
 
-[node name="ScrapsLabel" type="Label" parent="MarginContainer/Control"]
+[node name="ScrapsTexture2" type="Sprite2D" parent="MarginContainer/Control/ScrapsResourceCounter"]
+position = Vector2(573, 67)
+texture = ExtResource("3_7rj4l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Control/ScrapsResourceCounter/ScrapsTexture2"]
+libraries = {
+"": SubResource("AnimationLibrary_o31re")
+}
+
+[node name="ScrapsLabel" type="Label" parent="MarginContainer/Control/ScrapsResourceCounter"]
 layout_mode = 0
 offset_left = 664.0
 offset_top = 44.0
 offset_right = 733.0
 offset_bottom = 93.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t2x3q")
+theme_override_font_sizes/font_size = 38
+text = "999"
+horizontal_alignment = 1
+
+[node name="EnergyResourceCounter" type="Control" parent="MarginContainer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EnergyTexture" type="TextureRect" parent="MarginContainer/Control/EnergyResourceCounter"]
+layout_mode = 2
+offset_left = 1174.0
+offset_top = 11.0
+offset_right = 1274.0
+offset_bottom = 111.0
+texture = ExtResource("2_1jpm5")
+
+[node name="EnergyTexture2" type="Sprite2D" parent="MarginContainer/Control/EnergyResourceCounter"]
+position = Vector2(1225, 60)
+texture = ExtResource("2_1jpm5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Control/EnergyResourceCounter/EnergyTexture2"]
+libraries = {
+"": SubResource("AnimationLibrary_tk2v1")
+}
+
+[node name="EnergyLabel" type="Label" parent="MarginContainer/Control/EnergyResourceCounter"]
+layout_mode = 2
+offset_left = 1304.0
+offset_top = 41.0
+offset_right = 1373.0
+offset_bottom = 90.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_t2x3q")
