@@ -1,5 +1,7 @@
 extends Node
 
+signal on_resource_increased(resource)
+
 # Declaration and initialization of our three resources
 var water : int = 0
 var energy : int = 0
@@ -12,14 +14,17 @@ var can_play_energy_sound = true
 func increase_water(amount):
 	play_water_pickup_sound()
 	water = clamp(water + amount, 0, 999)
+	on_resource_increased.emit("water")
 
 func increase_energy(amount):
 	play_energy_pickup_sound()
 	energy = clamp(energy + amount, 0, 999)
+	on_resource_increased.emit("energy")
 
 func increase_scraps(amount):
 	play_scrap_pickup_sound()
 	scraps = clamp(scraps + amount, 0, 999)
+	on_resource_increased.emit("scraps")
 
 func decrease_water(amount):
 	water = clamp(water - amount, 0, 999)
@@ -56,6 +61,12 @@ func play_energy_pickup_sound():
 		var time_manager = WaitUtil.new()
 		can_play_energy_sound = false
 		time_manager.wait(time_to_wait_to_play_next_sound_in_seconds, self, "_reset_can_play_sound_after_timeout_energy")
+		
+func play_animation_resource_up(resource):
+	if(resource != "water" && resource != "scraps" && resource != "energy"):
+		assert(false, "Please pass a resource between [scraps, water, energy]")
+	
+		
 
 func _reset_can_play_sound_after_timeout_energy():
 	can_play_energy_sound = true
@@ -65,3 +76,4 @@ func _reset_can_play_sound_after_timeout_water():
 
 func _reset_can_play_sound_after_timeout_scrap():
 	can_play_scrap_sound = true
+	
