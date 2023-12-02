@@ -1,19 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://527ad036ui2s"]
+[gd_scene load_steps=14 format=3 uid="uid://527ad036ui2s"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_collective.gd" id="1_cg5x8"]
 [ext_resource type="Texture2D" uid="uid://blp024obmiwvf" path="res://art/UI/Icons/Water.png" id="1_hjqww"]
 [ext_resource type="Texture2D" uid="uid://dnq12jpx1lfgp" path="res://art/UI/Icons/Renewable Energy.png" id="2_1jpm5"]
+[ext_resource type="Texture2D" uid="uid://nt0nsbsft1jf" path="res://art/Background_placeholder.png" id="2_5htf3"]
 [ext_resource type="Texture2D" uid="uid://cnhmfdvt1vkex" path="res://art/UI/Icons/Recycled Scraps.png" id="3_7rj4l"]
+[ext_resource type="FontFile" uid="uid://bddofndbk3yi" path="res://art/UI/fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="3_t2x3q"]
+[ext_resource type="Texture2D" uid="uid://cyliaw4em6xeo" path="res://art/UI/Icons/task_board_background.png" id="7_fhnw8"]
+[ext_resource type="Script" path="res://scripts/ui/tasks_container_ui.gd" id="9_2onv1"]
+[ext_resource type="PackedScene" uid="uid://b5lchgdj65ebe" path="res://scenes/ui/task_card_in_task_ui.tscn" id="9_qihdu"]
+[ext_resource type="Texture2D" uid="uid://cduvflniyj4vo" path="res://art/current_task_p1.png" id="10_b82fu"]
+[ext_resource type="Texture2D" uid="uid://dtsdpwp5x4nio" path="res://art/UI/Icons/task_background_in_board.png" id="10_kgi4o"]
+[ext_resource type="Texture2D" uid="uid://g308pauuckrg" path="res://art/current_tasl_p2.png" id="11_t2k6a"]
+[ext_resource type="Texture2D" uid="uid://dav3paq80swpy" path="res://art/UI/Icons/y-filled-yellow.png" id="13_8psqw"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_cg5x8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.13
+offset_bottom = -1.21593e-05
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -22,47 +34,207 @@ theme_override_constants/margin_bottom = 20
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="Background" type="TextureRect" parent="MarginContainer/Control"]
+layout_mode = 2
+offset_left = 823.0
+offset_top = -55.0
+offset_right = 1463.0
+offset_bottom = 265.0
+scale = Vector2(0.6, 0.789)
+texture = ExtResource("2_5htf3")
+
 [node name="WaterTexture" type="TextureRect" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 802.0
-offset_right = 902.0
+offset_left = 854.0
+offset_right = 954.0
 offset_bottom = 100.0
 texture = ExtResource("1_hjqww")
 
 [node name="WaterLabel" type="Label" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 906.0
-offset_top = 37.0
-offset_right = 934.0
-offset_bottom = 63.0
+offset_left = 879.0
+offset_top = 92.0
+offset_right = 930.0
+offset_bottom = 129.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t2x3q")
 text = "999"
+horizontal_alignment = 1
 
 [node name="EnergyTexture" type="TextureRect" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 938.0
-offset_right = 1038.0
+offset_left = 954.0
+offset_right = 1054.0
 offset_bottom = 100.0
 texture = ExtResource("2_1jpm5")
 
 [node name="EnergyLabel" type="Label" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 1042.0
-offset_top = 37.0
-offset_right = 1070.0
-offset_bottom = 63.0
+offset_left = 979.0
+offset_top = 92.0
+offset_right = 1030.0
+offset_bottom = 129.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t2x3q")
 text = "999"
+horizontal_alignment = 1
 
 [node name="ScrapsTexture" type="TextureRect" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 1074.0
-offset_right = 1174.0
+offset_left = 1054.0
+offset_right = 1154.0
 offset_bottom = 100.0
 texture = ExtResource("3_7rj4l")
 
 [node name="ScrapsLabel" type="Label" parent="MarginContainer/Control"]
-layout_mode = 2
-offset_left = 1178.0
-offset_top = 37.0
-offset_right = 1206.0
-offset_bottom = 63.0
+layout_mode = 0
+offset_left = 1079.0
+offset_top = 92.0
+offset_right = 1130.0
+offset_bottom = 129.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t2x3q")
 text = "999"
+horizontal_alignment = 1
+
+[node name="DarkBackgroundForPause" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(1027.62, 664.5)
+scale = Vector2(1.12929, 1.04949)
+texture = ExtResource("7_fhnw8")
+script = ExtResource("9_2onv1")
+
+[node name="Control" type="Control" parent="Sprite2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -982.413
+offset_top = -697.327
+offset_right = -942.413
+offset_bottom = -657.327
+
+[node name="GridContainer" type="GridContainer" parent="Sprite2D/Control" groups=["ui_task_player"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.102
+anchor_top = 6.233
+anchor_right = 44.739
+anchor_bottom = 28.467
+offset_left = 126.92
+offset_top = 102.68
+offset_right = -65.5601
+offset_bottom = -57.68
+theme_override_constants/v_separation = 370
+columns = 4
+
+[node name="TaskCard" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard1" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard2" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard3" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard4" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard5" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard6" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="TaskCard7" parent="Sprite2D/Control/GridContainer" instance=ExtResource("9_qihdu")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-782.617, -369.082)
+rotation = -0.560085
+scale = Vector2(0.424553, 0.487599)
+texture = ExtResource("10_kgi4o")
+
+[node name="Label" type="Label" parent="Sprite2D/Sprite2D"]
+offset_left = -171.0
+offset_top = -144.0
+offset_right = 178.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
+text = "T/     to exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
+position = Vector2(-36.4667, 57.1584)
+scale = Vector2(1.57471, 1.61115)
+texture = ExtResource("13_8psqw")
+
+[node name="ToggleSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+
+[node name="CurrentTaskUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -327.0
+offset_right = 64.0
+offset_bottom = -287.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="CurrentTaskP1" type="Sprite2D" parent="CurrentTaskUI"]
+position = Vector2(-134.5, -2)
+texture = ExtResource("10_b82fu")
+
+[node name="Label" type="Label" parent="CurrentTaskUI/CurrentTaskP1" groups=["current_task_ui"]]
+offset_left = -52.0
+offset_top = -30.0
+offset_right = 110.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="CurrentTaskP2" type="Sprite2D" parent="CurrentTaskUI"]
+position = Vector2(119.5, 0)
+texture = ExtResource("11_t2k6a")
+
+[node name="Label" type="Label" parent="CurrentTaskUI/CurrentTaskP2" groups=["current_task_ui"]]
+offset_left = -66.0
+offset_top = -32.0
+offset_right = 108.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="CurrentTaskUI/CurrentTaskP2"]
+position = Vector2(-30.5, 32.5)
+scale = Vector2(0.329197, 0.293623)
+texture = ExtResource("13_8psqw")

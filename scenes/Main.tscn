@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://6bqm6gqeokqt"]
+[gd_scene load_steps=9 format=3 uid="uid://6bqm6gqeokqt"]
 
 [ext_resource type="Script" path="res://scripts/camera/game_split_screen_controller.gd" id="1_mykgh"]
 [ext_resource type="PackedScene" uid="uid://527ad036ui2s" path="res://scenes/ui/ui_collective.tscn" id="2_7267x"]
 [ext_resource type="PackedScene" uid="uid://dnwp0f3rcpy14" path="res://scenes/levels/home_level.tscn" id="2_hlp5x"]
 [ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="3_4hmq5"]
-[ext_resource type="PackedScene" uid="uid://d2glb33o1cf16" path="res://scenes/scene/temporary_transition_trigger.tscn" id="5_xr20o"]
+[ext_resource type="PackedScene" uid="uid://dhh43kotjb6go" path="res://scenes/ui/notification.tscn" id="3_ixsmo"]
+[ext_resource type="PackedScene" uid="uid://cvwuirlquyihm" path="res://scenes/music/audio_manager.tscn" id="7_67p63"]
+[ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task/task_manager.tscn" id="8_jwxlj"]
 
 [sub_resource type="GDScript" id="GDScript_basqf"]
 script/source = "extends Camera2D
 
 var min_x = 0
-var max_x = 1540
+var max_x = 8000
 #1 for player1, 2 for player2
 @export var camera_number = 1; 
 
@@ -44,18 +46,22 @@ handle_input_locally = false
 size = Vector2i(1024, 1200)
 render_target_update_mode = 4
 
-[node name="Node" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_hlp5x")]
-
-[node name="TemporaryTransitionTrigger" parent="HBoxContainer/SubViewportContainer/SubViewport/Node" instance=ExtResource("5_xr20o")]
-position = Vector2(907, 939)
+[node name="Home_level" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_hlp5x")]
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
-limit_left = 0
-limit_top = 0
-limit_right = 2048
-limit_bottom = 1200
+zoom = Vector2(0.3, 0.3)
+limit_left = -3524
+limit_top = -2711
+limit_right = 3524
+limit_bottom = 2711
 editor_draw_limits = true
 script = SubResource("GDScript_basqf")
+
+[node name="UITasksP1" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("3_4hmq5")]
+
+[node name="AudioManager" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("7_67p63")]
+
+[node name="TaskManager" parent="HBoxContainer/SubViewportContainer/SubViewport" groups=["task_manager"] instance=ExtResource("8_jwxlj")]
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -66,14 +72,19 @@ size = Vector2i(1024, 1200)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer2/SubViewport"]
-limit_left = 0
-limit_top = 0
-limit_right = 2048
-limit_bottom = 1200
+zoom = Vector2(0.3, 0.3)
+limit_left = -3524
+limit_top = -2711
+limit_right = 3524
+limit_bottom = 2711
 script = SubResource("GDScript_basqf")
 camera_number = 2
 
 [node name="UITasksP2" parent="HBoxContainer/SubViewportContainer2/SubViewport" instance=ExtResource("3_4hmq5")]
 player_number = 2
 
-[editable path="HBoxContainer/SubViewportContainer/SubViewport/Node"]
+[node name="notification" parent="." instance=ExtResource("3_ixsmo")]
+visible = false
+
+[editable path="UICollective"]
+[editable path="HBoxContainer/SubViewportContainer/SubViewport/Home_level"]

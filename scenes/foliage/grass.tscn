@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://csec1xvonf8bl"]
+
+[ext_resource type="Script" path="res://Scripts/Foliage/grass.gd" id="1_pnsxf"]
+[ext_resource type="Texture2D" uid="uid://bhnggbdne6vua" path="res://art/World/Player Map/Foliage Sprites/Grass 1.png" id="1_yypvp"]
+[ext_resource type="Texture2D" uid="uid://3f8q3xp85rd7" path="res://art/World/Player Map/Foliage Sprites/Grass 2.png" id="2_l0pye"]
+[ext_resource type="Texture2D" uid="uid://1n38fy4egm4v" path="res://art/World/Player Map/Foliage Sprites/Grass 3.png" id="3_12o65"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uv474"]
+radius = 50.0
+
+[node name="Grass" type="Node2D" groups=["Grass"]]
+script = ExtResource("1_pnsxf")
+
+[node name="1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_yypvp")
+offset = Vector2(0, -149)
+
+[node name="2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_l0pye")
+offset = Vector2(0, -149)
+
+[node name="3" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_12o65")
+offset = Vector2(0, -149)
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_uv474")
+
+[connection signal="area_entered" from="Area" to="." method="detect_grass"]

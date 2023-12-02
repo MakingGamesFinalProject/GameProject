@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjgvw7h0fdwej"]
+
+[ext_resource type="Shader" path="res://shaders/test.gdshader" id="1_sc7xp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gpf5u"]
+seed = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hklga"]
+noise = SubResource("FastNoiseLite_gpf5u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbrmr"]
+shader = ExtResource("1_sc7xp")
+shader_parameter/value = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_hklga")
+
+[node name="Sprite2D" type="Sprite2D"]
+material = SubResource("ShaderMaterial_qbrmr")

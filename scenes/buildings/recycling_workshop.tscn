@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://efjia0hmypy4"]
+
+[ext_resource type="Script" path="res://scripts/Buildings/recycling_workshop.gd" id="1_3kmrn"]
+[ext_resource type="Texture2D" uid="uid://b5b6e1qxi5oow" path="res://art/World/Player Map/Buildings/Recycling Workshop.png" id="2_peje1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_133pb"]
+radius = 3.54877
+height = 8.82191
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5odm"]
+radius = 200.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf4ev"]
+size = Vector2(364, 1156.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dhr6v"]
+radius = 6.06971
+height = 19.1839
+
+[node name="RecyclingWorkshop" type="StaticBody2D"]
+script = ExtResource("1_3kmrn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -200)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("2_peje1")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-15, -210)
+rotation = 0.523599
+scale = Vector2(66.9345, 30.746)
+shape = SubResource("CapsuleShape2D_133pb")
+
+[node name="Collider" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -280)
+shape = SubResource("CircleShape2D_q5odm")
+
+[node name="Collider2" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, 322.75)
+shape = SubResource("RectangleShape2D_uf4ev")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-15, -210)
+rotation = 0.523599
+scale = Vector2(48.6736, 18.8285)
+shape = SubResource("CapsuleShape2D_dhr6v")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="detect_foliage"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

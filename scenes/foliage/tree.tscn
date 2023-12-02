@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqjpp3pposuag"]
+
+[ext_resource type="Script" path="res://Scripts/Foliage/tree.gd" id="1_ndtac"]
+[ext_resource type="Texture2D" uid="uid://cb8yuy5an7cfy" path="res://art/World/Player Map/Foliage Sprites/Tree Sprite 1.png" id="2_7n4h7"]
+[ext_resource type="Texture2D" uid="uid://c2pvrenl56oqe" path="res://art/World/Player Map/Foliage Sprites/Tree Sprite 2.png" id="3_xih0f"]
+[ext_resource type="Texture2D" uid="uid://c36jr4a0apic3" path="res://art/World/Player Map/Foliage Sprites/Tree Sprite 3.png" id="4_7gv0w"]
+[ext_resource type="Texture2D" uid="uid://b47tdfycmvjfy" path="res://art/World/Player Map/Foliage Sprites/Tree Sprite 4.png" id="5_2v6hb"]
+[ext_resource type="Texture2D" uid="uid://c7qsjby1m3wxd" path="res://art/World/Player Map/Foliage Sprites/Tree Sprite 5.png" id="6_f4nbj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8yue6"]
+radius = 58.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tb8s5"]
+radius = 800.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3edit"]
+radius = 150.0
+
+[node name="Tree" type="StaticBody2D" groups=["Tree"]]
+script = ExtResource("1_ndtac")
+
+[node name="1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_7n4h7")
+offset = Vector2(0, -857)
+
+[node name="2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_xih0f")
+offset = Vector2(0, -857)
+
+[node name="3" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_7gv0w")
+offset = Vector2(0, -857)
+
+[node name="4" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_2v6hb")
+offset = Vector2(0, -857)
+
+[node name="5" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_f4nbj")
+offset = Vector2(0, -857)
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -58)
+shape = SubResource("CircleShape2D_8yue6")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_tb8s5")
+
+[node name="Collider2" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_3edit")
+
+[connection signal="area_shape_entered" from="Area" to="." method="detect_tree"]
