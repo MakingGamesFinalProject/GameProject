@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://527ad036ui2s"]
+[gd_scene load_steps=13 format=3 uid="uid://527ad036ui2s"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_collective.gd" id="1_cg5x8"]
 [ext_resource type="Texture2D" uid="uid://blp024obmiwvf" path="res://art/UI/Icons/Water.png" id="1_hjqww"]
 [ext_resource type="Texture2D" uid="uid://dnq12jpx1lfgp" path="res://art/UI/Icons/Renewable Energy.png" id="2_1jpm5"]
-[ext_resource type="Texture2D" uid="uid://nt0nsbsft1jf" path="res://art/Background_placeholder.png" id="2_5htf3"]
 [ext_resource type="Texture2D" uid="uid://cnhmfdvt1vkex" path="res://art/UI/Icons/Recycled Scraps.png" id="3_7rj4l"]
 [ext_resource type="FontFile" uid="uid://bddofndbk3yi" path="res://art/UI/fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="3_t2x3q"]
 [ext_resource type="Texture2D" uid="uid://cyliaw4em6xeo" path="res://art/UI/Icons/task_board_background.png" id="7_fhnw8"]
@@ -34,69 +33,66 @@ theme_override_constants/margin_bottom = 20
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Background" type="TextureRect" parent="MarginContainer/Control"]
-layout_mode = 2
-offset_left = 823.0
-offset_top = -55.0
-offset_right = 1463.0
-offset_bottom = 265.0
-scale = Vector2(0.6, 0.789)
-texture = ExtResource("2_5htf3")
-
 [node name="WaterTexture" type="TextureRect" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 854.0
-offset_right = 954.0
-offset_bottom = 100.0
+offset_left = 835.0
+offset_top = 12.0
+offset_right = 935.0
+offset_bottom = 112.0
 texture = ExtResource("1_hjqww")
 
 [node name="WaterLabel" type="Label" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 879.0
-offset_top = 92.0
-offset_right = 930.0
-offset_bottom = 129.0
+offset_left = 975.0
+offset_top = 44.0
+offset_right = 1044.0
+offset_bottom = 93.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_t2x3q")
+theme_override_font_sizes/font_size = 38
 text = "999"
 horizontal_alignment = 1
 
 [node name="EnergyTexture" type="TextureRect" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 954.0
-offset_right = 1054.0
-offset_bottom = 100.0
+offset_left = 1174.0
+offset_top = 11.0
+offset_right = 1274.0
+offset_bottom = 111.0
 texture = ExtResource("2_1jpm5")
 
 [node name="EnergyLabel" type="Label" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 979.0
-offset_top = 92.0
-offset_right = 1030.0
-offset_bottom = 129.0
+offset_left = 1304.0
+offset_top = 41.0
+offset_right = 1373.0
+offset_bottom = 90.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_t2x3q")
+theme_override_font_sizes/font_size = 38
 text = "999"
 horizontal_alignment = 1
 
 [node name="ScrapsTexture" type="TextureRect" parent="MarginContainer/Control"]
 layout_mode = 2
-offset_left = 1054.0
-offset_right = 1154.0
-offset_bottom = 100.0
+offset_left = 523.0
+offset_top = 17.0
+offset_right = 623.0
+offset_bottom = 117.0
 texture = ExtResource("3_7rj4l")
 
 [node name="ScrapsLabel" type="Label" parent="MarginContainer/Control"]
 layout_mode = 0
-offset_left = 1079.0
-offset_top = 92.0
-offset_right = 1130.0
-offset_bottom = 129.0
+offset_left = 664.0
+offset_top = 44.0
+offset_right = 733.0
+offset_bottom = 93.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_t2x3q")
+theme_override_font_sizes/font_size = 38
 text = "999"
 horizontal_alignment = 1
 
