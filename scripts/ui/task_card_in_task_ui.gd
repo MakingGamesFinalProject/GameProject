@@ -23,11 +23,18 @@ func _ready():
 
 func _process(delta):
 	if !goal_text_ref.text.is_empty():
-		assign_task_p1_button_ref.set_visible(true)
-		assign_task_p2_button_ref.set_visible(true)
+		var task = task_manager.get_task_by_name($Panel/VBoxContainer/Goal.text)
+		if(task != null):
+			if(task.number_of_players == 1):
+				assign_task_p1_button_ref.set_visible(true)
+				assign_task_p2_button_ref.set_visible(true)
+			else:
+				assign_task_both_players_button_ref.set_visible(true)
+	
 	if !task_completed:
 		disable_buttons_if_task_is_completed()
-		
+	var task_name = $Panel/VBoxContainer/Goal.text		
+
 func disable_buttons_if_task_is_completed():
 	var task = task_manager.get_task_by_name(task_name)
 	if task != null && task_manager.is_task_completed(task.uid):
@@ -46,7 +53,6 @@ func _on_button_pressed():
 		task_manager.set_current_task(task.uid, 1)
 		var current_task_ui_p1 = get_tree().get_nodes_in_group("current_task_ui")[0]
 		current_task_ui_p1.text = task.name
-		$Panel/Button2.set_disabled(true)
 
 #Set this task active for player 2
 func _on_button_2_pressed():
@@ -57,4 +63,15 @@ func _on_button_2_pressed():
 		task_manager.set_current_task(task.uid, 2)
 		var current_task_ui_p1 = get_tree().get_nodes_in_group("current_task_ui")[1]
 		current_task_ui_p1.text = task.name
-		$Panel/Button2.set_disabled(true)
+
+#Set this task active for both players
+func _on_button_3_pressed():
+	var task_name = $Panel/VBoxContainer/Goal.text
+	var task = task_manager.get_task_by_name(task_name)
+	if(task != null):
+		task_manager.set_current_task(task.uid, 1)
+		task_manager.set_current_task(task.uid, 2)
+		var current_task_ui_p1 = get_tree().get_nodes_in_group("current_task_ui")[0]
+		var current_task_ui_p2 = get_tree().get_nodes_in_group("current_task_ui")[1]
+		current_task_ui_p1.text = task.name
+		current_task_ui_p2.text = task.name

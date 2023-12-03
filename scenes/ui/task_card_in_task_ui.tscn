@@ -106,7 +106,7 @@ texture_filter = 1
 layout_mode = 2
 theme = ExtResource("2_01ioa")
 theme_override_font_sizes/font_size = 31
-text = "Assign both"
+text = "Assign to both"
 
 [node name="CompletedSprite" type="Sprite2D" parent="Panel"]
 visible = false
@@ -131,5 +131,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="toggled" from="Panel/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_toggled"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_on_button_pressed"]
-[connection signal="toggled" from="Panel/VBoxContainer/Button3" to="." method="_on_button_toggled"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
