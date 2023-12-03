@@ -1,6 +1,6 @@
 extends Node
 
-signal on_resource_increased(resource)
+signal on_resource_increased(resource,amount_increased)
 
 # Declaration and initialization of our three resources
 var water : int = 0
@@ -14,17 +14,17 @@ var can_play_energy_sound = true
 func increase_water(amount):
 	play_water_pickup_sound()
 	water = clamp(water + amount, 0, 999)
-	on_resource_increased.emit("water")
+	on_resource_increased.emit("water", amount)
 
 func increase_energy(amount):
 	play_energy_pickup_sound()
 	energy = clamp(energy + amount, 0, 999)
-	on_resource_increased.emit("energy")
+	on_resource_increased.emit("energy", amount)
 
 func increase_scraps(amount):
 	play_scrap_pickup_sound()
 	scraps = clamp(scraps + amount, 0, 999)
-	on_resource_increased.emit("scraps")
+	on_resource_increased.emit("scraps", amount)
 
 func decrease_water(amount):
 	water = clamp(water - amount, 0, 999)

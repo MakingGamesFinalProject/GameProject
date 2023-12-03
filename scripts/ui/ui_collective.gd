@@ -16,13 +16,9 @@ func _ready():
 	energy_animation_counter_timer.timeout.connect(animate_resource_block_energy)
 	scraps_animation_counter_timer.wait_time = $MarginContainer/Control/ScrapsResourceCounter/ScrapsTexture2/AnimationPlayer.get_animation("resource_up").length - 0.2
 	scraps_animation_counter_timer.timeout.connect(animate_resource_block_scraps)
-
-func _process(_delta):
-	# Update the labels using the autoloaded ResourceManager
-	water_label.text = str(ResourceManager.water)
-	energy_label.text = str(ResourceManager.energy)
-	scraps_label.text = str(ResourceManager.scraps)
-
+	water_label.text = "0"
+	energy_label.text = "0"
+	scraps_label.text = "0"
 
 func _on_task_manager_task_completed(task):
 	var grid_container_for_tasks = $Sprite2D/Control/GridContainer
@@ -31,10 +27,13 @@ func _on_task_manager_task_completed(task):
 		if t.name == task.name:
 			print("found task completed among cards")
 
-func animate_resource_incrase(resource):
+func animate_resource_incrase(resource, amount_increased):
 	if resource == "water":
 		$MarginContainer/Control/WaterResourceCounter/WaterTexture2/AnimationPlayer.play("resource_up")
 		water_animation_counter_timer.start()
+		var current_water_resource = int(water_label.text)
+		var new_value = current_water_resource + amount_increased
+		water_label.text = str(new_value)
 	elif resource == "energy":
 		$MarginContainer/Control/EnergyResourceCounter/EnergyTexture2/AnimationPlayer.play("resource_up")
 		energy_animation_counter_timer.start()
