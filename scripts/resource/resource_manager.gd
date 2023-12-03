@@ -66,8 +66,6 @@ func play_animation_resource_up(resource):
 	if(resource != "water" && resource != "scraps" && resource != "energy"):
 		assert(false, "Please pass a resource between [scraps, water, energy]")
 	
-		
-
 func _reset_can_play_sound_after_timeout_energy():
 	can_play_energy_sound = true
 

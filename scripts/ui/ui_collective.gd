@@ -37,9 +37,15 @@ func animate_resource_incrase(resource, amount_increased):
 	elif resource == "energy":
 		$MarginContainer/Control/EnergyResourceCounter/EnergyTexture2/AnimationPlayer.play("resource_up")
 		energy_animation_counter_timer.start()
+		var current_resource = int(energy_label.text)
+		var new_value = current_resource + amount_increased
+		energy_label.text = str(new_value)
 	elif resource == "scraps":
 		$MarginContainer/Control/ScrapsResourceCounter/ScrapsTexture2/AnimationPlayer.play("resource_up")
 		scraps_animation_counter_timer.start()
+		var current_resource = int(scraps_label.text)
+		var new_value = current_resource + amount_increased
+		scraps_label.text = str(new_value)
 	else:
 		assert(false, "Resource not valid, please pass one of the following strings [water, scraps, energy]")
 
