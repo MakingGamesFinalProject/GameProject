@@ -23,14 +23,16 @@ layout_mode = 0
 offset_left = 12.0
 offset_top = 6.0
 offset_right = 313.0
-offset_bottom = 321.0
+offset_bottom = 332.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_1g0v6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.966
 anchor_bottom = 1.0
+offset_right = -2.76601
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -82,25 +84,29 @@ theme_override_colors/font_color = Color(0.254902, 0.254902, 0.254902, 1)
 theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Panel"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 28.0
-offset_top = 219.0
-offset_right = 274.0
-offset_bottom = 262.0
-theme = ExtResource("2_01ioa")
-text = "Set current P1"
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
 
-[node name="Button2" type="Button" parent="Panel"]
+[node name="Button" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
 texture_filter = 1
-layout_mode = 0
-offset_left = 28.0
-offset_top = 263.0
-offset_right = 274.0
-offset_bottom = 306.0
+layout_mode = 2
 theme = ExtResource("2_01ioa")
-text = "Set current P2"
+theme_override_font_sizes/font_size = 31
+text = "Assign P1"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("2_01ioa")
+theme_override_font_sizes/font_size = 31
+text = "Assign P2"
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("2_01ioa")
+theme_override_font_sizes/font_size = 31
+text = "Assign both"
 
 [node name="CompletedSprite" type="Sprite2D" parent="Panel"]
 visible = false
@@ -122,6 +128,8 @@ text = "COMPLETED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
-[connection signal="toggled" from="Panel/Button" to="." method="_on_button_toggled"]
-[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Panel/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_toggled"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Panel/VBoxContainer/Button3" to="." method="_on_button_toggled"]

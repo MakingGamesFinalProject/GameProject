@@ -3,11 +3,13 @@
 	{
 		"uid": 0,
 		"name": "Clean Water Filter",
+		"number_of_players": 1,
 		"reward": null
 	},
 	{
 		"uid": 1,
-		"name": "Unclog the Trash Bin",
+		"name": "Unclog the Trash Bin", 
+		"number_of_players": 1,
 		"reward": {
 			"amount": 40,
 			"resource": "Scrap"
@@ -16,7 +18,8 @@
 	{
 		"uid": 2,
 		"name": "Fix the Wind Turbines",
-		"reward": null
+		"reward": null,
+		"number_of_players": 1
 	},
 	{
 		"uid": 3,
@@ -24,7 +27,8 @@
 		"reward": {
 			"amount": 50,
 			"resource": "Energy"
-		}
+		},
+		"number_of_players": 2,
 	},
 	{
 		"uid": 4,
@@ -32,15 +36,17 @@
 		"reward": {
 			"amount": 50,
 			"resource": "Energy"
-		}
+		},
+		"number_of_players": 2
 	},
 	{
 		"uid": 5,
-		"name": "Recycle Trash",
+		"name": "Pickup Trash",
 		"reward": {
 			"amount": 50,
 			"resource": "Scrap"
-		}
+		},
+		"number_of_players": 1,
 	}
 ]
 }

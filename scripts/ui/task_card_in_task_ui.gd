@@ -3,19 +3,23 @@ extends Control
 var task_manager = null
 var assign_task_p1_button_ref = null
 var assign_task_p2_button_ref = null
+var assign_task_both_players_button_ref = null
 var goal_text_ref = null
 var task_name = ""
 @export var task_completed = false
 
 func _ready():
 	task_manager = get_tree().get_first_node_in_group("task_manager")
-	assign_task_p1_button_ref = $Panel/Button
-	assign_task_p2_button_ref = $Panel/Button2
+	assign_task_p1_button_ref = $Panel/VBoxContainer/HBoxContainer/Button
+	assign_task_p2_button_ref = $Panel/VBoxContainer/HBoxContainer/Button2
+	assign_task_both_players_button_ref = $Panel/VBoxContainer/Button3
 	goal_text_ref = $Panel/VBoxContainer/GoalLabel
 	assert(assign_task_p1_button_ref != null, "Button 1 not found");
 	assert(assign_task_p2_button_ref != null, "Button 2 not found");
+	assert(assign_task_both_players_button_ref != null, "Button 3 not found")
 	assign_task_p1_button_ref.set_visible(false)
 	assign_task_p2_button_ref.set_visible(false)
+	assign_task_both_players_button_ref.set_visible(false)
 
 func _process(delta):
 	if !goal_text_ref.text.is_empty():
