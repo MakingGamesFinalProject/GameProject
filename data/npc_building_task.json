@@ -1,0 +1,28 @@
+{
+	"relationships": [
+		{
+			"id": "0",
+			"npc": "Huggy",
+			"buildings": [
+				"shed",
+				"wind turbine"
+			],
+			"tasks": [
+				"0",
+				"1"
+			]
+		}, 
+		{
+			"id": "1",
+			"npc": "Greasy",
+			"buildings": [
+				"shed",
+				"wind turbine"
+			],
+			"tasks": [
+				"0",
+				"1"
+			]
+		}
+	]
+}
