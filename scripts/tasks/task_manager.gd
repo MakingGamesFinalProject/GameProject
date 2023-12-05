@@ -82,11 +82,6 @@ func _ready():
 			print("Unexpected data in tasks")
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-		
-	assign_task(3)
-	assign_task(2)
-	assign_task(0)
-	set_task_as_done(3)
 	
 func set_resource_manager():
 	resource_manager = get_tree().get_nodes_in_group("resource_manager")[0]
