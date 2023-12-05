@@ -25,6 +25,9 @@ func _ready():
 	# Don't show the pop-up right away
 	notification.visible = visible
 	
+	get_json()
+	
+func get_json():
 	# Get JSON data and save in a variable
 	var file = FileAccess.open(notification_path, FileAccess.READ)
 	var json_string = file.get_as_text()
@@ -42,10 +45,16 @@ func _ready():
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 
+
 # Call once to show, call again to hide
 func show_dialog(dialog_id: int):
 	# Put in correct info in the notification
 	# make the notification visible
+	
+	if not self.is_node_ready():
+		_ready()
+	get_json()
+	
 	for dialog in notifications:
 		if int ( dialog["id"] ) == dialog_id:
 			# load the headshot
