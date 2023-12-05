@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://2q5jf0ru8hri" path="res://art/World/Player Map/Map_Background.png" id="2_8vcuk"]
 [ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="3_158kr"]
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player/player.tscn" id="4_aeqqs"]
-[ext_resource type="PackedScene" uid="uid://dc0yqtbx1saef" path="res://scenes/buildings/npc_1.tscn" id="5_dwwca"]
+[ext_resource type="PackedScene" path="res://scenes/buildings/npc_1.tscn" id="5_dwwca"]
 
 [node name="World" type="Node2D" groups=["World"]]
 y_sort_enabled = true

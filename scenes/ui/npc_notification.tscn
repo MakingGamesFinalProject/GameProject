@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dporwj61qmkih"]
+
+[ext_resource type="Texture2D" path="res://art/UI/Icons/npc notification.png" id="1_63xod"]
+
+[node name="npc_notification" type="Node2D"]
+
+[node name="exclamation" type="Sprite2D" parent="."]
+texture = ExtResource("1_63xod")
