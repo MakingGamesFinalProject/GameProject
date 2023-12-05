@@ -30,7 +30,7 @@ position = Vector2(301, 2607)
 is_player_with_keyboard = false
 speed = 30000
 
-[node name="npc_1" parent="." instance=ExtResource("5_dwwca")]
-position = Vector2(-282, 2587)
+[node name="npc" parent="." instance=ExtResource("5_dwwca")]
+position = Vector2(-271, 2573)
 
 [connection signal="area_entered" from="Area" to="." method="detect_foliage"]
