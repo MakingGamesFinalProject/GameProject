@@ -6,6 +6,9 @@ var assign_task_p2_button_ref = null
 var assign_task_both_players_button_ref = null
 var goal_text_ref = null
 var task_name = ""
+
+var choosen_button_is_the_last_in_the_card := false
+
 @export var task_completed = false
 
 func _ready():
@@ -75,3 +78,34 @@ func _on_button_3_pressed():
 		var current_task_ui_p2 = get_tree().get_nodes_in_group("current_task_ui")[1]
 		current_task_ui_p1.text = task.name
 		current_task_ui_p2.text = task.name
+
+func choose_first():
+	var task = task_manager.get_task_by_name($Panel/VBoxContainer/Goal.text)
+	choosen_button_is_the_last_in_the_card = false
+	if(task != null):
+		if task.number_of_players == 1:
+			assign_task_p1_button_ref.grab_focus()
+		else:
+			assign_task_both_players_button_ref.grab_focus()
+			choosen_button_is_the_last_in_the_card = true
+	
+func choose_next():
+	assign_task_p2_button_ref.grab_focus()
+	choosen_button_is_the_last_in_the_card = true
+	
+func is_last_chosen():
+	var task = task_manager.get_task_by_name($Panel/VBoxContainer/Goal.text)
+	if(task != null):
+		return choosen_button_is_the_last_in_the_card
+			
+func press_current():
+	var task = task_manager.get_task_by_name($Panel/VBoxContainer/Goal.text)
+	if(task != null):
+		if task.number_of_players == 1:
+			if !choosen_button_is_the_last_in_the_card:
+				_on_button_pressed()
+			else:
+				_on_button_2_pressed()
+		else:
+			_on_button_3_pressed()
+	

@@ -91,6 +91,7 @@ layout_mode = 2
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("2_01ioa")
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31
 text = "Assign P1"
 
@@ -98,6 +99,7 @@ text = "Assign P1"
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("2_01ioa")
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31
 text = "Assign P2"
 
@@ -105,6 +107,7 @@ text = "Assign P2"
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("2_01ioa")
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31
 text = "Assign to both"
 
