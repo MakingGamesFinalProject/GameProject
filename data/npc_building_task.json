@@ -3,25 +3,38 @@
 		{
 			"id": "0",
 			"npc": "Huggy",
+			"dialogs" : {
+					"startup" : 1,
+					"before task" : 2,
+					"after task" : 3,
+					"parting phrase" : 4,
+					"not done yet" : 5
+			},
 			"buildings": [
 				"shed",
 				"wind turbine"
 			],
 			"tasks": [
-				"0",
-				"1"
+				0
 			]
 		}, 
 		{
 			"id": "1",
 			"npc": "Greasy",
+			"dialogs" : {
+					"startup" : 1,
+					"before task" : 2,
+					"after task" : 3,
+					"parting phrase" : 4,
+					"not done yet" : 5
+			},
 			"buildings": [
 				"shed",
 				"wind turbine"
 			],
 			"tasks": [
-				"0",
-				"1"
+				0,
+				1
 			]
 		}
 	]

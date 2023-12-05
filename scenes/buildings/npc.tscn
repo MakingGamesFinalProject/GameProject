@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://73i7rl2mk865"]
+[gd_scene load_steps=17 format=3 uid="uid://73i7rl2mk865"]
 
 [ext_resource type="Script" path="res://scripts/Buildings/npc.gd" id="1_yinxp"]
 [ext_resource type="Texture2D" uid="uid://cqxunjcsn1k2l" path="res://art/World/Player Map/NPCs/Huggy Sugar-Gold/Huggy Sugar-Gold.png" id="2_ukvr8"]
 [ext_resource type="Texture2D" uid="uid://capgke4dv1vbg" path="res://art/World/Player Map/NPCs/Greasy Jim/Greasy Jim.png" id="3_mhk0f"]
+[ext_resource type="PackedScene" uid="uid://dporwj61qmkih" path="res://scenes/ui/npc_notification.tscn" id="4_hhwu4"]
 [ext_resource type="Texture2D" uid="uid://bkc1tjst7l04l" path="res://art/UI/UI pixelart Assets 4 -1.3/16x16/Set1/Set1-1.png" id="4_nspc1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68akm"]
@@ -123,7 +124,11 @@ texture = ExtResource("3_mhk0f")
 offset = Vector2(0, -150)
 hframes = 8
 
+[node name="npc_notification" parent="." instance=ExtResource("4_hhwu4")]
+position = Vector2(0, -300)
+
 [node name="InteractibleButtonHelper" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -300)
 scale = Vector2(3.01079, 2.94478)
 texture = ExtResource("4_nspc1")

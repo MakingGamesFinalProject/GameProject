@@ -32,12 +32,5 @@ speed = 30000
 
 [node name="npc_1" parent="." instance=ExtResource("5_dwwca")]
 position = Vector2(-282, 2587)
-startup_dialog = true
-resource_dialog_trigger = Vector3(50, 0, 50)
-Building_built_path_trigger = 2
-at_startup_npc_dialog_id_list = [1]
-before_resource_npc_dialog_id_list = [2]
-before_building_npc_dialog_id_list = [3]
-after_task_npc_dialog_id_list = [4, 5]
 
 [connection signal="area_entered" from="Area" to="." method="detect_foliage"]
