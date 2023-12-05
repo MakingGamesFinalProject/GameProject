@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dc0yqtbx1saef"]
+[gd_scene load_steps=16 format=3 uid="uid://73i7rl2mk865"]
 
 [ext_resource type="Script" path="res://scripts/Buildings/npc.gd" id="1_yinxp"]
 [ext_resource type="Texture2D" uid="uid://cqxunjcsn1k2l" path="res://art/World/Player Map/NPCs/Huggy Sugar-Gold/Huggy Sugar-Gold.png" id="2_ukvr8"]

@@ -82,6 +82,11 @@ func _ready():
 			print("Unexpected data in tasks")
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+		
+	assign_task(3)
+	assign_task(2)
+	assign_task(0)
+	set_task_as_done(3)
 	
 func set_resource_manager():
 	resource_manager = get_tree().get_nodes_in_group("resource_manager")[0]
@@ -97,6 +102,10 @@ func _on_gift_box_gift_box_picked_up(player_number):
 	set_task_as_done(0)
 
 func assign_task(uid): 
+	for j in range(0, len(tasks_completed)):
+		if tasks_completed[j].uid == uid:
+			return
+	
 	for j in range(0, len(tasks_assigned)):
 		if tasks_assigned[j].uid == uid:
 			return
@@ -145,9 +154,11 @@ func set_task_as_done(task_uid):
 		
 	tasks_completed.push_back(task)
 	
+	var to_be_removed = -1
 	for i  in range(0, len(tasks_assigned)):
 		if tasks_assigned[i].uid == task_uid:
-			tasks_assigned.remove_at(i)
+			to_be_removed = i
+	tasks_assigned.remove_at(to_be_removed)
 			
 	task_completed.emit(task)
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cei511mod82b"
-path="res://.godot/imported/resource background.png-717766ff0ac3ef23ce8f59a4e99e3f52.ctex"
+uid="uid://ctmlnt0y3r78i"
+path="res://.godot/imported/Building in Progress.png-eb5cd0e135f977188c81c0465ceed2ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/Panels/resource background.png"
-dest_files=["res://.godot/imported/resource background.png-717766ff0ac3ef23ce8f59a4e99e3f52.ctex"]
+source_file="res://art/World/Player Map/Buildings/Building in Progress.png"
+dest_files=["res://.godot/imported/Building in Progress.png-eb5cd0e135f977188c81c0465ceed2ae.ctex"]
 
 [params]
 
