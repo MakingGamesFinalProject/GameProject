@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://527ad036ui2s"]
+[gd_scene load_steps=29 format=3 uid="uid://527ad036ui2s"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_collective.gd" id="1_cg5x8"]
 [ext_resource type="Texture2D" uid="uid://blp024obmiwvf" path="res://art/UI/Icons/Water.png" id="1_hjqww"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dtsdpwp5x4nio" path="res://art/UI/Icons/task_background_in_board.png" id="10_kgi4o"]
 [ext_resource type="Texture2D" uid="uid://g308pauuckrg" path="res://art/current_tasl_p2.png" id="11_t2k6a"]
 [ext_resource type="Texture2D" uid="uid://dav3paq80swpy" path="res://art/UI/Icons/y-filled-yellow.png" id="13_8psqw"]
+[ext_resource type="PackedScene" uid="uid://crv8h23xdp7jn" path="res://scenes/ui/options_ui.tscn" id="15_bu0jw"]
 
 [sub_resource type="Animation" id="Animation_gcdc3"]
 resource_name = "resource_up"
@@ -460,3 +461,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 position = Vector2(-30.5, 32.5)
 scale = Vector2(0.329197, 0.293623)
 texture = ExtResource("13_8psqw")
+
+[node name="options_ui" parent="." instance=ExtResource("15_bu0jw")]
+visible = false
