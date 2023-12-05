@@ -5,6 +5,8 @@ var task_container_player = null
 var sound_when_toggled_on = preload("res://sounds/UI Soundpack/MP3/Wood Block1.mp3")
 var sound_when_toggled_off = preload("res://sounds/UI Soundpack/MP3/Wood Block2.mp3")
 
+var chosen_card_index = -1
+
 func _ready():
 	var tree = get_tree()
 	tasks_manager = tree.get_first_node_in_group("task_manager")
@@ -16,6 +18,26 @@ func _ready():
 	
 func _process(delta):
 	check_for_ui_toggle()	
+	
+	if (Input.is_action_just_pressed("menu_press") and self.visible == true and chosen_card_index != -1):
+		var curr_task = get_task_card(chosen_card_index)
+		curr_task.press_current()
+	
+	if (Input.is_action_just_pressed("menu_right") and self.visible == true and chosen_card_index != -1):
+		var curr_task = get_task_card(chosen_card_index)
+		var tasks_assigned = tasks_manager.get_tasks_assigned(-1)
+		var last_button = curr_task.is_last_chosen()
+		if last_button:
+			# choose next card
+			if chosen_card_index >= len(tasks_assigned) - 1:
+				chosen_card_index = 0
+			else:
+				chosen_card_index = chosen_card_index + 1
+			curr_task = get_task_card(chosen_card_index)
+			curr_task.choose_first()
+		else:
+			curr_task.choose_next()
+		
 	
 func check_for_ui_toggle():
 	var toggle_button_pressed_p1 = Input.is_action_just_pressed("toggle_task_list_p1")
@@ -41,6 +63,11 @@ func check_for_ui_toggle():
 	
 func load_assigned_tasks():
 	var tasks_assigned = tasks_manager.get_tasks_assigned(-1)
+	
+	if len(tasks_assigned) > 0:
+		chosen_card_index = 0
+		var curr_task = get_task_card(chosen_card_index)
+		curr_task.choose_first()
 	
 	for i in range(0, len(tasks_assigned)):
 		if tasks_assigned[i] != null:

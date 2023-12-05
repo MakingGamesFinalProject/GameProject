@@ -97,6 +97,10 @@ func _on_gift_box_gift_box_picked_up(player_number):
 	set_task_as_done(0)
 
 func assign_task(uid): 
+	for j in range(0, len(tasks_completed)):
+		if tasks_completed[j].uid == uid:
+			return
+	
 	for j in range(0, len(tasks_assigned)):
 		if tasks_assigned[j].uid == uid:
 			return
@@ -145,9 +149,11 @@ func set_task_as_done(task_uid):
 		
 	tasks_completed.push_back(task)
 	
+	var to_be_removed = -1
 	for i  in range(0, len(tasks_assigned)):
 		if tasks_assigned[i].uid == task_uid:
-			tasks_assigned.remove_at(i)
+			to_be_removed = i
+	tasks_assigned.remove_at(to_be_removed)
 			
 	task_completed.emit(task)
 	

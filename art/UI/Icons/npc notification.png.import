@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cei511mod82b"
-path="res://.godot/imported/resource background.png-717766ff0ac3ef23ce8f59a4e99e3f52.ctex"
+uid="uid://bkv7a77g7fmb"
+path="res://.godot/imported/npc notification.png-5374fcee2a1e39fd19acc17135454366.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/Panels/resource background.png"
-dest_files=["res://.godot/imported/resource background.png-717766ff0ac3ef23ce8f59a4e99e3f52.ctex"]
+source_file="res://art/UI/Icons/npc notification.png"
+dest_files=["res://.godot/imported/npc notification.png-5374fcee2a1e39fd19acc17135454366.ctex"]
 
 [params]
 
