@@ -21,6 +21,9 @@ position = Vector2(0, -30)
 scale = Vector2(2.66356, 2.37604)
 shape = SubResource("CircleShape2D_k2kpd")
 
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(306, -2, 2, 172, -306, -3, -1, 284)
+
 [connection signal="area_entered" from="DetectionArea" to="." method="detect_foliage"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

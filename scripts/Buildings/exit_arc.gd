@@ -17,10 +17,12 @@ func _ready():
 
 func _process(_delta):	
 	if counter_players_detected == 2 and check_task_completion():
-		# trigger next map or end if conditions met
 		if check_condiditons():
+			# end game
 			pass
-		pass
+		else:
+			#next map
+			world_script.regenerate()
 	
 func check_condiditons():
 	if NPCEncounter.huggy == 3 \
