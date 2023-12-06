@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b8opwplf7btnl"]
 
-[ext_resource type="Script" path="res://scripts/Buildings/wind_turbine.gd" id="1_iyri0"]
+[ext_resource type="Script" path="res://scripts/Buildings/hamster_wheel.gd" id="1_nhtmd"]
 [ext_resource type="Texture2D" uid="uid://dlv323csxnbh1" path="res://art/World/Player Map/Buildings/Hamster Wheels.png" id="2_73rf2"]
 [ext_resource type="Texture2D" uid="uid://chgsnnrkvaktt" path="res://art/World/Player Map/Buildings/Hamster Wheels Outline.png" id="3_o4yxi"]
 [ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="4_ydn82"]
@@ -15,7 +15,7 @@ radius = 66.9082
 radius = 20.7231
 
 [node name="HamsterWheels" type="StaticBody2D" groups=["Building", "Hamster Wheel"]]
-script = ExtResource("1_iyri0")
+script = ExtResource("1_nhtmd")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("2_73rf2")

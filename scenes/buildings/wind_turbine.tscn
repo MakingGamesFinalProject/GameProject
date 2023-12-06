@@ -83,7 +83,7 @@ offset = Vector2(0, -600)
 
 [node name="Helix" type="Sprite2D" parent="Base"]
 position = Vector2(0, -1230)
-rotation = 1.91174
+rotation = 2.89573
 texture = ExtResource("3_q54hx")
 offset = Vector2(0, -175)
 

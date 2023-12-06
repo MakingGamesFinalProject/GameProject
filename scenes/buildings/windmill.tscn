@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bb3j8x44mcjrq"]
 
-[ext_resource type="Script" path="res://scripts/Buildings/wind_turbine.gd" id="1_dm127"]
+[ext_resource type="Script" path="res://scripts/Buildings/windmill.gd" id="1_0htw1"]
 [ext_resource type="Texture2D" uid="uid://bsasgw4ucsdx" path="res://art/World/Player Map/Buildings/Windmill.png" id="2_xvtdq"]
 [ext_resource type="Texture2D" uid="uid://bn5xu7j4df26v" path="res://art/World/Player Map/Buildings/Windmill Outline.png" id="3_w6aeh"]
 [ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="5_g0tfw"]
@@ -15,7 +15,7 @@ radius = 66.9082
 radius = 20.7231
 
 [node name="Windmill" type="StaticBody2D" groups=["Building", "Windmill"]]
-script = ExtResource("1_dm127")
+script = ExtResource("1_0htw1")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("2_xvtdq")
