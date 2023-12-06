@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxg15ngt44gh8"]
+
+[ext_resource type="Script" path="res://scripts/Buildings/exit_arc.gd" id="1_eaugw"]
+[ext_resource type="Texture2D" uid="uid://dff0nttqa8d77" path="res://art/World/Player Map/Exit.png" id="2_2x25m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2kpd"]
+radius = 66.9082
+
+[node name="Exit Arc" type="StaticBody2D" groups=["Building", "Well"]]
+script = ExtResource("1_eaugw")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_2x25m")
+offset = Vector2(0, -300)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+scale = Vector2(1.48, 1.35271)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -30)
+scale = Vector2(2.66356, 2.37604)
+shape = SubResource("CircleShape2D_k2kpd")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="detect_foliage"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
