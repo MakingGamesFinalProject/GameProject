@@ -62,6 +62,13 @@
 			"reward": {
 			},
 			"number_of_players": 2,
+		},
+		{
+			"uid": 9,
+			"name": "Clean Scrap Heaps",
+			"reward": {
+			},
+			"number_of_players": 1,
 		}
 	]
 }

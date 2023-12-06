@@ -13,7 +13,7 @@ var detected_foliage : Array[Node2D] = []
 
 var is_obstructed := false
 
-var amount_of_scrap := 5
+var amount_of_scrap := 50
 
 func detect_scraps(area):
 	if area.get_parent().is_in_group("Scraps"):
@@ -52,6 +52,14 @@ func handle_interactions_with_players():
 func start_fading():
 	fading_out = true
 	fade_elapsed = 0.0
+	
+func check_if_clean_scrap_piles_task():
+	var scrap_array = get_tree().get_nodes_in_group("Scraps")
+	if scrap_array.size() == 0:
+		var task_manager_ref = get_tree().get_first_node_in_group("task_manager")
+		assert(task_manager_ref != null, "Task manager not found")
+		var task_id = task_manager_ref.get_task_by_name("Clean Scrap Heaps").uid
+		task_manager_ref.set_task_as_done(task_id)
 
 func fade_out(delta):
 	fade_elapsed += delta
@@ -63,6 +71,7 @@ func fade_out(delta):
 		fading_out = false	
 		hide()  
 		queue_free()
+		check_if_clean_scrap_piles_task()
 
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("players"):
