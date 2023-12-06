@@ -28,7 +28,7 @@ offset = Vector2(-100, -300)
 [node name="DetectionArea" type="Area2D" parent="."]
 scale = Vector2(1.48, 1.35271)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" groups=["Building", "Hamster Wheels"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(-80, -250)
 rotation = -1.0472
 scale = Vector2(4.7207, 7.68312)
@@ -43,7 +43,7 @@ shape = SubResource("CircleShape2D_o64sd")
 [node name="HelperButton" parent="." instance=ExtResource("4_t6tt2")]
 position = Vector2(170, -595)
 
-[node name="ExclamationMark" parent="." groups=["Building", "Recycling Workshop"] instance=ExtResource("5_dimxt")]
+[node name="ExclamationMark" parent="." instance=ExtResource("5_dimxt")]
 position = Vector2(-106, -790)
 
 [node name="Building" type="AudioStreamPlayer" parent="."]

@@ -29,7 +29,7 @@ offset = Vector2(0, -150)
 position = Vector2(-4, -597)
 scale = Vector2(1.48, 1.35271)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" groups=["Building", "Hamster Wheels"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(0, 320)
 scale = Vector2(2.16612, 3.22106)
 shape = SubResource("CircleShape2D_k2kpd")

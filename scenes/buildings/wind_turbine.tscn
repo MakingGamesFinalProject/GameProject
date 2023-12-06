@@ -83,7 +83,7 @@ offset = Vector2(0, -600)
 
 [node name="Helix" type="Sprite2D" parent="Base"]
 position = Vector2(0, -1230)
-rotation = 5.88737
+rotation = 5.27925
 texture = ExtResource("3_q54hx")
 offset = Vector2(0, -175)
 
@@ -113,7 +113,7 @@ tree_root = SubResource("AnimationNodeStateMachine_klxyy")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 
-[node name="HelperButton" parent="." groups=["Building", "Wind Turbine"] instance=ExtResource("4_7u765")]
+[node name="HelperButton" parent="." instance=ExtResource("4_7u765")]
 position = Vector2(105, -111)
 
 [node name="ExclamationMark" parent="." instance=ExtResource("5_ykjp2")]
