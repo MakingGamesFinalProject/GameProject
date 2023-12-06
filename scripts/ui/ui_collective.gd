@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var energy_animation_counter_timer: Timer = $MarginContainer/Control/EnergyResourceCounter/EnergyAnimationTimer
 @onready var scraps_animation_counter_timer: Timer = $MarginContainer/Control/ScrapsResourceCounter/ScrapsAnimationTimer
 @export var delay_to_increase_resource_during_animation_in_seconds = 0.02
+var is_options_open = false
 func _ready():
 	ResourceManager.on_resource_increased.connect(animate_resource_incrase)
 	water_animation_counter_timer.wait_time = $MarginContainer/Control/WaterResourceCounter/WaterTexture2/AnimationPlayer.get_animation("resource_up").length - 0.2
@@ -19,6 +20,7 @@ func _ready():
 	water_label.text = "0"
 	energy_label.text = "0"
 	scraps_label.text = "0"
+
 
 func _on_task_manager_task_completed(task):
 	var grid_container_for_tasks = $Sprite2D/Control/GridContainer
@@ -72,3 +74,27 @@ func animate_resource_block_energy():
 
 func animate_resource_block_scraps():
 	$MarginContainer/Control/ScrapsResourceCounter/AnimationPlayer.play("resource_counter_up")
+
+func _process(delta):
+	if(Input.is_action_just_pressed("toggle_pause")):
+		if is_options_open:
+			is_options_open = false
+			$DarkBackgroundForPause.set_visible(false)
+			$options_ui.set_visible(false)
+		else:
+			is_options_open = true
+			$DarkBackgroundForPause.set_visible(true)
+			$options_ui.set_visible(true)
+
+func _on_resume_pressed():
+	is_options_open = false
+	$DarkBackgroundForPause.set_visible(false)
+	$options_ui.set_visible(false)
+
+
+func _on_options_pressed():
+	$Commands.set_visible(!$Commands.visible)
+
+
+func _on_quit_button_pressed():
+	get_tree().quit()
