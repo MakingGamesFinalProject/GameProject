@@ -21,17 +21,7 @@ func _ready():
 	energy_label.text = "0"
 	scraps_label.text = "0"
 
-func _process(delta):
-	if(Input.is_action_just_pressed("toggle_pause")):
-		if is_options_open:
-			is_options_open = false
-			$DarkBackgroundForPause.set_visible(false)
-			$options_ui.set_visible(false)
-		else:
-			is_options_open = true
-			$DarkBackgroundForPause.set_visible(true)
-			$options_ui.set_visible(true)
-	
+
 func _on_task_manager_task_completed(task):
 	var grid_container_for_tasks = $Sprite2D/Control/GridContainer
 	var task_cards = grid_container_for_tasks.get_children()
@@ -84,3 +74,27 @@ func animate_resource_block_energy():
 
 func animate_resource_block_scraps():
 	$MarginContainer/Control/ScrapsResourceCounter/AnimationPlayer.play("resource_counter_up")
+
+func _process(delta):
+	if(Input.is_action_just_pressed("toggle_pause")):
+		if is_options_open:
+			is_options_open = false
+			$DarkBackgroundForPause.set_visible(false)
+			$options_ui.set_visible(false)
+		else:
+			is_options_open = true
+			$DarkBackgroundForPause.set_visible(true)
+			$options_ui.set_visible(true)
+
+func _on_resume_pressed():
+	is_options_open = false
+	$DarkBackgroundForPause.set_visible(false)
+	$options_ui.set_visible(false)
+
+
+func _on_options_pressed():
+	$Commands.set_visible(!$Commands.visible)
+
+
+func _on_quit_button_pressed():
+	get_tree().quit()
