@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bjc75nrwscrde"]
 
-[ext_resource type="Script" path="res://scripts/Buildings/wind_turbine.gd" id="1_di5fo"]
+[ext_resource type="Script" path="res://scripts/Buildings/trash_collector.gd" id="1_u568d"]
 [ext_resource type="Texture2D" uid="uid://p5l2uiyw6ghm" path="res://art/World/Player Map/Buildings/Trash Collector.png" id="2_0sbkl"]
 [ext_resource type="Texture2D" uid="uid://cnfuc4cf8var0" path="res://art/World/Player Map/Buildings/Trash Collector Outline.png" id="3_016yf"]
 [ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="4_nhh4l"]
@@ -15,7 +15,7 @@ radius = 66.9082
 radius = 20.7231
 
 [node name="TrashCollector" type="StaticBody2D" groups=["Building", "Trash Collector"]]
-script = ExtResource("1_di5fo")
+script = ExtResource("1_u568d")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("2_0sbkl")

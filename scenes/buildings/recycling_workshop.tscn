@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://qdtdv4kxvw3v"]
 
-[ext_resource type="Script" path="res://scripts/Buildings/wind_turbine.gd" id="1_2fes5"]
+[ext_resource type="Script" path="res://scripts/Buildings/recycling_workshop.gd" id="1_3kmrn"]
 [ext_resource type="Texture2D" uid="uid://b5b6e1qxi5oow" path="res://art/World/Player Map/Buildings/Recycling Workshop.png" id="2_peje1"]
 [ext_resource type="Texture2D" uid="uid://c08afvw8ywtln" path="res://art/World/Player Map/Buildings/Recycling Workshop Outline.png" id="3_ig4wv"]
 [ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="4_t6tt2"]
@@ -15,7 +15,7 @@ radius = 66.9082
 radius = 20.7231
 
 [node name="RecyclingWorkshop" type="StaticBody2D" groups=["Building", "Recycling Workshop"]]
-script = ExtResource("1_2fes5")
+script = ExtResource("1_3kmrn")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("2_peje1")
