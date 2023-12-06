@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://bb3j8x44mcjrq"]
+
+[ext_resource type="Script" path="res://scripts/Buildings/windmill.gd" id="1_0htw1"]
+[ext_resource type="Texture2D" uid="uid://bsasgw4ucsdx" path="res://art/World/Player Map/Buildings/Windmill.png" id="2_xvtdq"]
+[ext_resource type="Texture2D" uid="uid://bn5xu7j4df26v" path="res://art/World/Player Map/Buildings/Windmill Outline.png" id="3_w6aeh"]
+[ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="5_g0tfw"]
+[ext_resource type="PackedScene" uid="uid://bhbgan7cobyol" path="res://scenes/ui/building_exclamation_mark.tscn" id="6_k35eg"]
+[ext_resource type="AudioStream" uid="uid://qsarnvvp1cta" path="res://sounds/Player Map/Building Process.wav" id="7_0ixj0"]
+[ext_resource type="AudioStream" uid="uid://fy53ih1qmbyk" path="res://sounds/Player Map/Building Set.wav" id="8_ny0me"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2kpd"]
+radius = 66.9082
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o64sd"]
+radius = 20.7231
+
+[node name="Windmill" type="StaticBody2D" groups=["Building", "Windmill"]]
+script = ExtResource("1_0htw1")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_xvtdq")
+offset = Vector2(200, -1000)
+
+[node name="Outline" type="Sprite2D" parent="."]
+texture = ExtResource("3_w6aeh")
+offset = Vector2(200, -1000)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(-4, -597)
+scale = Vector2(1.48, 1.35271)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, 306.052)
+scale = Vector2(4.8425, 3.44643)
+shape = SubResource("CircleShape2D_k2kpd")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -163)
+scale = Vector2(17.1985, 8.7637)
+shape = SubResource("CircleShape2D_o64sd")
+
+[node name="HelperButton" parent="." instance=ExtResource("5_g0tfw")]
+position = Vector2(155, -171)
+
+[node name="ExclamationMark" parent="." instance=ExtResource("6_k35eg")]
+position = Vector2(-135, -227)
+
+[node name="Building" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0ixj0")
+
+[node name="Built" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ny0me")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="detect_foliage"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -1,52 +1,74 @@
 {
-  "tasks": [
-	{
-		"uid": 0,
-		"name": "Clean Water Filter",
-		"number_of_players": 1,
-		"reward": null
-	},
-	{
-		"uid": 1,
-		"name": "Unclog the Trash Bin", 
-		"number_of_players": 1,
-		"reward": {
-			"amount": 40,
-			"resource": "Scrap"
+	"tasks": [
+		{
+			"uid": 1,
+			"name": "Check Batteries",
+			"reward": {
+			},
+			"number_of_players": 2,
+		},
+		{
+			"uid": 2,
+			"name": "Empty Windmill",
+			"reward": {
+			},
+			"number_of_players": 2
+		},
+		{
+			"uid": 3,
+			"name": "Feed Hamsters",
+			"reward": {
+			},
+			"number_of_players": 1,
+		},
+		{
+			"uid": 4,
+			"name": "Create Scrap",
+			"reward": {
+			},
+			"number_of_players": 1,
+		},
+		{
+			"uid": 5,
+			"name": "Pick up Scrap",
+			"reward": {
+			},
+			"number_of_players": 1,
+		},
+		{
+			"uid": 6,
+			"name": "Collect Water",
+			"reward": {
+			},
+			"number_of_players": 1,
+		},
+		{
+			"uid": 7,
+			"name": "Retrieve Water",
+			"reward": {
+			},
+			"number_of_players": 1,
+		},
+		{
+			"uid": 8,
+			"name": "Check Pump",
+			"reward": {
+			},
+			"number_of_players": 2,
+		},
+		{
+			"uid": 9,
+			"name": "Discuss Future Plans",
+			"reward": {
+			},
+			"number_of_players": 2,
+		},
+		{
+			"uid": 10,
+			"name": "Clean Scrap Heaps",
+			"reward": {
+			},
+			"number_of_players": 1,
 		}
-	},
-	{
-		"uid": 2,
-		"name": "Fix the Wind Turbines",
-		"reward": null,
-		"number_of_players": 1
-	},
-	{
-		"uid": 3,
-		"name": "Check batteries (Wind Turbines)",
-		"reward": {
-			"amount": 50,
-			"resource": "Energy"
-		},
-		"number_of_players": 2,
-	},
-	{
-		"uid": 4,
-		"name": "Check batteries (Water Filter)",
-		"reward": {
-			"amount": 50,
-			"resource": "Energy"
-		},
-		"number_of_players": 2
-	},
-	{
-		"uid": 5,
-		"name": "Pickup Trash",
-		"reward": {
-			"amount": 50,
-			"resource": "Scrap"
-		},
-		"number_of_players": 1,
-	}
-]
+	]
 }

@@ -31,12 +31,12 @@ var COLLECTABILITY_TIMER: float = 20.0
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
 var needed_for_build_water := 0
-var needed_for_build_energy := 10
-var needed_for_build_scrap := 0
+var needed_for_build_energy := 0
+var needed_for_build_scrap := 5
 
-var collection_resource_water := 0
+var collection_resource_water := 15
 var collection_resource_energy := 0
-var collection_resource_scrap := 50
+var collection_resource_scrap := 0
 #########################################^^^^################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #############################################################################################
@@ -80,12 +80,6 @@ func _process(_delta):
 			building_fade_in()
 			building_play_sounds()
 		
-		elif has_been_built and is_collectable:
-			var player_array = get_tree().get_nodes_in_group("players")
-			player_array[0].player_interaction()
-			start_collection_timer()
-			give_resources()
-		
 	if Input.is_action_just_pressed("interaction_p2") and player2_is_close:
 		if can_be_build and not has_been_built:
 			ResourceManager.decrease_water(needed_for_build_water)
@@ -97,12 +91,13 @@ func _process(_delta):
 			$Base.show()
 			building_fade_in()
 			building_play_sounds()
-			
-		elif has_been_built and is_collectable:
-			var player_array = get_tree().get_nodes_in_group("players")
-			player_array[1].player_interaction()
-			start_collection_timer()
-			give_resources()
+	
+	if has_been_built and is_collectable and check_shed_filter_task_connection():
+		var player_array = get_tree().get_nodes_in_group("players")
+		player_array[0].player_interaction()
+		player_array[1].player_interaction()
+		start_collection_timer()
+		give_resources()
 
 func sufficient_resources():
 	if ResourceManager.water >= needed_for_build_water \
@@ -154,27 +149,36 @@ func check_task_completion():
 	# This function needs to be here but it is supposed to 
 	# call the correct "check tasks" depending on the building
 	# check_for_fixing_task() # decided we don't need because of time constraints
-	check_for_create_scrap_task()
+	check_for_check_pump_task()
 
-func check_for_create_scrap_task():
+func check_for_check_pump_task():
 	if current_status != available_states.WORKING: 
 		return
 	
-	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
-	if task_manager_ref.get_current_task(1) == task_id or task_manager_ref.get_current_task(2) == task_id:
-		if (Input.is_action_pressed("interaction_p1") and player1_is_close):
+	# Check if both players have the check batteries task assigned
+	var task_id = task_manager_ref.get_task_by_name("Check Pump").uid
+	if task_manager_ref.get_current_task(1) == task_id and task_manager_ref.get_current_task(2) == task_id:
+		if check_shed_filter_task_connection():
 			var player_array = get_tree().get_nodes_in_group("players")
 			player_array[0].player_interaction()
-			var time_manager = WaitUtil.new()
-			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
-		elif (Input.is_action_pressed("interaction_p2") and player2_is_close):
-			var player_array = get_tree().get_nodes_in_group("players")
 			player_array[1].player_interaction()
 			var time_manager = WaitUtil.new()
-			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_check_pump_task_callback")
+				
+func check_shed_filter_task_connection():
+	# a player is interacting with the wind turbine
+	if (Input.is_action_pressed("interaction_p1") and player1_is_close) \
+	 or (Input.is_action_pressed("interaction_p2") and player2_is_close):
+		var Shed_ref = get_tree().get_first_node_in_group("Shed")
+		assert(Shed_ref != null, "Shed reference not found")
+		# a player interacting with the house and the wind turbine
+		var amount_players_interacting_with_shed = Shed_ref.counter_players_detected
+		if counter_players_detected > 0 and amount_players_interacting_with_shed > 0:
+			return true
+	return false
 
-func _on_create_scrap_task_callback():
-	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
+func _on_check_pump_task_callback():
+	var task_id = task_manager_ref.get_task_by_name("Check Pump").uid
 	task_manager_ref.set_task_as_done(task_id)
 
 #######################################^^^^##################################################

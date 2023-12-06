@@ -13,6 +13,8 @@ var detected_foliage : Array[Node2D] = []
 
 var is_obstructed := false
 
+var amount_of_scrap := 50
+
 func detect_scraps(area):
 	if area.get_parent().is_in_group("Scraps"):
 		detected_scraps.append(area.get_parent())
@@ -28,7 +30,6 @@ func detect_scraps(area):
 func _ready():
 	$InteractibleButtonHelper.hide()
 	
-
 func _process(_delta):
 	if fading_out:
 		fade_out(_delta)
@@ -38,26 +39,27 @@ func _process(_delta):
 		
 func handle_interactions_with_players():
 	if Input.is_action_just_pressed("interaction_p1") and scrap_collectable_p1:
-		ResourceManager.increase_scraps(25)
+		ResourceManager.increase_scraps(amount_of_scrap)
 		var player_array = get_tree().get_nodes_in_group("players")
-		if player_array[0].name == "Player":
-			#freeze player 1
-			print(player_array[0].name)
-			player_array[0].player_interaction()
-		else:
-			#freeze player 2
-			print(player_array[1].name)
-			player_array[1].player_interaction()
+		player_array[0].player_interaction()
 		start_fading()
-		
 	if Input.is_action_just_pressed("interaction_p2") and scrap_collectable_p2:
-		ResourceManager.increase_scraps(25)
-		start_fading()	
+		ResourceManager.increase_scraps(amount_of_scrap)
+		var player_array = get_tree().get_nodes_in_group("players")
+		player_array[1].player_interaction()
+		start_fading()
 	
-
 func start_fading():
 	fading_out = true
 	fade_elapsed = 0.0
+	
+func check_if_clean_scrap_piles_task():
+	var scrap_array = get_tree().get_nodes_in_group("Scraps")
+	if scrap_array.size() == 0:
+		var task_manager_ref = get_tree().get_first_node_in_group("task_manager")
+		assert(task_manager_ref != null, "Task manager not found")
+		var task_id = task_manager_ref.get_task_by_name("Clean Scrap Heaps").uid
+		task_manager_ref.set_task_as_done(task_id)
 
 func fade_out(delta):
 	fade_elapsed += delta
@@ -69,6 +71,7 @@ func fade_out(delta):
 		fading_out = false	
 		hide()  
 		queue_free()
+		check_if_clean_scrap_piles_task()
 
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("players"):

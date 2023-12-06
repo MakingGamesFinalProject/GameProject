@@ -31,12 +31,12 @@ var COLLECTABILITY_TIMER: float = 20.0
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
 var needed_for_build_water := 0
-var needed_for_build_energy := 10
-var needed_for_build_scrap := 0
+var needed_for_build_energy := 50
+var needed_for_build_scrap := 30
 
 var collection_resource_water := 0
-var collection_resource_energy := 0
-var collection_resource_scrap := 50
+var collection_resource_energy := 25
+var collection_resource_scrap := 0
 #########################################^^^^################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #############################################################################################
@@ -80,12 +80,6 @@ func _process(_delta):
 			building_fade_in()
 			building_play_sounds()
 		
-		elif has_been_built and is_collectable:
-			var player_array = get_tree().get_nodes_in_group("players")
-			player_array[0].player_interaction()
-			start_collection_timer()
-			give_resources()
-		
 	if Input.is_action_just_pressed("interaction_p2") and player2_is_close:
 		if can_be_build and not has_been_built:
 			ResourceManager.decrease_water(needed_for_build_water)
@@ -98,11 +92,13 @@ func _process(_delta):
 			building_fade_in()
 			building_play_sounds()
 			
-		elif has_been_built and is_collectable:
-			var player_array = get_tree().get_nodes_in_group("players")
-			player_array[1].player_interaction()
-			start_collection_timer()
-			give_resources()
+	if Input.is_action_just_pressed("interaction_p2") and player2_is_close \
+	and Input.is_action_just_pressed("interaction_p1") and player1_is_close:
+		var player_array = get_tree().get_nodes_in_group("players")
+		player_array[0].player_interaction()
+		player_array[1].player_interaction()
+		start_collection_timer()
+		give_resources()
 
 func sufficient_resources():
 	if ResourceManager.water >= needed_for_build_water \
@@ -154,28 +150,45 @@ func check_task_completion():
 	# This function needs to be here but it is supposed to 
 	# call the correct "check tasks" depending on the building
 	# check_for_fixing_task() # decided we don't need because of time constraints
-	check_for_create_scrap_task()
+	check_for_empty_windmill_task()
 
-func check_for_create_scrap_task():
+func check_for_empty_windmill_task():
 	if current_status != available_states.WORKING: 
 		return
 	
-	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
-	if task_manager_ref.get_current_task(1) == task_id or task_manager_ref.get_current_task(2) == task_id:
-		if (Input.is_action_pressed("interaction_p1") and player1_is_close):
+	# Check if both players have the check batteries task assigned
+	var task_id = task_manager_ref.get_task_by_name("Empty Windmill").uid
+	if task_manager_ref.get_current_task(1) == task_id and task_manager_ref.get_current_task(2) == task_id:
+		# a player is interacting with the wind turbine
+		if (Input.is_action_pressed("interaction_p1") and player1_is_close) \
+		and (Input.is_action_pressed("interaction_p2") and player2_is_close):
 			var player_array = get_tree().get_nodes_in_group("players")
 			player_array[0].player_interaction()
-			var time_manager = WaitUtil.new()
-			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
-		elif (Input.is_action_pressed("interaction_p2") and player2_is_close):
-			var player_array = get_tree().get_nodes_in_group("players")
 			player_array[1].player_interaction()
 			var time_manager = WaitUtil.new()
-			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_empty_windmill_task_callback")
 
-func _on_create_scrap_task_callback():
-	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
+func _on_empty_windmill_task_callback():
+	var task_id = task_manager_ref.get_task_by_name("Empty Windmill").uid
 	task_manager_ref.set_task_as_done(task_id)
+
+func check_for_fixing_task():
+	if current_status == available_states.TO_REPAIR: # check if the building needs repair
+		return
+		
+	var a_user_is_interacting = Input.is_action_pressed("interaction_p1") or Input.is_action_pressed("interaction_p2")
+	if counter_players_detected > 0:
+		if a_user_is_interacting and (current_status == available_states.TO_REPAIR):
+			repair_self()
+
+func repair_self():
+	current_status = available_states.REPAIRING
+	var time_manager = WaitUtil.new()
+	time_manager.wait(time_to_repair_in_seconds, self, "_on_repair_complete_callback")
+
+func _on_repair_complete_callback():
+	current_status = available_states.WORKING
+	task_manager_ref.set_task_as_done(2) # NEEDS THE CORRECT TASK ID FOR THIS BUILDING
 
 #######################################^^^^##################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################

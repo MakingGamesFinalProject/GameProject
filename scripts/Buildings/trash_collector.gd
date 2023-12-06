@@ -30,8 +30,8 @@ var COLLECTABILITY_TIMER: float = 20.0
 #############################################################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
-var needed_for_build_water := 0
-var needed_for_build_energy := 10
+var needed_for_build_water := 15
+var needed_for_build_energy := 0
 var needed_for_build_scrap := 0
 
 var collection_resource_water := 0
@@ -154,27 +154,27 @@ func check_task_completion():
 	# This function needs to be here but it is supposed to 
 	# call the correct "check tasks" depending on the building
 	# check_for_fixing_task() # decided we don't need because of time constraints
-	check_for_create_scrap_task()
+	check_for_pick_up_scrap_task()
 
-func check_for_create_scrap_task():
+func check_for_pick_up_scrap_task():
 	if current_status != available_states.WORKING: 
 		return
 	
-	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
+	var task_id = task_manager_ref.get_task_by_name("Pick up Scrap").uid
 	if task_manager_ref.get_current_task(1) == task_id or task_manager_ref.get_current_task(2) == task_id:
 		if (Input.is_action_pressed("interaction_p1") and player1_is_close):
 			var player_array = get_tree().get_nodes_in_group("players")
 			player_array[0].player_interaction()
 			var time_manager = WaitUtil.new()
-			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_pick_up_scrap_task_callback")
 		elif (Input.is_action_pressed("interaction_p2") and player2_is_close):
 			var player_array = get_tree().get_nodes_in_group("players")
 			player_array[1].player_interaction()
 			var time_manager = WaitUtil.new()
-			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_pick_up_scrap_task_callback")
 
-func _on_create_scrap_task_callback():
-	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
+func _on_pick_up_scrap_task_callback():
+	var task_id = task_manager_ref.get_task_by_name("Pick up Scrap").uid
 	task_manager_ref.set_task_as_done(task_id)
 
 #######################################^^^^##################################################

@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://do81qdtkfma6e"]
+
+[ext_resource type="Script" path="res://scripts/Buildings/water_filter.gd" id="1_wfbm2"]
+[ext_resource type="Texture2D" uid="uid://c285um4q0vlyx" path="res://art/World/Player Map/Buildings/Water Filter.png" id="2_4eiw2"]
+[ext_resource type="Texture2D" uid="uid://cwevhwggsnrjd" path="res://art/World/Player Map/Buildings/Water Filter Outline.png" id="3_yyawm"]
+[ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="4_htsy6"]
+[ext_resource type="PackedScene" uid="uid://bhbgan7cobyol" path="res://scenes/ui/building_exclamation_mark.tscn" id="5_awyvc"]
+[ext_resource type="AudioStream" uid="uid://qsarnvvp1cta" path="res://sounds/Player Map/Building Process.wav" id="6_ao63k"]
+[ext_resource type="AudioStream" uid="uid://fy53ih1qmbyk" path="res://sounds/Player Map/Building Set.wav" id="7_nhh1r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2kpd"]
+radius = 66.9082
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o64sd"]
+radius = 20.7231
+
+[node name="WaterFilter" type="StaticBody2D" groups=["Building", "Water Filter"]]
+script = ExtResource("1_wfbm2")
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(-1, 1)
+texture = ExtResource("2_4eiw2")
+offset = Vector2(0, -150)
+
+[node name="Outline" type="Sprite2D" parent="."]
+scale = Vector2(-1, 1)
+texture = ExtResource("3_yyawm")
+offset = Vector2(0, -150)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+scale = Vector2(1.48, 1.35271)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(10, -100)
+scale = Vector2(2.65261, 2.24524)
+shape = SubResource("CircleShape2D_k2kpd")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(10, -100)
+scale = Vector2(6.68775, 4.19446)
+shape = SubResource("CircleShape2D_o64sd")
+
+[node name="HelperButton" parent="." instance=ExtResource("4_htsy6")]
+position = Vector2(69, -368)
+
+[node name="ExclamationMark" parent="." instance=ExtResource("5_awyvc")]
+position = Vector2(-87, -451)
+
+[node name="Building" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ao63k")
+
+[node name="Built" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_nhh1r")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="detect_foliage"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

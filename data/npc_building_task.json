@@ -2,7 +2,7 @@
 	"relationships": [
 		{
 			"id": "0",
-			"npc": "Huggy",
+			"npc": "Huggy0",
 			"dialogs" : {
 					"startup" : 1,
 					"before task" : 2,
@@ -11,30 +11,221 @@
 					"not done yet" : 5
 			},
 			"buildings": [
-				"shed",
-				"wind turbine"
+				"Shed"
 			],
 			"tasks": [
-				0
+				10
 			]
-		}, 
+		},
 		{
 			"id": "1",
-			"npc": "Greasy",
+			"npc": "Huggy1",
 			"dialogs" : {
-					"startup" : 1,
-					"before task" : 2,
-					"after task" : 3,
-					"parting phrase" : 4,
-					"not done yet" : 5
+					"startup" : 6,
+					"before task" : 7,
+					"after task" : 8,
+					"parting phrase" : 9,
+					"not done yet" : 10
 			},
 			"buildings": [
-				"recycling workshop",
-				"underground water filter"
+				"trash Collector",
+				"Wind Turbine"
 			],
 			"tasks": [
-				0,
+				5,
 				1
+			]
+		},
+		{
+			"id": "2",
+			"npc": "Huggy2",
+			"dialogs" : {
+					"startup" : 11,
+					"before task" : 12,
+					"after task" : 13,
+					"parting phrase" : 14,
+					"not done yet" : 15
+			},
+			"buildings": [
+				"Shed",
+				"Hamster Wheel",
+				"Recycling Workshop"
+			],
+			"tasks": [
+				9,
+				3,
+				4
+			]
+		},
+		{
+			"id": "3",
+			"npc": "Greasy",
+			"dialogs" : {
+					"startup" : 16,
+					"before task" : 17,
+					"after task" : 18,
+					"parting phrase" : 19,
+					"not done yet" : 20
+			},
+			"buildings": [
+				"Wind Turbine"
+			],
+			"tasks": [
+				1
+			]
+		},
+		{
+			"id": "4",
+			"npc": "Greasy",
+			"dialogs" : {
+					"startup" : 21,
+					"before task" : 22,
+					"after task" : 23,
+					"parting phrase" : 24,
+					"not done yet" : 25
+			},
+			"buildings": [
+				"Recycling Workshop",
+				"Well"
+			],
+			"tasks": [
+				4,
+				6
+			]
+		},
+		{
+			"id": "5",
+			"npc": "Greasy",
+			"dialogs" : {
+					"startup" : 26,
+					"before task" : 27,
+					"after task" : 28,
+					"parting phrase" : 29,
+					"not done yet" : 30
+			},
+			"buildings": [
+				"Shed",
+				"Hamster Wheel",
+				"Trash Collector"
+			],
+			"tasks": [
+				9,
+				3,
+				5
+			]
+		},
+		{
+			"id": "6",
+			"npc": "Ovaltine",
+			"dialogs" : {
+					"startup" : 31,
+					"before task" : 32,
+					"after task" : 33,
+					"parting phrase" : 34,
+					"not done yet" : 35
+			},
+			"buildings": [
+				"Water Filter"
+			],
+			"tasks": [
+				8
+			]
+		},
+		{
+			"id": "7",
+			"npc": "Ovaltine",
+			"dialogs" : {
+					"startup" : 36,
+					"before task" : 37,
+					"after task" : 38,
+					"parting phrase" : 39,
+					"not done yet" : 40
+			},
+			"buildings": [
+				"Well",
+				"Wind Turbine"
+			],
+			"tasks": [
+				6,
+				7
+			]
+		},
+		{
+			"id": "8",
+			"npc": "Ovaltine",
+			"dialogs" : {
+					"startup" : 41,
+					"before task" : 42,
+					"after task" : 43,
+					"parting phrase" : 44,
+					"not done yet" : 45
+			},
+			"buildings": [
+				"Shed",
+				"Hamster Wheel",
+				"Recycling Workshop"
+			],
+			"tasks": [
+				9,
+				3,
+				4
+			]
+		},
+		{
+			"id": "9",
+			"npc": "Baby",
+			"dialogs" : {
+					"startup" : 46,
+					"before task" : 47,
+					"after task" : 48,
+					"parting phrase" : 49,
+					"not done yet" : 50
+			},
+			"buildings": [
+				"Water Filter", 
+				"Windmill"
+			],
+			"tasks": [
+				3
+			]
+		},
+		{
+			"id": "10",
+			"npc": "Baby",
+			"dialogs" : {
+					"startup" : 51,
+					"before task" : 52,
+					"after task" : 53,
+					"parting phrase" : 54,
+					"not done yet" : 55
+			},
+			"buildings": [
+				"Shed",
+				"Well",
+				"Recycling Workshop"
+			],
+			"tasks": [
+				8,
+				2
+			]
+		},
+		{
+			"id": "8",
+			"npc": "Baby",
+			"dialogs" : {
+					"startup" : 56,
+					"before task" : 57,
+					"after task" : 58,
+					"parting phrase" : 59,
+					"not done yet" : 60
+			},
+			"buildings": [
+				"Hamster Wheel"
+			],
+			"tasks": [
+				9,
+				6,
+				4
 			]
 		}
 	]
