@@ -14,7 +14,7 @@ radius = 66.9082
 [sub_resource type="CircleShape2D" id="CircleShape2D_o64sd"]
 radius = 20.7231
 
-[node name="WindTurbine" type="StaticBody2D" groups=["Building"]]
+[node name="Windmill" type="StaticBody2D" groups=["Building", "Windmill"]]
 script = ExtResource("1_dm127")
 
 [node name="Base" type="Sprite2D" parent="."]
