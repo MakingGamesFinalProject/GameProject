@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://qsarnvvp1cta" path="res://sounds/Player Map/Building Process.wav" id="4_r3p0u"]
 [ext_resource type="AudioStream" uid="uid://fy53ih1qmbyk" path="res://sounds/Player Map/Building Set.wav" id="5_flpqg"]
 [ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="6_kmxy6"]
-[ext_resource type="PackedScene" path="res://scenes/ui/building_exclamation_mark.tscn" id="7_issvw"]
+[ext_resource type="PackedScene" uid="uid://bhbgan7cobyol" path="res://scenes/ui/building_exclamation_mark.tscn" id="7_issvw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5akdr"]
 

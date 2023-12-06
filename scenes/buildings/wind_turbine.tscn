@@ -75,33 +75,31 @@ states/Idle/position = Vector2(426, 89)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_blpt4"), "Idle", "Broken", SubResource("AnimationNodeStateMachineTransition_06lbo"), "Broken", "Idle", SubResource("AnimationNodeStateMachineTransition_8vb34")]
 
 [node name="WindTurbine" type="StaticBody2D" groups=["Building"]]
-position = Vector2(-1, -598)
 script = ExtResource("1_85lcb")
 
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_3byw1")
+offset = Vector2(0, -600)
+
+[node name="Helix" type="Sprite2D" parent="Base"]
+position = Vector2(0, -1230)
+rotation = 3.2415
+texture = ExtResource("3_q54hx")
+offset = Vector2(0, -175)
+
+[node name="Outline" type="Sprite2D" parent="."]
+texture = ExtResource("4_wrx8u")
+offset = Vector2(0, -910)
+
 [node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(-4, -597)
 scale = Vector2(1.48, 1.35271)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(0.675676, 442.076)
 shape = SubResource("CircleShape2D_k2kpd")
 
-[node name="Base" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_3byw1")
-
-[node name="Helix" type="Sprite2D" parent="Base"]
-position = Vector2(0, -640)
-rotation = 2.10527
-texture = ExtResource("3_q54hx")
-offset = Vector2(0, -175)
-
-[node name="Outline" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("4_wrx8u")
-offset = Vector2(0, -310)
-
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(1, 598)
 scale = Vector2(2.8, 2.56)
 shape = SubResource("CircleShape2D_o64sd")
 
@@ -116,12 +114,10 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="HelperButton" parent="." instance=ExtResource("4_7u765")]
-visible = false
-position = Vector2(113, 442)
+position = Vector2(105, -111)
 
 [node name="ExclamationMark" parent="." instance=ExtResource("5_ykjp2")]
-visible = false
-position = Vector2(-94, 374)
+position = Vector2(-107, -141)
 
 [node name="Building" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_l4d3a")
