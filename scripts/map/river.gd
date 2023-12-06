@@ -20,7 +20,7 @@ func _process(_delta):
 		ResourceManager.increase_water(5)
 		var player_array = get_tree().get_nodes_in_group("players")
 		player_array[1].player_interaction()
-		start_collection_timer()f
+		start_collection_timer()
 		
 func start_collection_timer():
 	is_collectable = false
