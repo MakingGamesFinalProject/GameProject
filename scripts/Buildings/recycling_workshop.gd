@@ -81,6 +81,8 @@ func _process(_delta):
 			building_play_sounds()
 		
 		elif has_been_built and is_collectable:
+			var player_array = get_tree().get_nodes_in_group("players")
+			player_array[0].player_interaction()
 			start_collection_timer()
 			give_resources()
 		
@@ -97,6 +99,8 @@ func _process(_delta):
 			building_play_sounds()
 			
 		elif has_been_built and is_collectable:
+			var player_array = get_tree().get_nodes_in_group("players")
+			player_array[1].player_interaction()
 			start_collection_timer()
 			give_resources()
 
@@ -158,8 +162,14 @@ func check_for_create_scrap_task():
 	
 	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
 	if task_manager_ref.get_current_task(1) == task_id or task_manager_ref.get_current_task(2) == task_id:
-		if (Input.is_action_pressed("interaction_p1") and player1_is_close) \
-		or (Input.is_action_pressed("interaction_p2") and player2_is_close):
+		if (Input.is_action_pressed("interaction_p1") and player1_is_close):
+			var player_array = get_tree().get_nodes_in_group("players")
+			player_array[0].player_interaction()
+			var time_manager = WaitUtil.new()
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
+		elif (Input.is_action_pressed("interaction_p2") and player2_is_close):
+			var player_array = get_tree().get_nodes_in_group("players")
+			player_array[1].player_interaction()
 			var time_manager = WaitUtil.new()
 			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
 

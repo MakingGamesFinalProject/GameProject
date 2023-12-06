@@ -80,10 +80,6 @@ func _process(_delta):
 			building_fade_in()
 			building_play_sounds()
 		
-		elif has_been_built and is_collectable:
-			start_collection_timer()
-			give_resources()
-		
 	if Input.is_action_just_pressed("interaction_p2") and player2_is_close:
 		if can_be_build and not has_been_built:
 			ResourceManager.decrease_water(needed_for_build_water)
@@ -95,10 +91,14 @@ func _process(_delta):
 			$Base.show()
 			building_fade_in()
 			building_play_sounds()
-			
-		elif has_been_built and is_collectable:
-			start_collection_timer()
-			give_resources()
+	
+	if Input.is_action_just_pressed("interaction_p2") and player2_is_close \
+	and Input.is_action_just_pressed("interaction_p1") and player1_is_close:
+		var player_array = get_tree().get_nodes_in_group("players")
+		player_array[0].player_interaction()
+		player_array[1].player_interaction()
+		start_collection_timer()
+		give_resources()
 
 func sufficient_resources():
 	if ResourceManager.water >= needed_for_build_water \
@@ -162,6 +162,9 @@ func check_for_plans_task():
 		# a player is interacting with the wind turbine
 		if (Input.is_action_pressed("interaction_p1") and player1_is_close) \
 		 and (Input.is_action_pressed("interaction_p2") and player2_is_close):
+			var player_array = get_tree().get_nodes_in_group("players")
+			player_array[0].player_interaction()
+			player_array[1].player_interaction()
 			var time_manager = WaitUtil.new()
 			time_manager.wait(time_to_repair_in_seconds, self, "_on_check_plans_callback")
 

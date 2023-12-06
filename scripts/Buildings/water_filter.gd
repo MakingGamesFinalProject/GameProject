@@ -80,10 +80,6 @@ func _process(_delta):
 			building_fade_in()
 			building_play_sounds()
 		
-		elif has_been_built and is_collectable:
-			start_collection_timer()
-			give_resources()
-		
 	if Input.is_action_just_pressed("interaction_p2") and player2_is_close:
 		if can_be_build and not has_been_built:
 			ResourceManager.decrease_water(needed_for_build_water)
@@ -95,10 +91,13 @@ func _process(_delta):
 			$Base.show()
 			building_fade_in()
 			building_play_sounds()
-			
-		elif has_been_built and is_collectable:
-			start_collection_timer()
-			give_resources()
+	
+	if has_been_built and is_collectable and check_shed_filter_task_connection():
+		var player_array = get_tree().get_nodes_in_group("players")
+		player_array[0].player_interaction()
+		player_array[1].player_interaction()
+		start_collection_timer()
+		give_resources()
 
 func sufficient_resources():
 	if ResourceManager.water >= needed_for_build_water \
@@ -159,16 +158,24 @@ func check_for_check_pump_task():
 	# Check if both players have the check batteries task assigned
 	var task_id = task_manager_ref.get_task_by_name("Check Pump").uid
 	if task_manager_ref.get_current_task(1) == task_id and task_manager_ref.get_current_task(2) == task_id:
-		# a player is interacting with the wind turbine
-		if (Input.is_action_pressed("interaction_p1") and player1_is_close) \
-		 or (Input.is_action_pressed("interaction_p2") and player2_is_close):
-			var Shed_ref = get_tree().get_first_node_in_group("Shed")
-			assert(Shed_ref != null, "Shed reference not found")
-			# a player interacting with the house and the wind turbine
-			var amount_players_interacting_with_shed = Shed_ref.counter_players_detected
-			if counter_players_detected > 0 and amount_players_interacting_with_shed > 0:
-				var time_manager = WaitUtil.new()
-				time_manager.wait(time_to_repair_in_seconds, self, "_on_check_pump_task_callback")
+		if check_shed_filter_task_connection():
+			var player_array = get_tree().get_nodes_in_group("players")
+			player_array[0].player_interaction()
+			player_array[1].player_interaction()
+			var time_manager = WaitUtil.new()
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_check_pump_task_callback")
+				
+func check_shed_filter_task_connection():
+	# a player is interacting with the wind turbine
+	if (Input.is_action_pressed("interaction_p1") and player1_is_close) \
+	 or (Input.is_action_pressed("interaction_p2") and player2_is_close):
+		var Shed_ref = get_tree().get_first_node_in_group("Shed")
+		assert(Shed_ref != null, "Shed reference not found")
+		# a player interacting with the house and the wind turbine
+		var amount_players_interacting_with_shed = Shed_ref.counter_players_detected
+		if counter_players_detected > 0 and amount_players_interacting_with_shed > 0:
+			return true
+	return false
 
 func _on_check_pump_task_callback():
 	var task_id = task_manager_ref.get_task_by_name("Check Pump").uid
