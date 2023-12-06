@@ -194,8 +194,14 @@ func get_json_buildings(text : String, npc_name : String) -> Array[String]:
 # The function chooses a random NPC from the list of NPCs in the json
 func choose_random_npc() -> String:
 	var npcs : Array[String] = get_json_npcs(get_json_text(json_path))
+	var npc : String = npcs.pick_random()
 
-	return npcs.pick_random()
+	if npc.begins_with("Huggy"):
+		NPCEncounter.huggy += 1
+	elif npc.begins_with("Greasy"):
+		NPCEncounter.greasy += 1
+
+	return npc
 
 # The world has areas in which we don't want foliage
 # Those areas can be changed by modifying the polygon collider

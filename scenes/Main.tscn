@@ -87,4 +87,5 @@ player_number = 2
 visible = false
 
 [editable path="UICollective"]
+[editable path="UICollective/options_ui"]
 [editable path="HBoxContainer/SubViewportContainer/SubViewport/Home_level"]
