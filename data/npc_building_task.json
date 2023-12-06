@@ -59,7 +59,7 @@
 		},
 		{
 			"id": "3",
-			"npc": "Greasy",
+			"npc": "Greasy0",
 			"dialogs" : {
 					"startup" : 16,
 					"before task" : 17,
@@ -76,7 +76,7 @@
 		},
 		{
 			"id": "4",
-			"npc": "Greasy",
+			"npc": "Greasy1",
 			"dialogs" : {
 					"startup" : 21,
 					"before task" : 22,
@@ -95,7 +95,7 @@
 		},
 		{
 			"id": "5",
-			"npc": "Greasy",
+			"npc": "Greasy2",
 			"dialogs" : {
 					"startup" : 26,
 					"before task" : 27,
@@ -116,7 +116,7 @@
 		},
 		{
 			"id": "6",
-			"npc": "Ovaltine",
+			"npc": "Ovaltine0",
 			"dialogs" : {
 					"startup" : 31,
 					"before task" : 32,
@@ -133,7 +133,7 @@
 		},
 		{
 			"id": "7",
-			"npc": "Ovaltine",
+			"npc": "Ovaltine1",
 			"dialogs" : {
 					"startup" : 36,
 					"before task" : 37,
@@ -152,7 +152,7 @@
 		},
 		{
 			"id": "8",
-			"npc": "Ovaltine",
+			"npc": "Ovaltine2",
 			"dialogs" : {
 					"startup" : 41,
 					"before task" : 42,
@@ -173,7 +173,7 @@
 		},
 		{
 			"id": "9",
-			"npc": "Baby",
+			"npc": "Baby0",
 			"dialogs" : {
 					"startup" : 46,
 					"before task" : 47,
@@ -191,7 +191,7 @@
 		},
 		{
 			"id": "10",
-			"npc": "Baby",
+			"npc": "Baby1",
 			"dialogs" : {
 					"startup" : 51,
 					"before task" : 52,
@@ -211,7 +211,7 @@
 		},
 		{
 			"id": "8",
-			"npc": "Baby",
+			"npc": "Baby2",
 			"dialogs" : {
 					"startup" : 56,
 					"before task" : 57,
