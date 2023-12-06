@@ -50,7 +50,6 @@ func _ready():
 	set_task_manager_ref()
 	$Collider.hide()
 	$Base.hide()
-	$Base/Helix.hide()
 	$Outline.hide()
 	$ExclamationMark.hide()
 	$HelperButton.hide()
@@ -78,7 +77,6 @@ func _process(_delta):
 
 			$Outline.queue_free()
 			$Base.show()
-			$Base/Helix.show()
 			building_fade_in()
 			building_play_sounds()
 		
@@ -95,7 +93,6 @@ func _process(_delta):
 
 			$Outline.queue_free()
 			$Base.show()
-			$Base/Helix.show()
 			building_fade_in()
 			building_play_sounds()
 			
@@ -135,10 +132,7 @@ func silhouette_pulse():
 	
 func building_fade_in():
 	var fade1 = create_tween()
-	var fade2 = create_tween()
 	fade1.tween_property($Base, "modulate", Color(1, 1, 1, 1), BUILDING_FADE_TIME). \
-		from(Color(1, 1, 1, 0))
-	fade2.tween_property($Base/Helix, "modulate", Color(1, 1, 1, 1), BUILDING_FADE_TIME). \
 		from(Color(1, 1, 1, 0))
 
 func building_play_sounds():
