@@ -157,7 +157,7 @@ func check_for_batteries_task():
 		return
 	
 	# Check if both players have the check batteries task assigned
-	var task_id = task_manager_ref.get_task_by_name("Check batteries (Wind Turbines)").uid
+	var task_id = task_manager_ref.get_task_by_name("Check Batteries").uid
 	if task_manager_ref.get_current_task(1) == task_id and task_manager_ref.get_current_task(2) == task_id:
 		# a player is interacting with the wind turbine
 		if (Input.is_action_pressed("interaction_p1") and player1_is_close) \
@@ -171,7 +171,7 @@ func check_for_batteries_task():
 				time_manager.wait(time_to_repair_in_seconds, self, "_on_battery_task_callback")
 
 func _on_battery_task_callback():
-	var task_id = task_manager_ref.get_task_by_name("Check batteries (Wind Turbines)").uid
+	var task_id = task_manager_ref.get_task_by_name("Check Batteries").uid
 	task_manager_ref.set_task_as_done(task_id)
 
 func check_for_fixing_task():
