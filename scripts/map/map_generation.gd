@@ -5,6 +5,9 @@ var grass_scene = preload("res://scenes/foliage/grass.tscn")
 var bush_scene = preload("res://scenes/foliage/bush.tscn")
 var tree_scene = preload("res://scenes/foliage/tree.tscn")
 
+# Preloading the NPC
+var npc_scene = preload("res://scenes/buildings/npc.tscn")
+
 # Preloading the builings scenes
 var water_filter_scene = preload("res://scenes/buildings/underground_water_filter.tscn")
 var workbench_scene = preload("res://scenes/buildings/recycling_workshop.tscn")
@@ -23,7 +26,7 @@ const FOREST_TREE_DENSITY := 50
 # Distribution of grass variants in percentages
 const GRASS_DISTRIBUTION := [5, 20, 75] # [long, medium, short]
 
-# Fixed positions of our buildings
+# Fixed positions of our buildings to randomly choose between
 const WATER_FILTER_POSITIONS := [ \
 	Vector2(-1414, 400), Vector2(-1902, 600), Vector2(-2333, 907), \
 	Vector2(-2771, 1241), Vector2(-901, 250), \
@@ -33,15 +36,19 @@ const WATER_FILTER_POSITIONS := [ \
 
 const WATER_FILTER_POSITION_OFFSET := Vector2(0, 167)
 
-const WORKBENCH_POSITIONS := [ \
+var starting_building_positions := [ \
 	Vector2(-631, 1696), Vector2(2802, 918), Vector2(-2868, 366), \
-	Vector2(1131, -1639), Vector2(-1194, -934)]
-
-const WIND_TURBINE_PSITIONS := [ \
+	Vector2(1131, -1639), Vector2(-1194, -934), \
 	Vector2(304, 1994), Vector2(1964, 732), \
-	Vector2(3117, 54), Vector2(106, -771), Vector2(-2482, -756)]
+	Vector2(3117, 54), Vector2(106, -771), Vector2(-2482, -756), \
+	Vector2(-1586, 2360), Vector2(1103, 878), Vector2(-1785, 83), \
+	Vector2(2138, -1926), Vector2(-717, -1815)]
 
-const HOUSE_POSITIONS := [ \
+var remaining_building_positions := [ \
+	Vector2(-631, 1696), Vector2(2802, 918), Vector2(-2868, 366), \
+	Vector2(1131, -1639), Vector2(-1194, -934), \
+	Vector2(304, 1994), Vector2(1964, 732), \
+	Vector2(3117, 54), Vector2(106, -771), Vector2(-2482, -756), \
 	Vector2(-1586, 2360), Vector2(1103, 878), Vector2(-1785, 83), \
 	Vector2(2138, -1926), Vector2(-717, -1815)]
 
@@ -56,14 +63,51 @@ var grass_count := 0
 var bushes_count := 0
 var trees_count := 0
 
+# Keep track of the NPC
+var npc : StaticBody2D
+
 # Keep track of the buildings
 var water_filter : StaticBody2D
 var workbench : StaticBody2D
 var wind_turbine : StaticBody2D
 var house : StaticBody2D
+var buildings : Array[StaticBody2D] = []
 
 # Keep track of all the scraps
 var scraps : Array[StaticBody2D] = []
+
+# The function clears the map by freeing all instances and clearing lists
+func clear_map() -> void:
+	# First, all foliage that is not forest trees is removed
+	for foliage_instance in foliage:
+		foliage_instance.queue_free()
+	foliage.clear()
+	# Second, forest trees are removed
+	for forest_tree_instance in forest_trees:
+		forest_tree_instance.queue_free()
+	forest_trees.clear()
+
+	# Now, all buildings are removed
+	if not !water_filter: # Not null check
+		water_filter.queue_free()
+	if not !workbench:
+		workbench.queue_free()
+	if not !wind_turbine:
+		wind_turbine.queue_free()
+	if not !house:
+		house.queue_free()
+
+	buildings.clear()
+	remaining_building_positions = starting_building_positions
+
+	# Then, all remaining scraps are removed
+	for scraps_instance in scraps:
+		if not !scraps_instance:
+			scraps_instance.queue_free()
+	scraps.clear()
+
+	# Finally, the NPC is removed
+	npc.queue_free()
 
 # The function generates grass and adds it to foliage
 func generate_grass(world_size : Vector2) -> void:
@@ -227,45 +271,61 @@ func delete_forest_trees() -> void:
 		forest_trees.erase(forest_tree_instance)
 		forest_tree_instance.queue_free()
 
-# The function generates the water filter
-func generate_water_filter() -> StaticBody2D:
-	water_filter = water_filter_scene.instantiate() as StaticBody2D
-
-	# Pick a random position from a list of fixed positions
-	water_filter.global_position = WATER_FILTER_POSITIONS[rng.randi_range(0, 12)] + WATER_FILTER_POSITION_OFFSET
-
-	return water_filter
-
-# To improve visual clarity, clean up foliage around the Water Filter
-func clear_water_filter_area() -> void:
-	for detected_foliage in water_filter.detected_foliage:
-		foliage.erase(detected_foliage)
-		detected_foliage.queue_free()
+# The function generates a specific NPC
+func generate_npc(npc_name : String) -> void:
+	npc = npc_scene.instantiate() as StaticBody2D
+	npc.what_npc_am_i = npc_name
+	npc.global_position = Vector2(-271, 2573)
 
 # The function create one of each remaining building to be generated
-func generate_buildings() -> void:
-	workbench = workbench_scene.instantiate() as StaticBody2D
-	wind_turbine = wind_turbine_scene.instantiate() as StaticBody2D
-	house = house_scene.instantiate() as StaticBody2D
+func generate_buildings(buildings_to_generate : Array[String]) -> void:
+	if buildings_to_generate.has("underground water filter"):
+		water_filter = water_filter_scene.instantiate() as StaticBody2D
+		water_filter.global_position = WATER_FILTER_POSITIONS[rng.randi_range(0, 12)] + WATER_FILTER_POSITION_OFFSET
+		buildings.append(water_filter)
 
-	# Pick random positions from lists of fixed positions
-	workbench.global_position = WORKBENCH_POSITIONS[rng.randi_range(0, 4)]
-	wind_turbine.global_position = WIND_TURBINE_PSITIONS[rng.randi_range(0, 4)]
-	house.global_position = HOUSE_POSITIONS[rng.randi_range(0, 4)]
+	if buildings_to_generate.has("shed"):
+		house = house_scene.instantiate() as StaticBody2D
+		var random_position = remaining_building_positions.pick_random()
+		remaining_building_positions.erase(random_position)
+		house.global_position = random_position
+		buildings.append(house)
+	
+	if buildings_to_generate.has("wind turbine"):
+		wind_turbine = wind_turbine_scene.instantiate() as StaticBody2D
+		var random_position = remaining_building_positions.pick_random()
+		remaining_building_positions.erase(random_position)
+		wind_turbine.global_position = random_position
+		buildings.append(wind_turbine)
+	
+	if buildings_to_generate.has("recycling workshop"):
+		workbench = workbench_scene.instantiate() as StaticBody2D
+		var random_position = remaining_building_positions.pick_random()
+		remaining_building_positions.erase(random_position)
+		workbench.global_position = random_position
+		buildings.append(workbench)
 
 # To improve visual clarity, clean up foliage around all the buildings
-func clear_buildings_areas() -> void:
-	for detected_foliage in workbench.detected_foliage:
-		foliage.erase(detected_foliage)
-		detected_foliage.queue_free()
+func clear_buildings_areas(buildings_to_generate : Array[String]) -> void:
+	if buildings_to_generate.has("underground water filter"):
+		for detected_foliage in water_filter.detected_foliage:
+			foliage.erase(detected_foliage)
+			detected_foliage.queue_free()
 
-	for detected_foliage in wind_turbine.detected_foliage:
-		foliage.erase(detected_foliage)
-		detected_foliage.queue_free()
+	if buildings_to_generate.has("shed"):
+		for detected_foliage in house.detected_foliage:
+			foliage.erase(detected_foliage)
+			detected_foliage.queue_free()
 
-	for detected_foliage in house.detected_foliage:
-		foliage.erase(detected_foliage)
-		detected_foliage.queue_free()
+	if buildings_to_generate.has("wind_turbine"):
+		for detected_foliage in wind_turbine.detected_foliage:
+			foliage.erase(detected_foliage)
+			detected_foliage.queue_free()
+
+	if buildings_to_generate.has("recycling workshop"):
+		for detected_foliage in workbench.detected_foliage:
+			foliage.erase(detected_foliage)
+			detected_foliage.queue_free()	
 
 # The function generates a bunch of scraps with random positions in the world
 func generate_scraps(world_size : Vector2) -> void:

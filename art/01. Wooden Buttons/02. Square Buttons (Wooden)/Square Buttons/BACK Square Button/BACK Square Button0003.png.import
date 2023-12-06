@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dts66m7dytuwk"
+path="res://.godot/imported/BACK Square Button0003.png-555284d7dd40a3b7732b77a34af67363.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://art/01. Wooden Buttons/02. Square Buttons (Wooden)/Square Buttons/BACK Square Button/BACK Square Button0003.png"
+dest_files=["res://.godot/imported/BACK Square Button0003.png-555284d7dd40a3b7732b77a34af67363.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
