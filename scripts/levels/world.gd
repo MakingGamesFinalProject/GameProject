@@ -1,5 +1,9 @@
 extends Node2D
 
+# Preloading the loading screen
+var loading_screen_scene = preload("res://scenes/ui/loading_screen.tscn")
+var loading_screen : Node2D
+
 # The path of the json file which keeps track of NPCs, their buildings and tasks
 var json_path := "res://data/npc_building_task.json"
 
@@ -43,8 +47,19 @@ var buildings_areas_cleared := false
 var scraps_generated := false
 var scraps_picked := false
 
+func _ready():
+	# Instantiate the loading screen and add it to the main scene
+	loading_screen = loading_screen_scene.instantiate() as Node2D
+	get_tree().root.add_child.call_deferred(loading_screen)
+
 func _process(_delta):
 	if Input.is_action_just_pressed("reset"):
+		# Instantiate the loading screen and add it to the main scene
+		loading_screen = loading_screen_scene.instantiate() as Node2D
+		get_tree().root.add_child(loading_screen)
+
+		await(loading_screen.loading_screen_instantiated)
+
 		regenerate()
 
 	# Deleting grass which spawned on top of or close to another grass tuft
@@ -133,6 +148,8 @@ func _process(_delta):
 	if scraps_generated and not scraps_picked:
 		MapGeneration.pick_scraps()
 		scraps_picked = true
+
+		loading_screen.map_generated()
 
 	if not scraps_generated:
 		MapGeneration.generate_scraps(world_size)
