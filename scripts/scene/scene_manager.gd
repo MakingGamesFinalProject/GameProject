@@ -7,11 +7,6 @@ var scene_transition_scene = preload("res://scenes/scene/scene_transition.tscn")
 var player : CharacterBody2D
 var location : Area2D
 
-func _process(_delta):
-	if Input.is_action_just_pressed("reset"):
-		ResourceManager.reset_resources()
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
-
 # The following function records the above information, instantiates the fade and repositions
 func change_scene(player_to_reposition : CharacterBody2D, location_to_reposition_to : Area2D):
 	player = player_to_reposition
