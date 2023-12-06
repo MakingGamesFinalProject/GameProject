@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnwp0f3rcpy14"]
+[gd_scene load_steps=5 format=3 uid="uid://dnwp0f3rcpy14"]
 
 [ext_resource type="Script" path="res://scripts/levels/world.gd" id="1_l3pu7"]
 [ext_resource type="Texture2D" uid="uid://2q5jf0ru8hri" path="res://art/World/Player Map/Map_Background.png" id="2_8vcuk"]
 [ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="3_158kr"]
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player/player.tscn" id="4_aeqqs"]
-[ext_resource type="PackedScene" uid="uid://73i7rl2mk865" path="res://scenes/buildings/npc.tscn" id="5_dwwca"]
 
 [node name="World" type="Node2D" groups=["World"]]
 y_sort_enabled = true
@@ -29,8 +28,5 @@ speed = 30000
 position = Vector2(301, 2607)
 is_player_with_keyboard = false
 speed = 30000
-
-[node name="npc" parent="." instance=ExtResource("5_dwwca")]
-position = Vector2(-271, 2573)
 
 [connection signal="area_entered" from="Area" to="." method="detect_foliage"]
