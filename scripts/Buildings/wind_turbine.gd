@@ -30,13 +30,13 @@ var COLLECTABILITY_TIMER: float = 20.0
 #############################################################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
-var needed_for_build_water := 5
+var needed_for_build_water := 0
 var needed_for_build_energy := 0
-var needed_for_build_scrap := 0
+var needed_for_build_scrap := 20
 
-var collection_resource_water := 5
-var collection_resource_energy := 0
-var collection_resource_scrap := 5
+var collection_resource_water := 0
+var collection_resource_energy := 50
+var collection_resource_scrap := 0
 #########################################^^^^################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #############################################################################################
@@ -149,7 +149,7 @@ func building_play_sounds():
 func check_task_completion():
 	# This function needs to be here but it is supposed to 
 	# call the correct "check tasks" depending on the building
-	check_for_fixing_task()
+	# check_for_fixing_task() # decided we don't need because of time constraints
 	check_for_batteries_task()
 
 func check_for_batteries_task():
@@ -158,20 +158,21 @@ func check_for_batteries_task():
 	
 	# Check if both players have the check batteries task assigned
 	var task_id = task_manager_ref.get_task_by_name("Check batteries (Wind Turbines)").uid
-	if task_manager_ref.get_current_task(task_id) == 3 and task_manager_ref.get_current_task(task_id) == 3:
+	if task_manager_ref.get_current_task(1) == task_id and task_manager_ref.get_current_task(2) == task_id:
 		# a player is interacting with the wind turbine
 		if (Input.is_action_pressed("interaction_p1") and player1_is_close) \
 		 or (Input.is_action_pressed("interaction_p2") and player2_is_close):
-			var house_ref = get_tree().get_first_node_in_group("house")
-			assert(house_ref != null, "House reference not found")
+			var Shed_ref = get_tree().get_first_node_in_group("Shed")
+			assert(Shed_ref != null, "Shed reference not found")
 			# a player interacting with the house and the wind turbine
-			var amount_players_interacting_with_house = house_ref.players_counter_on_area
-			if counter_players_detected > 0 and amount_players_interacting_with_house > 0:
+			var amount_players_interacting_with_shed = Shed_ref.counter_players_detected
+			if counter_players_detected > 0 and amount_players_interacting_with_shed > 0:
 				var time_manager = WaitUtil.new()
 				time_manager.wait(time_to_repair_in_seconds, self, "_on_battery_task_callback")
 
 func _on_battery_task_callback():
-	task_manager_ref.set_task_as_done(3)
+	var task_id = task_manager_ref.get_task_by_name("Check batteries (Wind Turbines)").uid
+	task_manager_ref.set_task_as_done(task_id)
 
 func check_for_fixing_task():
 	if current_status == available_states.TO_REPAIR: # check if the building needs repair

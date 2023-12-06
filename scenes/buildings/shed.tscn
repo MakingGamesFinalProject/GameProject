@@ -40,10 +40,10 @@ scale = Vector2(15.4134, 9.29397)
 shape = SubResource("CircleShape2D_o64sd")
 
 [node name="HelperButton" parent="." instance=ExtResource("4_d6ro6")]
-position = Vector2(69, -368)
+position = Vector2(205, -579)
 
 [node name="ExclamationMark" parent="." instance=ExtResource("5_4don7")]
-position = Vector2(-87, -451)
+position = Vector2(48, -754)
 
 [node name="Building" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0e38w")
