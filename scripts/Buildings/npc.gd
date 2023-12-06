@@ -68,6 +68,7 @@ func process_dialog_logic(dialog_node, player_array):
 		reset_dialog_state(dialog_node, player_array)
 	elif not task_complete:
 		close_notification_exclamation()
+		set_tasks()
 		show_dialog(dialog_before_task_id)
 		#before_task_dialog_read = true
 	elif task_complete and not after_task_dialog_read:
@@ -114,6 +115,18 @@ func show_correct_npc():
 		$Greasy.visible = true
 		$Huggy.visible = false
 		state_machine.travel("idle_Greasy")
+	elif what_npc_am_i == "Ovaltine":
+		$Greasy.visible = true
+		$Huggy.visible = false
+		state_machine.travel("idle_Greasy")
+	elif what_npc_am_i == "Baby":
+		$Greasy.visible = true
+		$Huggy.visible = false
+		state_machine.travel("idle_Greasy")
+	else:
+		$Huggy.visible = true
+		$Greasy.visible = false
+		state_machine.travel("idle_Huggy")
 		
 		########### ADD NPC'S HERE
 		
