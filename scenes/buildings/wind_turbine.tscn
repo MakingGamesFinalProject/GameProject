@@ -21,7 +21,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Base/Helix:rotation")
+tracks/0/path = NodePath("Helix:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +38,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Base/Helix:rotation")
+tracks/0/path = NodePath("Helix:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,32 +74,35 @@ states/Idle/node = SubResource("AnimationNodeAnimation_1s4jw")
 states/Idle/position = Vector2(426, 89)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_blpt4"), "Idle", "Broken", SubResource("AnimationNodeStateMachineTransition_06lbo"), "Broken", "Idle", SubResource("AnimationNodeStateMachineTransition_8vb34")]
 
-[node name="WindTurbine" type="StaticBody2D" groups=["Building", "Wind Turbine"]]
+[node name="WindTurbine" type="StaticBody2D" groups=["Building"]]
+position = Vector2(-1, -598)
 script = ExtResource("1_85lcb")
 
-[node name="Base" type="Sprite2D" parent="."]
-texture = ExtResource("2_3byw1")
-offset = Vector2(0, -600)
-
-[node name="Helix" type="Sprite2D" parent="Base"]
-position = Vector2(0, -1230)
-rotation = 4.04011
-texture = ExtResource("3_q54hx")
-offset = Vector2(0, -175)
-
-[node name="Outline" type="Sprite2D" parent="."]
-texture = ExtResource("4_wrx8u")
-offset = Vector2(0, -910)
-
 [node name="DetectionArea" type="Area2D" parent="."]
-position = Vector2(-4, -597)
 scale = Vector2(1.48, 1.35271)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(0.675676, 442.076)
 shape = SubResource("CircleShape2D_k2kpd")
 
+[node name="Base" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_3byw1")
+
+[node name="Helix" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2, -630)
+rotation = 4.17832
+texture = ExtResource("3_q54hx")
+offset = Vector2(0, -165)
+
+[node name="Outline" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_wrx8u")
+offset = Vector2(0, -310)
+
 [node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(1, 598)
 scale = Vector2(2.8, 2.56)
 shape = SubResource("CircleShape2D_o64sd")
 
@@ -114,10 +117,10 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="HelperButton" parent="." instance=ExtResource("4_7u765")]
-position = Vector2(105, -111)
+position = Vector2(113, 442)
 
 [node name="ExclamationMark" parent="." instance=ExtResource("5_ykjp2")]
-position = Vector2(-107, -141)
+position = Vector2(-94, 374)
 
 [node name="Building" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_l4d3a")
