@@ -9,13 +9,20 @@ var tree_scene = preload("res://scenes/foliage/tree.tscn")
 var npc_scene = preload("res://scenes/buildings/npc.tscn")
 
 # Preloading the builings scenes
-var water_filter_scene = preload("res://scenes/buildings/underground_water_filter.tscn")
+var water_filter_scene = preload("res://scenes/buildings/water_filter.tscn")
 var workbench_scene = preload("res://scenes/buildings/recycling_workshop.tscn")
 var wind_turbine_scene = preload("res://scenes/buildings/wind_turbine.tscn")
-var house_scene = preload("res://scenes/buildings/house_building.tscn")
+var house_scene = preload("res://scenes/buildings/shed.tscn")
+var trash_collector_scene = preload("res://scenes/buildings/trash_collector.tscn")
+var hamster_wheel_scene = preload("res://scenes/buildings/hamster_wheel.tscn")
+var well_scene = preload("res://scenes/buildings/well.tscn")
+var windmill_scene = preload("res://scenes/buildings/windmill.tscn")
 
 # Preloading the scraps scene
 var scraps_scene = preload("res://scenes/buildings/scrap_heap.tscn")
+
+# Preloading the exit arch
+var exit_arch_scene = preload("res://scenes/buildings/exit_arc.tscn")
 
 # Density of all foliage can be set here
 const GRASS_DENSITY := 1000
@@ -71,10 +78,17 @@ var water_filter : StaticBody2D
 var workbench : StaticBody2D
 var wind_turbine : StaticBody2D
 var house : StaticBody2D
+var trash_collector : StaticBody2D
+var hamster_wheel : StaticBody2D
+var well : StaticBody2D
+var windmill : StaticBody2D
 var buildings : Array[StaticBody2D] = []
 
 # Keep track of all the scraps
 var scraps : Array[StaticBody2D] = []
+
+# Keep track of the exit arch
+var exit_arch : StaticBody2D
 
 # The function clears the map by freeing all instances and clearing lists
 func clear_map() -> void:
@@ -96,6 +110,14 @@ func clear_map() -> void:
 		wind_turbine.queue_free()
 	if not !house:
 		house.queue_free()
+	if not !trash_collector:
+		trash_collector.queue_free()
+	if not !hamster_wheel:
+		hamster_wheel.queue_free()
+	if not !well:
+		well.queue_free()
+	if not !windmill:
+		windmill.queue_free()
 
 	buildings.clear()
 	remaining_building_positions = starting_building_positions
@@ -105,6 +127,8 @@ func clear_map() -> void:
 		if not !scraps_instance:
 			scraps_instance.queue_free()
 	scraps.clear()
+
+	exit_arch.queue_free()
 
 	# Finally, the NPC is removed
 	npc.queue_free()
@@ -279,31 +303,58 @@ func generate_npc(npc_name : String) -> void:
 
 # The function create one of each remaining building to be generated
 func generate_buildings(buildings_to_generate : Array[String]) -> void:
-	if buildings_to_generate.has("underground water filter"):
+	if buildings_to_generate.has("Water Filter"):
 		water_filter = water_filter_scene.instantiate() as StaticBody2D
 		water_filter.global_position = WATER_FILTER_POSITIONS[rng.randi_range(0, 12)] + WATER_FILTER_POSITION_OFFSET
 		buildings.append(water_filter)
 
-	if buildings_to_generate.has("shed"):
+	if buildings_to_generate.has("Shed"):
 		house = house_scene.instantiate() as StaticBody2D
 		var random_position = remaining_building_positions.pick_random()
 		remaining_building_positions.erase(random_position)
 		house.global_position = random_position
 		buildings.append(house)
 	
-	if buildings_to_generate.has("wind turbine"):
+	if buildings_to_generate.has("Wind Turbine"):
 		wind_turbine = wind_turbine_scene.instantiate() as StaticBody2D
 		var random_position = remaining_building_positions.pick_random()
 		remaining_building_positions.erase(random_position)
 		wind_turbine.global_position = random_position
 		buildings.append(wind_turbine)
 	
-	if buildings_to_generate.has("recycling workshop"):
+	if buildings_to_generate.has("Recycling Workshop"):
 		workbench = workbench_scene.instantiate() as StaticBody2D
 		var random_position = remaining_building_positions.pick_random()
 		remaining_building_positions.erase(random_position)
 		workbench.global_position = random_position
 		buildings.append(workbench)
+
+	if buildings_to_generate.has("Trash Collector"):
+		trash_collector = trash_collector_scene.instantiate() as StaticBody2D
+		var random_position = remaining_building_positions.pick_random()
+		remaining_building_positions.erase(random_position)
+		buildings.append(trash_collector)
+
+	if buildings_to_generate.has("Well"):
+		well = well_scene.instantiate() as StaticBody2D
+		var random_position = remaining_building_positions.pick_random()
+		remaining_building_positions.erase(random_position)
+		well.global_position = random_position
+		buildings.append(well)
+	
+	if buildings_to_generate.has("Hamster Wheel"):
+		hamster_wheel = hamster_wheel_scene.instantiate() as StaticBody2D
+		var random_position = remaining_building_positions.pick_random()
+		remaining_building_positions.erase(random_position)
+		hamster_wheel.global_position = random_position
+		buildings.append(hamster_wheel)
+	
+	if buildings_to_generate.has("Windmill"):
+		windmill = windmill_scene.instantiate() as StaticBody2D
+		var random_position = remaining_building_positions.pick_random()
+		remaining_building_positions.erase(random_position)
+		windmill.global_position = random_position
+		buildings.append(windmill)
 
 # To improve visual clarity, clean up foliage around all the buildings
 func clear_buildings_areas(buildings_to_generate : Array[String]) -> void:
@@ -371,3 +422,7 @@ func pick_scraps() -> void:
 		for detected_foliage in scraps_instance.detected_foliage:
 			foliage.erase(detected_foliage)
 			detected_foliage.queue_free()
+
+# The function generates the exit arch
+func generate_exit_arch() -> void:
+	exit_arch = exit_arch_scene.instantiate() as StaticBody2D
