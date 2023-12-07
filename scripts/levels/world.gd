@@ -1,8 +1,8 @@
 extends Node2D
 
 # Preloading the loading screen
-var loading_screen_scene = preload("res://scenes/ui/loading_screen.tscn")
-var loading_screen : Node2D
+#var loading_screen_scene = preload("res://scenes/ui/loading_screen.tscn")
+#var loading_screen : Node2D
 
 # The path of the json file which keeps track of NPCs, their buildings and tasks
 var json_path := "res://data/npc_building_task.json"
@@ -51,16 +51,16 @@ var exit_arch_generated := false
 
 func _ready():
 	# Instantiate the loading screen and add it to the main scene
-	loading_screen = loading_screen_scene.instantiate() as Node2D
-	get_tree().root.add_child.call_deferred(loading_screen)
-
+	#loading_screen = loading_screen_scene.instantiate() as Node2D
+	#get_tree().root.add_child.call_deferred(loading_screen)
+	pass
 func _process(_delta):
 	if Input.is_action_just_pressed("reset"):
 		# Instantiate the loading screen and add it to the main scene
-		loading_screen = loading_screen_scene.instantiate() as Node2D
-		get_tree().root.add_child(loading_screen)
+		#loading_screen = loading_screen_scene.instantiate() as Node2D
+		#get_tree().root.add_child(loading_screen)
 
-		await(loading_screen.loading_screen_instantiated)
+		#await(loading_screen.loading_screen_instantiated)
 
 		regenerate()
 
@@ -150,7 +150,7 @@ func _process(_delta):
 		MapGeneration.pick_scraps()
 		scraps_picked = true
 
-		loading_screen.map_generated()
+		#loading_screen.map_generated()
 
 	if not scraps_generated:
 		MapGeneration.generate_scraps(world_size)
