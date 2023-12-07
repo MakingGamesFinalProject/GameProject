@@ -6,7 +6,7 @@ var npc_building_task_json_path := "res://data/npc_building_task.json"
 var player1_is_close := false
 var player2_is_close := false
 
-var what_npc_am_i := "Huggy"
+var what_npc_am_i := "Huggy0"
 
 # id's of what dialog to use. ref. notifications JSON
 var dialog_startup_id := -1
@@ -107,28 +107,30 @@ func reset_dialog_state(dialog_node, player_array):
 	player_array[1].player_unfreeze()
 
 func show_correct_npc():
-	if what_npc_am_i == "Huggy":
+	if what_npc_am_i.begins_with("Huggy"):
 		$Huggy.visible = true
 		$Greasy.visible = false
+		$Ovaltine.visible = false
+		$Baby.visible = false
 		state_machine.travel("idle_Huggy")
-	elif what_npc_am_i == "Greasy":
+	elif what_npc_am_i.begins_with("Greasy"):
 		$Greasy.visible = true
 		$Huggy.visible = false
+		$Ovaltine.visible = false
+		$Baby.visible = false
 		state_machine.travel("idle_Greasy")
-	elif what_npc_am_i == "Ovaltine":
-		$Greasy.visible = true
-		$Huggy.visible = false
-		state_machine.travel("idle_Greasy")
-	elif what_npc_am_i == "Baby":
-		$Greasy.visible = true
-		$Huggy.visible = false
-		state_machine.travel("idle_Greasy")
-	else:
-		$Huggy.visible = true
+	elif what_npc_am_i.begins_with("Ovaltine"):
 		$Greasy.visible = false
-		state_machine.travel("idle_Huggy")
-		
-		########### ADD NPC'S HERE
+		$Huggy.visible = false
+		$Ovaltine.visible = true
+		$Baby.visible = false
+		#state_machine.travel("idle_Greasy")
+	elif what_npc_am_i.begins_with("Baby"):
+		$Greasy.visible = false
+		$Huggy.visible = false
+		$Ovaltine.visible = false
+		$Baby.visible = true
+		#state_machine.travel("idle_Greasy")
 		
 func reset_npc():
 	get_json_data()

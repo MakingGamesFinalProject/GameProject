@@ -140,7 +140,7 @@ func set_current_task(uid, player):
 			current_task_uid_p2 = -1	
 
 func set_task_as_done(task_uid):
-	var task = tasks[task_uid]
+	var task = tasks[task_uid-1]
 	
 	#if the task was already completed then do nothing
 	for i in range(0, len(tasks_completed)):

@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://efjia0hmypy4"]
+[gd_scene load_steps=6 format=3 uid="uid://efjia0hmypy4"]
 
-[ext_resource type="Script" path="res://scripts/Buildings/recycling_workshop.gd" id="1_3kmrn"]
 [ext_resource type="Texture2D" uid="uid://b5b6e1qxi5oow" path="res://art/World/Player Map/Buildings/Recycling Workshop.png" id="2_peje1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_133pb"]
@@ -18,7 +17,6 @@ radius = 6.06971
 height = 19.1839
 
 [node name="RecyclingWorkshop" type="StaticBody2D"]
-script = ExtResource("1_3kmrn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -200)
