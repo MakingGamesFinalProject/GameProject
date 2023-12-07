@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6bcmhh36hbrl"]
 
 [ext_resource type="Script" path="res://scenes/ui/InWorldUI/StartButton.gd" id="1_tqrp8"]
-[ext_resource type="Texture2D" uid="uid://c5c04n04pd1ak" path="res://art/UI/Menus/Start Menu/Controls.png" id="2_hxnnw"]
+[ext_resource type="Texture2D" uid="uid://c5c04n04pd1ak" path="res://Start Menu/Controls.png" id="2_hxnnw"]
 
 [node name="StartButton" type="Node2D"]
 z_index = -1

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://if7wrpabduf7"
-path="res://.godot/imported/Start Game.png-9b82cd06273871d559f0b839dddf1825.ctex"
+path="res://.godot/imported/Start Game.png-755cc708044e21d2c339fc025ec074cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/Menus/Start Menu/Start Game.png"
-dest_files=["res://.godot/imported/Start Game.png-9b82cd06273871d559f0b839dddf1825.ctex"]
+source_file="res://Start Menu/Start Game.png"
+dest_files=["res://.godot/imported/Start Game.png-755cc708044e21d2c339fc025ec074cc.ctex"]
 
 [params]
 
