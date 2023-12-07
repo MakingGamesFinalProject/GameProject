@@ -36,8 +36,7 @@ var foliage_deleted := false
 
 # Keep track if the NPC is generated
 var npc_generated := false
-var npc_present := "Huggy" # The current NPC in the world
-var npc_buildings : Array[String] # The buildings associated with the NPC
+var npc_buildings : Array[String] = [] # The buildings associated with the NPC
 
 # Below is a list of booleans making sure buildings are only generated once
 var buildings_generated := false
@@ -46,6 +45,9 @@ var buildings_areas_cleared := false
 # Keep track if scraps are generated
 var scraps_generated := false
 var scraps_picked := false
+
+# Keep track if the exit arch was generated
+var exit_arch_generated := false
 
 func _ready():
 	# Instantiate the loading screen and add it to the main scene
@@ -128,7 +130,6 @@ func _process(_delta):
 		add_child(MapGeneration.npc)
 
 		npc_generated = true
-		npc_present = npc_name
 		npc_buildings = get_json_buildings(get_json_text(json_path), npc_name)
 
 	# Clear out an area around the Water Filter designated spot
@@ -157,6 +158,12 @@ func _process(_delta):
 			add_child(scraps)
 
 		scraps_generated = true
+
+	if not exit_arch_generated:
+		MapGeneration.generate_exit_arch()
+		add_child(MapGeneration.exit_arch)
+
+		exit_arch_generated = true
 
 # Open the file, read the file, close the file
 func get_json_text(path : String) -> String:
@@ -196,10 +203,21 @@ func choose_random_npc() -> String:
 	var npcs : Array[String] = get_json_npcs(get_json_text(json_path))
 	var npc : String = npcs.pick_random()
 
-	if npc.begins_with("Huggy"):
+	if NPCEncounter.huggy == 0:
+		npc = "Huggy0"
+		NPCEncounter.huggy += 1
+	elif npc.begins_with("Huggy"):
+		npc = "Huggy" + str(NPCEncounter.huggy)
 		NPCEncounter.huggy += 1
 	elif npc.begins_with("Greasy"):
+		npc = "Greasy" + str(NPCEncounter.greasy)
 		NPCEncounter.greasy += 1
+	elif npc.begins_with("Ovaltine"):
+		npc = "Ovaltine" + str(NPCEncounter.ovaltine)
+		NPCEncounter.ovaltine += 1
+	elif npc.begins_with("Baby"):
+		npc = "Baby" + str(NPCEncounter.baby)
+		NPCEncounter.baby += 1
 
 	return npc
 
@@ -236,3 +254,5 @@ func regenerate() -> void:
 
 	scraps_generated = false
 	scraps_picked = false
+
+	exit_arch_generated = false
