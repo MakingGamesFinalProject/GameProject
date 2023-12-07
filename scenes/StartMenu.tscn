@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://c75hqicmq3j04"]
+
+[ext_resource type="Script" path="res://scripts/camera/game_split_screen_controller.gd" id="1_g3b6h"]
+[ext_resource type="PackedScene" uid="uid://527ad036ui2s" path="res://scenes/ui/ui_collective.tscn" id="2_qqwfb"]
+[ext_resource type="PackedScene" uid="uid://djuj0ffrxtst6" path="res://scenes/levels/Start_Level.tscn" id="3_1xm7b"]
+[ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="4_y4d83"]
+[ext_resource type="PackedScene" uid="uid://cvwuirlquyihm" path="res://scenes/music/audio_manager.tscn" id="5_32kgy"]
+[ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task/task_manager.tscn" id="6_6xwno"]
+[ext_resource type="PackedScene" uid="uid://dhh43kotjb6go" path="res://scenes/ui/notification.tscn" id="7_1mml0"]
+
+[sub_resource type="GDScript" id="GDScript_basqf"]
+script/source = "extends Camera2D
+
+var min_x = 0
+var max_x = 8000
+#1 for player1, 2 for player2
+@export var camera_number = 1; 
+
+func _process(delta):
+	var camera_position = global_position
+	var player_position = get_player().position
+	var new_camera_pos_x = clamp(player_position.x, min_x, max_x)
+	camera_position.x = new_camera_pos_x
+	global_position = camera_position
+	#print(new_camera_pos_x)
+	
+	
+func get_player():
+	return get_tree().get_nodes_in_group(\"players\")[camera_number - 1] 
+"
+
+[node name="Game" type="Node"]
+script = ExtResource("1_g3b6h")
+
+[node name="UICollective" parent="." instance=ExtResource("2_qqwfb")]
+
+[node name="MarginContainer" parent="UICollective" index="0"]
+visible = false
+
+[node name="CurrentTaskUI" parent="UICollective" index="4"]
+visible = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 2052.0
+offset_bottom = 1200.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1024, 1200)
+render_target_update_mode = 4
+
+[node name="Home_level" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("3_1xm7b")]
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.3, 0.3)
+limit_left = -3524
+limit_top = -2711
+limit_right = 3524
+limit_bottom = 2711
+editor_draw_limits = true
+script = SubResource("GDScript_basqf")
+
+[node name="UITasksP1" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("4_y4d83")]
+
+[node name="AudioManager" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("5_32kgy")]
+
+[node name="TaskManager" parent="HBoxContainer/SubViewportContainer/SubViewport" groups=["task_manager"] instance=ExtResource("6_6xwno")]
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(1024, 1200)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer2/SubViewport"]
+zoom = Vector2(0.3, 0.3)
+limit_left = -3524
+limit_top = -2711
+limit_right = 3524
+limit_bottom = 2711
+script = SubResource("GDScript_basqf")
+camera_number = 2
+
+[node name="UITasksP2" parent="HBoxContainer/SubViewportContainer2/SubViewport" instance=ExtResource("4_y4d83")]
+player_number = 2
+
+[node name="notification" parent="." instance=ExtResource("7_1mml0")]
+visible = false
+
+[editable path="UICollective"]
+[editable path="UICollective/options_ui"]

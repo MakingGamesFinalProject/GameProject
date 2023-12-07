@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://73i7rl2mk865"]
+[gd_scene load_steps=19 format=3 uid="uid://73i7rl2mk865"]
 
 [ext_resource type="Script" path="res://scripts/Buildings/npc.gd" id="1_yinxp"]
 [ext_resource type="Texture2D" uid="uid://cqxunjcsn1k2l" path="res://art/World/Player Map/NPCs/Huggy Sugar-Gold/Huggy Sugar-Gold.png" id="2_ukvr8"]
 [ext_resource type="Texture2D" uid="uid://capgke4dv1vbg" path="res://art/World/Player Map/NPCs/Greasy Jim/Greasy Jim.png" id="3_mhk0f"]
-[ext_resource type="PackedScene" uid="uid://dporwj61qmkih" path="res://scenes/ui/npc_notification.tscn" id="4_hhwu4"]
+[ext_resource type="PackedScene" uid="uid://dwrhyxhjqai56" path="res://scenes/ui/npc_notification.tscn" id="4_hhwu4"]
 [ext_resource type="Texture2D" uid="uid://bkc1tjst7l04l" path="res://art/UI/UI pixelart Assets 4 -1.3/16x16/Set1/Set1-1.png" id="4_nspc1"]
+[ext_resource type="Texture2D" uid="uid://4osmj8oa51oy" path="res://art/World/Player Map/NPCs/Ovaltine Vinaigrette/Ovaltine Vinaigrette.png" id="4_xgk6j"]
+[ext_resource type="Texture2D" uid="uid://dvylygdmed8wk" path="res://art/World/Player Map/NPCs/Miss Baby Stevens/Miss Baby Stevens.png" id="5_fmta2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68akm"]
 
@@ -123,6 +125,16 @@ visible = false
 texture = ExtResource("3_mhk0f")
 offset = Vector2(0, -150)
 hframes = 8
+
+[node name="Ovaltine" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_xgk6j")
+offset = Vector2(0, -150)
+
+[node name="Baby" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_fmta2")
+offset = Vector2(0, -100)
 
 [node name="npc_notification" parent="." instance=ExtResource("4_hhwu4")]
 position = Vector2(0, -300)
