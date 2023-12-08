@@ -120,7 +120,10 @@ func clear_map() -> void:
 		windmill.queue_free()
 
 	buildings.clear()
-	remaining_building_positions = starting_building_positions
+	# Reset the list of possible places to put a building
+	for building_position in starting_building_positions:
+		if not remaining_building_positions.has(building_position):
+			remaining_building_positions.append(building_position)
 
 	# Then, all remaining scraps are removed
 	for scraps_instance in scraps:
@@ -166,7 +169,7 @@ func generate_bushes(world_size : Vector2) -> void:
 		# Randomly place the bush instance somewhere within the world
 		bush_instance.global_position = Vector2(rng.randi_range( \
 			int(float(-world_size.x) / 2.0), int(float(world_size.x) / 2.0)), rng.randi_range( \
-			int(float(-world_size.y) / 2.0), int(float(world_size.y) / 2.0)))
+			int(float(-world_size.y) / 2.0), int(float(world_size.y) / 2.0) - 800))
 
 		foliage.append(bush_instance)
 
@@ -183,7 +186,7 @@ func generate_trees(world_size : Vector2) -> void:
 		# Randomly place the tree instance somewhere within the world
 		tree_instance.global_position = Vector2(rng.randi_range( \
 			int(float(-world_size.x) / 2.0), int(float(world_size.x) / 2.0)), rng.randi_range( \
-			int(float(-world_size.y) / 2.0), int(float(world_size.y) / 2.0)))
+			int(float(-world_size.y) / 2.0), int(float(world_size.y) / 2.0) - 800))
 
 		foliage.append(tree_instance)
 
@@ -303,6 +306,7 @@ func generate_npc(npc_name : String) -> void:
 
 # The function create one of each remaining building to be generated
 func generate_buildings(buildings_to_generate : Array[String]) -> void:
+	print(remaining_building_positions.size())
 	if buildings_to_generate.has("Water Filter"):
 		water_filter = water_filter_scene.instantiate() as StaticBody2D
 		water_filter.global_position = WATER_FILTER_POSITIONS[rng.randi_range(0, 12)] + WATER_FILTER_POSITION_OFFSET
@@ -384,8 +388,8 @@ func generate_scraps(world_size : Vector2) -> void:
 		var scraps_instance = scraps_scene.instantiate() as StaticBody2D
 
 		scraps_instance.global_position = Vector2(rng.randi_range( \
-			int(float(-world_size.x) / 2.0), int(float(world_size.x) / 2.0)), rng.randi_range( \
-			int(float(-world_size.y) / 2.0), int(float(world_size.y) / 2.0)))
+			int(float(-world_size.x) / 2.0) + 400, int(float(world_size.x) / 2.0) - 400), rng.randi_range( \
+			int(float(-world_size.y) / 2.0) + 200, int(float(world_size.y) / 2.0) - 800))
 
 		scraps.append(scraps_instance)
 
@@ -426,3 +430,4 @@ func pick_scraps() -> void:
 # The function generates the exit arch
 func generate_exit_arch() -> void:
 	exit_arch = exit_arch_scene.instantiate() as StaticBody2D
+	exit_arch.global_position = Vector2(800, 2600)
