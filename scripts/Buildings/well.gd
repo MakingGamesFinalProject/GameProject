@@ -31,12 +31,12 @@ var COLLECTABILITY_TIMER: float = 20.0
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
 var needed_for_build_water := 0
-var needed_for_build_energy := 0
-var needed_for_build_scrap := 10
+var needed_for_build_energy := 10
+var needed_for_build_scrap := 0
 
-var collection_resource_water := 20
+var collection_resource_water := 0
 var collection_resource_energy := 0
-var collection_resource_scrap := 0
+var collection_resource_scrap := 50
 #########################################^^^^################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #############################################################################################
@@ -150,7 +150,7 @@ func building_play_sounds():
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
 func player_has_my_task():
-	var task_id = task_manager_ref.get_task_by_name("Retrieve Water").uid
+	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
 	var npc = get_tree().get_first_node_in_group("npc")
 	
 	for npc_task_id in npc.npc_task_ids:
@@ -169,21 +169,21 @@ func check_for_retrieve_water_task():
 	if current_status != available_states.WORKING: 
 		return
 	
-	var task_id = task_manager_ref.get_task_by_name("Retrieve Water").uid
+	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
 	if task_manager_ref.get_current_task(1) == task_id or task_manager_ref.get_current_task(2) == task_id:
 		if (Input.is_action_pressed("interaction_p1") and player1_is_close):
 			var player_array = get_tree().get_nodes_in_group("players")
 			player_array[0].player_interaction()
 			var time_manager = WaitUtil.new()
-			time_manager.wait(time_to_repair_in_seconds, self, "_on_retrieve_water_task_callback")
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
 		elif (Input.is_action_pressed("interaction_p2") and player2_is_close):
 			var player_array = get_tree().get_nodes_in_group("players")
 			player_array[1].player_interaction()
 			var time_manager = WaitUtil.new()
-			time_manager.wait(time_to_repair_in_seconds, self, "_on_retrieve_water_task_callback")
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
 
-func _on_retrieve_water_task_callback():
-	var task_id = task_manager_ref.get_task_by_name("Retrieve Water").uid
+func _on_create_scrap_task_callback():
+	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
 	task_manager_ref.set_task_as_done(task_id)
 
 #######################################^^^^##################################################
