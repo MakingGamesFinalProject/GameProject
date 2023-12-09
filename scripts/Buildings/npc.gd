@@ -136,6 +136,7 @@ func reset_npc():
 	get_json_data()
 	#set_tasks()
 	show_correct_npc()
+	reset_tasks()
 	if dialog_startup_id != -1:
 		show_dialog(dialog_startup_id)
 		startup_dialog_is_open = true
@@ -200,6 +201,11 @@ func close_notification_exclamation():
 func set_npc(npc_name):
 	what_npc_am_i = npc_name
 	reset_npc()
+	
+func reset_tasks():
+	var task_manager = get_tree().get_first_node_in_group("task_manager")
+	assert(task_manager, "task manager not found")
+	task_manager.reset_tasks()
 	
 func cant_leave_yet():
 	show_dialog(dialog_not_done_yet_id)
