@@ -1,49 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://efjia0hmypy4"]
+[gd_scene load_steps=10 format=3 uid="uid://3pcq6rwot1fh"]
 
+[ext_resource type="Script" path="res://scripts/Buildings/well.gd" id="1_fwi7w"]
 [ext_resource type="Texture2D" uid="uid://b5b6e1qxi5oow" path="res://art/World/Player Map/Buildings/Recycling Workshop.png" id="2_peje1"]
+[ext_resource type="Texture2D" uid="uid://c08afvw8ywtln" path="res://art/World/Player Map/Buildings/Recycling Workshop Outline.png" id="3_0cxkq"]
+[ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="4_omsdg"]
+[ext_resource type="PackedScene" uid="uid://bhbgan7cobyol" path="res://scenes/ui/building_exclamation_mark.tscn" id="5_fxnlg"]
+[ext_resource type="AudioStream" uid="uid://qsarnvvp1cta" path="res://sounds/Player Map/Building Process.wav" id="6_ttj8o"]
+[ext_resource type="AudioStream" uid="uid://fy53ih1qmbyk" path="res://sounds/Player Map/Building Set.wav" id="7_k2aib"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_133pb"]
-radius = 3.54877
-height = 8.82191
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2kpd"]
+radius = 66.9082
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q5odm"]
-radius = 200.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k02ht"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf4ev"]
-size = Vector2(364, 1156.5)
+[node name="RecyclingWorkshop" type="StaticBody2D" groups=["Building", "Well"]]
+script = ExtResource("1_fwi7w")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dhr6v"]
-radius = 6.06971
-height = 19.1839
-
-[node name="RecyclingWorkshop" type="StaticBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -200)
-scale = Vector2(0.38, 0.38)
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_peje1")
+offset = Vector2(0, -150)
+
+[node name="Outline" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0cxkq")
+offset = Vector2(0, -150)
 
 [node name="DetectionArea" type="Area2D" parent="."]
+scale = Vector2(1.48, 1.35271)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(-15, -210)
+position = Vector2(0, -30)
 rotation = 0.523599
-scale = Vector2(66.9345, 30.746)
-shape = SubResource("CapsuleShape2D_133pb")
+scale = Vector2(3.79183, 2.44301)
+shape = SubResource("CircleShape2D_k2kpd")
 
-[node name="Collider" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0, -280)
-shape = SubResource("CircleShape2D_q5odm")
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -62)
+rotation = 0.490438
+scale = Vector2(23.8292, 7.35931)
+shape = SubResource("CapsuleShape2D_k02ht")
 
-[node name="Collider2" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0, 322.75)
-shape = SubResource("RectangleShape2D_uf4ev")
+[node name="HelperButton" parent="." instance=ExtResource("4_omsdg")]
+position = Vector2(142, -235)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-15, -210)
-rotation = 0.523599
-scale = Vector2(48.6736, 18.8285)
-shape = SubResource("CapsuleShape2D_dhr6v")
+[node name="ExclamationMark" parent="." instance=ExtResource("5_fxnlg")]
+position = Vector2(33, -275)
+
+[node name="Building" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ttj8o")
+
+[node name="Built" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_k2aib")
 
 [connection signal="area_entered" from="DetectionArea" to="." method="detect_foliage"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

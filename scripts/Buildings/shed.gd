@@ -49,6 +49,7 @@ func detect_foliage(area):
 func _ready():
 	set_task_manager_ref()
 	$Collider.hide()
+	$Collider.disabled = true
 	$Base.hide()
 	$Outline.hide()
 	$ExclamationMark.hide()
@@ -93,7 +94,8 @@ func _process(_delta):
 			building_play_sounds()
 	
 	if Input.is_action_just_pressed("interaction_p2") and player2_is_close \
-	and Input.is_action_just_pressed("interaction_p1") and player1_is_close:
+	or Input.is_action_just_pressed("interaction_p1") and player1_is_close \
+	and is_collectable:
 		var player_array = get_tree().get_nodes_in_group("players")
 		player_array[0].player_interaction()
 		player_array[1].player_interaction()
@@ -145,12 +147,21 @@ func building_play_sounds():
 #############################################################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
+func player_has_my_task():
+	var task_id = task_manager_ref.get_task_by_name("Discuss Future Plans").uid
+	var npc = get_tree().get_first_node_in_group("npc")
+	
+	for npc_task_id in npc.npc_task_ids:
+		if npc_task_id == task_id:
+			return true
+	return false
 
 func check_task_completion():
 	# This function needs to be here but it is supposed to 
 	# call the correct "check tasks" depending on the building
 	# check_for_fixing_task() # decided we don't need because of time constraints
-	check_for_plans_task()
+	if player_has_my_task():
+		check_for_plans_task()
 
 func check_for_plans_task():
 	if current_status != available_states.WORKING: 
@@ -182,7 +193,8 @@ func set_task_manager_ref():
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("players"):
-		$HelperButton.show()
+		if (!has_been_built and can_be_build) or is_collectable:
+			$HelperButton.show()
 		++counter_players_detected;
 		if body.name == "Player":
 			player1_is_close = true

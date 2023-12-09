@@ -49,7 +49,9 @@ func detect_foliage(area):
 func _ready():
 	set_task_manager_ref()
 	$Collider.hide()
+	$Collider.disabled = true
 	$Base.hide()
+	$Base/Helix.hide()
 	$Outline.hide()
 	$ExclamationMark.hide()
 	$HelperButton.hide()
@@ -77,6 +79,7 @@ func _process(_delta):
 
 			$Outline.queue_free()
 			$Base.show()
+			$Base/Helix.show()
 			building_fade_in()
 			building_play_sounds()
 		
@@ -89,6 +92,7 @@ func _process(_delta):
 
 			$Outline.queue_free()
 			$Base.show()
+			$Base/Helix.show()
 			building_fade_in()
 			building_play_sounds()
 	
@@ -133,6 +137,9 @@ func building_fade_in():
 	var fade1 = create_tween()
 	fade1.tween_property($Base, "modulate", Color(1, 1, 1, 1), BUILDING_FADE_TIME). \
 		from(Color(1, 1, 1, 0))
+	var fade2 = create_tween()
+	fade2.tween_property($Base/Helix, "modulate", Color(1, 1, 1, 1), BUILDING_FADE_TIME). \
+		from(Color(1, 1, 1, 0))
 
 func building_play_sounds():
 	$Building.play()
@@ -144,12 +151,21 @@ func building_play_sounds():
 #############################################################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
+func player_has_my_task():
+	var task_id = task_manager_ref.get_task_by_name("Check Batteries").uid
+	var npc = get_tree().get_first_node_in_group("npc")
+	
+	for npc_task_id in npc.npc_task_ids:
+		if npc_task_id == task_id:
+			return true
+	return false
 
 func check_task_completion():
 	# This function needs to be here but it is supposed to 
 	# call the correct "check tasks" depending on the building
 	# check_for_fixing_task() # decided we don't need because of time constraints
-	check_for_batteries_task()
+	if player_has_my_task():
+		check_for_batteries_task()
 
 func check_for_batteries_task():
 	if current_status != available_states.WORKING: 
@@ -209,7 +225,8 @@ func set_task_manager_ref():
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("players"):
-		$HelperButton.show()
+		if (!has_been_built and can_be_build) or is_collectable:
+			$HelperButton.show()
 		++counter_players_detected;
 		if body.name == "Player":
 			player1_is_close = true

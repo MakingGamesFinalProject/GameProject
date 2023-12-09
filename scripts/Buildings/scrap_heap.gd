@@ -30,6 +30,7 @@ func detect_scraps(area):
 func _ready():
 	$InteractibleButtonHelper.hide()
 	
+	
 func _process(_delta):
 	check_if_clean_scrap_piles_task()
 	if fading_out:

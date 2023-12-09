@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4ttng1etigom"]
+
+[ext_resource type="Script" path="res://scripts/Buildings/shed.gd" id="1_bf1fv"]
+[ext_resource type="Texture2D" uid="uid://m3aguidc5fkt" path="res://art/World/Player Map/Buildings/Shed.png" id="2_ua6hg"]
+[ext_resource type="Texture2D" uid="uid://dsokg6jt21sip" path="res://art/World/Player Map/Buildings/Shed Outline.png" id="3_8akqp"]
+[ext_resource type="PackedScene" uid="uid://cr05txlv0e1v5" path="res://scenes/ui/helper_button.tscn" id="4_d6ro6"]
+[ext_resource type="PackedScene" uid="uid://bhbgan7cobyol" path="res://scenes/ui/building_exclamation_mark.tscn" id="5_4don7"]
+[ext_resource type="AudioStream" uid="uid://qsarnvvp1cta" path="res://sounds/Player Map/Building Process.wav" id="6_0e38w"]
+[ext_resource type="AudioStream" uid="uid://fy53ih1qmbyk" path="res://sounds/Player Map/Building Set.wav" id="7_2pteq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2kpd"]
+radius = 66.9082
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o64sd"]
+radius = 20.7231
+
+[node name="Shed" type="StaticBody2D" groups=["Building", "Shed"]]
+script = ExtResource("1_bf1fv")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_ua6hg")
+offset = Vector2(0, -300)
+
+[node name="Outline" type="Sprite2D" parent="."]
+texture = ExtResource("3_8akqp")
+offset = Vector2(0, -300)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+scale = Vector2(1.48, 1.35271)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-24.3243, -127.152)
+scale = Vector2(4.12365, 3.35121)
+shape = SubResource("CircleShape2D_k2kpd")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(-23, -172)
+rotation = -0.349066
+scale = Vector2(15.4134, 9.29397)
+shape = SubResource("CircleShape2D_o64sd")
+
+[node name="HelperButton" parent="." instance=ExtResource("4_d6ro6")]
+position = Vector2(205, -579)
+
+[node name="ExclamationMark" parent="." instance=ExtResource("5_4don7")]
+position = Vector2(48, -754)
+
+[node name="Building" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0e38w")
+
+[node name="Built" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_2pteq")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="detect_foliage"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
