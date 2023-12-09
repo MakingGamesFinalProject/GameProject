@@ -49,6 +49,7 @@ func detect_foliage(area):
 func _ready():
 	set_task_manager_ref()
 	$Collider.hide()
+	$Collider.disabled = true
 	$Base.hide()
 	$Base/Helix.hide()
 	$Outline.hide()
