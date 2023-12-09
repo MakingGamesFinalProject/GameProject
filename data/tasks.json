@@ -3,71 +3,61 @@
 		{
 			"uid": 1,
 			"name": "Check Batteries",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 2,
 		},
 		{
 			"uid": 2,
 			"name": "Empty Windmill",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 2
 		},
 		{
 			"uid": 3,
 			"name": "Feed Hamsters",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 1,
 		},
 		{
 			"uid": 4,
 			"name": "Create Scrap",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 1,
 		},
 		{
 			"uid": 5,
 			"name": "Pick up Scrap",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 1,
 		},
 		{
 			"uid": 6,
 			"name": "Collect Water",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 1,
 		},
 		{
 			"uid": 7,
 			"name": "Retrieve Water",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 1,
 		},
 		{
 			"uid": 8,
 			"name": "Check Pump",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 2,
 		},
 		{
 			"uid": 9,
 			"name": "Discuss Future Plans",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 2,
 		},
 		{
 			"uid": 10,
 			"name": "Clean Scrap Heaps",
-			"reward": {
-			},
+			"reward": null,
 			"number_of_players": 1,
 		}
 	]

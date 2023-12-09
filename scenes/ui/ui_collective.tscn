@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/ui_collective.gd" id="1_cg5x8"]
 [ext_resource type="Texture2D" uid="uid://blp024obmiwvf" path="res://art/UI/Icons/Water.png" id="1_hjqww"]
 [ext_resource type="Texture2D" uid="uid://dnq12jpx1lfgp" path="res://art/UI/Icons/Renewable Energy.png" id="2_1jpm5"]
-[ext_resource type="Texture2D" uid="uid://d3g8e4vmtexrq" path="res://art/UI/Panels/resource_background.png" id="2_yynh7"]
+[ext_resource type="Texture2D" path="res://art/UI/Panels/resource_background.png" id="2_yynh7"]
 [ext_resource type="Texture2D" uid="uid://cnhmfdvt1vkex" path="res://art/UI/Icons/Recycled Scraps.png" id="3_7rj4l"]
 [ext_resource type="FontFile" uid="uid://bddofndbk3yi" path="res://art/UI/fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="3_t2x3q"]
 [ext_resource type="FontFile" uid="uid://df621qoiptmgk" path="res://art/UI/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="6_nkqa1"]
@@ -14,9 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dtsdpwp5x4nio" path="res://art/UI/Icons/task_background_in_board.png" id="10_kgi4o"]
 [ext_resource type="Texture2D" uid="uid://g308pauuckrg" path="res://art/current_tasl_p2.png" id="11_t2k6a"]
 [ext_resource type="Texture2D" uid="uid://dav3paq80swpy" path="res://art/UI/Icons/y-filled-yellow.png" id="13_8psqw"]
-[ext_resource type="PackedScene" uid="uid://crv8h23xdp7jn" path="res://scenes/ui/options_ui.tscn" id="15_bu0jw"]
-[ext_resource type="Texture2D" uid="uid://cvn04mtwmd0hl" path="res://art/Group 141.png" id="16_j4ecc"]
-[ext_resource type="Texture2D" uid="uid://ddvw82i0iks1f" path="res://art/Group 142.png" id="17_rkcrt"]
+[ext_resource type="PackedScene" path="res://scenes/ui/options_ui.tscn" id="15_bu0jw"]
+[ext_resource type="Texture2D" path="res://art/Group 141.png" id="16_j4ecc"]
+[ext_resource type="Texture2D" path="res://art/Group 142.png" id="17_rkcrt"]
 
 [sub_resource type="Animation" id="Animation_gcdc3"]
 resource_name = "resource_up"

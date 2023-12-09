@@ -31,6 +31,7 @@ func _ready():
 	$InteractibleButtonHelper.hide()
 	
 func _process(_delta):
+	check_if_clean_scrap_piles_task()
 	if fading_out:
 		fade_out(_delta)
 	# Currently, the interaction button is F
@@ -55,7 +56,7 @@ func start_fading():
 	
 func check_if_clean_scrap_piles_task():
 	var scrap_array = get_tree().get_nodes_in_group("Scraps")
-	if scrap_array.size() == 0:
+	if scrap_array.size() == 1:
 		var task_manager_ref = get_tree().get_first_node_in_group("task_manager")
 		assert(task_manager_ref != null, "Task manager not found")
 		var task_id = task_manager_ref.get_task_by_name("Clean Scrap Heaps").uid
@@ -71,7 +72,6 @@ func fade_out(delta):
 		fading_out = false	
 		hide()  
 		queue_free()
-		check_if_clean_scrap_piles_task()
 
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("players"):
