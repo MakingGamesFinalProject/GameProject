@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6bqm6gqeokqt"]
+[gd_scene load_steps=9 format=3 uid="uid://bg4gafce3xyqv"]
 
 [ext_resource type="Script" path="res://scripts/camera/game_split_screen_controller.gd" id="1_mykgh"]
 [ext_resource type="PackedScene" uid="uid://527ad036ui2s" path="res://scenes/ui/ui_collective.tscn" id="2_7267x"]
