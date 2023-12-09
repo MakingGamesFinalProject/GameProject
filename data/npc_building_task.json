@@ -182,8 +182,7 @@
 					"not done yet" : 50
 			},
 			"buildings": [
-				"Water Filter", 
-				"Windmill"
+				"Hamster Wheel"
 			],
 			"tasks": [
 				3
@@ -200,9 +199,8 @@
 					"not done yet" : 55
 			},
 			"buildings": [
-				"Shed",
-				"Well",
-				"Recycling Workshop"
+				"Water Filter",
+				"Windmill"
 			],
 			"tasks": [
 				8,
@@ -220,7 +218,9 @@
 					"not done yet" : 60
 			},
 			"buildings": [
-				"Hamster Wheel"
+				"Shed",
+				"Well",
+				"Recycling Workshop"
 			],
 			"tasks": [
 				9,
