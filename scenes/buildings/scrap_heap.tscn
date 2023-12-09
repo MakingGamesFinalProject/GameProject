@@ -31,9 +31,12 @@ rotation = 1.5708
 scale = Vector2(2.79375, 2.7128)
 shape = SubResource("CapsuleShape2D_ypjug")
 
-[node name="PlayerDetector" type="Area2D" parent="Collider"]
+[node name="PlayerDetector" type="Area2D" parent="."]
+position = Vector2(0.5, 2.5)
+rotation = 1.5708
+scale = Vector2(2.79375, 2.7128)
 
-[node name="Collider" type="CollisionShape2D" parent="Collider/PlayerDetector"]
+[node name="Collider" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CapsuleShape2D_6katx")
 
 [node name="InteractibleButtonHelper" type="Sprite2D" parent="."]
@@ -51,6 +54,6 @@ offset_bottom = 18.8889
 theme_override_font_sizes/font_size = 10
 text = "F"
 
-[connection signal="area_entered" from="Collider/PlayerDetector" to="." method="detect_scraps"]
-[connection signal="body_entered" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_entered"]
-[connection signal="body_exited" from="Collider/PlayerDetector" to="." method="_on_player_detector_body_exited"]
+[connection signal="area_entered" from="PlayerDetector" to="." method="detect_scraps"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
