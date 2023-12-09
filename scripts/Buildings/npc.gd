@@ -174,7 +174,7 @@ func set_tasks():
 
 func check_tasks():
 	if npc_task_ids == null:
-		return false
+		return true
 		
 	var task_manager = get_tree().get_first_node_in_group("task_manager")
 	if task_manager != null:
