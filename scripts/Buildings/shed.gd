@@ -182,7 +182,8 @@ func set_task_manager_ref():
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("players"):
-		$HelperButton.show()
+		if (!has_been_built and can_be_build) or is_collectable:
+			$HelperButton.show()
 		++counter_players_detected;
 		if body.name == "Player":
 			player1_is_close = true
