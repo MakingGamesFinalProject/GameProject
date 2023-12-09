@@ -16,20 +16,29 @@ func detect_foliage(area):
 func _ready():
 	set_task_manager_ref()
 	set_npc_ref()
+	$BlueCircle.hide()
 	#var world = new world_script()
 
 func _process(_delta):	
-	# and check_task_completion()
+	if player1_is_close or player2_is_close:
+		$BlueCircle.show()
+	else:
+		$BlueCircle.hide()
+	
 	if player1_is_close and player2_is_close:
-		if check_condiditons():
-			# end game
-			pass
+		if check_task_completion():
+			if check_condiditons():
+				# end game
+				pass
+			else:
+				#next map
+				var world = get_tree().get_first_node_in_group("World")
+				assert(world, "World not found")
+				reset_players()
+				world.regenerate()
 		else:
-			#next map
-			var world = get_tree().get_first_node_in_group("World")
-			assert(world, "World not found")
+			npc_ref.cant_leave_yet()
 			reset_players()
-			world.regenerate()
 	
 func check_condiditons():
 	if NPCEncounter.huggy == 3 \
@@ -60,6 +69,8 @@ func reset_players():
 	player_array[0].global_position.y = 2400
 	player_array[1].global_position.x = 300
 	player_array[1].global_position.y = 2600
+	player1_is_close = false
+	player2_is_close = false
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("players"):
