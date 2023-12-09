@@ -150,7 +150,7 @@ func building_play_sounds():
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
 func player_has_my_task():
-	var task_id = task_manager_ref.get_task_by_name("Discuss Future Plans").uid
+	var task_id = task_manager_ref.get_task_by_name("Feed Hamsters").uid
 	var npc = get_tree().get_first_node_in_group("npc")
 	
 	for npc_task_id in npc.npc_task_ids:

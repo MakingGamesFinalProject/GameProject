@@ -145,12 +145,21 @@ func building_play_sounds():
 #############################################################################################
 ############################DIFFERENT FOR EVERY BUILDING ####################################
 #####################################vvvvv###################################################
+func player_has_my_task():
+	var task_id = task_manager_ref.get_task_by_name("Empty Windmill").uid
+	var npc = get_tree().get_first_node_in_group("npc")
+	
+	for npc_task_id in npc.npc_task_ids:
+		if npc_task_id == task_id:
+			return true
+	return false
 
 func check_task_completion():
 	# This function needs to be here but it is supposed to 
 	# call the correct "check tasks" depending on the building
 	# check_for_fixing_task() # decided we don't need because of time constraints
-	check_for_empty_windmill_task()
+	if player_has_my_task():
+		check_for_empty_windmill_task()
 
 func check_for_empty_windmill_task():
 	if current_status != available_states.WORKING: 
