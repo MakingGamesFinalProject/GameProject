@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6bcmhh36hbrl"]
+
+[ext_resource type="Script" path="res://scenes/ui/InWorldUI/StartButton.gd" id="1_tqrp8"]
+[ext_resource type="Texture2D" uid="uid://c5c04n04pd1ak" path="res://Start Menu/Controls.png" id="2_hxnnw"]
+
+[node name="StartButton" type="Node2D"]
+z_index = -1
+scale = Vector2(3, 3)
+script = ExtResource("1_tqrp8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_hxnnw")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+scale = Vector2(0.15, 0.15)
+collision_layer = 0
+input_pickable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-793.333, 760, -1473.33, 346.667, -286.667, -233.333, 740, -746.667, 1420, -413.333, 873.333, -86.6667)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = 43.6667
+offset_right = 129.0
+offset_bottom = 70.6667
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.483013
+step = 0.1
+show_percentage = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
