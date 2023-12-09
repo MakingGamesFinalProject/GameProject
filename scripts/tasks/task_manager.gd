@@ -92,6 +92,13 @@ func is_task_completed(task_uid):
 		if t.uid == task_uid:
 			return true
 	return false
+	
+func reset_tasks():
+	tasks_completed = []
+	tasks_assigned = []
+	current_task_uid_p1 = -1
+	current_task_uid_p2 = -1
+	assign_task(-1)
 
 func _on_gift_box_gift_box_picked_up(player_number):
 	set_task_as_done(0)

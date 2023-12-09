@@ -63,6 +63,11 @@ func check_for_ui_toggle():
 	
 func load_assigned_tasks():
 	var tasks_assigned = tasks_manager.get_tasks_assigned(-1)
+	var tasks_completed = tasks_manager.get_completed_tasks(-1)
+	
+	if len(tasks_assigned) == 0 and len(tasks_completed) == 0:
+		for i in range(3):
+			delete_task_card_ui(get_task_card(i))
 	
 	if len(tasks_assigned) > 0:
 		chosen_card_index = 0
@@ -95,6 +100,19 @@ func update_task_card_ui(task_card, task):
 		var actual_string = format_string % [task.reward.amount, task.reward.resource]
 		vbox_container.get_node("Reward").text = actual_string
 
+func delete_task_card_ui(task_card):
+	task_card.task_name = ""
+	var vbox_container = task_card.get_node("Panel/VBoxContainer")
+	vbox_container.get_node("GoalLabel").text = ""
+	vbox_container.get_node("Goal").text = ""
+	vbox_container.get_node("RewardLabel").text = ""
+	vbox_container.get_node("Reward").text = ""
+	vbox_container.get_node("Button3").set_visible(false)
+	var hbox_container = task_card.get_node("Panel/VBoxContainer/HBoxContainer")
+	hbox_container.get_node("Button").set_visible(false)
+	hbox_container.get_node("Button2").set_visible(false)
+	task_card.get_node("Panel/CompletedSprite").set_visible(false)
+	
 
 func _on_task_manager_new_task_assigned(task):
 	load_assigned_tasks()
