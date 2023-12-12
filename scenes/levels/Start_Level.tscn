@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://djuj0ffrxtst6"]
+[gd_scene load_steps=11 format=3 uid="uid://djuj0ffrxtst6"]
 
 [ext_resource type="Texture2D" uid="uid://2q5jf0ru8hri" path="res://art/World/Player Map/Map_Background.png" id="2_qvin1"]
 [ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="3_gxgxm"]
 [ext_resource type="PackedScene" uid="uid://tyfin60df35t" path="res://scenes/player/player.tscn" id="4_debo8"]
 [ext_resource type="PackedScene" uid="uid://c1n6vmkcmalsf" path="res://scenes/ui/InWorldUI/StartButton.tscn" id="4_k4qdf"]
 [ext_resource type="PackedScene" uid="uid://c6bcmhh36hbrl" path="res://scenes/ui/InWorldUI/ControlsButton.tscn" id="5_rb2f3"]
+[ext_resource type="PackedScene" uid="uid://crv8h23xdp7jn" path="res://scenes/ui/options_ui.tscn" id="6_htii6"]
 [ext_resource type="PackedScene" uid="uid://cu437g0ikief4" path="res://scenes/ui/InWorldUI/QuitButton.tscn" id="6_rj8en"]
 [ext_resource type="Texture2D" uid="uid://m3aguidc5fkt" path="res://art/World/Player Map/Buildings/Shed.png" id="7_q40bb"]
-[ext_resource type="Texture2D" uid="uid://dmexm1fvs6rrs" path="res://art/UI/Menus/Start Menu/Fence_Back.png" id="8_lqfh3"]
-[ext_resource type="Texture2D" uid="uid://we0eixebj3em" path="res://art/UI/Menus/Start Menu/Fence_Front.png" id="9_e6vl4"]
+[ext_resource type="Texture2D" uid="uid://dmexm1fvs6rrs" path="res://Start Menu/Fence_Back.png" id="8_lqfh3"]
+[ext_resource type="Texture2D" uid="uid://we0eixebj3em" path="res://Start Menu/Fence_Front.png" id="9_e6vl4"]
 
 [node name="World" type="Node2D" groups=["World"]]
 y_sort_enabled = true
@@ -40,6 +41,7 @@ position = Vector2(1386, 960)
 position = Vector2(1844, 1256)
 rotation = 0.0204264
 scale = Vector2(3.17644, 3.17644)
+controlsUI = ExtResource("6_htii6")
 
 [node name="Quit" parent="." instance=ExtResource("6_rj8en")]
 position = Vector2(2252, 1546)

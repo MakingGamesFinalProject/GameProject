@@ -29,25 +29,17 @@ func _process(delta):
 	pass
 
 func menuChoose(): # used to increase and load the next scene based on the menu
-	
 	$ProgressBar.value += 0.5
-	
 	if $ProgressBar.value == 100:
-		print("Imagine loading screen wooowowowoo")
-		
 		if startButton == true:
 			get_tree().change_scene_to_packed(loadingScreen)
-			pass
-	
-		if controlsButton == true:
+			return
+		if name == "Controls":
 			get_tree().change_scene_to_packed(controlsUI)
-			pass
-		if quitButton == true:
+			return
+		if name == "Quit":
 			get_tree().quit()
-			pass
-		pass
-	
-	pass
+			return
 
 
 func _on_area_2d_body_entered(body): ## checks how many bodies are 
