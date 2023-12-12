@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://527ad036ui2s"]
+[gd_scene load_steps=32 format=3 uid="uid://527ad036ui2s"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui_collective.gd" id="1_cg5x8"]
 [ext_resource type="Texture2D" uid="uid://blp024obmiwvf" path="res://art/UI/Icons/Water.png" id="1_hjqww"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bddofndbk3yi" path="res://art/UI/fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="3_t2x3q"]
 [ext_resource type="FontFile" uid="uid://df621qoiptmgk" path="res://art/UI/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="6_nkqa1"]
 [ext_resource type="Texture2D" uid="uid://cyliaw4em6xeo" path="res://art/UI/Icons/task_board_background.png" id="7_fhnw8"]
+[ext_resource type="PackedScene" uid="uid://bn1reqo0rm338" path="res://scenes/ui/dark_background_for_pause.tscn" id="8_gobxs"]
 [ext_resource type="Script" path="res://scripts/ui/tasks_container_ui.gd" id="9_2onv1"]
 [ext_resource type="PackedScene" uid="uid://b5lchgdj65ebe" path="res://scenes/ui/task_card_in_task_ui.tscn" id="9_qihdu"]
 [ext_resource type="Texture2D" uid="uid://cduvflniyj4vo" path="res://art/current_task_p1.png" id="10_b82fu"]
@@ -325,15 +326,7 @@ libraries = {
 [node name="EnergyAnimationTimer" type="Timer" parent="MarginContainer/Control/EnergyResourceCounter"]
 one_shot = true
 
-[node name="DarkBackgroundForPause" type="Panel" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="DarkBackgroundForPause" parent="." instance=ExtResource("8_gobxs")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

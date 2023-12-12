@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1n6vmkcmalsf"]
 
 [ext_resource type="Script" path="res://scenes/ui/InWorldUI/StartButton.gd" id="1_nx4sm"]
-[ext_resource type="PackedScene" uid="uid://6bqm6gqeokqt" path="res://scenes/Main.tscn" id="2_4c52y"]
-[ext_resource type="Texture2D" uid="uid://if7wrpabduf7" path="res://art/UI/Menus/Start Menu/Start Game.png" id="2_cr8gw"]
+[ext_resource type="PackedScene" uid="uid://bg4gafce3xyqv" path="res://scenes/Main.tscn" id="2_4c52y"]
+[ext_resource type="Texture2D" uid="uid://if7wrpabduf7" path="res://Start Menu/Start Game.png" id="2_cr8gw"]
 
 [node name="StartButton" type="Node2D"]
 z_index = -1

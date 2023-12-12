@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/camera/game_split_screen_controller.gd" id="1_g3b6h"]
 [ext_resource type="PackedScene" uid="uid://527ad036ui2s" path="res://scenes/ui/ui_collective.tscn" id="2_qqwfb"]
-[ext_resource type="PackedScene" path="res://scenes/levels/Start_Level.tscn" id="3_1xm7b"]
+[ext_resource type="PackedScene" uid="uid://djuj0ffrxtst6" path="res://scenes/levels/Start_Level.tscn" id="3_1xm7b"]
 [ext_resource type="PackedScene" uid="uid://bn2i24cv0uvan" path="res://scenes/ui/ui.tscn" id="4_y4d83"]
 [ext_resource type="PackedScene" uid="uid://cvwuirlquyihm" path="res://scenes/music/audio_manager.tscn" id="5_32kgy"]
 [ext_resource type="PackedScene" uid="uid://b08f46kyqjrwj" path="res://scenes/task/task_manager.tscn" id="6_6xwno"]

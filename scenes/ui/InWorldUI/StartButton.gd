@@ -11,10 +11,14 @@ var collidingPlayers = []
 
 @export var controlsUI:PackedScene 
 
+@export var texture: Texture
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D  
+	if(texture != null):
+		$Sprite2D.texture = texture
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,10 +39,27 @@ func menuChoose(): # used to increase and load the next scene based on the menu
 			get_tree().change_scene_to_packed(loadingScreen)
 			return
 		if name == "Controls":
-			get_tree().change_scene_to_packed(controlsUI)
+			get_parent().get_parent().get_node("ControlsUI").set_visible(true)
+			get_parent().get_parent().get_node("MainMenuButtons").set_visible(false)
 			return
 		if name == "Quit":
 			get_tree().quit()
+			return
+		if name == "TabToController":
+			get_parent().get_parent().get_node("Keyboard").set_visible(false)
+			get_parent().get_parent().get_node("Controller").set_visible(true)
+			self.set_visible(false)
+			get_parent().get_node("TabToKeyboard").set_visible(true)
+			return
+		if name == "TabToKeyboard":
+			get_parent().get_parent().get_node("Keyboard").set_visible(true)
+			get_parent().get_parent().get_node("Controller").set_visible(false)
+			self.set_visible(false)
+			get_parent().get_node("TabToController").set_visible(true)
+			return
+		if name == "CloseControls":
+			get_parent().get_parent().set_visible(false)
+			get_parent().get_parent().get_parent().get_node("MainMenuButtons").set_visible(true)
 			return
 
 
