@@ -44,8 +44,6 @@ func menuChoose(): # used to increase and load the next scene based on the menu
 
 func _on_area_2d_body_entered(body): ## checks how many bodies are 
 	collidingPlayers =	$Area2D.get_overlapping_bodies()
-	print(collidingPlayers.size())
-		
 	pass # Replace with function body.
 	
 
