@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://djuj0ffrxtst6"]
+[gd_scene load_steps=15 format=3 uid="uid://djuj0ffrxtst6"]
 
 [ext_resource type="Texture2D" uid="uid://2q5jf0ru8hri" path="res://art/World/Player Map/Map_Background.png" id="2_qvin1"]
 [ext_resource type="PackedScene" uid="uid://y68lgdbfx2pl" path="res://scenes/map/river.tscn" id="3_gxgxm"]
@@ -7,8 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://c6bcmhh36hbrl" path="res://scenes/ui/InWorldUI/ControlsButton.tscn" id="5_rb2f3"]
 [ext_resource type="PackedScene" uid="uid://cu437g0ikief4" path="res://scenes/ui/InWorldUI/QuitButton.tscn" id="6_rj8en"]
 [ext_resource type="Texture2D" uid="uid://m3aguidc5fkt" path="res://art/World/Player Map/Buildings/Shed.png" id="7_q40bb"]
-[ext_resource type="Texture2D" uid="uid://dmexm1fvs6rrs" path="res://art/UI/Menus/Start Menu/Fence_Back.png" id="8_lqfh3"]
-[ext_resource type="Texture2D" uid="uid://we0eixebj3em" path="res://art/UI/Menus/Start Menu/Fence_Front.png" id="9_e6vl4"]
+[ext_resource type="Texture2D" uid="uid://dmexm1fvs6rrs" path="res://Start Menu/Fence_Back.png" id="8_lqfh3"]
+[ext_resource type="Texture2D" uid="uid://we0eixebj3em" path="res://Start Menu/Fence_Front.png" id="9_e6vl4"]
+[ext_resource type="Texture2D" uid="uid://ddvw82i0iks1f" path="res://art/Group 142.png" id="10_ji5qk"]
+[ext_resource type="Texture2D" uid="uid://cvn04mtwmd0hl" path="res://art/Group 141.png" id="11_atwf6"]
+[ext_resource type="Texture2D" uid="uid://4efg1isrta1t" path="res://art/UI/Menus/ControlsTabKeyboard.svg" id="13_yyqe7"]
+[ext_resource type="Texture2D" uid="uid://dbotx1bv53pho" path="res://art/UI/Menus/ControlsTabController.png" id="14_yxw8u"]
+[ext_resource type="Texture2D" uid="uid://jri14s6wb7i1" path="res://art/UI/Menus/ControlsClose.svg" id="15_to7gg"]
 
 [node name="World" type="Node2D" groups=["World"]]
 y_sort_enabled = true
@@ -32,18 +37,6 @@ speed = 30000
 position = Vector2(2745, 929)
 is_player_with_keyboard = false
 speed = 30000
-
-[node name="StartButton" parent="." instance=ExtResource("4_k4qdf")]
-position = Vector2(1386, 960)
-
-[node name="Controls" parent="." instance=ExtResource("5_rb2f3")]
-position = Vector2(1844, 1256)
-rotation = 0.0204264
-scale = Vector2(3.17644, 3.17644)
-
-[node name="Quit" parent="." instance=ExtResource("6_rj8en")]
-position = Vector2(2252, 1546)
-scale = Vector2(3.12, 3.12)
 
 [node name="Shed" type="Sprite2D" parent="."]
 position = Vector2(1950, 2350)
@@ -78,5 +71,67 @@ position = Vector2(-4, -42)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FenceFront/StaticBody2D"]
 position = Vector2(-1759, 1771.76)
 polygon = PackedVector2Array(-32.2072, 30.0059, -141.354, -1.76514, -731.818, -536.579, -1052.1, -1191.42, -1100.41, -1593.85, -962.636, -1599.15, -925.061, -1323.8, -710.346, -900.181, -463.425, -621.302, -82.3071, -330.067, 433.007, -75.8977, 1080.73, 88.2529, 1306.18, 114.729, 2587.31, 77.6626, 3660.88, -335.362, 4115.36, -774.862, 4458.9, -1387.34, 4491.11, -1800.36, 4625.3, -1795.07, 4539.42, -547.169, 2753.71, 384.783, 2361.86, 443.03, 1182.72, 458.916)
+
+[node name="ControlsUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Controller" type="Sprite2D" parent="ControlsUI"]
+visible = false
+position = Vector2(1806, 1350)
+rotation = -0.00492931
+scale = Vector2(2.11882, 3.08192)
+texture = ExtResource("10_ji5qk")
+
+[node name="Keyboard" type="Sprite2D" parent="ControlsUI"]
+position = Vector2(1895.88, 1385.5)
+scale = Vector2(6.09289, 3.30702)
+texture = ExtResource("11_atwf6")
+
+[node name="Buttons" type="Control" parent="ControlsUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TabToKeyboard" parent="ControlsUI/Buttons" instance=ExtResource("4_k4qdf")]
+visible = false
+position = Vector2(730, 1147)
+scale = Vector2(1.2884, 1.82465)
+startButton = false
+texture = ExtResource("13_yyqe7")
+
+[node name="TabToController" parent="ControlsUI/Buttons" instance=ExtResource("4_k4qdf")]
+position = Vector2(835, 823)
+scale = Vector2(1.2884, 1.82465)
+startButton = false
+texture = ExtResource("14_yxw8u")
+
+[node name="CloseControls" parent="ControlsUI/Buttons" instance=ExtResource("4_k4qdf")]
+position = Vector2(1416, 520)
+scale = Vector2(1.2884, 1.82465)
+startButton = false
+texture = ExtResource("15_to7gg")
+
+[node name="MainMenuButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartButton" parent="MainMenuButtons" instance=ExtResource("4_k4qdf")]
+position = Vector2(1386, 960)
+
+[node name="Controls" parent="MainMenuButtons" instance=ExtResource("5_rb2f3")]
+position = Vector2(1844, 1256)
+rotation = 0.0204264
+scale = Vector2(3.17644, 3.17644)
+
+[node name="Quit" parent="MainMenuButtons" instance=ExtResource("6_rj8en")]
+position = Vector2(2252, 1546)
+scale = Vector2(3.12, 3.12)
 
 [connection signal="area_entered" from="Area" to="." method="detect_foliage"]

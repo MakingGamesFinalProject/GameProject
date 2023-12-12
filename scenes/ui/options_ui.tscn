@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://crv8h23xdp7jn"]
 
 [ext_resource type="Texture2D" uid="uid://cckovjed6vsl4" path="res://scenes/ui/ropes copy.png" id="1_fsvvw"]
-[ext_resource type="Theme" uid="uid://c4cp7yr5y3nob" path="res://themes/button_options.tres" id="4_bpuim"]
-[ext_resource type="Theme" uid="uid://d1nrfbj1pbn2w" path="res://themes/button_resume.tres" id="4_jkvn8"]
-[ext_resource type="Theme" uid="uid://l0ba2k044ao0" path="res://themes/button_quit.tres" id="4_utqd5"]
+[ext_resource type="Theme" uid="uid://cf7hk61ikfq3e" path="res://themes/button_options.tres" id="4_bpuim"]
+[ext_resource type="Theme" uid="uid://b0vaw10f5mud1" path="res://themes/button_resume.tres" id="4_jkvn8"]
+[ext_resource type="Theme" uid="uid://c3tgrhvn2xc13" path="res://themes/button_quit.tres" id="4_utqd5"]
 
 [node name="options_ui" type="Control"]
 layout_mode = 3
