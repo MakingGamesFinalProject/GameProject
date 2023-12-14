@@ -306,7 +306,6 @@ func generate_npc(npc_name : String) -> void:
 
 # The function create one of each remaining building to be generated
 func generate_buildings(buildings_to_generate : Array[String]) -> void:
-	print(remaining_building_positions.size())
 	if buildings_to_generate.has("Water Filter"):
 		water_filter = water_filter_scene.instantiate() as StaticBody2D
 		water_filter.global_position = WATER_FILTER_POSITIONS[rng.randi_range(0, 12)] + WATER_FILTER_POSITION_OFFSET
