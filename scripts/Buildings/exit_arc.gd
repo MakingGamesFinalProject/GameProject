@@ -65,10 +65,6 @@ func set_npc_ref():
 	
 func reset_players():
 	var player_array = get_tree().get_nodes_in_group("players")
-	player_array[0].global_position.x = 300
-	player_array[0].global_position.y = 2400
-	player_array[1].global_position.x = 300
-	player_array[1].global_position.y = 2600
 	player1_is_close = false
 	player2_is_close = false
 
