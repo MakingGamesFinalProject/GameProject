@@ -182,8 +182,13 @@ func check_shed_filter_task_connection():
 		var Shed_ref = get_tree().get_first_node_in_group("Shed")
 		assert(Shed_ref != null, "Shed reference not found")
 		# a player interacting with the house and the wind turbine
-		var amount_players_interacting_with_shed = Shed_ref.counter_players_detected
-		if counter_players_detected > 0 and amount_players_interacting_with_shed > 0:
+		var player_interacting_with_shed = false
+		var player_interacting_with_me = false
+		if Shed_ref.player1_is_close or Shed_ref.player2_is_close:
+			player_interacting_with_shed = true
+		if player1_is_close or player2_is_close:
+			player_interacting_with_me = true
+		if player_interacting_with_me and player_interacting_with_shed:
 			return true
 	return false
 
