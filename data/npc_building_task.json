@@ -29,7 +29,8 @@
 			},
 			"buildings": [
 				"Trash Collector",
-				"Wind Turbine"
+				"Wind Turbine",
+				"Shed"
 			],
 			"tasks": [
 				5,
@@ -68,7 +69,8 @@
 					"not done yet" : 20
 			},
 			"buildings": [
-				"Wind Turbine"
+				"Wind Turbine",
+				"Shed"
 			],
 			"tasks": [
 				1
@@ -86,7 +88,8 @@
 			},
 			"buildings": [
 				"Recycling Workshop",
-				"Well"
+				"Well",
+				"Shed"
 			],
 			"tasks": [
 				4,
@@ -125,7 +128,8 @@
 					"not done yet" : 35
 			},
 			"buildings": [
-				"Water Filter"
+				"Water Filter",
+				"Shed"
 			],
 			"tasks": [
 				8
@@ -143,7 +147,8 @@
 			},
 			"buildings": [
 				"Well",
-				"Wind Turbine"
+				"Wind Turbine",
+				"Shed"
 			],
 			"tasks": [
 				6,
@@ -163,7 +168,8 @@
 			"buildings": [
 				"Shed",
 				"Hamster Wheel",
-				"Recycling Workshop"
+				"Recycling Workshop",
+				"Shed"
 			],
 			"tasks": [
 				9,
@@ -182,7 +188,8 @@
 					"not done yet" : 50
 			},
 			"buildings": [
-				"Hamster Wheel"
+				"Hamster Wheel",
+				"Shed"
 			],
 			"tasks": [
 				3
@@ -200,7 +207,8 @@
 			},
 			"buildings": [
 				"Water Filter",
-				"Windmill"
+				"Windmill",
+				"Shed"
 			],
 			"tasks": [
 				8,

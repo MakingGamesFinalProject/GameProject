@@ -113,6 +113,11 @@ func delete_task_card_ui(task_card):
 	hbox_container.get_node("Button2").set_visible(false)
 	task_card.get_node("Panel/CompletedSprite").set_visible(false)
 	
+	var current_task_ui_p1 = get_tree().get_nodes_in_group("current_task_ui")[0]
+	var current_task_ui_p2 = get_tree().get_nodes_in_group("current_task_ui")[1]
+	current_task_ui_p1.text = ""
+	current_task_ui_p2.text = ""
+	
 
 func _on_task_manager_new_task_assigned(task):
 	load_assigned_tasks()

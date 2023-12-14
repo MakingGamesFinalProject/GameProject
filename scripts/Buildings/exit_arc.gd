@@ -37,6 +37,7 @@ func _process(_delta):
 				reset_players()
 				world.regenerate()
 		else:
+			set_npc_ref()
 			npc_ref.cant_leave_yet()
 			reset_players()
 	
@@ -49,6 +50,7 @@ func check_condiditons():
 	return false
 		
 func check_task_completion():
+	set_npc_ref()
 	var task_ids = npc_ref.npc_task_ids
 	for id in task_ids:
 		if not task_manager_ref.is_task_completed(id):
@@ -65,10 +67,6 @@ func set_npc_ref():
 	
 func reset_players():
 	var player_array = get_tree().get_nodes_in_group("players")
-	player_array[0].global_position.x = 300
-	player_array[0].global_position.y = 2400
-	player_array[1].global_position.x = 300
-	player_array[1].global_position.y = 2600
 	player1_is_close = false
 	player2_is_close = false
 
