@@ -9,6 +9,9 @@ extends CanvasLayer
 @onready var scraps_animation_counter_timer: Timer = $MarginContainer/Control/ScrapsResourceCounter/ScrapsAnimationTimer
 @export var delay_to_increase_resource_during_animation_in_seconds = 0.02
 var is_options_open = false
+
+var resources_is_animating := false
+
 func _ready():
 	ResourceManager.on_resource_increased.connect(animate_resource_incrase)
 	water_animation_counter_timer.wait_time = $MarginContainer/Control/WaterResourceCounter/WaterTexture2/AnimationPlayer.get_animation("resource_up").length - 0.2
@@ -30,6 +33,8 @@ func _on_task_manager_task_completed(task):
 			print("found task completed among cards")
 
 func animate_resource_incrase(resource, amount_increased):
+	resources_is_animating = true
+
 	if resource == "water":
 		$MarginContainer/Control/WaterResourceCounter/WaterTexture2/AnimationPlayer.play("resource_up")
 		water_animation_counter_timer.start()
@@ -64,6 +69,7 @@ func animate_resource_incrase(resource, amount_increased):
 	else:
 		assert(false, "Resource not valid, please pass one of the following strings [water, scraps, energy]")
 
+	resources_is_animating = false
 
 func animate_resource_block_water():
 	$MarginContainer/Control/WaterResourceCounter/AnimationPlayer.play("resource_counter_up")
@@ -76,6 +82,11 @@ func animate_resource_block_scraps():
 	$MarginContainer/Control/ScrapsResourceCounter/AnimationPlayer.play("resource_counter_up")
 
 func _process(delta):
+	if not resources_is_animating:
+		water_label.text = str(ResourceManager.water)
+		energy_label.text = str(ResourceManager.energy)
+		scraps_label.text = str(ResourceManager.scraps)
+
 	if(Input.is_action_just_pressed("toggle_pause")):
 		if is_options_open:
 			is_options_open = false

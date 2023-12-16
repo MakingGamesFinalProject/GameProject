@@ -80,7 +80,7 @@ func _process(_delta):
 			$Base.show()
 			building_fade_in()
 			building_play_sounds()
-		
+
 	if Input.is_action_just_pressed("interaction_p2") and player2_is_close:
 		if can_be_build and not has_been_built:
 			ResourceManager.decrease_water(needed_for_build_water)
@@ -92,7 +92,7 @@ func _process(_delta):
 			$Base.show()
 			building_fade_in()
 			building_play_sounds()
-	
+
 	if Input.is_action_just_pressed("interaction_p2") and player2_is_close \
 	or Input.is_action_just_pressed("interaction_p1") and player1_is_close \
 	and is_collectable:
@@ -211,4 +211,3 @@ func _on_detection_area_body_exited(body):
 			
 		if body.name == "Player2":
 			player2_is_close = false
-
