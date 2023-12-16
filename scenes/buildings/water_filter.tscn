@@ -18,16 +18,19 @@ radius = 20.7231
 script = ExtResource("1_wfbm2")
 
 [node name="Base" type="Sprite2D" parent="."]
-scale = Vector2(-1, 1)
+position = Vector2(0, 51)
+scale = Vector2(-0.5, 0.5)
 texture = ExtResource("2_4eiw2")
 offset = Vector2(0, -150)
 
 [node name="Outline" type="Sprite2D" parent="."]
-scale = Vector2(-1, 1)
+position = Vector2(0, 51)
+scale = Vector2(-0.5, 0.5)
 texture = ExtResource("3_yyawm")
 offset = Vector2(0, -150)
 
 [node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(0, 51)
 scale = Vector2(1.48, 1.35271)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
@@ -36,15 +39,15 @@ scale = Vector2(2.65261, 2.24524)
 shape = SubResource("CircleShape2D_k2kpd")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(10, -100)
+position = Vector2(10, -49)
 scale = Vector2(6.68775, 4.19446)
 shape = SubResource("CircleShape2D_o64sd")
 
 [node name="HelperButton" parent="." instance=ExtResource("4_htsy6")]
-position = Vector2(69, -368)
+position = Vector2(69, -317)
 
 [node name="ExclamationMark" parent="." instance=ExtResource("5_awyvc")]
-position = Vector2(-87, -451)
+position = Vector2(-87, -256)
 
 [node name="Building" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ao63k")
