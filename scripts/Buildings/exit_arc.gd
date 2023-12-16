@@ -28,8 +28,7 @@ func _process(_delta):
 	if player1_is_close and player2_is_close:
 		if check_task_completion():
 			if check_condiditons():
-				# end game
-				pass
+				get_tree().change_scene_to_file("res://scenes/scene/end_screen.tscn")
 			else:
 				#next map
 				var world = get_tree().get_first_node_in_group("World")
@@ -85,4 +84,3 @@ func _on_detection_area_body_exited(body):
 			
 		if body.name == "Player2":
 			player2_is_close = false
-
