@@ -156,12 +156,12 @@ func set_task_as_done(task_uid):
 		
 	tasks_completed.push_back(task)
 	
-	var to_be_removed = -1
-	for i  in range(0, len(tasks_assigned)):
-		if tasks_assigned[i].uid == task_uid:
-			to_be_removed = i
-	if to_be_removed != -1:
-		tasks_assigned.remove_at(to_be_removed)
+	#var to_be_removed = -1
+	#for i  in range(0, len(tasks_assigned)):
+	#	if tasks_assigned[i].uid == task_uid:
+	#		to_be_removed = i
+	#if to_be_removed != -1:
+	#	tasks_assigned.remove_at(to_be_removed)
 			
 	task_completed.emit(task)
 	
