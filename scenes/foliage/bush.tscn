@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cu13oxvm7jkdr" path="res://art/World/Player Map/Foliage Sprites/Bush 5.png" id="5_ci18q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxg5n"]
-radius = 112.0
-height = 442.0
+radius = 80.0
+height = 326.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sycee"]
 radius = 400.0
@@ -50,6 +50,7 @@ shape = SubResource("CapsuleShape2D_qxg5n")
 [node name="Area" type="Area2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, -112)
 shape = SubResource("CircleShape2D_sycee")
 
 [connection signal="area_entered" from="Area" to="." method="detect_bush"]
