@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 # Preloading the loading screen
 #var loading_screen_scene = preload("res://scenes/ui/loading_screen.tscn")
@@ -54,16 +54,8 @@ func _ready():
 	#loading_screen = loading_screen_scene.instantiate() as Node2D
 	#get_tree().root.add_child.call_deferred(loading_screen)
 	pass
+
 func _process(_delta):
-	if Input.is_action_just_pressed("reset"):
-		# Instantiate the loading screen and add it to the main scene
-		#loading_screen = loading_screen_scene.instantiate() as Node2D
-		#get_tree().root.add_child(loading_screen)
-
-		#await(loading_screen.loading_screen_instantiated)
-
-		regenerate()
-
 	# Deleting grass which spawned on top of or close to another grass tuft
 	if grass_generated and not grass_deleted:
 		MapGeneration.delete_grass()
