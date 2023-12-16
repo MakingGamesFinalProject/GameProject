@@ -170,7 +170,7 @@ func check_for_retrieve_water_task():
 	if current_status != available_states.WORKING: 
 		return
 	
-	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
+	var task_id = task_manager_ref.get_task_by_name("Retrieve Water").uid
 	if task_manager_ref.get_current_task(1) == task_id or task_manager_ref.get_current_task(2) == task_id:
 		if (Input.is_action_pressed("interaction_p1") and player1_is_close):
 			var player_array = get_tree().get_nodes_in_group("players")
@@ -181,10 +181,10 @@ func check_for_retrieve_water_task():
 			var player_array = get_tree().get_nodes_in_group("players")
 			player_array[1].player_interaction()
 			var time_manager = WaitUtil.new()
-			time_manager.wait(time_to_repair_in_seconds, self, "_on_create_scrap_task_callback")
+			time_manager.wait(time_to_repair_in_seconds, self, "_on_retrieve_water_task_callback")
 
-func _on_create_scrap_task_callback():
-	var task_id = task_manager_ref.get_task_by_name("Create Scrap").uid
+func _on_retrieve_water_task_callback():
+	var task_id = task_manager_ref.get_task_by_name("Retrieve Water").uid
 	task_manager_ref.set_task_as_done(task_id)
 
 #######################################^^^^##################################################

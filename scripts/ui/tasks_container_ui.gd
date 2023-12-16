@@ -66,7 +66,7 @@ func load_assigned_tasks():
 	var tasks_completed = tasks_manager.get_completed_tasks(-1)
 	
 	if len(tasks_assigned) == 0 and len(tasks_completed) == 0:
-		for i in range(3):
+		for i in range(0, 3):
 			delete_task_card_ui(get_task_card(i))
 	
 	if len(tasks_assigned) > 0:
@@ -112,6 +112,8 @@ func delete_task_card_ui(task_card):
 	hbox_container.get_node("Button").set_visible(false)
 	hbox_container.get_node("Button2").set_visible(false)
 	task_card.get_node("Panel/CompletedSprite").set_visible(false)
+	
+	task_card.task_completed = false
 	
 	var current_task_ui_p1 = get_tree().get_nodes_in_group("current_task_ui")[0]
 	var current_task_ui_p2 = get_tree().get_nodes_in_group("current_task_ui")[1]

@@ -31,8 +31,11 @@ func _process(delta):
 			if(task.number_of_players == 1):
 				assign_task_p1_button_ref.set_visible(true)
 				assign_task_p2_button_ref.set_visible(true)
+				assign_task_p1_button_ref.set_disabled(false)
+				assign_task_p2_button_ref.set_disabled(false)
 			else:
 				assign_task_both_players_button_ref.set_visible(true)
+				assign_task_both_players_button_ref.set_disabled(false)
 	
 	if !task_completed:
 		disable_buttons_if_task_is_completed()
